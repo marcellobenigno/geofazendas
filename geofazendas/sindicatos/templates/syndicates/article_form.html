@@ -1,0 +1,58 @@
+{% extends "syndicates/base.html" %}
+
+{% load bootstrap5 %}
+
+{% block css %}
+<style>
+.django-ckeditor-widget {
+    max-width: 600px;
+}
+</style>
+{% endblock %}
+
+{% block main %}
+<div class="container p-t-4 p-b-40">
+    <h2 class="f1-l-1 cl2">
+        {{ object|default:'Nova Publicação' }}
+    </h2>
+</div>
+<!-- Content -->
+<section class="bg0 p-b-60">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 p-b-80">
+                <div class="p-r-10 p-r-0-sr991">
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        {% for field in form %}
+                        {% bootstrap_field field %}
+                        {% if field.name == 'photo' %}
+                            <img class="img-fluid" id="photo_placeholder" {% if object and object.photo %}src="{{ object.photo.url }}"{% else %}src="{{ STATIC_URL }}img/1.jpg"{% endif %} alt="" />
+                        {% endif %}
+                        {% endfor %}
+                        <button type="submit" class="size-a-20 bg2 borad-3 f1-s-12 cl0 hov-btn1 trans-03 p-rl-15 m-t-20">
+                            Salvar
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+{% block js %}
+{{ form.media }}
+<script>
+$(function(){
+    let imgInput = document.getElementById('id_photo')
+    let imgPlacerholder = document.getElementById('photo_placeholder')
+    imgInput.onchange = evt => {
+        const [file] = imgInput.files
+        if (file) {
+            imgPlacerholder.src = URL.createObjectURL(file)
+            imgPlacerholder.style = 'display: block;max-height:200px;'
+        }
+    }
+})
+</script>
+{% endblock %}

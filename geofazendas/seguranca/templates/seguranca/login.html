@@ -1,0 +1,39 @@
+{% extends "articles/base.html" %}
+
+{% load bootstrap5 %}
+
+{% block main %}
+<section class="page-heading">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="text-content">
+                    <h2 class="text-center">Informe seu E-mail e Senha</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="blog-posts" style="margin-bottom: 40px;">
+    <div class="container">
+        <div class="row">
+            <div class="offset-md-4 col-md-4">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    {% for error in form.non_field_errors %}
+                    <p class="alert alert-danger">
+                        {{ error }}
+                    </p>
+                    {% endfor %}
+                    {% for field in form %}
+                    {% bootstrap_field field %}
+                    {% endfor %}
+                    <p style="text-align: right;">
+                        <button type="submit" class="btn btn-primary">Enviar</button>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,21 +1,36 @@
-"""geofazendas URL Configuration
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/4.1/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path
+from django.urls import include, path
+
+from rest_framework.routers import DefaultRouter
+
+from geofazendas.seguranca.views import api as security_api
+
+from geofazendas.artigos.views import api as articles_views
+
+from geofazendas.mapas import views as maps_views
+
+
+router = DefaultRouter()
+# security
+router.register('seguranca/usuario', security_api.UserViewSet, basename='usuario')
+# articles
+router.register('artigos/categoria', articles_views.CategoryViewSet, basename='categoria')
+router.register('artigos/artigos', articles_views.ArticleViewSet, basename='artigos')
+# maps
+router.register('mapas/estados', maps_views.StateViewSet, basename='estado')
+router.register('mapas/municipios', maps_views.CountyViewSet, basename='municipio')
+
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('django-admin/', admin.site.urls),
+    path('seguranca/', include('geofazendas.seguranca.urls', namespace='seguranca')),
+    path('sindicatos/', include('geofazendas.sindicatos.urls', namespace='sindicatos')),
+    path('api/', include(router.urls)),
+    path('', include('geofazendas.base.urls', namespace='base')),
+    path('', include('geofazendas.artigos.urls', namespace='artigos')),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

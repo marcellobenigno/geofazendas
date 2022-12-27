@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>GeoFazendas | Sindicatos</title>
+
+	<link rel="icon" type="image/png" href="{{ STATIC_URL }}syndicates/images/icons/favicon.ico"/>
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}syndicates/vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}syndicates/fonts/fontawesome-5.0.8/css/fontawesome-all.min.css">
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}syndicates/fonts/iconic/css/material-design-iconic-font.min.css">
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}syndicates/vendor/animate/animate.css">
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}syndicates/vendor/css-hamburgers/hamburgers.min.css">
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}syndicates/vendor/animsition/css/animsition.min.css">
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}syndicates/css/util.min.css">
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}syndicates/css/main.css">
+	{% block css %}
+	{% endblock %}
+</head>
+<body class="animsition">
+
+	<!-- Header -->
+	<header>
+		<!-- Header desktop -->
+		<div class="container-menu-desktop">
+
+			<!-- Header Mobile -->
+			<div class="wrap-header-mobile">
+				<!-- Logo moblie -->
+				<div class="logo-mobile">
+					<a href="{% url 'syndicates:index' %}"><img src="{{ STATIC_URL }}syndicates/images/icons/logo-01.png" alt="IMG-LOGO"></a>
+				</div>
+			</div>
+
+			<!--  -->
+			<div class="wrap-logo container">
+				<!-- Logo desktop -->
+				<div class="logo">
+					<a href="{% url 'syndicates:index' %}"><img src="{{ STATIC_URL }}syndicates/images/icons/logo-01.png" alt="LOGO"></a>
+				</div>
+
+				<!-- Banner -->
+				<div class="banner-header">
+					<a href="#"><img src="{{ STATIC_URL }}syndicates/images/banner-01.jpg" alt="IMG"></a>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<!-- Headline -->
+	<div class="container">
+		<div class="bg0 flex-wr-sb-c p-rl-20 p-tb-8">
+			<div class="f2-s-1 p-r-30 size-w-0 m-tb-6 flex-wr-s-c">
+				<span class="text-uppercase cl2 p-r-8">
+					Destaques:
+				</span>
+
+				<span class="dis-inline-block cl6 slide100-txt pos-relative size-w-0" data-in="fadeInDown" data-out="fadeOutDown">
+					<span class="dis-inline-block slide100-txt-item animated visible-false">
+						Manchete de interesse, com sentença curta, sem link de acesso 1.
+					</span>
+
+					<span class="dis-inline-block slide100-txt-item animated visible-false">
+						Manchete de interesse, com sentença curta, sem link de acesso 2.
+					</span>
+
+					<span class="dis-inline-block slide100-txt-item animated visible-false">
+						Manchete de interesse, com sentença curta, sem link de acesso 3.
+					</span>
+				</span>
+			</div>
+
+			<div class="pos-relative size-a-2 bo-1-rad-22 of-hidden bocl11 m-tb-6">
+				<input class="f1-s-1 cl6 plh9 s-full p-l-25 p-r-45" type="text" name="search" placeholder="Pesquisar">
+				<button class="flex-c-c size-a-1 ab-t-r fs-20 cl2 hov-cl10 trans-03">
+					<i class="zmdi zmdi-search"></i>
+				</button>
+			</div>
+		</div>
+	</div>
+
+    <div class="container" style="margin-bottom: 30px;">
+        <div class="row">
+            <div class="col-md-12">
+                <button type="button" class="btn btn-primary"><a href="{% url 'syndicates:article_create' %}">Nova Publicação</a></button>
+                <button type="button" class="btn btn-primary float-end"><a href="{% url 'syndicates:article_list' %}">Minhas Publicações</a></button>
+            </div>
+        </div>
+    </div>
+	{% block main %}
+	{% endblock %}
+	<!-- Footer -->
+	<footer>
+		<div class="container-fluid bg-dark text-white-50 footer wow fadeIn" data-wow-delay="0.1s">
+            <div class="container">
+                <div class="copyright">
+                    <div class="row">
+                        <div class="col-md-9 text-center text-md-end">
+                            <div class="f1-s-7 cl3 hov-cl10 trans-03">
+                                <a href="">Política de Prvacidade&emsp;</a>
+                                <a href="">&emsp;Contate o Suporte&emsp;</a>
+                                <a href="">&emsp;Perguntas Frequentes</a>
+                            </div>
+                        </div>
+                        <div class="col-md-12 text-center">
+                            &copy; Copyright {% now 'Y' %}
+                            &ensp;Todos os direitos reservados.</br>GeoFazendas é um produto da <a href="https://www.multisig.com.br/" target="_blank"><b> Multisig</b></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+	</footer>
+
+	<!-- Back to top -->
+	<div class="btn-back-to-top" id="myBtn">
+		<span class="symbol-btn-back-to-top">
+			<span class="fas fa-angle-up"></span>
+		</span>
+	</div>
+
+	<!-- Modal Video 01-->
+	<div class="modal fade" id="modal-video-01" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog" role="document" data-dismiss="modal">
+			<div class="close-mo-video-01 trans-0-4" data-dismiss="modal" aria-label="Close">&times;</div>
+
+			<div class="wrap-video-mo-01">
+				<div class="video-mo-01">
+					<iframe src="https://www.youtube.com/embed/wJnBTPUQS5A?rel=0" allowfullscreen></iframe>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="{{ STATIC_URL }}syndicates/vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script src="{{ STATIC_URL }}syndicates/vendor/animsition/js/animsition.min.js"></script>
+	<script src="{{ STATIC_URL }}syndicates/vendor/bootstrap/js/popper.js"></script>
+	<script src="{{ STATIC_URL }}syndicates/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="{{ STATIC_URL }}syndicates/js/main.js"></script>
+	{% block js %}{% endblock %}
+</body>
+</html>
