@@ -54,7 +54,7 @@ class Usuario(AbstractBaseUser, PermissionsMixin, BaseModel):
     is_staff = models.BooleanField('Equipe', default=False)
     ultimo_acesso = models.DateTimeField('Último acesso', null=True, blank=True, editable=False)
 
-    USERNAME_FIELD = 'identifier'
+    USERNAME_FIELD = 'identificador'
     REQUIRED_FIELDS = ['nome']
 
     objects = UsuarioManager()

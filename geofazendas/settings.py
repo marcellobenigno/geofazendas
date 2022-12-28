@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'taggit',
     # Geofazendas Apps:
     'geofazendas.base.apps.CoreConfig',
+    'geofazendas.artigos.apps.ArtigosConfig',
     'geofazendas.mapas.apps.MapasConfig',
     'geofazendas.seguranca.apps.SegurancaConfig',
     'geofazendas.sindicatos.apps.SindicatosConfig',

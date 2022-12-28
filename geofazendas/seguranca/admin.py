@@ -7,13 +7,13 @@ from geofazendas.seguranca.forms import UserAdminForm
 @admin.register(Usuario)
 class UserAdmin(admin.ModelAdmin):
 
-    list_display = ['identificador', 'nome', 'is_active', 'criado', 'modificado']
+    list_display = ['identificador', 'nome', 'ativo', 'criado', 'modificado']
     search_fields = ['nome', 'email', 'telefone']
     exclude = ['password']
     fieldsets = (
         (None, {
             'fields': (
-                'identificador', 'nome', 'email', 'is_active',
+                'identificador', 'nome', 'email', 'ativo,',
             )
         }), (
             'Permissões', {

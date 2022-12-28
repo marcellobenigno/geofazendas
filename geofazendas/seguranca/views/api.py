@@ -1,18 +1,16 @@
 import random
+
 import requests
-
-from rest_framework import viewsets
-from rest_framework.permissions import AllowAny, IsAuthenticated
-from rest_framework.decorators import action
-from rest_framework.response import Response
-from rest_framework.authtoken.models import Token
-
-from django_filters.rest_framework.filterset import FilterSet
-from django_filters.rest_framework.filters import CharFilter
-from django_filters.rest_framework import DjangoFilterBackend
-
-from django.db.models import Q
 from django.conf import settings
+from django.db.models import Q
+from django_filters.rest_framework import DjangoFilterBackend
+from django_filters.rest_framework.filters import CharFilter
+from django_filters.rest_framework.filterset import FilterSet
+from rest_framework import viewsets
+from rest_framework.authtoken.models import Token
+from rest_framework.decorators import action
+from rest_framework.permissions import AllowAny, IsAuthenticated
+from rest_framework.response import Response
 
 from geofazendas.seguranca.models import SMS, Usuario
 from geofazendas.seguranca.serializers import (
@@ -21,7 +19,6 @@ from geofazendas.seguranca.serializers import (
 
 
 class UsuarioViewSet(viewsets.ModelViewSet):
-
     class UsuarioFilterSet(FilterSet):
 
         busca = CharFilter(method='filter_busca')
@@ -33,6 +30,7 @@ class UsuarioViewSet(viewsets.ModelViewSet):
                     Q(first_name__icontains=value) | Q(last_name__icontains=value)
                 )
             return queryset
+
         class Meta:
             model = Usuario
             fields = ['busca']

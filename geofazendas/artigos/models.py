@@ -1,14 +1,12 @@
+from ckeditor.fields import RichTextField
 from django.db import models
 from django.utils.text import slugify
-
-from ckeditor.fields import RichTextField
-
 from taggit.managers import TaggableManager
 
 from geofazendas.base.models import BaseModel
 
-class Categoria(BaseModel):
 
+class Categoria(BaseModel):
     titulo = models.CharField('Título', max_length=100)
     slug = models.SlugField('Identificador', max_length=100, unique=True)
     ordem = models.PositiveSmallIntegerField('Ordem', default=1)
@@ -23,7 +21,6 @@ class Categoria(BaseModel):
 
 
 class Artigo(BaseModel):
-
     ARTICLE_TYPE_CHOICES = (
         (v, v) for v in ('artigos', 'noticias', 'cursos')
     )
