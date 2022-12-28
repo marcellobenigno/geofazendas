@@ -4,19 +4,18 @@ from geofazendas.artigos.models import Artigo
 
 
 class ArtigoForm(forms.ModelForm):
-
     class Meta:
         model = Artigo
         widgets = {
-            'photo': forms.FileInput
+            'foto': forms.FileInput
         }
         fields = [
-            'title',
-            'category',
-            'article_type',
-            'text',
-            'photo',
-            'publish_date',
-            'author',
+            'titulo',
+            'categoria',
+            'tipo_artigo',
+            'texto',
+            'foto',
+            'data_publicacao',
+            'autor',
             'tags',
         ]

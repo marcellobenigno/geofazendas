@@ -5,7 +5,6 @@ from geofazendas.sindicatos.models import Sindicato
 
 @admin.register(Sindicato)
 class SindicatoAdmin(admin.ModelAdmin):
-
-    list_display = ['name', 'created', 'modified']
-    search_fields = ['name']
-    filter_horizontal = ['counties']
+    list_display = ['nome', 'criado', 'modificado']
+    search_fields = ['nome']
+    filter_horizontal = ['municipios']

@@ -9,7 +9,7 @@ from geofazendas.sindicatos.forms import ArtigoForm
 
 class ArtigoListView(SindicatoRequiredMixin, generic.ListView):
 
-    template_name = 'syndicates/article_list.html'
+    template_name = 'sindicatos/artigo_list.html'
     paginate_by = 10
 
     def get_queryset(self):
@@ -18,7 +18,7 @@ class ArtigoListView(SindicatoRequiredMixin, generic.ListView):
 
 class ArtigoCreateView(SindicatoRequiredMixin, generic.CreateView):
 
-    template_name = 'syndicates/article_form.html'
+    template_name = 'sindicatos/artigo_form.html'
     form_class = ArtigoForm
 
     def form_valid(self, form):
@@ -27,12 +27,12 @@ class ArtigoCreateView(SindicatoRequiredMixin, generic.CreateView):
         article.save()
         form.save_m2m()
         messages.success(self.request, 'Publicação criada com sucesso!')
-        return redirect('syndicates:article_list')
+        return redirect('sindicatos:artigo_list')
 
 
 class ArtigoUpdateView(SindicatoRequiredMixin, generic.UpdateView):
 
-    template_name = 'syndicates/article_form.html'
+    template_name = 'sindicatos/artigo_form.html'
     form_class = ArtigoForm
 
     def get_queryset(self):
@@ -40,7 +40,7 @@ class ArtigoUpdateView(SindicatoRequiredMixin, generic.UpdateView):
 
     def get_success_url(self):
         messages.success(self.request, 'Publicação atualizada com suecsso!')
-        return redirect('syndicates:article_list')
+        return redirect('sindicatos:artigo_list')
 
 
 class ArtigoDeleteView(SindicatoRequiredMixin, generic.View):

@@ -38,7 +38,6 @@ class UsuarioManager(BaseUserManager):
 
 
 class Usuario(AbstractBaseUser, PermissionsMixin, BaseModel):
-
     identificador = models.CharField('Identificador', unique=True, max_length=50)
     nome = models.CharField('Nome', max_length=20)
     email = models.EmailField('E-mail', blank=True)
@@ -62,7 +61,7 @@ class Usuario(AbstractBaseUser, PermissionsMixin, BaseModel):
     class Meta:
         verbose_name = 'Usuário'
         verbose_name_plural = 'Usuários'
-        ordering = ['-first_name']
+        ordering = ['-nome']
 
     def __str__(self):
         return self.nome
@@ -91,4 +90,4 @@ class SMS(BaseModel):
     class Meta:
         verbose_name = 'Envio SMS'
         verbose_name_plural = 'Envios SMS'
-        ordering = ['-created']
+        ordering = ['-criado']

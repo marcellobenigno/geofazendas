@@ -93,9 +93,7 @@ WSGI_APPLICATION = 'geofazendas.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
-    'default': config(
-        'DATABASE_URL', cast=db_url, default='postgresql://geofazendas:geofazendas@127.0.0.1/geofazendas'
-    ),
+    'default': config('DATABASE_URL', cast=db_url),
 }
 DATABASES['default']['ENGINE'] = 'django.contrib.gis.db.backends.postgis'
 
@@ -253,3 +251,6 @@ LOGGING = {
         }
     }
 }
+
+# GEOSERVER
+GEOSERVER_URL = config('GEOSERVER_URL')

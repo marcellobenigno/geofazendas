@@ -1,0 +1,6 @@
+#map {
+    min-height: calc(80vh - 100px);
+    width: 100%;
+    border: 5px solid #89A328;
+    border-radius: 10px;
+}

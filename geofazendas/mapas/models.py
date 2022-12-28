@@ -54,7 +54,7 @@ class Municipio(models.Model):
     class Meta:
         verbose_name = 'Município'
         verbose_name_plural = 'Municípios'
-        ordering = ('state_initials', 'name')
+        ordering = ('sigla_uf', 'nome')
 
 
 class MunicipioGeometria(models.Model):

@@ -1,0 +1,66 @@
+{% load core_tags %}
+<div id="mapa" class="container-xxl py-5">
+    <div class="container">
+        <div class="row g-5 align-items-center">
+            <div class="col-lg-10 wow fadeIn" data-wow-delay="0.1s">
+                <div id="map"></div>
+            </div>
+            <div class="col-lg-2 wow fadeIn" data-wow-delay="0.5s">
+                <ul style="list-style: none;">
+                    <li>
+                        <h5>TEMAS DO MAPA</h5>
+                    </li>
+                    </br>
+                    <li>
+                    <li>
+                        <a href="?tema=solo&#mapa"
+                           class="{% if request.GET.tema == 'solo' %}text-danger{% endif %}">Solo</a>
+                    </li>
+                    </li>
+                    </br>
+                    <li>
+                        <a href="?tema=clima&#mapa"
+                           class="{% if request.GET.tema == 'clima' %}text-danger{% endif %}">Clima</a>
+                    </li>
+                    </br>
+                    <li>
+                        <a href="?tema=relevo&#mapa"
+                           class="{% if request.GET.tema == 'relevo' %}text-danger{% endif %}">Relevo</a>
+                    </li>
+                    </br>
+                    <li>
+                        <a href="?tema=energia-solar&#mapa"
+                           class="{% if request.GET.tema == 'energia-solar' %}text-danger{% endif %}">Energia Solar</a>
+                    </li>
+                    </br>
+                    <li>
+                        <a href="?tema=bioma&#mapa">Bioma</a>
+                    </li>
+                    </br>
+                    <li>
+                        <a href="#">Identificação do Tema</a>
+                    </li>
+                    </br>
+                    <li>
+                        <a href="#">Identificação do Tema</a>
+                    </li>
+                    </br>
+                    <li>
+                        <a href="#">Identificação do Tema</a>
+                    </li>
+                    </br>
+                    <li>
+                        <a href="#">Identificação do Tema</a>
+                    </li>
+                    </br>
+                    <li>
+                        <a href="#">Identificação do Tema</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% get_settings 'GEOSERVER_URL' as geoserver_url %}
+<input type="hidden" id="geoserver_url" value="{{ geoserver_url }}">
