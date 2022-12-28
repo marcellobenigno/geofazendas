@@ -9,7 +9,7 @@ class Estado(models.Model):
         'área (km2)', max_digits=10, decimal_places=2)
 
     def __str__(self):
-        return self.name
+        return self.nome
 
     class Meta:
         ordering = ['nome']
@@ -49,7 +49,7 @@ class Municipio(models.Model):
 
     @property
     def sede(self):
-        return Point(self.town_lng, self.town_lat, srid=4326)
+        return Point(self.sede_lng, self.sede_lat, srid=4326)
 
     class Meta:
         verbose_name = 'Município'
@@ -58,14 +58,14 @@ class Municipio(models.Model):
 
 
 class MunicipioGeometria(models.Model):
-    municipio = models.OneToOneField('County', verbose_name='municipio', on_delete=models.PROTECT)
+    municipio = models.OneToOneField('Municipio', verbose_name='municipio', on_delete=models.PROTECT)
     retificado = models.BooleanField('Retificado', default=False)
     cod_ibge_m = models.CharField('código IBGE', max_length=20)
     area_km2 = models.DecimalField('Área (km2)', max_digits=10, decimal_places=2, blank=True, null=True)
     geom = models.MultiPolygonField('Geom', srid=4326)
 
     def __str__(self):
-        return self.county.name
+        return self.municipio.nome
 
     @property
     def extent(self):

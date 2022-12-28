@@ -48,6 +48,11 @@ INSTALLED_APPS = [
     'corsheaders',
     'bootstrap5',
     'taggit',
+    # Geofazendas Apps:
+    'geofazendas.base.apps.CoreConfig',
+    'geofazendas.mapas.apps.MapasConfig',
+    'geofazendas.seguranca.apps.SegurancaConfig',
+    'geofazendas.sindicatos.apps.SindicatosConfig',
 ]
 
 MIDDLEWARE = [
@@ -59,7 +64,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'geofazendas.security.middleware.LastAccessMiddleware',
+    'geofazendas.seguranca.middleware.LastAccessMiddleware',
 ]
 
 ROOT_URLCONF = 'geofazendas.urls'
@@ -247,4 +252,3 @@ LOGGING = {
         }
     }
 }
-
