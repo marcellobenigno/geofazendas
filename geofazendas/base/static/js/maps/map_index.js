@@ -18,8 +18,11 @@ const map = L.map('map', {
     zoom: 4,
     maxZoom: 22,
     layers: [googleStreets,],
-
+    zoomControl: false
 });
+
+const zoomHome = L.Control.zoomHome();
+zoomHome.addTo(map);
 
 const baseLayers = {
     'Google Streets': googleStreets,
