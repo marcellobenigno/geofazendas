@@ -60,7 +60,7 @@ class ArtigoDetailView(generic.DetailView):
         elif self.object.tipo_artigo == 'noticias':
             url_name = 'artigos:noticia_list'
         else:
-            url_name = 'artigos:cursos_list'
+            url_name = 'artigos:curso_list'
         return reverse(url_name)
 
     def latest_artigos(self):
@@ -77,5 +77,5 @@ class ArtigoDetailView(generic.DetailView):
 
 artigo_list = ArtigoListView.as_view()
 noticia_list = ArtigoListView.as_view(tipo_artigo='noticias')
-cursos_list = ArtigoListView.as_view(tipo_artigo='cursos')
+curso_list = ArtigoListView.as_view(tipo_artigo='cursos')
 artigo_detail = ArtigoDetailView.as_view()
