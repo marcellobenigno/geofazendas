@@ -41,13 +41,13 @@ class UsuarioRegistroSerializer(serializers.ModelSerializer):
         user.set_password(password)
         user.identifier = user.phone
         user.save()
-        assign_role(user, 'holder')
+        assign_role(user, 'gestor')
         return user
 
     class Meta:
         model = Usuario
         fields = [
-            'id', 'first_name', 'email', 'last_name', 'phone', 'password', 'token',
+            'id', 'nome', 'email', 'telefone', 'password', 'token', 'municipio'
         ]
         read_only_fields = ['token']
 
@@ -57,11 +57,11 @@ class UsuarioSerializer(serializers.ModelSerializer):
     class Meta:
         model = Usuario
         fields = [
-            'id', 'first_name', 'last_name', 'email', 'identifier', 'county', 'phone', 'created',
-            'modified', 'is_staff', 'is_superuser', 'active'
+            'id', 'nome', 'email', 'identificador', 'municipio', 'telefone', 'criado',
+            'modificado', 'is_staff', 'is_superuser', 'is_active'
         ]
         read_only_fields = [
-            'is_staff', 'is_superuser', 'last_access', 'created', 'modified', 'identifier'
+            'is_staff', 'is_superuser', 'ultimo_acesso', 'criado', 'modificado', 'identificador'
         ]
 
 
