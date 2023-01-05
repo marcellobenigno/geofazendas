@@ -14,7 +14,7 @@ class IndexView(SindicatoRequiredMixin, generic.TemplateView):
         return Artigo.objects.order_by('-views')
 
     def recent_artigos(self):
-        return Artigo.objects.order_by('-publish_date')
+        return Artigo.objects.order_by('-data_publicacao')
 
     def tags(self):
         return Tag.objects.all()

@@ -16,7 +16,7 @@ class ArtigoListView(generic.ListView):
 
     def get_queryset(self):
         queryset = Artigo.objects.filter(
-            tipo_artigo=self.tipo_artigo, publish_date__isnull=False
+            tipo_artigo=self.tipo_artigo, data_publicacao__isnull=False
         )
         category = self.request.GET.get('categoria')
         if category:
@@ -31,7 +31,7 @@ class ArtigoListView(generic.ListView):
 
     def latest_artigos(self):
         return Artigo.objects.filter(
-            tipo_artigo=self.tipo_artigo, publish_date__isnull=False
+            tipo_artigo=self.tipo_artigo, data_publicacao__isnull=False
         )[:3]
 
     def categories(self):
@@ -52,7 +52,7 @@ class ArtigoDetailView(generic.DetailView):
         return response
 
     def get_queryset(self):
-        return Artigo.objects.filter(publish_date__isnull=False)
+        return Artigo.objects.filter(data_publicacao__isnull=False)
 
     def tipo_artigo_url(self):
         if self.object.tipo_artigo == 'artigos':
@@ -65,7 +65,7 @@ class ArtigoDetailView(generic.DetailView):
 
     def latest_artigos(self):
         return Artigo.objects.filter(
-            tipo_artigo=self.object.tipo_artigo, publish_date__isnull=False
+            tipo_artigo=self.object.tipo_artigo, data_publicacao__isnull=False
         )[:3]
 
     def categories(self):

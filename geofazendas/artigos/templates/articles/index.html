@@ -20,7 +20,7 @@
                     <ul class="post-info">
                       <ul class="post-info">
                         <li>{{ article.author }}</li>
-                        <li>{{ article.publish_date|date:'d/m/Y' }}</li>
+                        <li>{{ article.data_publicacao|date:'d/m/Y' }}</li>
                     </ul>
                     <p>
                       {{ article.text|striptags|truncatewords:'40' }}
@@ -92,7 +92,7 @@
                       {% for article in view.latest_artigos %}
                       <li><a href="">
                         <h5>{{ article.title }}</h5>
-                        <span>{{ article.publish_date|date:'d/m/Y' }}</span>
+                        <span>{{ article.data_publicacao|date:'d/m/Y' }}</span>
                       </a></li>
                       {% endfor %}
                     </ul>

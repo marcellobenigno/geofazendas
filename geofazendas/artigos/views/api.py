@@ -33,7 +33,7 @@ class ArticleViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         today = dt.datetime.now()
-        return self.queryset.filter(publish_date__lte=today)
+        return self.queryset.filter(data_publicacao__lte=today)
 
     @action(methods=['GET'], detail=False, url_path='by-slug/(?P<slug>[-_\w]+)')
     def by_slug(self, request, *args, **kwargs):
