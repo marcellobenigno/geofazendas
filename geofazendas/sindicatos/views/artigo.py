@@ -13,7 +13,7 @@ class ArtigoListView(SindicatoRequiredMixin, generic.ListView):
     paginate_by = 10
 
     def get_queryset(self):
-        return self.request.user.articles.all()
+        return self.request.user.artigos.all()
 
 
 class ArtigoCreateView(SindicatoRequiredMixin, generic.CreateView):
@@ -36,7 +36,7 @@ class ArtigoUpdateView(SindicatoRequiredMixin, generic.UpdateView):
     form_class = ArtigoForm
 
     def get_queryset(self):
-        return self.request.user.articles.all()
+        return self.request.user.artigos.all()
 
     def get_success_url(self):
         messages.success(self.request, 'Publicação atualizada com suecsso!')
@@ -46,7 +46,7 @@ class ArtigoUpdateView(SindicatoRequiredMixin, generic.UpdateView):
 class ArtigoDeleteView(SindicatoRequiredMixin, generic.View):
 
     def post(self, request, pk):
-        article = get_object_or_404(self.request.user.articles.all(), pk=pk)
+        article = get_object_or_404(self.request.user.artigos.all(), pk=pk)
         article.delete()
         return JsonResponse({'success': True})
 

@@ -14,7 +14,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY', default='123')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', default=False, cast=bool)
+DEBUG = config('DEBUG', default=True, cast=bool)
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='*', cast=Csv())
 CSRF_TRUSTED_ORIGINS = [
@@ -93,7 +93,9 @@ WSGI_APPLICATION = 'geofazendas.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
-    'default': config('DATABASE_URL', cast=db_url),
+    'default': config(
+        'DATABASE_URL', cast=db_url, default='postgresql://geofazendas:geofazendas@127.0.0.1/geofazendas'
+    ),
 }
 DATABASES['default']['ENGINE'] = 'django.contrib.gis.db.backends.postgis'
 
@@ -253,4 +255,4 @@ LOGGING = {
 }
 
 # GEOSERVER
-GEOSERVER_URL = config('GEOSERVER_URL')
+GEOSERVER_URL = config('GEOSERVER_URL', default='http://127.0.0.1:8080/geoserver/itrfacil/wms')

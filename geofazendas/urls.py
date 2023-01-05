@@ -4,16 +4,16 @@ from django.contrib import admin
 from django.urls import include, path
 from rest_framework.routers import DefaultRouter
 
-from geofazendas.artigos.views import api as articles_views
+from geofazendas.artigos.views import api as artigos_views
 from geofazendas.mapas import views as maps_views
 from geofazendas.seguranca.views import api as security_api
 
 router = DefaultRouter()
 # security
 router.register('seguranca/usuario', security_api.UsuarioViewSet, basename='usuario')
-# articles
-router.register('artigos/categoria', articles_views.CategoryViewSet, basename='categoria')
-router.register('artigos/artigos', articles_views.ArticleViewSet, basename='artigos')
+# artigos
+router.register('artigos/categoria', artigos_views.CategoryViewSet, basename='categoria')
+router.register('artigos/artigos', artigos_views.ArticleViewSet, basename='artigos')
 # maps
 router.register('mapas/estados', maps_views.EstadoViewSet, basename='estado')
 router.register('mapas/municipios', maps_views.MunicipioViewSet, basename='municipio')

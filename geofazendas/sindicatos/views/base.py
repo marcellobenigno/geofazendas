@@ -8,12 +8,12 @@ from geofazendas.sindicatos.mixins import SindicatoRequiredMixin
 
 class IndexView(SindicatoRequiredMixin, generic.TemplateView):
 
-    template_name = 'syndicates/index.html'
+    template_name = 'sindicatos/index.html'
 
-    def popular_articles(self):
+    def popular_artigos(self):
         return Artigo.objects.order_by('-views')
 
-    def recent_articles(self):
+    def recent_artigos(self):
         return Artigo.objects.order_by('-publish_date')
 
     def tags(self):

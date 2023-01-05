@@ -10,7 +10,7 @@ from geofazendas.artigos.models import Artigo, Categoria
 
 class ArtigoListView(generic.ListView):
 
-    template_name = 'articles/index.html'
+    template_name = 'artigos/index.html'
     article_type = 'artigos'
     paginate_by = 5
 
@@ -29,7 +29,7 @@ class ArtigoListView(generic.ListView):
             )
         return queryset
 
-    def latest_articles(self):
+    def latest_artigos(self):
         return Artigo.objects.filter(
             article_type=self.article_type, publish_date__isnull=False
         )[:3]
@@ -43,7 +43,7 @@ class ArtigoListView(generic.ListView):
 
 class ArtigoDetailView(generic.DetailView):
 
-    template_name = 'articles/article_detail.html'
+    template_name = 'artigos/article_detail.html'
 
     def get(self, request, *args, **kwargs):
         response = super().get(request, *args, **kwargs)
@@ -63,7 +63,7 @@ class ArtigoDetailView(generic.DetailView):
             url_name = 'artigos:cursos_list'
         return reverse(url_name)
 
-    def latest_articles(self):
+    def latest_artigos(self):
         return Artigo.objects.filter(
             article_type=self.object.article_type, publish_date__isnull=False
         )[:3]

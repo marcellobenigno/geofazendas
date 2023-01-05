@@ -34,7 +34,7 @@ class Artigo(BaseModel):
         'Tipo do Artigo', max_length=20, choices=ARTICLE_TYPE_CHOICES
     )
     texto = RichTextField(verbose_name='Texto', blank=True)
-    foto = models.ImageField('Foto', upload_to='articles/photos', null=True, blank=True)
+    foto = models.ImageField('Foto', upload_to='artigos/photos', null=True, blank=True)
     data_publicacao = models.DateField('Data da publicação', null=True, blank=True)
     autor = models.CharField('Autor', max_length=50, blank=True)
     tags = TaggableManager(verbose_name='Tags / Marcadores', blank=True)

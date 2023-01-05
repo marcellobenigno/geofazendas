@@ -1,4 +1,4 @@
-{% extends "syndicates/base.html" %}
+{% extends "sindicatos/base.html" %}
 
 {% block main %}
 <section id="teste" class="bg0 p-b-55">
@@ -39,7 +39,7 @@
                                     {{ article.text|striptags|truncatewords:'40' }}
                                 </p>
 
-                                <a href="{% url 'syndicates:article_update' article.pk %}" class="f1-s-1 cl9 hov-cl10 trans-03">
+                                <a href="{% url 'sindicatos:article_update' article.pk %}" class="f1-s-1 cl9 hov-cl10 trans-03">
                                     <i class="m-l-2 fas fa-edit"></i>
                                     EDITAR &emsp;
                                 </a>
@@ -60,7 +60,7 @@
                                                 Você tem certeza que deseja excluir esta publicação?
                                             </div>
                                             <div class="modal-footer">
-                                                <form action="{% url 'syndicates:article_delete' article.pk %}" method="post" class="form-delete-article">
+                                                <form action="{% url 'sindicatos:article_delete' article.pk %}" method="post" class="form-delete-article">
                                                     {% csrf_token %}
                                                     <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">CANCELAR</button>
                                                     <button type="submit" class="btn btn-secondary">CONFIRMAR</button>
@@ -149,7 +149,7 @@
 
                     <div class="flex-c-s p-t-8">
                         <a href="#">
-                            <img class="max-w-full" src="{{ STATIC_URL }}syndicates/images/banner-02.jpg" alt="IMG">
+                            <img class="max-w-full" src="{{ STATIC_URL }}sindicatos/images/banner-02.jpg" alt="IMG">
                         </a>
                     </div>
                 </div>

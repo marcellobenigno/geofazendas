@@ -6,15 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>GeoFazendas | Sindicatos</title>
 
-	<link rel="icon" type="image/png" href="{{ STATIC_URL }}syndicates/images/icons/favicon.ico"/>
-	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}syndicates/vendor/bootstrap/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}syndicates/fonts/fontawesome-5.0.8/css/fontawesome-all.min.css">
-	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}syndicates/fonts/iconic/css/material-design-iconic-font.min.css">
-	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}syndicates/vendor/animate/animate.css">
-	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}syndicates/vendor/css-hamburgers/hamburgers.min.css">
-	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}syndicates/vendor/animsition/css/animsition.min.css">
-	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}syndicates/css/util.min.css">
-	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}syndicates/css/main.css">
+	<link rel="icon" type="image/png" href="{{ STATIC_URL }}sindicatos/images/icons/favicon.ico"/>
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}sindicatos/vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}sindicatos/fonts/fontawesome-5.0.8/css/fontawesome-all.min.css">
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}sindicatos/fonts/iconic/css/material-design-iconic-font.min.css">
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}sindicatos/vendor/animate/animate.css">
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}sindicatos/vendor/css-hamburgers/hamburgers.min.css">
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}sindicatos/vendor/animsition/css/animsition.min.css">
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}sindicatos/css/util.min.css">
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}sindicatos/css/main.css">
 	{% block css %}
 	{% endblock %}
 </head>
@@ -29,7 +29,7 @@
 			<div class="wrap-header-mobile">
 				<!-- Logo moblie -->
 				<div class="logo-mobile">
-					<a href="{% url 'syndicates:index' %}"><img src="{{ STATIC_URL }}syndicates/images/icons/logo-01.png" alt="IMG-LOGO"></a>
+					<a href="{% url 'sindicatos:index' %}"><img src="{{ STATIC_URL }}sindicatos/images/icons/logo-01.png" alt="IMG-LOGO"></a>
 				</div>
 			</div>
 
@@ -37,12 +37,12 @@
 			<div class="wrap-logo container">
 				<!-- Logo desktop -->
 				<div class="logo">
-					<a href="{% url 'syndicates:index' %}"><img src="{{ STATIC_URL }}syndicates/images/icons/logo-01.png" alt="LOGO"></a>
+					<a href="{% url 'sindicatos:index' %}"><img src="{{ STATIC_URL }}sindicatos/images/icons/logo-01.png" alt="LOGO"></a>
 				</div>
 
 				<!-- Banner -->
 				<div class="banner-header">
-					<a href="#"><img src="{{ STATIC_URL }}syndicates/images/banner-01.jpg" alt="IMG"></a>
+					<a href="#"><img src="{{ STATIC_URL }}sindicatos/images/banner-01.jpg" alt="IMG"></a>
 				</div>
 			</div>
 		</div>
@@ -83,8 +83,8 @@
     <div class="container" style="margin-bottom: 30px;">
         <div class="row">
             <div class="col-md-12">
-                <button type="button" class="btn btn-primary"><a href="{% url 'syndicates:article_create' %}">Nova Publicação</a></button>
-                <button type="button" class="btn btn-primary float-end"><a href="{% url 'syndicates:article_list' %}">Minhas Publicações</a></button>
+                <button type="button" class="btn btn-primary"><a href="{% url 'sindicatos:article_create' %}">Nova Publicação</a></button>
+                <button type="button" class="btn btn-primary float-end"><a href="{% url 'sindicatos:article_list' %}">Minhas Publicações</a></button>
             </div>
         </div>
     </div>
@@ -133,11 +133,11 @@
 		</div>
 	</div>
 
-	<script src="{{ STATIC_URL }}syndicates/vendor/jquery/jquery-3.2.1.min.js"></script>
-	<script src="{{ STATIC_URL }}syndicates/vendor/animsition/js/animsition.min.js"></script>
-	<script src="{{ STATIC_URL }}syndicates/vendor/bootstrap/js/popper.js"></script>
-	<script src="{{ STATIC_URL }}syndicates/vendor/bootstrap/js/bootstrap.min.js"></script>
-	<script src="{{ STATIC_URL }}syndicates/js/main.js"></script>
+	<script src="{{ STATIC_URL }}sindicatos/vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script src="{{ STATIC_URL }}sindicatos/vendor/animsition/js/animsition.min.js"></script>
+	<script src="{{ STATIC_URL }}sindicatos/vendor/bootstrap/js/popper.js"></script>
+	<script src="{{ STATIC_URL }}sindicatos/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="{{ STATIC_URL }}sindicatos/js/main.js"></script>
 	{% block js %}{% endblock %}
 </body>
 </html>

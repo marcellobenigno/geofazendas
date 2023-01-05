@@ -1,4 +1,4 @@
-{% extends "articles/base.html" %}
+{% extends "artigos/base.html" %}
 
 {% block main %}
 <section class="blog-posts grid-system">
@@ -6,7 +6,7 @@
       <div class="row">
         <!-- Call to Action Starts Here -->
         <section class="call-to-actionB">
-          <a href="" target="_parent"><img src="{{ STATIC_URL }}articles/img/0.jpg" alt=""/></a>
+          <a href="" target="_parent"><img src="{{ STATIC_URL }}artigos/img/0.jpg" alt=""/></a>
         </section>
         <!-- Call to Action Ends Here -->
 
@@ -78,7 +78,7 @@
                     </div>
                     <div class="content">
                       <ul>
-                        {% for article in view.latest_articles %}
+                        {% for article in view.latest_artigos %}
                         <li><a href="">
                           <h5>{{ article.title }}</h5>
                           <span>{{ article.publish_date|date:'d/m/Y' }}</span>
