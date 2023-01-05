@@ -43,7 +43,7 @@ class ArtigoListView(generic.ListView):
 
 class ArtigoDetailView(generic.DetailView):
 
-    template_name = 'artigos/article_detail.html'
+    template_name = 'artigos/artigo_detail.html'
 
     def get(self, request, *args, **kwargs):
         response = super().get(request, *args, **kwargs)

@@ -39,7 +39,7 @@
                                     {{ article.text|striptags|truncatewords:'40' }}
                                 </p>
 
-                                <a href="{% url 'sindicatos:article_update' article.pk %}" class="f1-s-1 cl9 hov-cl10 trans-03">
+                                <a href="{% url 'sindicatos:artigo_update' article.pk %}" class="f1-s-1 cl9 hov-cl10 trans-03">
                                     <i class="m-l-2 fas fa-edit"></i>
                                     EDITAR &emsp;
                                 </a>
@@ -60,7 +60,7 @@
                                                 Você tem certeza que deseja excluir esta publicação?
                                             </div>
                                             <div class="modal-footer">
-                                                <form action="{% url 'sindicatos:article_delete' article.pk %}" method="post" class="form-delete-article">
+                                                <form action="{% url 'sindicatos:artigo_delete' article.pk %}" method="post" class="form-delete-article">
                                                     {% csrf_token %}
                                                     <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">CANCELAR</button>
                                                     <button type="submit" class="btn btn-secondary">CONFIRMAR</button>
