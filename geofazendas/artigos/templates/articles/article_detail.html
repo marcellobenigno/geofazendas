@@ -37,7 +37,7 @@
                           </div>
                           <div class="col-6">
                             <ul class="post-share">
-                                {% url 'artigos:artigo_detail' object.article_type object.slug as article_url %}
+                                {% url 'artigos:artigo_detail' object.tipo_artigo object.slug as article_url %}
                                 <li><i class="fa fa-share-alt"></i></li>
                                 <li><a href="https://www.facebook.com/sharer/sharer.php?u={{ article_url }}" target="_blank"><i class="fa fa-facebook-square"></i></a></li>
                                 <li><a href="https://twitter.com/intent/tweet?url={{ article_url }}" target="_blank"><i class="fa fa-twitter"></i></a></li>
@@ -52,7 +52,7 @@
             </div>
             <div class="col-lg-12">
               <div class="main-button">
-                <a href="{{ view.article_type_url }}">MAIS {{ object.article_type|upper }}</a>
+                <a href="{{ view.tipo_artigo_url }}">MAIS {{ object.tipo_artigo|upper }}</a>
               </div>
             </div>
             </br>
@@ -66,7 +66,7 @@
             <div class="row">
               <div class="col-lg-12">
                 <div class="sidebar-item search"></br>
-                  <form id="search_form" method="GET" action="{{ view.article_type_url }}">
+                  <form id="search_form" method="GET" action="{{ view.tipo_artigo_url }}">
                     <input type="text" name="q" class="searchText" placeholder="Pesquisar" autocomplete="off">
                   </form>
                 </div>
@@ -74,7 +74,7 @@
               <div class="col-lg-12">
                 <div class="sidebar-item recent-posts">
                     <div class="sidebar-heading">
-                      <h2>{{ object.article_type|capfirst }} Recentes</h2>
+                      <h2>{{ object.tipo_artigo|capfirst }} Recentes</h2>
                     </div>
                     <div class="content">
                       <ul>

@@ -27,7 +27,7 @@ class ArticleViewSet(viewsets.ModelViewSet):
     filter_backends = [DjangoFilterBackend]
     filterset_fields = {
         'category': ['exact'],
-        'article_type': ['exact'],
+        'tipo_artigo': ['exact'],
         'tags': ['icontains']
     }
 

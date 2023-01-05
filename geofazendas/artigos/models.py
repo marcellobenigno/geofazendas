@@ -21,7 +21,7 @@ class Categoria(BaseModel):
 
 
 class Artigo(BaseModel):
-    ARTICLE_TYPE_CHOICES = (
+    tipo_artigo_CHOICES = (
         (v, v) for v in ('artigos', 'noticias', 'cursos')
     )
 
@@ -31,7 +31,7 @@ class Artigo(BaseModel):
         Categoria, models.SET_NULL, null=True, blank=True, verbose_name='Categoria'
     )
     tipo_artigo = models.CharField(
-        'Tipo do Artigo', max_length=20, choices=ARTICLE_TYPE_CHOICES
+        'Tipo do Artigo', max_length=20, choices=tipo_artigo_CHOICES
     )
     texto = RichTextField(verbose_name='Texto', blank=True)
     foto = models.ImageField('Foto', upload_to='artigos/photos', null=True, blank=True)
