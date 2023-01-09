@@ -15,7 +15,7 @@ const googleTerrain = L.tileLayer('https://{s}.google.com/vt/lyrs=p&x={x}&y={y}&
 
 const map = L.map('map', {
     center: [-15.70775407, -53.5253906],
-    zoom: 4,
+    zoom: 5,
     maxZoom: 22,
     layers: [googleStreets,],
     zoomControl: false

@@ -1,4 +1,7 @@
+import json
+
 from django.contrib.gis.db import models
+from django.contrib.gis.db.models.functions import Intersection
 from django.contrib.gis.geos import Point
 
 
@@ -84,10 +87,10 @@ class MunicipioGeometria(models.Model):
         ordering = ('cod_ibge_m',)
 
 
-class UtmFuse(models.Model):
+class Fuso(models.Model):
     fuso = models.IntegerField('fuso')
     codigo = models.IntegerField('Código EPSG', null=True, blank=True)
-    geom = models.MultiPolygonField('Geom', srid=4326)
+    geom = models.MultiPolygonField('geom', srid=4326)
 
     def __str__(self):
         return f'fuso: {self.fuso}'
@@ -95,3 +98,361 @@ class UtmFuse(models.Model):
     class Meta:
         verbose_name = 'Fuso'
         verbose_name_plural = 'Fusos'
+
+
+class IncraSigef(models.Model):
+    parcela_co = models.CharField(
+        'parcela', max_length=64, null=True, blank=True)
+    rt = models.CharField('rt', max_length=10, null=True, blank=True)
+    art = models.CharField('art', max_length=100, null=True, blank=True)
+    situacao_i = models.CharField(
+        'situação', max_length=25, null=True, blank=True)
+    codigo_imo = models.CharField(
+        'código do imóvel', db_index=True, max_length=13, null=True, blank=True)
+    data_submi = models.DateField('data de submissão', null=True, blank=True)
+    data_aprov = models.DateField('data de aprovação', null=True, blank=True)
+    status = models.CharField('status', max_length=32, null=True, blank=True)
+    nome_area = models.CharField(
+        'nome da área', max_length=254, null=True, blank=True)
+    registro_m = models.CharField(
+        'registro m', max_length=254, null=True, blank=True)
+    registro_d = models.DateField('registro d', null=True, blank=True)
+    municipio = models.IntegerField('município', null=True, blank=True)
+    uf_id = models.IntegerField('uf id', null=True, blank=True)
+    geom = models.MultiPolygonField('geom', srid=4326, null=True, blank=True)
+
+    criado = models.DateTimeField('Criado', auto_now_add=True, blank=True, null=True)
+    modificado = models.DateTimeField('Modificado', auto_now_add=True, blank=True, null=True)
+
+    def __str__(self):
+        return f"{self.codigo_imo}"
+
+    @property
+    def get_centroid(self):
+        return {'y': self.geom.centroid.y, 'x': self.geom.centroid.x}
+
+    @property
+    def get_json_geom(self):
+        return json.loads(self.geom.json)
+
+    @property
+    def model_name(self):
+        return 'IncraSigef'
+
+    def area_calc(self):
+        fusos = Fuso.objects.filter(geom__intersects=self.geom.buffer(0)).annotate(
+            intersection_geom=Intersection('geom', self.geom.buffer(0))
+        )
+        fusos_list = [{'fuso': fuso.codigo, 'area': fuso.intersection_geom.area} for fuso in fusos]
+        fuso = max(fusos_list, key=lambda x: x['area'])
+
+        self.geom.transform(fuso['fuso'])
+
+        return self.geom.area / 10000
+
+    class Meta:
+        verbose_name = 'Propriedade do INCRA - SIGEF'
+        verbose_name_plural = 'Propriedades do INCRA - SIGEF'
+
+
+class IncraSnci(models.Model):
+    num_proces = models.CharField(
+        'número do processo', max_length=70, null=True, blank=True)
+    sr = models.CharField('sr', max_length=10, null=True, blank=True)
+    num_certif = models.CharField(
+        'número do cetificado', max_length=20, null=True, blank=True)
+    data_certi = models.DateField(
+        'data de certificação', null=True, blank=True)
+    qtd_area_p = models.CharField(
+        'quaantidade de área p', max_length=50, null=True, blank=True)
+    cod_profis = models.CharField(
+        'cód profissional', max_length=30, null=True, blank=True)
+    cod_imovel = models.CharField(
+        'código do imóvel', db_index=True, max_length=30, null=True, blank=True)
+    nome_imove = models.CharField(
+        'número do imóvel', max_length=255, null=True, blank=True)
+    uf_municip = models.CharField('uf', max_length=2, null=True, blank=True)
+    municipio = models.IntegerField('município', null=True, blank=True)
+    geom = models.MultiPolygonField('geom', srid=4326, null=True, blank=True)
+
+    criado = models.DateTimeField('Criado', auto_now_add=True, blank=True, null=True)
+    modificado = models.DateTimeField('Modificado', auto_now_add=True, blank=True, null=True)
+
+    def __str__(self):
+        return self.cod_imovel
+
+    @property
+    def get_centroid(self):
+        return {'y': self.geom.centroid.y, 'x': self.geom.centroid.x}
+
+    @property
+    def get_json_geom(self):
+        return json.loads(self.geom.json)
+
+    @property
+    def model_name(self):
+        return 'incraSnci'
+
+    class Meta:
+        verbose_name = 'Propriedade do INCRA - SNCI'
+        verbose_name_plural = 'Propriedades do INCRA - SNCI'
+
+
+class Car(models.Model):
+    cod_imovel = models.CharField(max_length=100, null=True, blank=True)
+    num_area = models.FloatField()
+    cod_estado = models.CharField(max_length=2, null=True, blank=True)
+    nom_munici = models.CharField(max_length=80, null=True, blank=True)
+    num_modulo = models.FloatField()
+    tipo_imove = models.CharField(max_length=10, null=True, blank=True)
+    situacao = models.CharField(max_length=10, null=True, blank=True)
+    condicao_i = models.CharField(max_length=100, null=True, blank=True)
+    cod_ibge_m = models.CharField(max_length=20, null=True, blank=True)
+    cod_ibge_e = models.CharField(max_length=20, null=True, blank=True)
+    geom = models.MultiPolygonField(srid=4326)
+
+    criado = models.DateTimeField('Criado', auto_now_add=True, blank=True, null=True)
+    modificado = models.DateTimeField('Modificado', auto_now_add=True, blank=True, null=True)
+
+    def __str__(self):
+        return self.cod_imovel
+
+    def area_calc(self):
+        fusos = Fuso.objects.filter(geom__intersects=self.geom.buffer(0)).annotate(
+            intersection_geom=Intersection('geom', self.geom.buffer(0))
+        )
+        fusos_list = [{'fuso': fuso.codigo, 'area': fuso.intersection_geom.area} for fuso in fusos]
+        fuso = max(fusos_list, key=lambda x: x['area'])
+
+        self.geom.transform(fuso['fuso'])
+
+        return self.geom.area / 10000
+
+    @property
+    def model_name(self):
+        return 'Car'
+
+    class Meta:
+        verbose_name = 'Imóvel do CAR'
+        verbose_name_plural = 'Imóveis do CAR'
+
+
+class AreaIndigena(models.Model):
+    nome = models.CharField(max_length=150, blank=True, null=True)
+    geometriaa = models.CharField(max_length=254, blank=True, null=True)
+    codidentif = models.CharField(max_length=80, blank=True, null=True)
+    arealegal = models.FloatField(blank=True, null=True)
+    classifica = models.CharField(max_length=80, blank=True, null=True)
+    administra = models.CharField(max_length=254, blank=True, null=True)
+    jurisdicao = models.CharField(max_length=254, blank=True, null=True)
+    situacaoju = models.CharField(max_length=254, blank=True, null=True)
+    datasituac = models.CharField(max_length=80, blank=True, null=True)
+    grupoetnic = models.CharField(max_length=150, blank=True, null=True)
+    perimetroo = models.FloatField(blank=True, null=True)
+    area_ha = models.FloatField(blank=True, null=True)
+    cod_ibge_m = models.CharField(max_length=80, blank=True, null=True)
+    geom = models.MultiPolygonField(srid=4326, blank=True, null=True)
+
+    def __str__(self):
+        return f'{self.nome}'
+
+    class Meta:
+        verbose_name = 'Área Indígena'
+        verbose_name_plural = 'Áreas Indígenas'
+
+
+class AreaProtegida(models.Model):
+    nome = models.CharField(max_length=150, blank=True, null=True)
+    geometriaa = models.CharField(max_length=254, blank=True, null=True)
+    codidentif = models.CharField(max_length=80, blank=True, null=True)
+    arealegal = models.FloatField(blank=True, null=True)
+    anocriacao = models.CharField(max_length=4, blank=True, null=True)
+    historicom = models.CharField(max_length=254, blank=True, null=True)
+    sigla = models.CharField(max_length=6, blank=True, null=True)
+    atolegal = models.CharField(max_length=100, blank=True, null=True)
+    areaoficia = models.CharField(max_length=16, blank=True, null=True)
+    administra = models.CharField(max_length=254, blank=True, null=True)
+    classifica = models.CharField(max_length=100, blank=True, null=True)
+    jurisdicao = models.CharField(max_length=254, blank=True, null=True)
+    tipounidpr = models.CharField(max_length=254, blank=True, null=True)
+    area_ha = models.FloatField(blank=True, null=True)
+    cod_ibge_m = models.CharField(max_length=80, blank=True, null=True)
+    geom = models.MultiPolygonField(srid=4326)
+
+    def __str__(self):
+        return f'{self.nome}'
+
+    class Meta:
+        verbose_name = 'Área Protegida'
+        verbose_name_plural = 'Áreas Protegidas'
+
+
+class Assentamento(models.Model):
+    cd_sipra = models.CharField(max_length=254, blank=True, null=True)
+    uf = models.CharField(max_length=2, blank=True, null=True)
+    nome_proje = models.CharField(max_length=254, blank=True, null=True)
+    municipio = models.CharField(max_length=254, blank=True, null=True)
+    area_hecta = models.CharField(max_length=40, blank=True, null=True)
+    capacidade = models.BigIntegerField(blank=True, null=True)
+    num_famili = models.BigIntegerField(blank=True, null=True)
+    fase = models.BigIntegerField(blank=True, null=True)
+    data_de_cr = models.CharField(max_length=10, blank=True, null=True)
+    forma_obte = models.CharField(max_length=50, blank=True, null=True)
+    data_obten = models.CharField(max_length=10, blank=True, null=True)
+    area_calc = models.FloatField(blank=True, null=True)
+    sr = models.CharField(max_length=50, blank=True, null=True)
+    descricao = models.CharField(max_length=50, blank=True, null=True)
+    area_ha = models.FloatField(blank=True, null=True)
+    cod_ibge_m = models.CharField(max_length=80, blank=True, null=True)
+    geom = models.MultiPolygonField(srid=4326)
+
+    def __str__(self):
+        return f'{self.nome_proje}'
+
+    class Meta:
+        verbose_name = 'Assentamento'
+        verbose_name_plural = 'Assentamentos'
+
+
+class Bioma(models.Model):
+    descricao = models.CharField(
+        'descrição', max_length=50, blank=True, null=True)
+    cod_ibge_m = models.CharField(
+        'código IBGE', max_length=8, blank=True, null=True)
+    geom = models.MultiPolygonField('geom')
+
+    criado = models.DateTimeField('Criado', auto_now_add=True, blank=True, null=True)
+    modificado = models.DateTimeField('Modificado', auto_now_add=True, blank=True, null=True)
+
+    def __str__(self):
+        return "Bioma: {}".format(self.descricao)
+
+    class Meta:
+        verbose_name = 'bioma'
+        verbose_name_plural = 'biomas'
+
+
+class Clima(models.Model):
+    descricao = models.CharField(
+        'descrição', max_length=120, blank=True, null=True)
+    cod_ibge_m = models.CharField(
+        'código IBGE', max_length=8, blank=True, null=True)
+    geom = models.MultiPolygonField('geom')
+
+    criado = models.DateTimeField('Criado', auto_now_add=True, blank=True, null=True)
+    modificado = models.DateTimeField('Modificado', auto_now_add=True, blank=True, null=True)
+
+    def __str__(self):
+        return "Clima: {}".format(self.descricao)
+
+    class Meta:
+        verbose_name = 'clima'
+        verbose_name_plural = 'climas'
+
+
+class Declividade(models.Model):
+    descricao = models.CharField(
+        'descrição', max_length=250, blank=True, null=True)
+    cod_ibge_m = models.CharField(
+        'código IBGE', max_length=8, blank=True, null=True)
+    geom = models.MultiPolygonField('geom')
+
+    criado = models.DateTimeField('Criado', auto_now_add=True, blank=True, null=True)
+    modificado = models.DateTimeField('Modificado', auto_now_add=True, blank=True, null=True)
+
+    def __str__(self):
+        return "Declividade: {}".format(self.descricao)
+
+    class Meta:
+        verbose_name = 'declividade'
+        verbose_name_plural = 'declividades'
+
+
+class Geologia(models.Model):
+    descricao = models.CharField(
+        'descrição', max_length=250, blank=True, null=True)
+    val = models.IntegerField(blank=True, null=True)
+    cod_ibge_m = models.CharField(
+        'código IBGE', max_length=8, blank=True, null=True)
+    geom = models.MultiPolygonField('geom')
+
+    criado = models.DateTimeField('Criado', auto_now_add=True, blank=True, null=True)
+    modificado = models.DateTimeField('Modificado', auto_now_add=True, blank=True, null=True)
+
+    def __str__(self):
+        return "Geologia: {}".format(self.descricao)
+
+    class Meta:
+        verbose_name = 'geologia'
+        verbose_name_plural = 'geologia'
+
+
+class Geomorfologia(models.Model):
+    descricao = models.CharField(
+        'descrição', max_length=70, blank=True, null=True)
+    cod_ibge_m = models.CharField(
+        'código IBGE', max_length=8, blank=True, null=True)
+    geom = models.MultiPolygonField('geom')
+
+    criado = models.DateTimeField('Criado', auto_now_add=True, blank=True, null=True)
+    modificado = models.DateTimeField('Modificado', auto_now_add=True, blank=True, null=True)
+
+    def __str__(self):
+        return "Geomorfologia: {}".format(self.descricao)
+
+    class Meta:
+        verbose_name = 'geomorfologia'
+        verbose_name_plural = 'geomorfologia'
+
+
+class Isoieta(models.Model):
+    descricao = models.IntegerField('descrição', blank=True, null=True)
+    cod_ibge_m = models.CharField(
+        'código IBGE', max_length=8, blank=True, null=True)
+    geom = models.MultiLineStringField('geom')
+
+    criado = models.DateTimeField('Criado', auto_now_add=True, blank=True, null=True)
+    modificado = models.DateTimeField('Modificado', auto_now_add=True, blank=True, null=True)
+
+    def __str__(self):
+        return "Isoieta: {}".format(self.descricao)
+
+    class Meta:
+        verbose_name = 'isoieta'
+        verbose_name_plural = 'isoietas'
+
+
+class Relevo(models.Model):
+    descricao = models.CharField(
+        'descrição', max_length=100, blank=True, null=True)
+    geom = models.MultiPolygonField(blank=True, null=True)
+    cod_ibge_m = models.CharField(
+        'código IBGE', max_length=8, blank=True, null=True)
+
+    criado = models.DateTimeField('Criado', auto_now_add=True, blank=True, null=True)
+    modificado = models.DateTimeField('Modificado', auto_now_add=True, blank=True, null=True)
+
+    def __str__(self):
+        return "Relevo: {}".format(self.descricao)
+
+    class Meta:
+        verbose_name = 'relevo'
+        verbose_name_plural = 'relevo'
+
+
+class Solo(models.Model):
+    descricao = models.CharField(
+        'descrição', max_length=60, blank=True, null=True)
+    cod_ibge_m = models.CharField(
+        'código IBGE', max_length=8, blank=True, null=True)
+    geom = models.MultiPolygonField('geom')
+
+    criado = models.DateTimeField('Criado', auto_now_add=True, blank=True, null=True)
+    modificado = models.DateTimeField('Modificado', auto_now_add=True, blank=True, null=True)
+
+    def __str__(self):
+        return "Solo: {}".format(self.descricao)
+
+    class Meta:
+        verbose_name = 'solo'
+        verbose_name_plural = 'solos'
