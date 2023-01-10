@@ -3,8 +3,8 @@ from rest_framework import viewsets
 from rest_framework.permissions import IsAdminUser, AllowAny
 from rest_framework.permissions import SAFE_METHODS
 
-from .models import Estado, Municipio
-from .serializers import EstadoSerializer, MunicipioSerializer
+from .models import Estado, Municipio, Car
+from .serializers import EstadoSerializer, MunicipioSerializer, CarSerializer
 
 
 class EstadoViewSet(viewsets.ModelViewSet):
@@ -27,3 +27,15 @@ class MunicipioViewSet(viewsets.ModelViewSet):
         if self.request.method in SAFE_METHODS:
             return [AllowAny()]
         return [IsAdminUser()]
+
+
+class CarViewSet(viewsets.ModelViewSet):
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['cod_imovel']
+    queryset = Car.objects.all()
+    serializer_class = CarSerializer
+
+    # def get_permissions(self):
+    #     if self.request.method in SAFE_METHODS:
+    #         return [AllowAny()]
+    #     return [IsAdminUser()]

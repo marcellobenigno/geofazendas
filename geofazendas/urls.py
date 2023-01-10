@@ -17,6 +17,7 @@ router.register('artigos/artigos', artigos_views.ArticleViewSet, basename='artig
 # maps
 router.register('mapas/estados', maps_views.EstadoViewSet, basename='estado')
 router.register('mapas/municipios', maps_views.MunicipioViewSet, basename='municipio')
+router.register('mapas/car', maps_views.CarViewSet, basename='car')
 
 urlpatterns = [
     path('django-admin/', admin.site.urls),
