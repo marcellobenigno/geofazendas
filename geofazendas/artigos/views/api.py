@@ -28,7 +28,6 @@ class ArticleViewSet(viewsets.ModelViewSet):
     filterset_fields = {
         'category': ['exact'],
         'tipo_artigo': ['exact'],
-        'tags': ['icontains']
     }
 
     def get_queryset(self):
