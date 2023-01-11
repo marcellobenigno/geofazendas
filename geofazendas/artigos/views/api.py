@@ -26,7 +26,7 @@ class ArticleViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAdminOrReadOnly]
     filter_backends = [DjangoFilterBackend]
     filterset_fields = {
-        'category': ['exact'],
+        'categoria': ['exact'],
         'tipo_artigo': ['exact'],
     }
 
