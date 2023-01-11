@@ -1,13 +1,6 @@
 var geoServerUrl = $('#geoserver_url').val();
 
-var url_legend = geoServerUrl + 'sigitr/wms?REQUEST=GetLegendGraphic&VERSION=1.1.0&FORMAT=image/png&WIDTH=18&HEIGHT=18';
-
-var end_params = '&LEGEND_OPTIONS=fontName:Arial;fontAntiAliasing:true;dpi=200';
-
-var solos_leg = url_legend + "&LAYER=sigitr:maps_solo" + end_params;
-
-console.log(solos_leg);
-
+console.log(themeName);
 
 geoServerUrl = geoServerUrl + 'sigitr/wms?'
 
@@ -42,16 +35,16 @@ wmsOptions['zIndex'] = 1;
 const oceano = L.tileLayer.wms(geoServerUrl, wmsOptions);
 oceano.addTo(map)
 
-wmsOptions['layers'] = 'sigitr:maps_solo';
+wmsOptions['layers'] = `sigitr:maps_${themeName}`;
 wmsOptions['zIndex'] = 100;
-const solos = L.tileLayer.wms(geoServerUrl, wmsOptions);
-solos.addTo(map)
+const theme = L.tileLayer.wms(geoServerUrl, wmsOptions);
+theme.addTo(map)
 
 const zoomHome = L.Control.zoomHome();
 zoomHome.addTo(map);
 
 const baseLayers = {
-    'Solos': solos,
+    'Biomas': theme,
 };
 
 const overlays = {};
