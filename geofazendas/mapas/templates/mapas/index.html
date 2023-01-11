@@ -1,0 +1,151 @@
+{% load core_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>GeoFazendas | Mapas</title>
+    <link rel="shortcut icon" href="{{ STATIC_URL }}img/favicon.ico" type="image/x-icon">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900&display=swap"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900&display=swap" rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="{{ STATIC_URL }}artigos/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}artigos/css/style.css" type="text/css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}artigos/css/fontawesome.css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}artigos/css/templatemo-stand-blog.css">
+
+    <!-- Leaflet -->
+    <link rel="stylesheet" href="{{ STATIC_URL }}leaflet/leaflet.css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}leaflet/plugins/zoom_to_home/leaflet.zoomhome.css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/map/map_index.css">
+</head>
+
+<body>
+<!-- Preloader Starts Here -->
+<div id="preloader">
+    <div class="jumper"></div>
+</div>
+<!-- Preloader Ends Here -->
+
+<!-- Header Starts Here -->
+<header id="header" class="fixed-top  header-transparent">
+    <div class="container d-flex align-items-center justify-content-between">
+        <div class="logo">
+            <a href="{% url 'base:index' %}">
+                <img src="{{ STATIC_URL }}artigos/img/logo/logo2.png" alt="Logo GeoFazendas" class="img-fluid">
+            </a>
+        </div>
+        <nav id="navbar" class="navbar" class="navbar-collapse collapse">
+            <ul>
+                <li><a class="nav-link scrollto" href="{% url 'base:index' %}">INÍCIO</a></li>
+                <li><a class="nav-link scrollto" href="{% url 'base:index' %}#busca">ANÚNCIOS</a></li>
+                <li><a class="nav-link scrollto" href="{% url 'mapas:index' %}#busca">MAPAS</a></li>
+                <li><a class="nav-link scrollto" href="{% url 'artigos:artigo_list' %}">ARTIGOS</a></li>
+                <li><a class="nav-link scrollto" href="{% url 'artigos:noticia_list' %}">NOTÍCIAS</a></li>
+                <li><a class="nav-link scrollto" href="{% url 'artigos:curso_list' %}">CURSOS</a></li>
+                <li><a class="nav-link scrollto" href="" target="_blank">APP</a></li>
+                <li><a class="getstarted scrollto" href="">ACESSAR</a></li>
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav>
+    </div>
+</header>
+<!-- Header Ends Here -->
+
+<div id="map-container" class="container-fluid">
+    <div class="row">
+        <div class="col-md-2">
+
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight"
+                 aria-labelledby="offcanvasRightLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasRightLabel">Offcanvas right</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    {% if request.GET.tema == 'solos' or not request.GET.tema %}
+                        <strong>Solos</strong>
+                        <img src="http://localhost:8080/geoserver/sigitr/wms?REQUEST=GetLegendGraphic&VERSION=1.1.0&FORMAT=image/png&WIDTH=18&HEIGHT=18&LAYER=sigitr:maps_solo&LEGEND_OPTIONS=fontName:Arial;fontAntiAliasing:true;dpi=200"
+                             alt="">
+
+                    {% elif request.GET.tema == 'vegetacao' %}
+                        Legenda da Vegetação
+                    {% endif %}
+                </div>
+            </div>
+
+            <ol class="list-group">
+                <li class="list-group-item d-flex
+                {% if request.GET.tema == 'solos' or not request.GET.tema %} active{% endif %}">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">
+                            <a href="?tema=solos" class="mapa-link">
+                                Solos
+                            </a>
+                        </div>
+                    </div>
+                    <span class="badge">
+                        {% if request.GET.tema == 'solos' or not request.GET.tema %}
+                            <button class="btn btn-secondary btn-sm" type="button" data-bs-toggle="offcanvas"
+                                    data-bs-target="#offcanvasRight"
+                                    aria-controls="offcanvasRight">
+                             <i class="fa fa-list"></i>
+                         </button>
+                        {% endif %}
+                    </span>
+                </li>
+
+                <li class="list-group-item d-flex
+                {% if request.GET.tema == 'vegetacao' %} active{% endif %}">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">
+                            <a href="?tema=vegetacao" class="mapa-link">
+                                Vegetação
+                            </a>
+                        </div>
+                    </div>
+                    <span class="badge">
+                        {% if request.GET.tema == 'vegetacao' %}
+                            <button class="btn btn-secondary btn-sm" type="button" data-bs-toggle="offcanvas"
+                                    data-bs-target="#offcanvasRight"
+                                    aria-controls="offcanvasRight">
+                             <i class="fa fa-list"></i>
+                         </button>
+                        {% endif %}
+                    </span>
+                </li>
+
+            </ol>
+        </div>
+        <div class="col-md-10">
+            <div id="map"></div>
+        </div>
+    </div>
+</div>
+
+{% get_settings 'GEOSERVER_URL' as geoserver_url %}
+<input type="hidden" id="geoserver_url" value="{{ geoserver_url }}">
+
+<!-- Bootstrap core JavaScript -->
+<script src="{{ STATIC_URL }}artigos/js/jquery.min.js"></script>
+<script src="{{ STATIC_URL }}artigos/js/bootstrap.bundle.min.js"></script>
+<script src="{{ STATIC_URL }}artigos/js/custom.js"></script>
+<script src="{{ STATIC_URL }}artigos/js/owl.js"></script>
+<script src="{{ STATIC_URL }}artigos/js/slick.js"></script>
+<script src="{{ STATIC_URL }}artigos/js/isotope.js"></script>
+<script src="{{ STATIC_URL }}artigos/js/accordions.js"></script>
+<!-- Leaflet -->
+<script src="{{ STATIC_URL }}leaflet/leaflet.js"></script>
+<script src="{{ STATIC_URL }}leaflet/plugins/zoom_to_home/leaflet.zoomhome.js"></script>
+
+<script src="{{ STATIC_URL }}js/maps/solo.js"></script>
+
+
+</body>
+</html>

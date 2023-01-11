@@ -1,5 +1,14 @@
 var geoServerUrl = $('#geoserver_url').val();
 
+var url_legend = geoServerUrl + 'sigitr/wms?REQUEST=GetLegendGraphic&VERSION=1.1.0&FORMAT=image/png&WIDTH=18&HEIGHT=18';
+
+var end_params = '&LEGEND_OPTIONS=fontName:Arial;fontAntiAliasing:true;dpi=200';
+
+var solos_leg = url_legend + "&LAYER=sigitr:maps_solo" + end_params;
+
+console.log(solos_leg);
+
+
 geoServerUrl = geoServerUrl + 'sigitr/wms?'
 
 var wmsOptions = {
@@ -9,14 +18,19 @@ var wmsOptions = {
     maxZoom: 20,
 };
 
+var corner1 = L.latLng(-33.7511779940000025, -73.9831821599999984),
+    corner2 = L.latLng(5.2695808330000000, -28.8477703530000014),
+    bounds = L.latLngBounds(corner1, corner2);
 
 const map = L.map('map', {
-    center: [-14.92349207725162, -55.4150390625],
-    zoom: 5,
     maxZoom: 22,
     layers: [],
-    zoomControl: false
+    zoomControl: false,
+    maxBounds: bounds,
+    minZoom: 5
 });
+
+map.fitBounds(bounds);
 
 wmsOptions['layers'] = 'sigitr:america_sul';
 wmsOptions['zIndex'] = 1;

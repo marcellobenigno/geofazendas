@@ -24,6 +24,7 @@ urlpatterns = [
     path('seguranca/', include('geofazendas.seguranca.urls', namespace='seguranca')),
     path('sindicatos/', include('geofazendas.sindicatos.urls', namespace='sindicatos')),
     path('api/', include(router.urls)),
+    path('mapas/', include('geofazendas.mapas.urls', namespace='mapas')),
     path('', include('geofazendas.base.urls', namespace='base')),
     path('', include('geofazendas.artigos.urls', namespace='artigos')),
 ]
