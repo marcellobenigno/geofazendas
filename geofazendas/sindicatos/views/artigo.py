@@ -23,7 +23,7 @@ class ArtigoCreateView(SindicatoRequiredMixin, generic.CreateView):
 
     def form_valid(self, form):
         article = form.save(commit=False)
-        article.created_by = self.request.user
+        article.criado_por = self.request.user
         article.save()
         form.save_m2m()
         messages.success(self.request, 'Publicação criada com sucesso!')
