@@ -21,7 +21,7 @@ class LoginForm(forms.Form):
         email = self.cleaned_data.get('email')
         password = self.cleaned_data.get('password')
         if email and password:
-            self.user = authenticate(self.request, identifier=email, password=password)
+            self.user = authenticate(self.request, username=email, password=password)
             if not self.user:
                 raise forms.ValidationError('E-mail ou senha inválidos!')
         return self.cleaned_data
