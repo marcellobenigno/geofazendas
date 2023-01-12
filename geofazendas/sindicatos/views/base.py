@@ -11,7 +11,7 @@ class IndexView(SindicatoRequiredMixin, generic.TemplateView):
     template_name = 'sindicatos/index.html'
 
     def popular_artigos(self):
-        return Artigo.objects.order_by('-views')
+        return Artigo.objects.order_by('-visualizacoes')
 
     def recent_artigos(self):
         return Artigo.objects.order_by('-data_publicacao')
