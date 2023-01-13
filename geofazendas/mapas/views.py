@@ -11,6 +11,20 @@ from .serializers import EstadoSerializer, MunicipioSerializer, CarSerializer
 class IndexView(generic.TemplateView):
     template_name = 'mapas/index.html'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context['layers'] = [
+            'solo',
+            'bioma',
+            'clima',
+            'declividade',
+            'geologia',
+            'geomorfologia',
+            'relevo',
+        ]
+        return context
+
 
 class EstadoViewSet(viewsets.ModelViewSet):
     serializer_class = EstadoSerializer

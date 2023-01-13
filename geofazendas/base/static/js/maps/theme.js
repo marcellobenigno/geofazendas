@@ -52,21 +52,16 @@ const overlays = {};
 const layerControl = L.control.layers(baseLayers, overlays).addTo(map);
 
 
-wmsOptions['layers'] = 'sigitr:maps_car';
+wmsOptions['layers'] = 'sigitr:maps_estado';
 wmsOptions['zIndex'] = 10;
 wmsOptions['opacity'] = 0.6;
-const car = L.tileLayer.wms(geoServerUrl, wmsOptions);
+const estado = L.tileLayer.wms(geoServerUrl, wmsOptions);
+estado.addTo(map);
 
-wmsOptions['layers'] = 'sigitr:maps_incrasigef';
+wmsOptions['layers'] = 'sigitr:maps_geometriamunicipio';
 wmsOptions['zIndex'] = 10;
 wmsOptions['opacity'] = 0.6;
-const sigef = L.tileLayer.wms(geoServerUrl, wmsOptions);
+const municipio = L.tileLayer.wms(geoServerUrl, wmsOptions);
 
-wmsOptions['layers'] = 'sigitr:maps_incrasnci';
-wmsOptions['zIndex'] = 10;
-wmsOptions['opacity'] = 0.6;
-const snci = L.tileLayer.wms(geoServerUrl, wmsOptions);
-
-layerControl.addOverlay(car, "CAR");
-layerControl.addOverlay(sigef, "INCRA - SIGEF");
-layerControl.addOverlay(snci, "INCRA - SNCI");
+layerControl.addOverlay(estado, "Estados");
+layerControl.addOverlay(municipio, "Municípios");

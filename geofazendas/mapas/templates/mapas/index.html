@@ -1,4 +1,4 @@
-{% load core_tags %}
+{% load core_tags mapas_tags %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -72,181 +72,52 @@
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
                 <div class="offcanvas-body">
-                    {% if request.GET.tema == 'solos' or not request.GET.tema %}
-                        <strong>Solos</strong><br>
-                        <img src="{{ geoserver_url }}sigitr/wms?REQUEST=GetLegendGraphic&VERSION=1.1.0&FORMAT=image/png&WIDTH=18&HEIGHT=18&LAYER=sigitr:maps_solo&LEGEND_OPTIONS=fontName:Arial;fontAntiAliasing:true;dpi=200"
-                             alt="">
-                    {% elif request.GET.tema == 'biomas' %}
-                        <strong>Biomas</strong><br>
-                        <img src="{{ geoserver_url }}sigitr/wms?REQUEST=GetLegendGraphic&VERSION=1.1.0&FORMAT=image/png&WIDTH=18&HEIGHT=18&LAYER=sigitr:maps_bioma&LEGEND_OPTIONS=fontName:Arial;fontAntiAliasing:true;dpi=200"
-                             alt="">
-                    {% elif request.GET.tema == 'clima' %}
-                        <strong>Clima</strong><br>
-                        <img src="{{ geoserver_url }}sigitr/wms?REQUEST=GetLegendGraphic&VERSION=1.1.0&FORMAT=image/png&WIDTH=18&HEIGHT=18&LAYER=sigitr:maps_clima&LEGEND_OPTIONS=fontName:Arial;fontAntiAliasing:true;dpi=200"
-                             alt="">
-                    {% elif request.GET.tema == 'declividade' %}
-                        <strong>Declividade</strong><br>
-                        <img src="{{ geoserver_url }}sigitr/wms?REQUEST=GetLegendGraphic&VERSION=1.1.0&FORMAT=image/png&WIDTH=18&HEIGHT=18&LAYER=sigitr:maps_declividade&LEGEND_OPTIONS=fontName:Arial;fontAntiAliasing:true;dpi=200"
-                             alt="">
-                    {% elif request.GET.tema == 'declividade' %}
-                        <strong>Declividade</strong><br>
-                        <img src="{{ geoserver_url }}sigitr/wms?REQUEST=GetLegendGraphic&VERSION=1.1.0&FORMAT=image/png&WIDTH=18&HEIGHT=18&LAYER=sigitr:maps_declividade&LEGEND_OPTIONS=fontName:Arial;fontAntiAliasing:true;dpi=200"
-                             alt="">
-                    {% elif request.GET.tema == 'geologia' %}
-                        <strong>Geologia</strong><br>
-                        <img src="{{ geoserver_url }}sigitr/wms?REQUEST=GetLegendGraphic&VERSION=1.1.0&FORMAT=image/png&WIDTH=18&HEIGHT=18&LAYER=sigitr:maps_geologia&LEGEND_OPTIONS=fontName:Arial;fontAntiAliasing:true;dpi=200"
-                             alt="">
-                    {% elif request.GET.tema == 'geomorfologia' %}
-                        <strong>Geologia</strong><br>
-                        <img src="{{ geoserver_url }}sigitr/wms?REQUEST=GetLegendGraphic&VERSION=1.1.0&FORMAT=image/png&WIDTH=18&HEIGHT=18&LAYER=sigitr:maps_geomorfologia&LEGEND_OPTIONS=fontName:Arial;fontAntiAliasing:true;dpi=200"
-                             alt="">
-                    {% elif request.GET.tema == 'relevo' %}
-                        <strong>Relevo</strong><br>
-                        <img src="{{ geoserver_url }}sigitr/wms?REQUEST=GetLegendGraphic&VERSION=1.1.0&FORMAT=image/png&WIDTH=18&HEIGHT=18&LAYER=sigitr:maps_relevo&LEGEND_OPTIONS=fontName:Arial;fontAntiAliasing:true;dpi=200"
-                             alt="">
-                    {% endif %}
+                    {% for layer in layers %}
+                        {% if layer == request.GET.tema %}
+                            <strong>{{ layer|title }}</strong><br>
+                            <img src="{{ geoserver_url }}{% get_legend layer %}" alt="">
+                        {% endif %}
+                    {% endfor %}
                 </div>
             </div>
 
             <ol class="list-group">
-                <li class="list-group-item d-flex
-                {% if request.GET.tema == 'solos' or not request.GET.tema %} active{% endif %}">
-                    <div class="ms-2 me-auto">
-                        <div class="fw-bold">
-                            <a href="?tema=solos" class="mapa-link">
-                                Solos
-                            </a>
+                {% for layer in layers %}
+                    <li class="list-group-item d-flex
+                    {% if not request.GET.tema and layer == 'solo' %}
+                                active
+                    {% elif request.GET.tema == layer %}
+                            active
+                     {% endif %}"
+                    >
+                        <div class="ms-2 me-auto">
+                            <div class="fw-bold">
+                                <a href="?tema={{ layer }}" class="mapa-link">
+                                    {% if layer == 'solo' or layer == 'bioma' %}
+                                        {{ layer|title }}s
+                                    {% else %}
+                                        {{ layer|title }}
+                                    {% endif %}
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                    <span class="badge">
-                        {% if request.GET.tema == 'solos' or not request.GET.tema %}
+                        <span class="badge">
+                        {% if not request.GET.tema and layer == 'solo' %}
                             <button class="btn btn-secondary btn-sm" type="button" data-bs-toggle="offcanvas"
                                     data-bs-target="#offcanvasRight"
                                     aria-controls="offcanvasRight">
                              <i class="fa fa-list"></i>
-                         </button>
-                        {% endif %}
-                    </span>
-                </li>
-                <li class="list-group-item d-flex
-                {% if request.GET.tema == 'biomas' %} active{% endif %}">
-                    <div class="ms-2 me-auto">
-                        <div class="fw-bold">
-                            <a href="?tema=biomas" class="mapa-link">
-                                Biomas
-                            </a>
-                        </div>
-                    </div>
-                    <span class="badge">
-                        {% if request.GET.tema == 'biomas' %}
+                            </button>
+                        {% elif request.GET.tema == layer %}
                             <button class="btn btn-secondary btn-sm" type="button" data-bs-toggle="offcanvas"
                                     data-bs-target="#offcanvasRight"
                                     aria-controls="offcanvasRight">
                              <i class="fa fa-list"></i>
-                         </button>
+                            </button>
                         {% endif %}
                     </span>
-                </li>
-                <li class="list-group-item d-flex
-                {% if request.GET.tema == 'clima' %} active{% endif %}">
-                    <div class="ms-2 me-auto">
-                        <div class="fw-bold">
-                            <a href="?tema=clima" class="mapa-link">
-                                Clima
-                            </a>
-                        </div>
-                    </div>
-                    <span class="badge">
-                        {% if request.GET.tema == 'clima' %}
-                            <button class="btn btn-secondary btn-sm" type="button" data-bs-toggle="offcanvas"
-                                    data-bs-target="#offcanvasRight"
-                                    aria-controls="offcanvasRight">
-                             <i class="fa fa-list"></i>
-                         </button>
-                        {% endif %}
-                    </span>
-                </li>
-
-                <li class="list-group-item d-flex
-                {% if request.GET.tema == 'declividade' %} active{% endif %}">
-                    <div class="ms-2 me-auto">
-                        <div class="fw-bold">
-                            <a href="?tema=declividade" class="mapa-link">
-                                Declividade
-                            </a>
-                        </div>
-                    </div>
-                    <span class="badge">
-                        {% if request.GET.tema == 'declividade' %}
-                            <button class="btn btn-secondary btn-sm" type="button" data-bs-toggle="offcanvas"
-                                    data-bs-target="#offcanvasRight"
-                                    aria-controls="offcanvasRight">
-                             <i class="fa fa-list"></i>
-                         </button>
-                        {% endif %}
-                    </span>
-                </li>
-
-                <li class="list-group-item d-flex
-                {% if request.GET.tema == 'geologia' %} active{% endif %}">
-                    <div class="ms-2 me-auto">
-                        <div class="fw-bold">
-                            <a href="?tema=geologia" class="mapa-link">
-                                Geologia
-                            </a>
-                        </div>
-                    </div>
-                    <span class="badge">
-                        {% if request.GET.tema == 'geologia' %}
-                            <button class="btn btn-secondary btn-sm" type="button" data-bs-toggle="offcanvas"
-                                    data-bs-target="#offcanvasRight"
-                                    aria-controls="offcanvasRight">
-                             <i class="fa fa-list"></i>
-                         </button>
-                        {% endif %}
-                    </span>
-                </li>
-
-                <li class="list-group-item d-flex
-                {% if request.GET.tema == 'geomorfologia' %} active{% endif %}">
-                    <div class="ms-2 me-auto">
-                        <div class="fw-bold">
-                            <a href="?tema=geomorfologia" class="mapa-link">
-                                Geomorfologia
-                            </a>
-                        </div>
-                    </div>
-                    <span class="badge">
-                        {% if request.GET.tema == 'geomorfologia' %}
-                            <button class="btn btn-secondary btn-sm" type="button" data-bs-toggle="offcanvas"
-                                    data-bs-target="#offcanvasRight"
-                                    aria-controls="offcanvasRight">
-                             <i class="fa fa-list"></i>
-                         </button>
-                        {% endif %}
-                    </span>
-                </li>
-
-                <li class="list-group-item d-flex
-                {% if request.GET.tema == 'relevo' %} active{% endif %}">
-                    <div class="ms-2 me-auto">
-                        <div class="fw-bold">
-                            <a href="?tema=relevo" class="mapa-link">
-                                Relevo
-                            </a>
-                        </div>
-                    </div>
-                    <span class="badge">
-                        {% if request.GET.tema == 'relevo' %}
-                            <button class="btn btn-secondary btn-sm" type="button" data-bs-toggle="offcanvas"
-                                    data-bs-target="#offcanvasRight"
-                                    aria-controls="offcanvasRight">
-                             <i class="fa fa-list"></i>
-                         </button>
-                        {% endif %}
-                    </span>
-                </li>
-
+                    </li>
+                {% endfor %}
             </ol>
         </div>
         <div class="col-md-10">
@@ -267,35 +138,16 @@
 <!-- Leaflet -->
 <script src="{{ STATIC_URL }}leaflet/leaflet.js"></script>
 <script src="{{ STATIC_URL }}leaflet/plugins/zoom_to_home/leaflet.zoomhome.js"></script>
-{% if request.GET.tema == 'solos' or not request.GET.tema %}
-    <script>
-        const themeName = 'solo';
-    </script>
-{% elif request.GET.tema == 'biomas' %}
-    <script>
-        const themeName = 'bioma';
-    </script>
-{% elif request.GET.tema == 'clima' %}
-    <script>
-        const themeName = 'clima';
-    </script>
-{% elif request.GET.tema == 'declividade' %}
-    <script>
-        const themeName = 'declividade';
-    </script>
-{% elif request.GET.tema == 'geologia' %}
-    <script>
-        const themeName = 'geologia';
-    </script>
-{% elif request.GET.tema == 'geomorfologia' %}
-    <script>
-        const themeName = 'geomorfologia';
-    </script>
-{% elif request.GET.tema == 'relevo' %}
-    <script>
-        const themeName = 'relevo';
-    </script>
-{% endif %}
+<script>
+    var themeName = 'solo';
+</script>
+{% for layer in layers %}
+    {% if layer == request.GET.tema %}
+        <script>
+            themeName = '{{ layer }}';
+        </script>
+    {% endif %}
+{% endfor %}
 <script src="{{ STATIC_URL }}js/maps/theme.js"></script>
 </body>
 </html>
