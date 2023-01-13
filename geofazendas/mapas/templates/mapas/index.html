@@ -95,6 +95,8 @@
                                 <a href="?tema={{ layer }}" class="mapa-link">
                                     {% if layer == 'solo' or layer == 'bioma' %}
                                         {{ layer|title }}s
+                                    {% elif layer == 'imoveis' %}
+                                        Imóveis a Venda
                                     {% else %}
                                         {{ layer|title }}
                                     {% endif %}
@@ -148,6 +150,11 @@
         </script>
     {% endif %}
 {% endfor %}
-<script src="{{ STATIC_URL }}js/maps/theme.js"></script>
+{% if request.GET.tema == 'imoveis' %}
+    <script src="{{ STATIC_URL }}js/imoveis.js"></script>
+    <script src="{{ STATIC_URL }}js/maps/imoveis.js"></script>
+{% else %}
+    <script src="{{ STATIC_URL }}js/maps/theme.js"></script>
+{% endif %}
 </body>
 </html>

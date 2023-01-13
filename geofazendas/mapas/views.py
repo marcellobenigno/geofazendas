@@ -4,6 +4,7 @@ from rest_framework import viewsets
 from rest_framework.permissions import IsAdminUser, AllowAny
 from rest_framework.permissions import SAFE_METHODS
 
+from .layers_list import lyr_list
 from .models import Estado, Municipio, Car
 from .serializers import EstadoSerializer, MunicipioSerializer, CarSerializer
 
@@ -13,16 +14,7 @@ class IndexView(generic.TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-
-        context['layers'] = [
-            'solo',
-            'bioma',
-            'clima',
-            'declividade',
-            'geologia',
-            'geomorfologia',
-            'relevo',
-        ]
+        context['layers'] = lyr_list
         return context
 
 
