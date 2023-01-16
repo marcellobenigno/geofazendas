@@ -1,0 +1,62 @@
+{% if municipio %}
+    <span class="popup-title">MUNICÍPIO:</span>
+    <ul>
+        <li><span>Nome:</span> {{ municipio.municipio.nome }}/{{ municipio.municipio.sigla_uf }}</li>
+        <li><span>Área:</span> {{ municipio.area_km2 }} (km2)</li>
+        <li><span>Mais Informações:</span>
+            <a href="https://cidades.ibge.gov.br/brasil/{{ municipio.municipio.sigla_uf|lower }}/{{ municipio.municipio.slug }}/panorama"
+               target="_blank">
+                <i class="fa fa-link"></i> IBGE
+            </a>
+        </li>
+    </ul>
+{% endif %}
+
+{% if solo %}
+    <span class="popup-title">SOLO:</span>
+    <ul>
+        <li><span>Descrição:</span> {{ solo.descricao }}</li>
+    </ul>
+{% endif %}
+
+{% if bioma %}
+    <span class="popup-title">BIOMA:</span>
+    <ul>
+        <li><span>Descrição:</span> {{ bioma.descricao }}</li>
+    </ul>
+{% endif %}
+
+{% if clima %}
+    <span class="popup-title">CLIMA:</span>
+    <ul>
+        <li><span>Descrição:</span> {{ clima.descricao }}</li>
+    </ul>
+{% endif %}
+
+{% if declividade %}
+    <span class="popup-title">DECLIVIDADE:</span>
+    <ul>
+        <li><span>Descrição:</span> {{ declividade.descricao }}</li>
+    </ul>
+{% endif %}
+
+{% if geologia %}
+    <span class="popup-title">GEOLOGIA:</span>
+    <ul>
+        <li><span>Descrição:</span> {{ geologia.descricao }}</li>
+    </ul>
+{% endif %}
+
+{% if geomorfologia %}
+    <span class="popup-title">GEOMORFOLOGIA:</span>
+    <ul>
+        <li><span>Descrição:</span> {{ geomorfologia.descricao }}</li>
+    </ul>
+{% endif %}
+
+{% if relevo %}
+    <span class="popup-title">RELEVO:</span>
+    <ul>
+        <li><span>Descrição:</span> {{ relevo.descricao }}</li>
+    </ul>
+{% endif %}

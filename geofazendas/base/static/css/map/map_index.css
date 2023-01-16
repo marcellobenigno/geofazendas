@@ -17,6 +17,11 @@
 }
 
 
-a.mapa-link  {
+a.mapa-link {
     color: black;
+}
+
+
+.popup-title {
+    font-weight: bold;
 }

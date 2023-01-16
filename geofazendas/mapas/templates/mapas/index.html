@@ -64,6 +64,8 @@
 
             {% get_settings 'GEOSERVER_URL' as geoserver_url %}
             <input type="hidden" id="geoserver_url" value="{{ geoserver_url }}">
+            <input type="hidden" id="popup_url" value="{% url 'mapas:get_dados' -1.0 -1.0 "a" %}">
+
 
             <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight"
                  aria-labelledby="offcanvasRightLabel">
@@ -140,6 +142,8 @@
 <!-- Leaflet -->
 <script src="{{ STATIC_URL }}leaflet/leaflet.js"></script>
 <script src="{{ STATIC_URL }}leaflet/plugins/zoom_to_home/leaflet.zoomhome.js"></script>
+<script src="{{ STATIC_URL }}leaflet/plugins/spin/spin.min.js"></script>
+<script src="{{ STATIC_URL }}leaflet/plugins/spin/leaflet.spin.min.js"></script>
 <script>
     var themeName = 'solo';
 </script>

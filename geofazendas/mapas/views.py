@@ -1,11 +1,12 @@
+from django.contrib.gis.geos import GEOSGeometry
 from django.views import generic
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import viewsets
 from rest_framework.permissions import IsAdminUser, AllowAny
 from rest_framework.permissions import SAFE_METHODS
 
+from . import models
 from .layers_list import lyr_list
-from .models import Estado, Municipio, Car
 from .serializers import EstadoSerializer, MunicipioSerializer, CarSerializer
 
 
@@ -18,9 +19,33 @@ class IndexView(generic.TemplateView):
         return context
 
 
+class GetDadosView(generic.TemplateView):
+    template_name = 'mapas/dados.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        point = GEOSGeometry(f"POINT({kwargs['x']} {kwargs['y']})")
+        context['municipio'] = models.MunicipioGeometria.objects.filter(geom__contains=point).first()
+        if kwargs['tema'] == 'solo':
+            context['solo'] = models.Solo.objects.filter(geom__contains=point).first()
+        if kwargs['tema'] == 'bioma':
+            context['bioma'] = models.Bioma.objects.filter(geom__contains=point).first()
+        if kwargs['tema'] == 'clima':
+            context['clima'] = models.Clima.objects.filter(geom__contains=point).first()
+        if kwargs['tema'] == 'declividade':
+            context['declividade'] = models.Declividade.objects.filter(geom__contains=point).first()
+        if kwargs['tema'] == 'geologia':
+            context['geologia'] = models.Geologia.objects.filter(geom__contains=point).first()
+        if kwargs['tema'] == 'geomorfologia':
+            context['geomorfologia'] = models.Geomorfologia.objects.filter(geom__contains=point).first()
+        if kwargs['tema'] == 'relevo':
+            context['relevo'] = models.Relevo.objects.filter(geom__contains=point).first()
+        return context
+
+
 class EstadoViewSet(viewsets.ModelViewSet):
     serializer_class = EstadoSerializer
-    queryset = Estado.objects.all()
+    queryset = models.Estado.objects.all()
 
     def get_permissions(self):
         if self.request.method in SAFE_METHODS:
@@ -31,7 +56,7 @@ class EstadoViewSet(viewsets.ModelViewSet):
 class MunicipioViewSet(viewsets.ModelViewSet):
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['estado']
-    queryset = Municipio.objects.filter(visivel=True)
+    queryset = models.Municipio.objects.filter(visivel=True)
     serializer_class = MunicipioSerializer
 
     def get_permissions(self):
@@ -43,7 +68,7 @@ class MunicipioViewSet(viewsets.ModelViewSet):
 class CarViewSet(viewsets.ModelViewSet):
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['cod_imovel']
-    queryset = Car.objects.all()
+    queryset = models.Car.objects.all()
     serializer_class = CarSerializer
 
     def get_permissions(self):
@@ -53,3 +78,4 @@ class CarViewSet(viewsets.ModelViewSet):
 
 
 index = IndexView.as_view()
+get_dados = GetDadosView.as_view()

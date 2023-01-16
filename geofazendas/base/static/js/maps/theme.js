@@ -51,7 +51,6 @@ const overlays = {};
 
 const layerControl = L.control.layers(baseLayers, overlays).addTo(map);
 
-
 wmsOptions['layers'] = 'sigitr:maps_estado';
 wmsOptions['zIndex'] = 10;
 wmsOptions['opacity'] = 0.6;
@@ -65,3 +64,27 @@ const municipio = L.tileLayer.wms(geoServerUrl, wmsOptions);
 
 layerControl.addOverlay(estado, "Estados");
 layerControl.addOverlay(municipio, "Municípios");
+
+
+var popup = L.popup();
+
+function onMapClick(e) {
+    map.spin(true, {lines: 20, length: 55});
+
+    let url = $("#popup_url").val().slice(0, -12);
+
+    url += `${e.latlng.lng}/${e.latlng.lat}/${themeName}/`;
+    var request = $.ajax({
+        url: url,
+        method: "GET",
+    });
+
+    request.done(function (msg) {
+        map.spin(false);
+        if (msg.slugify()) {
+            popup.setLatLng(e.latlng).setContent(msg).openOn(map);
+        }
+    });
+}
+
+map.on('click', onMapClick);
