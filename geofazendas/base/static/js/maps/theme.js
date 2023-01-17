@@ -2,7 +2,7 @@ var geoServerUrl = $('#geoserver_url').val();
 
 console.log(themeName);
 
-geoServerUrl = geoServerUrl + 'sigitr/wms?'
+geoServerUrl = geoServerUrl + 'geofazendas/wms?'
 
 var wmsOptions = {
     format: 'image/png',
@@ -25,17 +25,17 @@ const map = L.map('map', {
 
 map.fitBounds(bounds);
 
-wmsOptions['layers'] = 'sigitr:america_sul';
+wmsOptions['layers'] = 'geofazendas:america_sul';
 wmsOptions['zIndex'] = 1;
 const americaSul = L.tileLayer.wms(geoServerUrl, wmsOptions);
 americaSul.addTo(map);
 
-wmsOptions['layers'] = 'sigitr:oceano';
+wmsOptions['layers'] = 'geofazendas:oceano';
 wmsOptions['zIndex'] = 1;
 const oceano = L.tileLayer.wms(geoServerUrl, wmsOptions);
 oceano.addTo(map)
 
-wmsOptions['layers'] = `sigitr:maps_${themeName}`;
+wmsOptions['layers'] = `geofazendas:mapas_${themeName}`;
 wmsOptions['zIndex'] = 100;
 const theme = L.tileLayer.wms(geoServerUrl, wmsOptions);
 theme.addTo(map)
@@ -44,20 +44,20 @@ const zoomHome = L.Control.zoomHome();
 zoomHome.addTo(map);
 
 const baseLayers = {
-    'Biomas': theme,
+    'Temático': theme,
 };
 
 const overlays = {};
 
 const layerControl = L.control.layers(baseLayers, overlays).addTo(map);
 
-wmsOptions['layers'] = 'sigitr:maps_estado';
+wmsOptions['layers'] = 'geofazendas:mapas_estadogeometria';
 wmsOptions['zIndex'] = 10;
 wmsOptions['opacity'] = 0.6;
 const estado = L.tileLayer.wms(geoServerUrl, wmsOptions);
 estado.addTo(map);
 
-wmsOptions['layers'] = 'sigitr:maps_geometriamunicipio';
+wmsOptions['layers'] = 'geofazendas:mapas_municipiogeometria';
 wmsOptions['zIndex'] = 10;
 wmsOptions['opacity'] = 0.6;
 const municipio = L.tileLayer.wms(geoServerUrl, wmsOptions);

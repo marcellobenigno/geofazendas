@@ -43,6 +43,10 @@ class GetDadosView(generic.TemplateView):
         return context
 
 
+class MobileView(generic.TemplateView):
+    template_name = 'mapas/mobile.html'
+
+
 class EstadoViewSet(viewsets.ModelViewSet):
     serializer_class = EstadoSerializer
     queryset = models.Estado.objects.all()
@@ -79,3 +83,4 @@ class CarViewSet(viewsets.ModelViewSet):
 
 index = IndexView.as_view()
 get_dados = GetDadosView.as_view()
+mobile_view = MobileView.as_view()
