@@ -20,6 +20,7 @@ class CarSerializer(GeoFeatureModelSerializer):
             'condicao_i',
             'cod_ibge_m',
             'cod_ibge_e',
+            'anunciado',
             'geom',
         ]
 
