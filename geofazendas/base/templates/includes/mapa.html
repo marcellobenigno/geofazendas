@@ -12,9 +12,9 @@
                         <h5>OUTROS TEMAS</h5><br><br>
                     </li>
                     {% for layer in layers %}
-                        {% if layer != 'imoveis' %}
+                        {% if layer.lyr != 'imoveis' %}
                             <li>
-                                <a href="{% url 'mapas:index' %}?&tema={{ layer }}">{{ layer|upper }}</a>
+                                <a href="{% url 'mapas:index' %}?&tema={{ layer.lyr }}">{{ layer.titulo }}</a>
                             </li>
                         {% endif %}
                         <br>

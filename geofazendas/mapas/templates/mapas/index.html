@@ -75,9 +75,9 @@
                 </div>
                 <div class="offcanvas-body">
                     {% for layer in layers %}
-                        {% if layer == request.GET.tema %}
-                            <strong>{{ layer|title }}</strong><br>
-                            <img src="{{ geoserver_url }}{% get_legend layer %}" alt="">
+                        {% if layer.lyr == request.GET.tema %}
+                            <strong>{{ layer.titulo }}</strong><br>
+                            <img src="{{ geoserver_url }}{% get_legend layer.lyr %}" alt="">
                         {% endif %}
                     {% endfor %}
                 </div>
@@ -86,33 +86,27 @@
             <ol class="list-group">
                 {% for layer in layers %}
                     <li class="list-group-item d-flex
-                    {% if not request.GET.tema and layer == 'solo' %}
+                    {% if not request.GET.tema and layer.lyr == 'solo' %}
                                 active
-                    {% elif request.GET.tema == layer %}
+                    {% elif request.GET.tema == layer.lyr %}
                             active
                      {% endif %}"
                     >
                         <div class="ms-2 me-auto">
                             <div class="fw-bold">
-                                <a href="?tema={{ layer }}" class="mapa-link">
-                                    {% if layer == 'solo' or layer == 'bioma' %}
-                                        {{ layer|title }}s
-                                    {% elif layer == 'imoveis' %}
-                                        Imóveis a Venda
-                                    {% else %}
-                                        {{ layer|title }}
-                                    {% endif %}
+                                <a href="?tema={{ layer.lyr }}" class="mapa-link">
+                                    {{ layer.titulo }}
                                 </a>
                             </div>
                         </div>
                         <span class="badge">
-                        {% if not request.GET.tema and layer == 'solo' %}
+                        {% if not request.GET.tema and layer.lyr == 'solo' %}
                             <button class="btn btn-secondary btn-sm" type="button" data-bs-toggle="offcanvas"
                                     data-bs-target="#offcanvasRight"
                                     aria-controls="offcanvasRight">
                              <i class="fa fa-list"></i>
                             </button>
-                        {% elif request.GET.tema == layer %}
+                        {% elif request.GET.tema == layer.lyr %}
                             <button class="btn btn-secondary btn-sm" type="button" data-bs-toggle="offcanvas"
                                     data-bs-target="#offcanvasRight"
                                     aria-controls="offcanvasRight">
@@ -148,9 +142,9 @@
     var themeName = 'solo';
 </script>
 {% for layer in layers %}
-    {% if layer == request.GET.tema %}
+    {% if layer.lyr == request.GET.tema %}
         <script>
-            themeName = '{{ layer }}';
+            themeName = '{{ layer.lyr }}';
         </script>
     {% endif %}
 {% endfor %}
