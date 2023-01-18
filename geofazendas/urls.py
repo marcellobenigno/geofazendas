@@ -25,6 +25,7 @@ urlpatterns = [
     path('django-admin/', admin.site.urls),
     path('seguranca/', include('geofazendas.seguranca.urls', namespace='seguranca')),
     path('sindicatos/', include('geofazendas.sindicatos.urls', namespace='sindicatos')),
+    path('anuncios/', include('geofazendas.anuncios.urls', namespace='anuncios')),
     path('api/login/', obtain_auth_token),
     path('api/', include(router.urls)),
     path('mapas/', include('geofazendas.mapas.urls', namespace='mapas')),

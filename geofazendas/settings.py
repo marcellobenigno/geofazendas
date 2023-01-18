@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'geofazendas.mapas.apps.MapasConfig',
     'geofazendas.seguranca.apps.SegurancaConfig',
     'geofazendas.sindicatos.apps.SindicatosConfig',
+    'geofazendas.anuncios.apps.AnunciosConfig',
 ]
 
 MIDDLEWARE = [
@@ -150,7 +151,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'seguranca.Usuario'
 ROLEPERMISSIONS_MODULE = 'geofazendas.roles'
 LOGIN_URL = 'seguranca:login'
-LOGIN_REDIRECT_URL = 'base:index'
+LOGIN_REDIRECT_URL = 'seguranca:inicio'
 
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',

@@ -11,3 +11,7 @@ class Gestor(AbstractUserRole):
 
 class Sindicato(AbstractUserRole):
     pass
+
+
+class Anunciante(AbstractUserRole):
+    pass
