@@ -5,18 +5,9 @@
 
     {% include 'includes/procura.html' %}
 
-{#    {% include 'includes/mapa.html' %}#}
+    {% include 'includes/mapa.html' %}
 
     {% include 'includes/destaques.html' %}
 
     {% include 'includes/anuncios.html' %}
 {% endblock container %}
-
-
-{% block extra_js %}
-    {% if request.GET.tema == 'solo' %}
-        <script src="{{ STATIC_URL }}js/maps/solos.js"></script>
-    {% else %}
-        <script src="{{ STATIC_URL }}js/maps/map_index.js"></script>
-    {% endif %}
-{% endblock extra_js %}

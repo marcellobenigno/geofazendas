@@ -2,7 +2,7 @@ var geoServerUrl = $('#geoserver_url').val();
 
 console.log(themeName);
 
-geoServerUrl = geoServerUrl + 'sigitr/wms?'
+geoServerUrl = geoServerUrl + 'geofazendas/wms?'
 
 var wmsOptions = {
     format: 'image/png',
@@ -25,17 +25,17 @@ const map = L.map('map', {
 
 map.fitBounds(bounds);
 
-wmsOptions['layers'] = 'sigitr:america_sul';
+wmsOptions['layers'] = 'geofazendas:america_sul';
 wmsOptions['zIndex'] = 1;
 const americaSul = L.tileLayer.wms(geoServerUrl, wmsOptions);
 americaSul.addTo(map);
 
-wmsOptions['layers'] = 'sigitr:oceano';
+wmsOptions['layers'] = 'geofazendas:oceano';
 wmsOptions['zIndex'] = 1;
 const oceano = L.tileLayer.wms(geoServerUrl, wmsOptions);
 oceano.addTo(map)
 
-wmsOptions['layers'] = `sigitr:maps_${themeName}`;
+wmsOptions['layers'] = `geofazendas:mapas_${themeName}`;
 wmsOptions['zIndex'] = 100;
 const theme = L.tileLayer.wms(geoServerUrl, wmsOptions);
 theme.addTo(map)
@@ -44,29 +44,47 @@ const zoomHome = L.Control.zoomHome();
 zoomHome.addTo(map);
 
 const baseLayers = {
-    'Biomas': theme,
+    'Temático': theme,
 };
 
 const overlays = {};
 
 const layerControl = L.control.layers(baseLayers, overlays).addTo(map);
 
-
-wmsOptions['layers'] = 'sigitr:maps_car';
+wmsOptions['layers'] = 'geofazendas:mapas_estadogeometria';
 wmsOptions['zIndex'] = 10;
 wmsOptions['opacity'] = 0.6;
-const car = L.tileLayer.wms(geoServerUrl, wmsOptions);
+const estado = L.tileLayer.wms(geoServerUrl, wmsOptions);
+estado.addTo(map);
 
-wmsOptions['layers'] = 'sigitr:maps_incrasigef';
+wmsOptions['layers'] = 'geofazendas:mapas_municipiogeometria';
 wmsOptions['zIndex'] = 10;
 wmsOptions['opacity'] = 0.6;
-const sigef = L.tileLayer.wms(geoServerUrl, wmsOptions);
+const municipio = L.tileLayer.wms(geoServerUrl, wmsOptions);
 
-wmsOptions['layers'] = 'sigitr:maps_incrasnci';
-wmsOptions['zIndex'] = 10;
-wmsOptions['opacity'] = 0.6;
-const snci = L.tileLayer.wms(geoServerUrl, wmsOptions);
+layerControl.addOverlay(estado, "Estados");
+layerControl.addOverlay(municipio, "Municípios");
 
-layerControl.addOverlay(car, "CAR");
-layerControl.addOverlay(sigef, "INCRA - SIGEF");
-layerControl.addOverlay(snci, "INCRA - SNCI");
+
+var popup = L.popup();
+
+function onMapClick(e) {
+    map.spin(true, {lines: 20, length: 55});
+
+    let url = $("#popup_url").val().slice(0, -12);
+
+    url += `${e.latlng.lng}/${e.latlng.lat}/${themeName}/`;
+    var request = $.ajax({
+        url: url,
+        method: "GET",
+    });
+
+    request.done(function (msg) {
+        map.spin(false);
+        if (msg.slugify()) {
+            popup.setLatLng(e.latlng).setContent(msg).openOn(map);
+        }
+    });
+}
+
+map.on('click', onMapClick);

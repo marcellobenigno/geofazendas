@@ -2,6 +2,7 @@
     padding-top: 90px;
 }
 
+
 #map {
     min-height: calc(100vh - 100px);
     width: 100%;
@@ -16,6 +17,11 @@
 }
 
 
-a.mapa-link  {
+a.mapa-link {
     color: black;
+}
+
+
+.popup-title {
+    font-weight: bold;
 }

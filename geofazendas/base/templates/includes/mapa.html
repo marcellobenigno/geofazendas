@@ -3,64 +3,35 @@
     <div class="container">
         <div class="row g-5 align-items-center">
             <div class="col-lg-10 wow fadeIn" data-wow-delay="0.1s">
-                <div id="map"></div>
+                <h5 class="text-center">IMÓVEIS A VENDA</h5>
+                <div id="map" style="min-height: calc(100vh - 400px);"></div>
             </div>
             <div class="col-lg-2 wow fadeIn" data-wow-delay="0.5s">
                 <ul style="list-style: none;">
                     <li>
-                        <h5>TEMAS DO MAPA</h5>
+                        <h5>OUTROS TEMAS</h5><br><br>
                     </li>
-                    </br>
-                    <li>
-                    <li>
-                        <a href="?tema=solo&#mapa"
-                           class="{% if request.GET.tema == 'solo' %}text-danger{% endif %}">Solo</a>
-                    </li>
-                    </li>
-                    </br>
-                    <li>
-                        <a href="?tema=clima&#mapa"
-                           class="{% if request.GET.tema == 'clima' %}text-danger{% endif %}">Clima</a>
-                    </li>
-                    </br>
-                    <li>
-                        <a href="?tema=relevo&#mapa"
-                           class="{% if request.GET.tema == 'relevo' %}text-danger{% endif %}">Relevo</a>
-                    </li>
-                    </br>
-                    <li>
-                        <a href="?tema=energia-solar&#mapa"
-                           class="{% if request.GET.tema == 'energia-solar' %}text-danger{% endif %}">Energia Solar</a>
-                    </li>
-                    </br>
-                    <li>
-                        <a href="?tema=bioma&#mapa">Bioma</a>
-                    </li>
-                    </br>
-                    <li>
-                        <a href="#">Identificação do Tema</a>
-                    </li>
-                    </br>
-                    <li>
-                        <a href="#">Identificação do Tema</a>
-                    </li>
-                    </br>
-                    <li>
-                        <a href="#">Identificação do Tema</a>
-                    </li>
-                    </br>
-                    <li>
-                        <a href="#">Identificação do Tema</a>
-                    </li>
-                    </br>
-                    <li>
-                        <a href="#">Identificação do Tema</a>
-                    </li>
+                    {% for layer in layers %}
+                        {% if layer.lyr != 'imoveis' %}
+                            <li>
+                                <a href="{% url 'mapas:index' %}?&tema={{ layer.lyr }}">{{ layer.titulo }}</a>
+                            </li>
+                        {% endif %}
+                        <br>
+                    {% endfor %}
                 </ul>
             </div>
         </div>
     </div>
 </div>
 
-{% get_settings 'GEOSERVER_URL' as geoserver_url %}
-<input type="hidden" id="geoserver_url" value="{{ geoserver_url }}">
+
+
+{% block extra_js %}
+
+    <script src="{{ STATIC_URL }}leaflet/leaflet.js"></script>
+    <script src="{{ STATIC_URL }}js/imoveis.js"></script>
+    <script src="{{ STATIC_URL }}leaflet/plugins/zoom_to_home/leaflet.zoomhome.js"></script>
+
+    <script src="{{ STATIC_URL }}js/maps/imoveis.js"></script>
+{% endblock %}
