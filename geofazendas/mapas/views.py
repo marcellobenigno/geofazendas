@@ -43,8 +43,18 @@ class GetDadosView(generic.TemplateView):
         return context
 
 
-class MobileView(generic.TemplateView):
+class MobileView(generic.DetailView):
     template_name = 'mapas/mobile.html'
+
+    def get_object(self, queryset=None):
+        return models.Municipio.objects.get(
+            pk=self.kwargs['municipio_id']
+        )
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['municipio'] = self.get_object()
+        return context
 
 
 class EstadoViewSet(viewsets.ModelViewSet):

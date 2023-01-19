@@ -209,6 +209,7 @@ class Car(models.Model):
     condicao_i = models.CharField(max_length=100, null=True, blank=True)
     cod_ibge_m = models.CharField(max_length=20, null=True, blank=True)
     cod_ibge_e = models.CharField(max_length=20, null=True, blank=True)
+    anunciado = models.BooleanField('anunciado?', default=False, null=True)
     geom = models.MultiPolygonField(srid=4326)
 
     criado = models.DateTimeField('Criado', auto_now_add=True, blank=True, null=True)

@@ -1,7 +1,5 @@
 var geoServerUrl = $('#geoserver_url').val();
 
-console.log(themeName);
-
 geoServerUrl = geoServerUrl + 'geofazendas/wms?'
 
 var wmsOptions = {
