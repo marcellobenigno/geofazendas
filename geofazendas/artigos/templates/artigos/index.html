@@ -15,15 +15,15 @@
               <div class="col-lg-12">
                 <div class="blog-post">
                   <div class="down-content">
-                    <span>{{ article.category }}</span>
+                    <span>{{ article.categoria }}</span>
                     <a href="{% url 'artigos:artigo_detail' article.tipo_artigo article.slug %}"><h4>{{ article.title }}</h4></a>
                     <ul class="post-info">
                       <ul class="post-info">
-                        <li>{{ article.author }}</li>
+                        <li>{{ article.autor }}</li>
                         <li>{{ article.data_publicacao|date:'d/m/Y' }}</li>
                     </ul>
                     <p>
-                      {{ article.text|striptags|truncatewords:'40' }}
+                      {{ article.texto|striptags|truncatewords:'40' }}
                       <br />
                       <a href="{% url 'artigos:artigo_detail' article.tipo_artigo article.slug %}">CONTINUAR LEITURA...</a>
                     </p>

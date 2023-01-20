@@ -10,13 +10,13 @@
                         {% for article in object_list %}
                         <!-- Item post -->
                         <div class="flex-wr-sb-s p-t-40 p-b-15 how-bor2 article-box">
-                            <a href="{% url 'artigos:artigo_detail' article.category.slug article.slug %}" class="size-w-8 wrap-pic-w hov1 trans-03 w-full-sr575 m-b-25">
+                            <a href="{% url 'artigos:artigo_detail' article.tipo_artigo article.slug %}" class="size-w-8 wrap-pic-w hov1 trans-03 w-full-sr575 m-b-25">
                                 <img {% if article.photo %}src="{{ article.photo.url }}"{% else %}src="{{ STATIC_URL }}img/1.jpg"{% endif %} alt="IMG">
                             </a>
 
                             <div class="size-w-9 w-full-sr575 m-b-25">
                                 <h5 class="p-b-12">
-                                    <a href="{% url 'artigos:artigo_detail' article.category.slug article.slug %}" class="f1-l-1 cl2 hov-cl10 trans-03 respon2">
+                                    <a href="{% url 'artigos:artigo_detail' article.tipo_artigo article.slug %}" class="f1-l-1 cl2 hov-cl10 trans-03 respon2">
                                         {{ article.title }}
                                     </a>
                                 </h5>
