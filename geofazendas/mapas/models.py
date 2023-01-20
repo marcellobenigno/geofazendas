@@ -457,3 +457,48 @@ class Solo(models.Model):
     class Meta:
         verbose_name = 'solo'
         verbose_name_plural = 'solos'
+
+
+class LinhaTransmissao(models.Model):
+    nome = models.CharField(max_length=70, blank=True, null=True)
+    tensao_kv = models.BigIntegerField(blank=True, null=True)
+    situacao = models.CharField(max_length=16, blank=True, null=True)
+    tipo_rede = models.CharField(max_length=18, blank=True, null=True)
+    agente = models.CharField(max_length=19, blank=True, null=True)
+    km = models.FloatField(blank=True, null=True)
+    dt_ent_op = models.CharField(max_length=11, blank=True, null=True)
+    dt_prev_op = models.CharField(max_length=13, blank=True, null=True)
+    geom = models.MultiLineStringField(srid=4326)
+
+
+class Subestacao(models.Model):
+    nome = models.CharField(max_length=35, blank=True, null=True)
+    situacao = models.CharField(max_length=14, blank=True, null=True)
+    municipio = models.CharField(max_length=35, blank=True, null=True)
+    uf = models.CharField(max_length=4, blank=True, null=True)
+    munic_uf = models.CharField(max_length=40, blank=True, null=True)
+    geocodigo = models.BigIntegerField(blank=True, null=True)
+    mw = models.FloatField(blank=True, null=True)
+    empresa = models.CharField(max_length=150, blank=True, null=True)
+    nome3 = models.CharField(max_length=250, blank=True, null=True)
+    geom = models.PointField(srid=4326)
+
+
+class Irradiacao(models.Model):
+    country = models.CharField(max_length=6, blank=True, null=True)
+    lon = models.FloatField(blank=True, null=True)
+    lat = models.FloatField(blank=True, null=True)
+    annual = models.IntegerField(blank=True, null=True)
+    jan = models.IntegerField(blank=True, null=True)
+    feb = models.IntegerField(blank=True, null=True)
+    mar = models.IntegerField(blank=True, null=True)
+    apr = models.IntegerField(blank=True, null=True)
+    may = models.IntegerField(blank=True, null=True)
+    jun = models.IntegerField(blank=True, null=True)
+    jul = models.IntegerField(blank=True, null=True)
+    aug = models.IntegerField(blank=True, null=True)
+    sep = models.IntegerField(blank=True, null=True)
+    oct = models.IntegerField(blank=True, null=True)
+    nov = models.IntegerField(blank=True, null=True)
+    dec = models.IntegerField(blank=True, null=True)
+    geom = models.MultiPolygonField(srid=4326)
