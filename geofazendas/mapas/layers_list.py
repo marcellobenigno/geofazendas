@@ -6,5 +6,6 @@ lyr_list = [
     {'titulo': 'Geologia', 'lyr': 'geologia'},
     {'titulo': 'Geomorfologia', 'lyr': 'geomorfologia'},
     {'titulo': 'Relevo', 'lyr': 'relevo'},
+    {'titulo': 'Energia Solar', 'lyr': 'irradiacao'},
     {'titulo': 'Imóveis a Venda', 'lyr': 'imoveis'},
 ]
