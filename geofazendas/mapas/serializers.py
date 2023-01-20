@@ -40,6 +40,7 @@ class MunicipioSerializer(serializers.ModelSerializer):
     class Meta:
         model = Municipio
         fields = [
+            'id',
             'nome',
             'estado',
             'sigla_uf',
