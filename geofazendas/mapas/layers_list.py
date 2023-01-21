@@ -7,6 +7,6 @@ lyr_list = [
     {'titulo': 'Geomorfologia', 'lyr': 'geomorfologia'},
     {'titulo': 'Relevo', 'lyr': 'relevo'},
     {'titulo': 'Energia Solar', 'lyr': 'irradiacao'},
-    {'titulo': 'Saturação de Sódio', 'lyr': 'saturacao_sodio'},
+    {'titulo': 'Saturação por Sódio do Solo (%) a 30-100 cm', 'lyr': 'saturacao_sodio'},
     {'titulo': 'Imóveis a Venda', 'lyr': 'imoveis'},
 ]

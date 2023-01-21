@@ -61,7 +61,7 @@ const layerControl = L.control.layers(baseLayers, overlays).addTo(map);
 
 layerControl.addBaseLayer(googleStreets, "Google Streets");
 layerControl.addBaseLayer(googleSat, "Google Satélite");
-layerControl.addBaseLayer(googleTerrain, "Google Terreno"); 
+layerControl.addBaseLayer(googleTerrain, "Google Terreno");
 
 wmsOptions['layers'] = 'geofazendas:mapas_estadogeometria';
 wmsOptions['zIndex'] = 10;
