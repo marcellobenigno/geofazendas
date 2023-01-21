@@ -1,9 +1,12 @@
 from django.contrib.gis.geos import GEOSGeometry
 from django.views import generic
 from django_filters.rest_framework import DjangoFilterBackend
+
+from rest_framework.response import Response
 from rest_framework import viewsets
 from rest_framework.permissions import IsAdminUser, AllowAny
 from rest_framework.permissions import SAFE_METHODS
+from rest_framework.decorators import action
 
 from . import models
 from .layers_list import lyr_list
@@ -73,6 +76,19 @@ class MunicipioViewSet(viewsets.ModelViewSet):
     filterset_fields = ['estado']
     queryset = models.Municipio.objects.filter(visivel=True)
     serializer_class = MunicipioSerializer
+
+    @action(methods=['GET'], detail=False)
+    def por_ponto(self, request, pk=None):
+        latitude = request.GET.get('latitude')
+        longitude = request.GET.get('longitude')
+        point = GEOSGeometry(f"POINT({longitude} {latitude})")
+        municipio = models.Municipio.objects.filter(
+            municipiogeometria__geom__contains=point
+        ).first()
+        if municipio:
+            serializer = MunicipioSerializer(instance=municipio)
+            return Response(data=serializer.data)
+        return Response(status=404)
 
     def get_permissions(self):
         if self.request.method in SAFE_METHODS:
