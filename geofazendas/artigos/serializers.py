@@ -33,7 +33,7 @@ class ArtigoSerializer(serializers.ModelSerializer):
         return ''
 
     def get_tags_list(self, obj):
-        return [tag.strip() for tag in obj.tags.split(',')]
+        return [str(tag) for tag in obj.tags.all()]
 
     class Meta:
         model = Artigo
@@ -47,7 +47,6 @@ class ArtigoSerializer(serializers.ModelSerializer):
             'categoria_titulo',
             'texto',
             'autor',
-            'tags',
             'tags_list',
             'criado',
             'modificado',
