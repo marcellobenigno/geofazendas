@@ -1,0 +1,169 @@
+/********** Template CSS **********/
+:root {
+    --primary: #89A428;
+    --secondary: #FF6922;
+    --light: #EFFDF5;
+    --dark: #0E2E50;
+}
+
+.back-to-top {
+    position: fixed;
+    display: none;
+    right: 45px;
+    bottom: 45px;
+    z-index: 99;
+}
+
+/*---------------------*/
+a {
+    color: #89A428 !important;
+    text-decoration: none;
+    font-weight: 700;
+}
+a:hover,
+a:active {
+    color:#ec6911 !important;
+}
+.btn-primary {
+    background-color: #89A428;
+    border-color: #89A428;
+    color: #f9f9f9 !important;
+}
+.btn-primary:hover {
+    background-color: #ec6911;
+    border-color: #ec6911;
+    color: #f9f9f9 !important;
+}
+/*---------------------*/
+/*** Button ***/
+.btn {
+    transition: .5s;
+}
+
+.btn.btn-primary,
+.btn.btn-secondary {
+    color: #FFFFFF;
+}
+
+.btn-square {
+    width: 38px;
+    height: 38px;
+}
+
+.btn-sm-square {
+    width: 32px;
+    height: 32px;
+}
+
+.btn-lg-square {
+    width: 48px;
+    height: 48px;
+}
+
+.btn-square,
+.btn-sm-square,
+.btn-lg-square {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: normal;
+    border-radius: 50px;
+}
+
+/*** About ***/
+.about-img img {
+    position: relative;
+    z-index: 2;
+}
+
+.about-img::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: -50%;
+    width: 100%;
+    height: 100%;
+    background: var(--primary);
+    transform: skew(20deg);
+    z-index: 1;
+}
+
+
+/*** Category ***/
+.cat-item div {
+    background: #FFFFFF;
+    /* border: 1px dashed rgba(0, 185, 142, .3); */
+    transition: .5s;
+}
+
+.cat-item:hover div {
+    background: var(--primary);
+    border-color: transparent;
+}
+
+.cat-item div * {
+    transition: .5s;
+}
+
+.cat-item:hover div * {
+    color: #020202 !important;
+}
+/* 
+#dropdown-menu {
+    min-width: 200px !important;
+    padding-left: 10px;
+} */
+
+
+/*** Property List ***/
+.nav-pills .nav-item .btn {
+    color: var(--dark);
+}
+
+.nav-pills .nav-item .btn:hover,
+.nav-pills .nav-item .btn.active {
+    color: #FFFFFF;
+}
+
+.property-item, 
+.property-item-numbers {
+    box-shadow: 0 0 30px rgba(0, 0, 0, .08);
+}
+
+.property-item img {
+    transition: .5s;
+    height: 250px;
+    width: 400px;
+}
+.property-item-numbers img {
+    transition: .5s;
+    height: 160px;
+    width: 240px;
+}
+
+
+.property-item:hover img, 
+.property-item-numbers:hover img {
+    transform: scale(1.1);
+}
+
+.property-item .border-top,
+.property-item-numbers .border-top {
+    border-top: 1px dashed rgba(0, 185, 142, .3) !important;
+}
+
+.property-item .border-end,
+.property-item-numbers .border-end {
+    border-right: 1px dashed rgba(0, 185, 142, .3) !important;
+}
+
+.pub {
+    min-height: 40px;
+    margin-top: 20px;
+}
+
+.pub-text {
+    min-height: 250px;
+    margin-top: 20px; 
+}

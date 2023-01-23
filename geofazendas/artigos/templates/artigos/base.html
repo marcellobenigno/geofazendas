@@ -1,119 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>GeoFazendas | Artigos</title>
-  <link rel="shortcut icon" href="{{ STATIC_URL }}img/logo/favicon.ico" type="image/x-icon">
+{% extends "base.html" %}
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900&display=swap" rel="stylesheet">
+{% block extra_css %}
+<link href="{{ STATIC_URL }}vendor/css/footer.css" rel="stylesheet">
+<link href="{{ STATIC_URL }}vendor/css/fontawesome.css" rel="stylesheet">
+<link href="{{ STATIC_URL }}vendor/css/templatemo-stand-blog.css" rel="stylesheet">
+{% endblock %}
 
-  <!-- Css Styles -->
-  <link rel="stylesheet" href="{{ STATIC_URL }}artigos/css/bootstrap.min.css" type="text/css">
-  <link rel="stylesheet" href="{{ STATIC_URL }}artigos/css/style.css" type="text/css">
-  <link rel="stylesheet" href="{{ STATIC_URL }}artigos/css/fontawesome.css">
-  <link rel="stylesheet" href="{{ STATIC_URL }}artigos/css/templatemo-stand-blog.css">
-</head>
-
-<body>
-    <!-- Preloader Starts Here -->
-    <div id="preloader">
-      <div class="jumper"></div>
-    </div>
-    <!-- Preloader Ends Here -->
-
-    <!-- Header Starts Here -->
-    <header id="header" class="fixed-top  header-transparent">
-        <div class="container d-flex align-items-center justify-content-between">
-            <div class="logo">
-                <a href="{% url 'base:index' %}">
-                    <img src="{{ STATIC_URL }}artigos/img/logo/logo2.png" alt="Logo GeoFazendas" class="img-fluid">
-                </a>
+{% block container %}
+<!-- Navbar Start -->
+<div class="container-fluid nav-bar bg-transparent">
+    <nav class="navbar navbar-expand-lg bg-white navbar-light py-0 px-4">
+        <a href="index.html" class="navbar-brand d-flex align-items-center text-center">
+            <div class="icon">
+                <img class="img-fluid" src="{{ STATIC_URL }}vendor/img/logo.png" alt="Logo" style="width: 120px;">
             </div>
-            <nav id="navbar" class="navbar" class="navbar-collapse collapse">
-                <ul>
-                  <li><a class="nav-link scrollto" href="{% url 'base:index' %}">INÍCIO</a></li>
-                  <li><a class="nav-link scrollto" href="{% url 'base:index' %}#busca">ANÚNCIOS</a></li>
-                  <li><a class="nav-link scrollto" href="{% url 'artigos:artigo_list' %}">ARTIGOS</a></li>
-                  <li><a class="nav-link scrollto" href="{% url 'artigos:noticia_list' %}">NOTÍCIAS</a></li>
-                  <li><a class="nav-link scrollto" href="{% url 'artigos:curso_list' %}">CURSOS</a></li>
-                  <li><a class="nav-link scrollto" href="" target="_blank">APP</a></li>
-                  <li><a class="getstarted scrollto" href="">ACESSAR</a></li>
-                </ul>
-                <i class="bi bi-list mobile-nav-toggle"></i>
-            </nav>
+        </a>
+        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto">
+                <a href="{% url 'base:index' %}" class="nav-item nav-link">Início</a>
+                <a href="{% url 'base:index' %}#busca" class="nav-item nav-link">Anúncios</a>
+                <a href="{% url 'mapas:index' %}" class="nav-item nav-link">Mapas</a>
+                <a href="{% url 'artigos:artigo_list' %}" class="nav-item nav-link">Artigos</a>
+                <a href="{% url 'artigos:noticia_list' %}" class="nav-item nav-link">Notícias</a>
+                <a href="{% url 'artigos:curso_list' %}" class="nav-item nav-link active">Cursos</a>
+                <a href="" class="nav-item nav-link">Aplicativo</a>
+            </div>
+            <a href="{% url 'seguranca:login' %}" class="btn btn-primary px-3 d-none d-lg-flex">ACESSAR</a>
         </div>
-    </header>
-    <!-- Header Ends Here -->
-    {% block main %}
-    <!-- Banner Starts Here -->
-    <section class="page-heading">
-      <div class="container">
-          <div class="row">
-              <div class="col-lg-12">
-                  <div class="text-content">
-                      <h2>{{ view.tipo_artigo|upper }}</h2>
-                  </div>
-              </div>
-          </div>
-      </div>
-    </section>
-    <!-- Banner Ends Here -->
-    <!-- Call to Action Starts Here -->
-    <section class="call-to-action">
-    <a href="" target="_parent"><img src="{{ STATIC_URL }}artigos/img/0.jpg" alt=""></a>
-    </section>
-    <!-- Call to Action Ends Here -->
-    {% endblock %}
+    </nav>
+</div>
+<!-- Navbar End -->
 
-    <!-- Footer Starts Here -->
-    <footer id="footer" class="bottom footer-section">
-      <div class="container">
-          <div class="row">
-              <div class="col-lg-4 col-md-6">
-                  <div class="fs-about">
-                      <div class="fs-logo">
-                          <a href="#"><img src="{{ STATIC_URL }}img/logo/logo-p.png" alt=""></a>
-                      </div>
-                  </div>
-              </div>
-              <div class="col-lg-4 col-sm-6">
-                  <div class="fs-widget">
-                      <ul>
-                          <li><a href="#">Política de Prvacidade</a></li>
-                          <li><a href="#">Contate o Suporte</a></li>
-                          <li><a href="#">Perguntas Frequentes</a></li>
-                      </ul>
-                  </div>
-              </div>
-              <div class="col-lg-4 col-sm-6">
-                  <div class="fs-widget">
-                      <ul>
-                          <li><a href="#">Cadastrar Propriedade</a></li>
-                          <li><a href="#">Minhas Propriedades</a></li>
-                          <li><a href="#">Minha Conta</a></li>
-                      </ul>
-                  </div>
-              </div>
-          </div>
-          <div class="copyright-text">
-              &copy; Copyright {% now 'Y' %}
-              &ensp;Todos os direitos reservados.</br> GeoFazendas é um produto da <a href="https://www.multisig.com.br/" target="_blank"><b> Multisig</b></a>
-          </div>
-      </div>
-    </footer>
-    <!-- Footer Ends Here -->
-
-    <!-- Bootstrap core JavaScript -->
-    <script src="{{ STATIC_URL }}artigos/js/jquery.min.js"></script>
-    <script src="{{ STATIC_URL }}artigos/js/bootstrap.bundle.min.js"></script>
-    <script src="{{ STATIC_URL }}artigos/js/custom.js"></script>
-    <script src="{{ STATIC_URL }}artigos/js/owl.js"></script>
-    <script src="{{ STATIC_URL }}artigos/js/slick.js"></script>
-    <script src="{{ STATIC_URL }}artigos/js/isotope.js"></script>
-    <script src="{{ STATIC_URL }}artigos/js/accordions.js"></script>
-  </body>
-</html>
+<!-- Header Start -->
+<div class="container-fluid header bg-white p-0">
+    <div class="row g-0 align-items-center flex-column-reverse flex-md-row">
+        <img id="header" class="img-fluid" src="{{ STATIC_URL }}vendor/img/abas/carousel-2.png" alt="">
+    </div>
+</div>
+{% block main %}
+{% endblock %}
+<!-- Header End -->
+{% endblock %}
