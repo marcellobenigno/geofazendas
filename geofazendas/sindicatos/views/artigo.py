@@ -3,6 +3,8 @@ from django.shortcuts import redirect, get_object_or_404
 from django.http import JsonResponse
 from django.contrib import messages
 
+from geofazendas.artigos.models import Artigo
+
 from geofazendas.sindicatos.mixins import SindicatoRequiredMixin
 from geofazendas.sindicatos.forms import ArtigoForm
 
@@ -14,6 +16,9 @@ class ArtigoListView(SindicatoRequiredMixin, generic.ListView):
 
     def get_queryset(self):
         return self.request.user.artigos.all()
+
+    def artigos_populares(self):
+        return Artigo.objects.order_by('-views')
 
 
 class ArtigoCreateView(SindicatoRequiredMixin, generic.CreateView):

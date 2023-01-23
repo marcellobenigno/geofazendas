@@ -95,55 +95,16 @@
                             </h3>
                         </div>
                         <ul class="p-t-35">
+                            {% for artigo in view.artigos_populares %}
                             <li class="flex-wr-sb-s p-b-22">
                                 <div class="size-a-8 flex-c-c borad-3 size-a-8 bg9 f1-m-4 cl0 m-b-6">
-                                    1
+                                    {{ forloop.counter }}
                                 </div>
-
-                                <a href="#" class="size-w-3 f1-s-7 cl3 hov-cl10 trans-03">
-                                    Título da publicação
+                                <a href="{% url 'artigos:artigo_detail' artigo.tipo_artigo artigo.slug %}" class="size-w-3 f1-s-7 cl3 hov-cl10 trans-03">
+                                    {{ artigo.titulo }}
                                 </a>
                             </li>
-
-                            <li class="flex-wr-sb-s p-b-22">
-                                <div class="size-a-8 flex-c-c borad-3 size-a-8 bg9 f1-m-4 cl0 m-b-6">
-                                    2
-                                </div>
-
-                                <a href="#" class="size-w-3 f1-s-7 cl3 hov-cl10 trans-03">
-                                    Título da publicação
-                                </a>
-                            </li>
-
-                            <li class="flex-wr-sb-s p-b-22">
-                                <div class="size-a-8 flex-c-c borad-3 size-a-8 bg9 f1-m-4 cl0 m-b-6">
-                                    3
-                                </div>
-
-                                <a href="#" class="size-w-3 f1-s-7 cl3 hov-cl10 trans-03">
-                                    Título da publicação
-                                </a>
-                            </li>
-
-                            <li class="flex-wr-sb-s p-b-22">
-                                <div class="size-a-8 flex-c-c borad-3 size-a-8 bg9 f1-m-4 cl0 m-b-6">
-                                    4
-                                </div>
-
-                                <a href="#" class="size-w-3 f1-s-7 cl3 hov-cl10 trans-03">
-                                    Título da publicação
-                                </a>
-                            </li>
-
-                            <li class="flex-wr-sb-s p-b-22">
-                                <div class="size-a-8 flex-c-c borad-3 size-a-8 bg9 f1-m-4 cl0">
-                                    5
-                                </div>
-
-                                <a href="#" class="size-w-3 f1-s-7 cl3 hov-cl10 trans-03">
-                                    Título da publicação
-                                </a>
-                            </li>
+                            {% endfor %}
                         </ul>
                     </div>
 
