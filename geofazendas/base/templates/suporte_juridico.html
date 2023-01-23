@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+<link href="{{ STATIC_URL }}vendor/css/footer.css" rel="stylesheet">
+<link href="{{ STATIC_URL }}vendor/css/fontawesome.css" rel="stylesheet">
+<link href="{{ STATIC_URL }}vendor/css/templatemo-stand-blog.css" rel="stylesheet">
+{% endblock %}
+
+{% block container %}
+{% include "includes/nav.html" %}
+<!-- Header Start -->
+<div class="container-fluid header bg-white p-0">
+    <div class="row g-0 align-items-center flex-column-reverse flex-md-row">
+      <img id="header" class="img-fluid" src="{{ STATIC_URL }}vendor/img/aberta/suporte-juridico.png" alt="">
+    </div>
+</div>
+<!-- Header End -->
+<section class="blog-posts">
+    <div class="container">
+      <div class="row">
+        <!-- Posts Starts Here -->
+        <div class="col-lg-8">
+          <div class="all-blog-posts">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="blog-post">
+                    <div class="down-content">
+                      <span></span>
+                      <a href="artigo_completo.html">
+                        <h4>Título</h4>
+                      </a>
+                      <ul class="post-info">
+                        <!-- <ul class="post-info">
+                          <li><a href="#">Autor</a></li>
+                          <li><a href="#">12/07/2022</a></li>
+                        </ul> -->
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi accusamus
+                          adipisci ab nostrum hic aliquid recusandae dolorem animi maiores blanditiis,
+                          harum asperiores eligendi tempore inventore deleniti dolores neque provident.
+                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi accusamus
+                          adipisci ab nostrum hic aliquid recusandae dolorem animi maiores blanditiis,
+                          harum asperiores eligendi tempore inventore deleniti dolores neque provident.</br>
+                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi accusamus
+                          adipisci ab nostrum hic aliquid recusandae dolorem animi maiores blanditiis,
+                          harum asperiores eligendi tempore inventore deleniti dolores neque provident.
+                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi accusamus
+                          adipisci ab nostrum hic aliquid recusandae dolorem animi maiores blanditiis,
+                          harum asperiores eligendi tempore inventore deleniti dolores neque provident.
+                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi accusamus
+                          adipisci ab nostrum hic aliquid recusandae dolorem animi maiores blanditiis,
+                          harum asperiores eligendi tempore inventore deleniti dolores neque provident.
+                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi accusamus
+                          adipisci ab nostrum hic aliquid recusandae dolorem animi maiores blanditiis,
+                          harum asperiores eligendi tempore inventore deleniti dolores neque provident.</br>
+                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi accusamus
+                          adipisci ab nostrum hic aliquid recusandae dolorem animi maiores blanditiis,
+                          harum asperiores eligendi tempore inventore deleniti dolores neque provident.
+                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi accusamus
+                          adipisci ab nostrum hic aliquid recusandae dolorem animi maiores blanditiis,
+                          harum asperiores eligendi tempore inventore deleniti dolores neque provident.</p>
+                        <div class="post-options">
+                          <div class="row">
+                            <div class="col-6">
+                              <ul class="post-tags">
+                                <li><i class="fa fa-tags"></i></li>
+                                <li><a href="#">Crédito</a></li>
+                                <li><a href="#">Negócios</a></li>
+                              </ul>
+                            </div>
+                            <div class="col-6">
+                              <ul class="post-share">
+                                <li><i class="fa fa-share-alt"></i></li>
+                                <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-whatsapp"></i></a></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          {% include "artigos/includes/sidebar.html" %}
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
