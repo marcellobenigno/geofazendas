@@ -17,7 +17,7 @@
               {% for artigo in view.latest_artigos %}
                 <li>
                   <a href="{% url 'artigos:artigo_detail' artigo.tipo_artigo artigo.slug %}">
-                  <h5>{{ artigo.title }}</h5>
+                  <h5>{{ artigo.titulo }}</h5>
                   <span>{{ artigo.data_publicacao|date:'d/m/Y' }}</span>
                 </a></li>
               {% endfor %}
