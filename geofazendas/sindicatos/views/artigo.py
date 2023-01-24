@@ -1,7 +1,11 @@
 from django.views import generic
-from django.shortcuts import redirect, get_object_or_404
+from django.shortcuts import redirect, get_object_or_404, resolve_url
 from django.http import JsonResponse
 from django.contrib import messages
+
+from taggit.models import Tag
+
+from geofazendas.artigos.models import Artigo
 
 from geofazendas.sindicatos.mixins import SindicatoRequiredMixin
 from geofazendas.sindicatos.forms import ArtigoForm
@@ -14,6 +18,15 @@ class ArtigoListView(SindicatoRequiredMixin, generic.ListView):
 
     def get_queryset(self):
         return self.request.user.artigos.all()
+
+    def artigos_populares(self):
+        return Artigo.objects.order_by('-views')
+
+    def artigos_recentes(self):
+        return Artigo.objects.order_by('-data_publicacao')
+
+    def tags(self):
+        return Tag.objects.all()
 
 
 class ArtigoCreateView(SindicatoRequiredMixin, generic.CreateView):
@@ -40,7 +53,7 @@ class ArtigoUpdateView(SindicatoRequiredMixin, generic.UpdateView):
 
     def get_success_url(self):
         messages.success(self.request, 'Publicação atualizada com suecsso!')
-        return redirect('sindicatos:artigo_list')
+        return resolve_url('sindicatos:artigo_list')
 
 
 class ArtigoDeleteView(SindicatoRequiredMixin, generic.View):

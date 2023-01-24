@@ -47,7 +47,7 @@ class ArtigoDetailView(generic.DetailView):
 
     def get(self, request, *args, **kwargs):
         response = super().get(request, *args, **kwargs)
-        self.object.views += 1
+        self.object.visualizacoes += 1
         self.object.save()
         return response
 
