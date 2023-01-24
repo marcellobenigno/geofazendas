@@ -21,5 +21,5 @@ class AnuncioAdmin(admin.ModelAdmin):
 
     list_display = ['nome', 'proprietario', 'ativo', 'criado', 'modificado']
     search_fields = ['nome', 'proprietario__nome', 'proprietario__email']
-    list_filter = ['estruturas']
+    filter_horizontal = ['estruturas']
     inlines = [ArquivoAnuncioInline]
