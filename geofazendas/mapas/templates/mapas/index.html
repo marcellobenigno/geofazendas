@@ -91,7 +91,10 @@
                                 data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
                                 aria-controls="panelsStayOpen-collapseOne">
                             <i class="fa-solid fa-map"></i>&nbsp;
-                            Mapas Temáticos
+                            <span class="fw-bold">
+                                Mapas Temáticos
+                            </span>
+
                         </button>
                     </h2>
                     <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show"
@@ -107,7 +110,7 @@
                                         {% endif %}"
                                     >
                                         <div class="ms-2 me-auto">
-                                            <div class="fw-bold">
+                                            <div>
                                                 <a href="?tema={{ layer.lyr }}" class="mapa-link">
                                                     {{ layer.titulo }}
                                                 </a>
@@ -144,7 +147,9 @@
                                 data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
                                 aria-controls="panelsStayOpen-collapseTwo">
                             <i class="fa-solid fa-magnifying-glass"></i>&nbsp;
-                            Pesquisar por Município
+                            <span class="fw-bold">
+                                Pesquisar por Município
+                            </span>
                         </button>
                     </h2>
                     <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse"

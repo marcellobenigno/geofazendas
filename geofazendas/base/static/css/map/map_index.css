@@ -19,6 +19,10 @@
     border-color: #4b5515 !important;
 }
 
+.ms-2 {
+    margin-left: 0 !important;
+    margin-top: 0.5rem;
+}
 
 a.mapa-link {
     color: black;
