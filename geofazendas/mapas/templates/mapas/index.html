@@ -1,4 +1,4 @@
-{% load core_tags mapas_tags %}
+{% load core_tags mapas_tags widget_tweaks %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -17,13 +17,17 @@
     <!-- Css Styles -->
     <link rel="stylesheet" href="{{ STATIC_URL }}artigos/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="{{ STATIC_URL }}artigos/css/style.css" type="text/css">
-    <link rel="stylesheet" href="{{ STATIC_URL }}artigos/css/fontawesome.css">
+    <script src="{{ STATIC_URL }}fonts/864116099e.js"></script>
     <link rel="stylesheet" href="{{ STATIC_URL }}artigos/css/templatemo-stand-blog.css">
 
     <!-- Leaflet -->
     <link rel="stylesheet" href="{{ STATIC_URL }}leaflet/leaflet.css">
     <link rel="stylesheet" href="{{ STATIC_URL }}leaflet/plugins/zoom_to_home/leaflet.zoomhome.css">
     <link rel="stylesheet" href="{{ STATIC_URL }}css/map/map_index.css">
+
+    <link rel="stylesheet" href="{{ STATIC_URL }}lib/select2/select2.min.css"/>
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/@ttskch/select2-bootstrap4-theme@x.x.x/dist/select2-bootstrap4.min.css">
 </head>
 
 <body>
@@ -61,12 +65,9 @@
 <div id="map-container" class="container-fluid">
     <div class="row">
         <div class="col-md-2">
-
             {% get_settings 'GEOSERVER_URL' as geoserver_url %}
             <input type="hidden" id="geoserver_url" value="{{ geoserver_url }}">
             <input type="hidden" id="popup_url" value="{% url 'mapas:get_dados' -1.0 -1.0 "a" %}">
-
-
             <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight"
                  aria-labelledby="offcanvasRightLabel">
                 <div class="offcanvas-header">
@@ -83,40 +84,97 @@
                 </div>
             </div>
 
-            <ol class="list-group">
-                {% for layer in layers %}
-                    <li class="list-group-item d-flex
-                    {% if not request.GET.tema and layer.lyr == 'solo' %}
-                                active
-                    {% elif request.GET.tema == layer.lyr %}
-                            active
-                     {% endif %}"
-                    >
-                        <div class="ms-2 me-auto">
-                            <div class="fw-bold">
-                                <a href="?tema={{ layer.lyr }}" class="mapa-link">
-                                    {{ layer.titulo }}
-                                </a>
-                            </div>
+            <div class="accordion" id="accordionPanelsStayOpenExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
+                                aria-controls="panelsStayOpen-collapseOne">
+                            <i class="fa-solid fa-map"></i>&nbsp;
+                            Mapas Temáticos
+                        </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show"
+                         aria-labelledby="panelsStayOpen-headingOne">
+                        <div class="accordion-body">
+                            <ol class="list-group">
+                                {% for layer in layers %}
+                                    <li class="list-group-item d-flex
+                                        {% if not request.GET.tema and layer.lyr == 'solo' %}
+                                        active
+                                        {% elif request.GET.tema == layer.lyr %}
+                                        active
+                                        {% endif %}"
+                                    >
+                                        <div class="ms-2 me-auto">
+                                            <div class="fw-bold">
+                                                <a href="?tema={{ layer.lyr }}" class="mapa-link">
+                                                    {{ layer.titulo }}
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <span class="badge">
+                                            {% if not request.GET.tema and layer.lyr == 'solo' %}
+                                                <button class="btn btn-secondary btn-sm" type="button"
+                                                        data-bs-toggle="offcanvas"
+                                                        data-bs-target="#offcanvasRight"
+                                                        aria-controls="offcanvasRight">
+                                            <i class="fa fa-list"></i>
+                                        </button>
+                                            {% elif request.GET.tema == layer.lyr %}
+                                                <button class="btn btn-secondary btn-sm" type="button"
+                                                        data-bs-toggle="offcanvas"
+                                                        data-bs-target="#offcanvasRight"
+                                                        aria-controls="offcanvasRight">
+                                            <i class="fa fa-list"></i>
+                                        </button>
+                                            {% endif %}
+                                    </span>
+                                    </li>
+                                {% endfor %}
+                            </ol>
+
+
                         </div>
-                        <span class="badge">
-                        {% if not request.GET.tema and layer.lyr == 'solo' %}
-                            <button class="btn btn-secondary btn-sm" type="button" data-bs-toggle="offcanvas"
-                                    data-bs-target="#offcanvasRight"
-                                    aria-controls="offcanvasRight">
-                             <i class="fa fa-list"></i>
-                            </button>
-                        {% elif request.GET.tema == layer.lyr %}
-                            <button class="btn btn-secondary btn-sm" type="button" data-bs-toggle="offcanvas"
-                                    data-bs-target="#offcanvasRight"
-                                    aria-controls="offcanvasRight">
-                             <i class="fa fa-list"></i>
-                            </button>
-                        {% endif %}
-                    </span>
-                    </li>
-                {% endfor %}
-            </ol>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
+                                aria-controls="panelsStayOpen-collapseTwo">
+                            <i class="fa-solid fa-magnifying-glass"></i>&nbsp;
+                            Pesquisar por Município
+                        </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse"
+                         aria-labelledby="panelsStayOpen-headingTwo">
+                        <div class="accordion-body">
+
+                            <form id="search"
+                                  method="GET"
+                                  action=""
+                                  data-urlmunicipios="{% url 'mapas:municipio_ajax' %}"
+                            >
+                                <div class="form-group">
+                                    {% render_field form.estado title="Estados" class="form-control" %}
+                                </div>
+
+                                <div class="form-group" style="padding:10px;">
+
+                                    <select class="form-control" id="id_municipio">
+                                        <option>---------------------</option>
+                                    </select>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
         </div>
         <div class="col-md-10">
             <div id="map"></div>
@@ -133,11 +191,13 @@
 <script src="{{ STATIC_URL }}artigos/js/slick.js"></script>
 <script src="{{ STATIC_URL }}artigos/js/isotope.js"></script>
 <script src="{{ STATIC_URL }}artigos/js/accordions.js"></script>
+<script src="{{ STATIC_URL }}lib/select2/select2.full.min.js"></script>
 <!-- Leaflet -->
 <script src="{{ STATIC_URL }}leaflet/leaflet.js"></script>
 <script src="{{ STATIC_URL }}leaflet/plugins/zoom_to_home/leaflet.zoomhome.js"></script>
 <script src="{{ STATIC_URL }}leaflet/plugins/spin/spin.min.js"></script>
 <script src="{{ STATIC_URL }}leaflet/plugins/spin/leaflet.spin.min.js"></script>
+
 <script>
     var themeName = 'solo';
 </script>
@@ -155,5 +215,7 @@
     <script src="{{ STATIC_URL }}js/maps/theme.js"></script>
     <script src="{{ STATIC_URL }}js/maps/addlayers.js"></script>
 {% endif %}
+
+<script src="{{ STATIC_URL }}js/maps/busca.js"></script>
 </body>
 </html>

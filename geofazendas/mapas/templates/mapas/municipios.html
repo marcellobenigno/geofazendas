@@ -1,0 +1,4 @@
+<option value="">---------------------</option>
+{% for m in municipios %}
+    <option value="{{ m.municipiogeometria.extent|safe }}">{{ m.nome|safe }}</option>
+{% endfor %}

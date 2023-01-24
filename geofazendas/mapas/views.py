@@ -1,13 +1,13 @@
 from django.contrib.gis.geos import GEOSGeometry
 from django.views import generic
 from django_filters.rest_framework import DjangoFilterBackend
-
-from rest_framework.response import Response
 from rest_framework import viewsets
+from rest_framework.decorators import action
 from rest_framework.permissions import IsAdminUser, AllowAny
 from rest_framework.permissions import SAFE_METHODS
-from rest_framework.decorators import action
+from rest_framework.response import Response
 
+from . import forms
 from . import models
 from .layers_list import lyr_list
 from .serializers import EstadoSerializer, MunicipioSerializer, CarSerializer
@@ -19,6 +19,7 @@ class IndexView(generic.TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         # não exibe imóveis a venda
+        context['form'] = forms.PesquisaForm
         context['layers'] = lyr_list[:-1]
         return context
 
@@ -108,6 +109,18 @@ class CarViewSet(viewsets.ModelViewSet):
         return [IsAdminUser()]
 
 
+class MunicipioAjax(generic.TemplateView):
+    template_name = 'mapas/municipios.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['municipios'] = models.Municipio.objects.filter(
+            estado_id=self.request.GET.get('estado_id')
+        )
+        return context
+
+
 index = IndexView.as_view()
 get_dados = GetDadosView.as_view()
 mobile_view = MobileView.as_view()
+municipio_ajax = MunicipioAjax.as_view()

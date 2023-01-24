@@ -8,4 +8,5 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('mobile/<int:municipio_id>/', views.mobile_view, name='mobile_view'),
     path('<path:x>/<path:y>/<str:tema>/', views.get_dados, name='get_dados'),
+    path('municipio-ajax/', views.municipio_ajax, name='municipio_ajax'),
 ]

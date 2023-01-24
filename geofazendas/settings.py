@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'bootstrap5',
     'taggit',
+    'widget_tweaks',
     # Geofazendas Apps:
     'geofazendas.base.apps.CoreConfig',
     'geofazendas.artigos.apps.ArtigosConfig',
