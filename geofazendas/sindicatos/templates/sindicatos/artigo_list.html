@@ -1,139 +1,176 @@
 {% extends "sindicatos/base.html" %}
 
-{% block main %}
-<section id="teste" class="bg0 p-b-55">
+{% block container_sindicatos %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <a href="{% url 'sindicatos:artigo_create' %}" class="btn btn-primary px-3 d-none d-lg-flex float-start">Nova
+                Publicação</a>
+        </div>
+        <div class="col-md-8">
+            <a href="{% url 'sindicatos:artigo_list' %}" class="btn btn-primary px-3 d-none d-lg-flex float-end">Minhas
+                Publicações</a>
+        </div>
+    </div>
+</div>
+<section class="blog-posts grid-system">
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8 col-lg-8 p-b-80">
-                <div class="p-r-10 p-r-0-sr991">
-                    <div class="m-t--40 p-b-40">
-                        {% for article in object_list %}
-                        <!-- Item post -->
-                        <div class="flex-wr-sb-s p-t-40 p-b-15 how-bor2 article-box">
-                            <a href="{% url 'artigos:artigo_detail' article.tipo_artigo article.slug %}" class="size-w-8 wrap-pic-w hov1 trans-03 w-full-sr575 m-b-25">
-                                <img {% if article.photo %}src="{{ article.photo.url }}"{% else %}src="{{ STATIC_URL }}img/1.jpg"{% endif %} alt="IMG">
-                            </a>
-
-                            <div class="size-w-9 w-full-sr575 m-b-25">
-                                <h5 class="p-b-12">
-                                    <a href="{% url 'artigos:artigo_detail' article.tipo_artigo article.slug %}" class="f1-l-1 cl2 hov-cl10 trans-03 respon2">
-                                        {{ article.title }}
+        <div class="row">
+            <!-- Posts Starts -->
+            <div class="col-lg-8">
+                <div class="all-blog-posts">
+                    <div class="row">
+                        {% for artigo in object_list %}
+                        <div class="col-lg-6">
+                            <div class="blog-post">
+                                <div class="down-content">
+                                    <a href="{% url 'artigos:artigo_detail' artigo.tipo_artigo artigo.slug %}">
+                                        <h4>{{ artigo.titulo }}</h4>
                                     </a>
-                                </h5>
+                                    <ul class="post-info">
+                                        <li>{{ artigo.autor }}</li>
+                                        <li>{{ artigo.data_publicacao|date:'d/m/Y' }}</li>
+                                    </ul>
+                                    <p>{{ artigo.texto|striptags|truncatewords:'20' }}
+                                    </p>
 
-                                <div class="cl8 p-b-18">
-                                    <a href="#" class="f1-s-4 cl8 hov-cl10 trans-03">
-                                        {{ article.author }}
+                                    <a href="{% url 'sindicatos:artigo_update' artigo.pk %}" class="f1-s-1 cl9 hov-cl10 trans-03">
+                                        <i class="m-l-2 fas fa-edit"></i>
+                                        EDITAR &emsp;
                                     </a>
-
-                                    <span class="f1-s-3 m-rl-3">
-                                        -
-                                    </span>
-
-                                    <span class="f1-s-3">
-                                        {{ article.data_publicacao|date:'d/m/Y'|default:'--' }}
-                                    </span>
-                                </div>
-
-                                <p class="f1-s-1 cl6 p-b-24">
-                                    {{ article.text|striptags|truncatewords:'40' }}
-                                </p>
-
-                                <a href="{% url 'sindicatos:artigo_update' article.pk %}" class="f1-s-1 cl9 hov-cl10 trans-03">
-                                    <i class="m-l-2 fas fa-edit"></i>
-                                    EDITAR &emsp;
-                                </a>
-                                <a class="btn btn-secondary" data-bs-toggle="modal" href="#deleteModalToggle" role="button">
-                                    <i class="m-l-2 fas fa-trash"></i>
-                                     EXCLUIR
-                                </a>
-
-                                <!--Modal Start-->
-                                <div class="modal fade" id="deleteModalToggle" aria-hidden="true" aria-labelledby="deleteModalToggleLabel" tabindex="-1">
-                                    <div class="modal-dialog modal-dialog-centered">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h3 class="modal-title" id="deleteModalToggleLabel">EXCLUIR PUBLICAÇÃO</h3>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                Você tem certeza que deseja excluir esta publicação?
-                                            </div>
-                                            <div class="modal-footer">
-                                                <form action="{% url 'sindicatos:artigo_delete' article.pk %}" method="post" class="form-delete-article">
-                                                    {% csrf_token %}
-                                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">CANCELAR</button>
-                                                    <button type="submit" class="btn btn-secondary">CONFIRMAR</button>
-                                                </form>
+                                    <a class="btn btn-primary" data-bs-toggle="modal" href="#deleteModalToggle{{ artigo.pk|safe }}"
+                                        role="button">
+                                        <i class="m-l-2 fas fa-trash"></i>
+                                        EXCLUIR
+                                    </a>
+                                    <div class="modal fade" id="deleteModalToggle{{ artigo.pk|safe }}" aria-hidden="true" aria-labelledby="deleteModalToggleLabel" tabindex="-1">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h3 class="modal-title" id="deleteModalToggleLabel">EXCLUIR PUBLICAÇÃO</h3>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Você tem certeza que deseja excluir esta publicação?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <form action="{% url 'sindicatos:artigo_delete' artigo.pk %}" method="post" class="form-delete-article">
+                                                        {% csrf_token %}
+                                                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">CANCELAR</button>
+                                                        <button type="submit" class="btn btn-secondary">CONFIRMAR</button>
+                                                    </form>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <!--Modal End-->
                             </div>
                         </div>
-                        {% empty %}
-                        <p class="alert alert-info" style="margin-top: 30px;">
-                            Nenhuma publicação encontrada
-                        </p>
                         {% endfor %}
-                        {% if object_list.exists %}
-                        <a href="#" class="flex-c-c size-a-13 bo-all-1 bocl11 f1-m-6 cl6 hov-btn1 trans-03">
-							Carregar Mais
-						</a>
-                        {% endif %}
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-lg-4 p-b-80">
-                <div class="p-l-10 p-rl-0-sr991">
-                    <!-- Sidebar -->
-                    <div>
-                        <div class="how2 how2-cl4 flex-s-c">
-                            <h3 class="f1-m-2 cl3 tab01-title">
-                                Mais Populares
-                            </h3>
+                        <div class="col-lg-12">
+                            <ul class="page-numbers">
+                                {% if page_obj.has_previous %}
+                                <li><a href="?page={{ page_obj.previous_page_number }}"><i class="fa fa-angle-double-left"></i></a></li>
+                                {% endif %}
+                                {% for page in paginator.page_range %}
+                                <li {% if page == page_obj.number %}class="active"{% endif %}><a href="?page={{ page }}">{{ page }}</a></li>
+                                {% endfor %}
+                                {% if page_obj.has_next %}
+                                <li><a href="?page={{ page_obj.next_page_number }}"><i class="fa fa-angle-double-right"></i></a></li>
+                                {% endif %}
+                            </ul>
                         </div>
-                        <ul class="p-t-35">
-                            {% for artigo in view.artigos_populares %}
-                            <li class="flex-wr-sb-s p-b-22">
-                                <div class="size-a-8 flex-c-c borad-3 size-a-8 bg9 f1-m-4 cl0 m-b-6">
-                                    {{ forloop.counter }}
-                                </div>
-                                <a href="{% url 'artigos:artigo_detail' artigo.tipo_artigo artigo.slug %}" class="size-w-3 f1-s-7 cl3 hov-cl10 trans-03">
-                                    {{ artigo.titulo }}
-                                </a>
-                            </li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-
-                    <div class="flex-c-s p-t-8">
-                        <a href="#">
-                            <img class="max-w-full" src="{{ STATIC_URL }}sindicatos/images/banner-02.jpg" alt="IMG">
-                        </a>
                     </div>
                 </div>
             </div>
+            <!-- Posts End -->
+
+            <!-- Options Starts -->
+            <div class="col-lg-4">
+                <div class="sidebar">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="sidebar-item search">
+                                <form id="search_form" method="GET" action="#">
+                                    <input type="text" name="q" class="searchText" placeholder="Pesquisar"
+                                        autocomplete="on">
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="sidebar-item recent-posts">
+                                <div class="sidebar-heading">
+                                    <h2>Notícias Recentes</h2>
+                                </div>
+                                <div class="content">
+                                    <ul>
+                                        {% for artigo in view.artigos_recentes %}
+                                        <li><a href="{% url 'artigos:artigo_detail' artigo.tipo_artigo artigo.slug %}">
+                                            <h5>{{ artigo.titulo }}</h5>
+                                            <span>{{ artigo.data_publicacao|date:'d/m/Y' }}</span>
+                                            </a>
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="sidebar-item tags">
+                                <div class="sidebar-heading">
+                                    <h2>Marcadores</h2>
+                                </div>
+                                <div class="content">
+                                    <ul>
+                                        {% for tag in view.tags %}
+                                        <li><a href="#">{{ tag }}</a></li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Options Ends -->
         </div>
     </div>
 </section>
-<div class="modal fade" id="confirmModalToggle" aria-hidden="true" aria-labelledby="confirmModalToggleLabel" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title" id="confirmModalToggleLabel">PUBLICAÇÃO EXCLUÍDA!</h3>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+<!-- Call to Action Start -->
+<div class="container-xxl py-5">
+    <!-- Carousel -->
+    <div id="demo" class="carousel slide" data-bs-ride="carousel">
+        <!-- Indicators/dots -->
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="3"></button>
+        </div>
+        <!-- The slideshow/carousel -->
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{{ STATIC_URL }}vendor/img/anuncios/Anuncio-Credito.png" alt="" class="d-block" style="width:100%">
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">FECHAR</button>
+            <div class="carousel-item">
+                <img src="{{ STATIC_URL }}vendor/img/anuncios/Anuncio-Mapeamento.png" alt="" class="d-block"
+                    style="width:100%">
+            </div>
+            <div class="carousel-item">
+                <img src="{{ STATIC_URL }}vendor/img/anuncios/Anuncio-Juridico.png" alt="" class="d-block"
+                    style="width:100%">
+            </div>
+            <div class="carousel-item">
+                <img src="{{ STATIC_URL }}vendor/img/anuncios/Anuncio-Monitoramento.png" alt="" class="d-block"
+                    style="width:100%">
             </div>
         </div>
     </div>
 </div>
+<!-- Call to Action End -->
 {% endblock %}
 
-{% block js %}
+{% block extra_js %}
 <script>
 $(function(){
     $('.form-delete-article').on('submit', function(e){
