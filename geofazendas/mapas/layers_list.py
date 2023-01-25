@@ -13,6 +13,6 @@ lyr_list = [
     {'titulo': 'Teor de Argila do Solo a 30-60cm', 'lyr': 'argila_solo'},
     {'titulo': 'Teor de Silte do Solo a 30-60cm', 'lyr': 'silte_solo'},
     {'titulo': 'Acidez (pH) do Solo a 30-60cm', 'lyr': 'ph_solo'},
-    {'titulo': 'Salinidade (Condutividade Elétrica) do Solo (dS/m)', 'lyr': 'condutividade_eletrica'},
+    {'titulo': 'Salinidade (Condutividade Elétrica) do Solo', 'lyr': 'condutividade_eletrica'},
     {'titulo': 'Imóveis a Venda', 'lyr': 'imoveis'},
 ]
