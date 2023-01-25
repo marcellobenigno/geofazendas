@@ -7,7 +7,11 @@ lyr_list = [
     {'titulo': 'Geomorfologia', 'lyr': 'geomorfologia'},
     {'titulo': 'Relevo', 'lyr': 'relevo'},
     {'titulo': 'Energia Solar', 'lyr': 'irradiacao'},
-    {'titulo': 'Saturação por Sódio do Solo (%) a 30-100 cm', 'lyr': 'saturacao_sodio'},
-    # {'titulo': 'Água disponível no solo a 30-100 cm', 'lyr': 'agua_disponivel'},
+    {'titulo': 'Saturação por Sódio do Solo a 30-100cm', 'lyr': 'saturacao_sodio'},
+    {'titulo': 'Água Disponível no Solo a 30-60cm', 'lyr': 'agua_disponivel'},
+    {'titulo': 'Teor de Areia do Solo a 30-60cm', 'lyr': 'areia_disponivel_solo'},
+    {'titulo': 'Teor de Argila do Solo a 30-60cm', 'lyr': 'argila_solo'},
+    {'titulo': 'Teor de Silte do Solo a 30-60cm', 'lyr': 'silte_solo'},
+    {'titulo': 'Acidez (pH) do Solo a 30-60cm', 'lyr': 'ph_solo'},
     {'titulo': 'Imóveis a Venda', 'lyr': 'imoveis'},
 ]
