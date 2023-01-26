@@ -43,7 +43,7 @@ var corner2 = L.latLng(-33.247875947924385, -78.00292968750001);
 bounds = L.latLngBounds(corner1, corner2);
 
 const map = L.map('map', {
-    center: [-14.774882506516272, -55.107421875],
+    center: [-14.774882506516272, -54.25048828125001],
     zoom: 4,
     maxZoom: 22,
     layers: [googleTerrain, clients],

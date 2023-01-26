@@ -49,7 +49,7 @@
             <ul>
                 <li><a class="nav-link scrollto" href="{% url 'base:index' %}">INÍCIO</a></li>
                 <li><a class="nav-link scrollto" href="{% url 'base:index' %}#busca">ANÚNCIOS</a></li>
-                <li><a class="nav-link scrollto" href="{% url 'mapas:index' %}#busca">MAPAS</a></li>
+                <li><a class="nav-link scrollto" href="{% url 'mapas:index' %}">MAPAS</a></li>
                 <li><a class="nav-link scrollto" href="{% url 'artigos:artigo_list' %}">ARTIGOS</a></li>
                 <li><a class="nav-link scrollto" href="{% url 'artigos:noticia_list' %}">NOTÍCIAS</a></li>
                 <li><a class="nav-link scrollto" href="{% url 'artigos:curso_list' %}">CURSOS</a></li>
@@ -76,7 +76,10 @@
                 </div>
                 <div class="offcanvas-body">
                     {% for layer in layers %}
-                        {% if layer.lyr == request.GET.tema %}
+                        {% if not request.GET.tema and layer.lyr == 'ph_solo' %}
+                            <strong>{{ layer.titulo }}</strong><br>
+                            <img src="{{ geoserver_url }}{% get_legend layer.lyr %}" alt="">
+                        {% elif layer.lyr == request.GET.tema %}
                             <strong>{{ layer.titulo }}</strong><br>
                             <img src="{{ geoserver_url }}{% get_legend layer.lyr %}" alt="">
                         {% endif %}
@@ -103,7 +106,7 @@
                             <ol class="list-group">
                                 {% for layer in layers %}
                                     <li class="list-group-item d-flex
-                                        {% if not request.GET.tema and layer.lyr == 'solo' %}
+                                        {% if not request.GET.tema and layer.lyr == 'ph_solo' %}
                                         active
                                         {% elif request.GET.tema == layer.lyr %}
                                         active
@@ -117,7 +120,7 @@
                                             </div>
                                         </div>
                                         <span class="badge">
-                                            {% if not request.GET.tema and layer.lyr == 'solo' %}
+                                            {% if not request.GET.tema and layer.lyr == 'ph_solo' %}
                                                 <button class="btn btn-secondary btn-sm" type="button"
                                                         data-bs-toggle="offcanvas"
                                                         data-bs-target="#offcanvasRight"
@@ -204,7 +207,7 @@
 <script src="{{ STATIC_URL }}leaflet/plugins/spin/leaflet.spin.min.js"></script>
 
 <script>
-    var themeName = 'solo';
+    var themeName = 'ph_solo';
 </script>
 {% for layer in layers %}
     {% if layer.lyr == request.GET.tema %}
