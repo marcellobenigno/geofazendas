@@ -14,7 +14,6 @@ from .serializers import EstadoSerializer, MunicipioSerializer, CarSerializer
 
 
 class IndexView(generic.TemplateView):
-    template_name = 'mapas/index.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -120,7 +119,8 @@ class MunicipioAjax(generic.TemplateView):
         return context
 
 
-index = IndexView.as_view()
+index = IndexView.as_view(template_name='mapas/index.html')
+incidencia = IndexView.as_view(template_name='mapas/incidencia.html')
 get_dados = GetDadosView.as_view()
 mobile_view = MobileView.as_view()
 municipio_ajax = MunicipioAjax.as_view()

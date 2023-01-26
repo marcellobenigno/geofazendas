@@ -6,7 +6,7 @@ lyr_list = [
     {'titulo': 'Geologia', 'lyr': 'geologia'},
     {'titulo': 'Geomorfologia', 'lyr': 'geomorfologia'},
     {'titulo': 'Relevo', 'lyr': 'relevo'},
-    {'titulo': 'Energia Solar', 'lyr': 'irradiacao'},
+    {'titulo': 'Incidência Solar', 'lyr': 'irradiacao'},
     {'titulo': 'Saturação por Sódio do Solo a 30-100cm', 'lyr': 'saturacao_sodio'},
     {'titulo': 'Água Disponível no Solo a 30-60cm', 'lyr': 'agua_disponivel'},
     {'titulo': 'Teor de Areia do Solo a 30-60cm', 'lyr': 'areia_disponivel_solo'},
