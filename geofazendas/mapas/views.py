@@ -14,12 +14,12 @@ from .serializers import EstadoSerializer, MunicipioSerializer, CarSerializer
 
 
 class IndexView(generic.TemplateView):
+    layer_list = lyr_list
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        # não exibe imóveis a venda
         context['form'] = forms.PesquisaForm
-        context['layers'] = lyr_list[:-1]
+        context['layers'] = self.layer_list
         return context
 
 
