@@ -23,7 +23,7 @@
                       <li><a href="#">{{ artigo.autor }}</a></li>
                       <li><a href="#">{{ article.data_publicacao|date:'d/m/Y' }}</a></li>
                     </ul>
-                    <p>{{ artigo.texto|striptags|truncatewords:'40' }}
+                    <p>{{ artigo.texto|safe|truncatewords:'40' }}
                       <a href="{% url 'artigos:artigo_detail' artigo.tipo_artigo artigo.slug %}" target="_parent">CONTINUAR LEITURA...</a>
                     </p>
                     <div class="post-options">

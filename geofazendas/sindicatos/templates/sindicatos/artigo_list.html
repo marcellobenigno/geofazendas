@@ -31,7 +31,7 @@
                                         <li>{{ artigo.autor }}</li>
                                         <li>{{ artigo.data_publicacao|date:'d/m/Y' }}</li>
                                     </ul>
-                                    <p>{{ artigo.texto|truncatewords:'20'|safe }}
+                                    <p>{{ artigo.texto|safe|truncatewords:'20' }}
                                     </p>
 
                                     <a href="{% url 'sindicatos:artigo_update' artigo.pk %}" class="f1-s-1 cl9 hov-cl10 trans-03">
