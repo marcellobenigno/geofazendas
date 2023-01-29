@@ -13,6 +13,7 @@ class ArtigoForm(forms.ModelForm):
             'titulo',
             'categoria',
             'tipo_artigo',
+            'resumo',
             'texto',
             'foto',
             'data_publicacao',

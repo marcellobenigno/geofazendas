@@ -34,7 +34,7 @@ class Artigo(BaseModel):
         'Tipo do Artigo', max_length=20, choices=tipo_artigo_CHOICES
     )
     resumo = models.TextField(
-        'Resumo', help_text='É exibido na listagem dos artigos, notícias e cursos', blank=True
+        'Resumo', help_text='É exibido na listagem dos artigos, notícias e cursos', default=''
     )
     texto = RichTextField(verbose_name='Texto', blank=True)
     foto = models.ImageField('Foto', upload_to='artigos/photos', null=True, blank=True)
