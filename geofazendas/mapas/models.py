@@ -502,3 +502,13 @@ class Irradiacao(models.Model):
     nov = models.IntegerField(blank=True, null=True)
     dec = models.IntegerField(blank=True, null=True)
     geom = models.MultiPolygonField(srid=4326)
+
+
+class CapAguaDisp(models.Model):
+    ordem = models.CharField(max_length=100, blank=True, null=True)
+    subordem = models.CharField(max_length=100, blank=True, null=True)
+    grande_gru = models.CharField(max_length=100, blank=True, null=True)
+    subgrupos = models.CharField(max_length=100, blank=True, null=True)
+    textura = models.CharField(max_length=100, blank=True, null=True)
+    awc = models.FloatField(blank=True, null=True)
+    geom = models.MultiPolygonField(srid=4326, blank=True, null=True)

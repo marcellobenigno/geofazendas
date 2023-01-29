@@ -14,13 +14,12 @@ from .serializers import EstadoSerializer, MunicipioSerializer, CarSerializer
 
 
 class IndexView(generic.TemplateView):
-    template_name = 'mapas/index.html'
+    layer_list = lyr_list
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        # não exibe imóveis a venda
         context['form'] = forms.PesquisaForm
-        context['layers'] = lyr_list[:-1]
+        context['layers'] = self.layer_list
         return context
 
 
@@ -120,7 +119,8 @@ class MunicipioAjax(generic.TemplateView):
         return context
 
 
-index = IndexView.as_view()
+index = IndexView.as_view(template_name='mapas/index.html')
+incidencia = IndexView.as_view(template_name='mapas/incidencia.html')
 get_dados = GetDadosView.as_view()
 mobile_view = MobileView.as_view()
 municipio_ajax = MunicipioAjax.as_view()
