@@ -26,38 +26,31 @@
                 <div class="blog-post">
                     <div class="down-content">
                       <span></span>
-                      <a href="artigo_completo.html">
-                        <h4>Título</h4>
+                      <a href="{% url 'base:suporte_juridico' %}">
+                        <h4>Mudanças na avaliação de imóveis para recolhimento do ITBI</h4>
                       </a>
                       <ul class="post-info">
                         <!-- <ul class="post-info">
                           <li><a href="#">Autor</a></li>
                           <li><a href="#">12/07/2022</a></li>
                         </ul> -->
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi accusamus
-                          adipisci ab nostrum hic aliquid recusandae dolorem animi maiores blanditiis,
-                          harum asperiores eligendi tempore inventore deleniti dolores neque provident.
-                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi accusamus
-                          adipisci ab nostrum hic aliquid recusandae dolorem animi maiores blanditiis,
-                          harum asperiores eligendi tempore inventore deleniti dolores neque provident.</br>
-                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi accusamus
-                          adipisci ab nostrum hic aliquid recusandae dolorem animi maiores blanditiis,
-                          harum asperiores eligendi tempore inventore deleniti dolores neque provident.
-                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi accusamus
-                          adipisci ab nostrum hic aliquid recusandae dolorem animi maiores blanditiis,
-                          harum asperiores eligendi tempore inventore deleniti dolores neque provident.
-                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi accusamus
-                          adipisci ab nostrum hic aliquid recusandae dolorem animi maiores blanditiis,
-                          harum asperiores eligendi tempore inventore deleniti dolores neque provident.
-                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi accusamus
-                          adipisci ab nostrum hic aliquid recusandae dolorem animi maiores blanditiis,
-                          harum asperiores eligendi tempore inventore deleniti dolores neque provident.</br>
-                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi accusamus
-                          adipisci ab nostrum hic aliquid recusandae dolorem animi maiores blanditiis,
-                          harum asperiores eligendi tempore inventore deleniti dolores neque provident.
-                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi accusamus
-                          adipisci ab nostrum hic aliquid recusandae dolorem animi maiores blanditiis,
-                          harum asperiores eligendi tempore inventore deleniti dolores neque provident.</p>
+                        {% filter linebreaks %}
+                        Recentemente o Superior Tribunal de Justiça, através do julgamento de recurso repetitivo, compactuou que os municípios, ao receberem solicitação para emissão da guia de ITBI, não podem utilizar valores de referência previamente estabelecidos. Dessa forma, os recursos amplamente utilizados hoje, como plantas de valores, pauta IPTU ou ITBI e declarações de ITR deixam de ser válidos como referências.
+                        Assim, o STJ [...] “estabeleceu três teses relativas ao cálculo do Imposto sobre a Transmissão de Bens Imóveis (ITBI) nas operações de compra e venda:
+                        1) A base de cálculo do ITBI é o valor do imóvel transmitido em condições normais de mercado, não estando vinculada à base de cálculo do IPTU, que nem sequer pode ser utilizada como piso de tributação;
+                        2) O valor da transação declarado pelo contribuinte goza da presunção de que é condizente com o valor de mercado, que somente pode ser afastada pelo fisco mediante a regular instauração de processo administrativo próprio (artigo 148 do Código Tributário Nacional – CTN);
+                        3) O município não pode arbitrar previamente a base de cálculo do ITBI com respaldo em valor de referência por ele estabelecido de forma unilateral. “
+                        Esta mudança levou em consideração o fato de que o contribuinte, ao solicitar o recolhimento, goza de boa-fé, portanto, o município deve receber tal solicitação, levando em consideração a presunção de que o contribuinte está dizendo a verdade.
+                        Todavia, por mais que exista tal publicação do entendimento do STJ, muitos municípios ainda praticam a avaliação dos imóveis, sem levar em consideração a declaração do valor por parte do contribuinte, se valendo de fontes próprias.
+                        Portanto, aquele que solicita e fica consignado à delegação do valor por parte do poder municipal, deve manifestar-se contra e lembrar da presunção de boa-fé que lhe cabe.
+                        Com o acórdão publicado através do recurso repetitivo pelo STJ, os tribunais julgadores das ações impetradas, devem adotar o mesmo entendimento proferido pelo Superior Tribunal, obrigando então que o município adote o procedimento conforme posto pelos juristas. Cabendo inclusive, a aqueles que se considerarem como lesados em requerimentos de recolhimento de ITBI, o direito de requisitar o ressarcimento do valor outrora pago.
+                        Aqueles que não tiverem ou não tiveram seus direitos atendidos, devem buscar por ajuda jurídica específica e requisitar que seus direitos sejam atendidos.
+                        {% endfilter %}
+                        <p>
+                          <strong>Veja a decisão na integra:</strong><br />
+                          <a href="https://www.stj.jus.br/sites/portalp/Paginas/Comunicacao/Noticias/09032022-Base-de-calculo-do-ITBI-e-o-valor-do-imovel-transmitido-em-condicoes-normais-de-mercado--define-Primeira-Secao.aspx">https://www.stj.jus.br/sites/portalp/Paginas/Comunicacao/Noticias/09032022-Base-de-calculo-do-ITBI-e-o-valor-do-imovel-transmitido-em-condicoes-normais-de-mercado--define-Primeira-Secao.aspx</a>
+                        </p>
+
                         <div class="post-options">
                           <div class="row">
                             <div class="col-6">
@@ -70,9 +63,10 @@
                             <div class="col-6">
                               <ul class="post-share">
                                 <li><i class="fa fa-share-alt"></i></li>
-                                <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-whatsapp"></i></a></li>
+                                {% url 'base:suporte_juridico' as article_url %}
+                                <li><a href="https://www.facebook.com/sharer/sharer.php?u={{ article_url }}" target="_blank"><i class="fa fa-facebook-square"></i></a></li>
+                                <li><a href="https://twitter.com/intent/tweet?url={{ article_url }}" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="https://wa.me/?text={{ article_url|urlencode }}"><i class="fa fa-whatsapp"></i></a></li>
                               </ul>
                             </div>
                           </div>

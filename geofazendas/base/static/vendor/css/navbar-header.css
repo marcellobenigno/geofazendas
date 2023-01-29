@@ -152,6 +152,11 @@
     box-shadow: 0 0 5px #3a3a3a;
 }
 
+#bg-search-user {
+    background-color: rgba(237, 244, 211, 0.7);
+    box-shadow: 0 0 5px #3a3a3a;
+}
+
 #btn-pesquisar {
     color: #f9f9f9;
     font-weight: 700;
