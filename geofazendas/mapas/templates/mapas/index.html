@@ -15,10 +15,9 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900&display=swap" rel="stylesheet">
 
     <!-- Css Styles -->
-    <link rel="stylesheet" href="{{ STATIC_URL }}artigos/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="{{ STATIC_URL }}artigos/css/style.css" type="text/css">
     <script src="{{ STATIC_URL }}fonts/864116099e.js"></script>
-    <link rel="stylesheet" href="{{ STATIC_URL }}artigos/css/templatemo-stand-blog.css">
 
     <!-- Leaflet -->
     <link rel="stylesheet" href="{{ STATIC_URL }}leaflet/leaflet.css">
@@ -27,7 +26,7 @@
 
     <link rel="stylesheet" href="{{ STATIC_URL }}js/select2/select2.min.css"/>
     <link rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/@ttskch/select2-bootstrap4-theme@x.x.x/dist/select2-bootstrap4.min.css">
+          href="{{ STATIC_URL }}js/select2/select2-bootstrap4.min.css">
 </head>
 
 <body>
@@ -192,13 +191,8 @@
 
 
 <!-- Bootstrap core JavaScript -->
-<script src="{{ STATIC_URL }}artigos/js/jquery.min.js"></script>
-<script src="{{ STATIC_URL }}artigos/js/bootstrap.bundle.min.js"></script>
-<script src="{{ STATIC_URL }}artigos/js/custom.js"></script>
-<script src="{{ STATIC_URL }}artigos/js/owl.js"></script>
-<script src="{{ STATIC_URL }}artigos/js/slick.js"></script>
-<script src="{{ STATIC_URL }}artigos/js/isotope.js"></script>
-<script src="{{ STATIC_URL }}artigos/js/accordions.js"></script>
+<script src="{{ STATIC_URL }}js/jquery.js"></script>
+<script src="{{ STATIC_URL }}vendor/js/bootstrap.bundle.min.js"></script>
 <script src="{{ STATIC_URL }}js/select2/select2.full.min.js"></script>
 <!-- Leaflet -->
 <script src="{{ STATIC_URL }}leaflet/leaflet.js"></script>
