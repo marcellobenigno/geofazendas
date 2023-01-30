@@ -26,6 +26,58 @@ wmsOptions['layers'] = 'geofazendas:oceano';
 wmsOptions['zIndex'] = 1;
 const oceano = L.tileLayer.wms(geoServerUrl, wmsOptions);
 
+wmsOptions['layers'] = 'geofazendas:ph_solo';
+wmsOptions['zIndex'] = 2;
+const phSolo = L.tileLayer.wms(geoServerUrl, wmsOptions);
+
+wmsOptions['layers'] = 'geofazendas:bioma';
+wmsOptions['zIndex'] = 2;
+const bioma = L.tileLayer.wms(geoServerUrl, wmsOptions);
+
+wmsOptions['layers'] = 'geofazendas:capaguadisp';
+wmsOptions['zIndex'] = 2;
+const capAguaDisp = L.tileLayer.wms(geoServerUrl, wmsOptions);
+
+wmsOptions['layers'] = 'geofazendas:clima';
+wmsOptions['zIndex'] = 2;
+const clima = L.tileLayer.wms(geoServerUrl, wmsOptions);
+
+wmsOptions['layers'] = 'geofazendas:declividade';
+wmsOptions['zIndex'] = 2;
+const declividade = L.tileLayer.wms(geoServerUrl, wmsOptions);
+
+wmsOptions['layers'] = 'geofazendas:geologia';
+wmsOptions['zIndex'] = 2;
+const geologia = L.tileLayer.wms(geoServerUrl, wmsOptions);
+
+wmsOptions['layers'] = 'geofazendas:geomorfologia';
+wmsOptions['zIndex'] = 2;
+const geomorfologia = L.tileLayer.wms(geoServerUrl, wmsOptions);
+
+wmsOptions['layers'] = 'geofazendas:condutividade_eletrica';
+wmsOptions['zIndex'] = 2;
+const CondutividadeEletrica = L.tileLayer.wms(geoServerUrl, wmsOptions);
+
+wmsOptions['layers'] = 'geofazendas:saturacao_sodio';
+wmsOptions['zIndex'] = 2;
+const saturacaoSodio = L.tileLayer.wms(geoServerUrl, wmsOptions);
+
+wmsOptions['layers'] = 'geofazendas:solo';
+wmsOptions['zIndex'] = 2;
+const solo = L.tileLayer.wms(geoServerUrl, wmsOptions);
+
+wmsOptions['layers'] = 'geofazendas:areia_disponivel_solo';
+wmsOptions['zIndex'] = 2;
+const areiaDisponivelSolo = L.tileLayer.wms(geoServerUrl, wmsOptions);
+
+wmsOptions['layers'] = 'geofazendas:argila_solo';
+wmsOptions['zIndex'] = 2;
+const argilaSolo = L.tileLayer.wms(geoServerUrl, wmsOptions);
+
+wmsOptions['layers'] = 'geofazendas:silte_solo';
+wmsOptions['zIndex'] = 2;
+const silteSolo = L.tileLayer.wms(geoServerUrl, wmsOptions);
+
 wmsOptions['layers'] = 'geofazendas:mapas_estadogeometria';
 wmsOptions['zIndex'] = 10;
 wmsOptions['opacity'] = 0.6;
@@ -47,7 +99,6 @@ const areaIndigena = L.tileLayer.wms(geoServerUrl, wmsOptions);
 
 wmsOptions['layers'] = 'geofazendas:mapas_areaprotegida';
 const areaProtegida = L.tileLayer.wms(geoServerUrl, wmsOptions);
-
 
 wmsOptions['layers'] = 'geofazendas:mapas_isoieta';
 const isoietas = L.tileLayer.wms(geoServerUrl, wmsOptions);

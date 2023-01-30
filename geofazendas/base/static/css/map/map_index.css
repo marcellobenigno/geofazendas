@@ -2,6 +2,13 @@ a:link {
     text-decoration: none;
 }
 
+.list-base-layers {
+    cursor: pointer;
+}
+
+.list-group-item.active {
+    color: #000 !important;
+}
 
 #map-container {
     padding-top: 90px;

@@ -1,0 +1,162 @@
+{% load core_tags mapas_tags widget_tweaks %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>GeoFazendas | Mapas</title>
+    <link rel="shortcut icon" href="{{ STATIC_URL }}img/favicon.ico" type="image/x-icon">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900&display=swap"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900&display=swap" rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}artigos/css/style.css" type="text/css">
+    <script src="{{ STATIC_URL }}fonts/864116099e.js"></script>
+
+    <!-- Leaflet -->
+    <link rel="stylesheet" href="{{ STATIC_URL }}leaflet/leaflet.css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}leaflet/plugins/zoom_to_home/leaflet.zoomhome.css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/map/map_index.css">
+
+    <link rel="stylesheet" href="{{ STATIC_URL }}js/select2/select2.min.css"/>
+    <link rel="stylesheet"
+          href="{{ STATIC_URL }}js/select2/select2-bootstrap4.min.css">
+</head>
+
+<body>
+
+
+<!-- Header Starts Here -->
+<header id="header" class="fixed-top  header-transparent">
+    <div class="container d-flex align-items-center justify-content-between">
+        <div class="logo">
+            <a href="{% url 'base:index' %}">
+                <img src="{{ STATIC_URL }}artigos/img/logo/logo2.png" alt="Logo GeoFazendas" class="img-fluid">
+            </a>
+        </div>
+        <nav id="navbar" class="navbar" class="navbar-collapse collapse">
+            <ul>
+                <li><a class="nav-link scrollto" href="{% url 'base:index' %}">INÍCIO</a></li>
+                <li><a class="nav-link scrollto" href="{% url 'base:index' %}#busca">ANÚNCIOS</a></li>
+                <li><a class="nav-link scrollto" href="{% url 'mapas:index' %}">MAPAS</a></li>
+                <li><a class="nav-link scrollto" href="{% url 'artigos:artigo_list' %}">ARTIGOS</a></li>
+                <li><a class="nav-link scrollto" href="{% url 'artigos:noticia_list' %}">NOTÍCIAS</a></li>
+                <li><a class="nav-link scrollto" href="{% url 'artigos:curso_list' %}">CURSOS</a></li>
+                <li><a class="nav-link scrollto" href="" target="_blank">APP</a></li>
+                <li><a class="getstarted scrollto" href="">ACESSAR</a></li>
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav>
+    </div>
+</header>
+<!-- Header Ends Here -->
+<div id="app">
+    <div id="map-container" class="container-fluid">
+        <div class="row">
+            <div class="col-md-2">
+                {% get_settings 'GEOSERVER_URL' as geoserver_url %}
+                <input type="hidden" id="geoserver_url" value="{{ geoserver_url }}">
+                <input type="hidden" id="popup_url" value="{% url 'mapas:get_dados' -1.0 -1.0 "a" %}">
+
+                <div class="accordion" id="accordionPanelsStayOpenExample">
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="panelsStayOpen-heading1">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#panelsStayOpen-collapse1" aria-expanded="false"
+                                    aria-controls="panelsStayOpen-collapse1">
+                                <i class="fa-solid fa-map"></i>&nbsp;
+                                <span class="fw-bold">
+                                Mapas Temáticos
+                            </span>
+                            </button>
+                        </h2>
+                        <div id="panelsStayOpen-collapse1" class="accordion-collapse collapse"
+                             aria-labelledby="panelsStayOpen-heading1">
+                            <div class="accordion-body">
+                                <ul class="list-group list-group-flush list-base-layers">
+                                    <template v-for="layer in themeList">
+                                        <li class="list-group-item d-flex"
+                                            :class="layer.active ? 'active' : ''"
+                                            @click="activeThemeLayer(layer.id)"
+                                        >
+                                            <div class="ms-2 me-auto">
+                                            <span v-if="layer.active">
+                                                <i class="fa-solid fa-eye"></i>
+                                            </span>
+                                                <span v-else>
+                                                <i class="fa fa-eye-slash"></i>
+                                            </span>
+                                                ${ layer.title }
+                                            </div>
+                                        </li>
+                                    </template>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="panelsStayOpen-heading2">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#panelsStayOpen-collapse2" aria-expanded="false"
+                                    aria-controls="panelsStayOpen-collapse2">
+                                <i class="fa-solid fa-layer-group"></i>&nbsp;
+                                <span class="fw-bold">
+                                Camadas
+                            </span>
+                            </button>
+                        </h2>
+                        <div id="panelsStayOpen-collapse2" class="accordion-collapse collapse"
+                             aria-labelledby="panelsStayOpen-heading2">
+                            <div class="accordion-body">
+                                <ul class="list-group list-group-flush list-base-layers">
+                                    <template v-for="layer in overlays">
+                                        <li class="list-group-item d-flex"
+                                            :class="layer.active ? 'active' : ''"
+                                            @click="activeOverlayLayer(layer.id)"
+                                        >
+                                            <div class="ms-2 me-auto">
+                                            <span v-if="layer.active">
+                                                <i class="fa-solid fa-eye"></i>
+                                            </span>
+                                                <span v-else>
+                                                <i class="fa fa-eye-slash"></i>
+                                            </span>
+                                                ${ layer.title }
+                                            </div>
+                                        </li>
+                                    </template>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-10">
+                <div id="map"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap core JavaScript -->
+<script src="{{ STATIC_URL }}js/jquery.js"></script>
+<script src="{{ STATIC_URL }}vendor/js/bootstrap.bundle.min.js"></script>
+<script src="{{ STATIC_URL }}js/select2/select2.full.min.js"></script>
+<!-- Leaflet -->
+<script src="{{ STATIC_URL }}leaflet/leaflet.js"></script>
+<script src="{{ STATIC_URL }}leaflet/plugins/zoom_to_home/leaflet.zoomhome.js"></script>
+<script src="{{ STATIC_URL }}leaflet/plugins/spin/spin.min.js"></script>
+<script src="{{ STATIC_URL }}leaflet/plugins/spin/leaflet.spin.min.js"></script>
+<script src="https://unpkg.com/vue@3"></script>
+<script src="{{ STATIC_URL }}js/maps/mapa.js"></script>
+
+</body>
+</html>
