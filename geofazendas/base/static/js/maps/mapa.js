@@ -23,7 +23,7 @@ var satteliteList = [
 
 
 var themeList = [
-    {'id': 1, 'nome': 'Biomas', 'geolyr': bioma, active: false, origem: 'ibge'},
+    {'id': 1, 'nome': 'Biomas', 'geolyr': bioma, active: true, origem: 'ibge'},
     {'id': 2, 'nome': 'Clima', 'geolyr': clima, active: false, origem: 'ibge'},
     {'id': 3, 'nome': 'Geologia', 'geolyr': geologia, active: false, origem: 'ibge'},
     {'id': 4, 'nome': 'Geomorfologia', 'geolyr': geomorfologia, active: false, origem: 'ibge'},
@@ -54,14 +54,14 @@ const app = createApp({
             fixedLayers: window.fixedLayers,
             overlayList: window.overlayList,
             satteliteList: window.satteliteList,
-            zoom: 8,
+            maxZoom: 8,
             bounds: window.bounds,
         }
     },
     methods: {
         initMap() {
             this.map = L.map('map', {
-                    maxZoom: this.zoom,
+                    maxZoom: this.maxZoom,
                     zoomControl: false,
                     layers: [
                         this.themeList[0].geolyr, this.themeList[0].geolyr,
