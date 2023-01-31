@@ -81,7 +81,7 @@
                              aria-labelledby="panelsStayOpen-heading1">
                             <div class="accordion-body">
                                 <ul class="list-group list-group-flush list-base-layers">
-                                    <template v-for="layer in themeList">
+                                    <template v-for="layer in themeList" :key="layer.id">
                                         <li class="list-group-item d-flex"
                                             :class="layer.active ? 'active' : ''"
                                             @click="activeThemeLayer(layer.id)"
@@ -155,7 +155,7 @@
 <script src="{{ STATIC_URL }}leaflet/plugins/zoom_to_home/leaflet.zoomhome.js"></script>
 <script src="{{ STATIC_URL }}leaflet/plugins/spin/spin.min.js"></script>
 <script src="{{ STATIC_URL }}leaflet/plugins/spin/leaflet.spin.min.js"></script>
-<script src="https://unpkg.com/vue@3"></script>
+<script src="{{ STATIC_URL }}vendor/vuejs/vue.global.prod.js"></script>
 <script src="{{ STATIC_URL }}js/maps/mapa.js"></script>
 
 </body>

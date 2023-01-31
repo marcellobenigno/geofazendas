@@ -1,5 +1,3 @@
-const {createApp} = Vue
-
 var geoServerUrl = $('#geoserver_url').val() + 'geofazendas/wms?'
 
 
@@ -138,6 +136,8 @@ var fixedLayers = [
     {'id': 2, 'title': 'Oceano', 'geolyr': oceano},
 ]
 
+const {createApp} = Vue
+
 const app = createApp({
     data() {
         return {
@@ -212,6 +212,7 @@ const app = createApp({
         this.initMap()
     },
 })
+
 // Delimiters changed to ES6 template string style
 app.config.compilerOptions.delimiters = ['${', '}']
 app.mount('#app')
