@@ -3,10 +3,35 @@ const googleOpts = {
     attribution: '&copy; <a href="https://www.google.com/">Google Maps</a>',
     subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
 };
-
 const googleStreets = L.tileLayer('https://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', googleOpts);
 const googleSat = L.tileLayer('https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', googleOpts);
 const googleTerrain = L.tileLayer('https://{s}.google.com/vt/lyrs=p&x={x}&y={y}&z={z}', googleOpts);
+
+
+var sentinelURL = 'https://tiles.maps.eox.at/wms?';
+
+var sentinelWmsOpts = {
+    format: 'image/png',
+    transparent: true,
+    version: '1.1.0',
+    maxZoom: 20,
+    zIndex: 3,
+    attribution: 'Sentinel'
+};
+
+sentinelWmsOpts['layers'] = 's2cloudless-2018_3857';
+var s2cloudless_2017 = L.tileLayer.wms(sentinelURL, sentinelWmsOpts);
+
+sentinelWmsOpts['layers'] = 's2cloudless-2018_3857';
+var s2cloudless_2018 = L.tileLayer.wms(sentinelURL, sentinelWmsOpts);
+
+sentinelWmsOpts['layers'] = 's2cloudless-2019_3857';
+var s2cloudless_2019 = L.tileLayer.wms(sentinelURL, sentinelWmsOpts);
+
+sentinelWmsOpts['layers'] = 's2cloudless-2020_3857';
+var s2cloudless_2020 = L.tileLayer.wms(sentinelURL, sentinelWmsOpts);
+
+
 
 var geoServerUrl = $('#geoserver_url').val();
 geoServerUrl = geoServerUrl + 'geofazendas/wms?'
