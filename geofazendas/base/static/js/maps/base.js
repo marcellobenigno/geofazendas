@@ -26,55 +26,55 @@ wmsOptions['layers'] = 'geofazendas:oceano';
 wmsOptions['zIndex'] = 1;
 const oceano = L.tileLayer.wms(geoServerUrl, wmsOptions);
 
-wmsOptions['layers'] = 'geofazendas:ph_solo';
+wmsOptions['layers'] = 'geofazendas:mapas_ph_solo';
 wmsOptions['zIndex'] = 2;
 const phSolo = L.tileLayer.wms(geoServerUrl, wmsOptions);
 
-wmsOptions['layers'] = 'geofazendas:bioma';
+wmsOptions['layers'] = 'geofazendas:mapas_bioma';
 wmsOptions['zIndex'] = 2;
 const bioma = L.tileLayer.wms(geoServerUrl, wmsOptions);
 
-wmsOptions['layers'] = 'geofazendas:capaguadisp';
+wmsOptions['layers'] = 'geofazendas:mapas_capaguadisp';
 wmsOptions['zIndex'] = 2;
 const capAguaDisp = L.tileLayer.wms(geoServerUrl, wmsOptions);
 
-wmsOptions['layers'] = 'geofazendas:clima';
+wmsOptions['layers'] = 'geofazendas:mapas_clima';
 wmsOptions['zIndex'] = 2;
 const clima = L.tileLayer.wms(geoServerUrl, wmsOptions);
 
-wmsOptions['layers'] = 'geofazendas:declividade';
+wmsOptions['layers'] = 'geofazendas:mapas_declividade';
 wmsOptions['zIndex'] = 2;
 const declividade = L.tileLayer.wms(geoServerUrl, wmsOptions);
 
-wmsOptions['layers'] = 'geofazendas:geologia';
+wmsOptions['layers'] = 'geofazendas:mapas_geologia';
 wmsOptions['zIndex'] = 2;
 const geologia = L.tileLayer.wms(geoServerUrl, wmsOptions);
 
-wmsOptions['layers'] = 'geofazendas:geomorfologia';
+wmsOptions['layers'] = 'geofazendas:mapas_geomorfologia';
 wmsOptions['zIndex'] = 2;
 const geomorfologia = L.tileLayer.wms(geoServerUrl, wmsOptions);
 
-wmsOptions['layers'] = 'geofazendas:condutividade_eletrica';
+wmsOptions['layers'] = 'geofazendas:mapas_condutividade_eletrica';
 wmsOptions['zIndex'] = 2;
 const CondutividadeEletrica = L.tileLayer.wms(geoServerUrl, wmsOptions);
 
-wmsOptions['layers'] = 'geofazendas:saturacao_sodio';
+wmsOptions['layers'] = 'geofazendas:mapas_saturacao_sodio';
 wmsOptions['zIndex'] = 2;
 const saturacaoSodio = L.tileLayer.wms(geoServerUrl, wmsOptions);
 
-wmsOptions['layers'] = 'geofazendas:solo';
+wmsOptions['layers'] = 'geofazendas:mapas_solo';
 wmsOptions['zIndex'] = 2;
 const solo = L.tileLayer.wms(geoServerUrl, wmsOptions);
 
-wmsOptions['layers'] = 'geofazendas:areia_disponivel_solo';
+wmsOptions['layers'] = 'geofazendas:mapas_areia_disponivel_solo';
 wmsOptions['zIndex'] = 2;
 const areiaDisponivelSolo = L.tileLayer.wms(geoServerUrl, wmsOptions);
 
-wmsOptions['layers'] = 'geofazendas:argila_solo';
+wmsOptions['layers'] = 'geofazendas:mapas_argila_solo';
 wmsOptions['zIndex'] = 2;
 const argilaSolo = L.tileLayer.wms(geoServerUrl, wmsOptions);
 
-wmsOptions['layers'] = 'geofazendas:silte_solo';
+wmsOptions['layers'] = 'geofazendas:mapas_silte_solo';
 wmsOptions['zIndex'] = 2;
 const silteSolo = L.tileLayer.wms(geoServerUrl, wmsOptions);
 
@@ -89,16 +89,21 @@ wmsOptions['opacity'] = 0.6;
 const municipio = L.tileLayer.wms(geoServerUrl, wmsOptions);
 
 wmsOptions['layers'] = 'geofazendas:mapas_car';
+wmsOptions['zIndex'] = 20;
 const car = L.tileLayer.wms(geoServerUrl, wmsOptions);
 
 wmsOptions['layers'] = 'geofazendas:mapas_assentamento';
+wmsOptions['zIndex'] = 20;
 const assentamento = L.tileLayer.wms(geoServerUrl, wmsOptions);
 
 wmsOptions['layers'] = 'geofazendas:mapas_areaindigena';
+wmsOptions['zIndex'] = 20;
 const areaIndigena = L.tileLayer.wms(geoServerUrl, wmsOptions);
 
 wmsOptions['layers'] = 'geofazendas:mapas_areaprotegida';
+wmsOptions['zIndex'] = 20;
 const areaProtegida = L.tileLayer.wms(geoServerUrl, wmsOptions);
 
 wmsOptions['layers'] = 'geofazendas:mapas_isoieta';
+wmsOptions['zIndex'] = 20;
 const isoietas = L.tileLayer.wms(geoServerUrl, wmsOptions);
