@@ -25,18 +25,18 @@ var satteliteList = [
 var themeList = [
     {'id': 1, 'nome': 'Biomas', 'geolyr': bioma, active: true, origem: 'ibge'},
     {'id': 2, 'nome': 'Clima', 'geolyr': clima, active: false, origem: 'ibge'},
-    {'id': 3, 'nome': 'Geologia', 'geolyr': geologia, active: false, origem: 'ibge'},
-    {'id': 4, 'nome': 'Geomorfologia', 'geolyr': geomorfologia, active: false, origem: 'ibge'},
-    {'id': 5, 'nome': 'Solos', 'geolyr': solo, active: false, origem: 'ibge'},
-    {'id': 6, 'nome': 'Declividade', 'geolyr': declividade, active: false, origem: 'ibge'},
+    {'id': 3, 'nome': 'Declividade', 'geolyr': declividade, active: false, origem: 'ibge'},
+    {'id': 4, 'nome': 'Geologia', 'geolyr': geologia, active: false, origem: 'ibge'},
+    {'id': 5, 'nome': 'Geomorfologia', 'geolyr': geomorfologia, active: false, origem: 'ibge'},
+    {'id': 6, 'nome': 'Solos', 'geolyr': solo, active: false, origem: 'ibge'},
 
-    {'id': 12, 'nome': 'Teor de Argila do Solo a 30-60cm', 'geolyr': argilaSolo, active: false, origem: 'embrapa'},
-    {'id': 11, 'nome': 'Teor de Areia do Solo a 30-60cm', 'geolyr': areiaDisponivelSolo, active: false, origem: 'embrapa'},
-    {'id': 13, 'nome': 'Teor de Silte do Solo a 30-60cm', 'geolyr': silteSolo, active: false, origem: 'embrapa'},
-    {'id': 9, 'nome': 'Condutividade Elétrica do Solo', 'geolyr': CondutividadeEletrica, active: false, origem: 'embrapa'},
-    {'id': 10, 'nome': 'Saturação por Sódio do Solo a 30-100cm', 'geolyr': saturacaoSodio, active: false, origem: 'embrapa'},
-    {'id': 7, 'nome': 'Acidez (pH) do Solo a 30-60cm', 'geolyr': phSolo, active: false, origem: 'embrapa'},
-    {'id': 8, 'nome': 'Capacidade de Água Disponível (AWC)', 'geolyr': capAguaDisp, active: false, origem: 'ana'},
+    {'id': 7, 'nome': 'Teor de Argila do Solo a 30-60cm', 'geolyr': argilaSolo, active: false, origem: 'embrapa'},
+    {'id': 8, 'nome': 'Teor de Areia do Solo a 30-60cm', 'geolyr': areiaDisponivelSolo, active: false, origem: 'embrapa'},
+    {'id': 9, 'nome': 'Teor de Silte do Solo a 30-60cm', 'geolyr': silteSolo, active: false, origem: 'embrapa'},
+    {'id': 10, 'nome': 'Condutividade Elétrica do Solo', 'geolyr': CondutividadeEletrica, active: false, origem: 'embrapa'},
+    {'id': 11, 'nome': 'Saturação por Sódio do Solo a 30-100cm', 'geolyr': saturacaoSodio, active: false, origem: 'embrapa'},
+    {'id': 12, 'nome': 'Acidez (pH) do Solo a 30-60cm', 'geolyr': phSolo, active: false, origem: 'embrapa'},
+    {'id': 13, 'nome': 'Capacidade de Água Disponível (AWC)', 'geolyr': capAguaDisp, active: false, origem: 'ana'},
 ]
 
 var fixedLayers = [
