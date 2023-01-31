@@ -273,7 +273,9 @@ var themeList = [
         geolyr: clima,
         active: false,
         origem: 'ibge',
-        leg: getLegend('mapas_clima')
+        leg: getLegend('mapas_clima'),
+        referencia: 'IBGE - INSTITUTO BRASILEIRO DE GEOGRAFIA E ESTATÍSTICA. Mapa de Biomas do Brasil. Rio de Janeiro: IBGE, 2003. Escala 1:5.000.000.',
+        link: 'https://www.ibge.gov.br/geociencias/cartas-e-mapas/informacoes-ambientais/15817-clima.html?edicao=15887&t=acesso-ao-produto',
     },
     {
         id: 3,
@@ -281,7 +283,9 @@ var themeList = [
         geolyr: declividade,
         active: false,
         origem: 'ibge',
-        leg: getLegend('mapas_declividade')
+        leg: getLegend('mapas_declividade'),
+        referencia: 'IBGE - INSTITUTO BRASILEIRO DE GEOGRAFIA E ESTATÍSTICA. Mapa de Biomas do Brasil. Rio de Janeiro: IBGE, 2003. Escala 1:5.000.000.',
+        link: 'https://www.ibge.gov.br/geociencias/informacoes-ambientais/geomorfologia/10870-geomorfologia.html?=&t=acesso-ao-produto',
     },
     {
         id: 4,
@@ -289,7 +293,9 @@ var themeList = [
         geolyr: geologia,
         active: false,
         origem: 'ibge',
-        leg: getLegend('mapas_geologia')
+        leg: getLegend('mapas_geologia'),
+        referencia: 'IBGE - INSTITUTO BRASILEIRO DE GEOGRAFIA E ESTATÍSTICA. Mapa de Biomas do Brasil. Rio de Janeiro: IBGE, 2003. Escala 1:5.000.000.',
+        link: 'https://www.ibge.gov.br/geociencias/informacoes-ambientais/geologia/15822-geologia-1-250-000.html?=&t=acesso-ao-produto',
     },
     {
         id: 5,
@@ -297,7 +303,9 @@ var themeList = [
         geolyr: geomorfologia,
         active: false,
         origem: 'ibge',
-        leg: getLegend('mapas_geomorfologia')
+        leg: getLegend('mapas_geomorfologia'),
+        referencia: 'IBGE - INSTITUTO BRASILEIRO DE GEOGRAFIA E ESTATÍSTICA. Mapa de Biomas do Brasil. Rio de Janeiro: IBGE, 2003. Escala 1:5.000.000.',
+        link: 'https://www.ibge.gov.br/geociencias/informacoes-ambientais/geomorfologia/10870-geomorfologia.html?=&t=acesso-ao-produto',
     },
     {
         id: 6,
@@ -305,7 +313,9 @@ var themeList = [
         geolyr: solo,
         active: false,
         origem: 'ibge',
-        leg: getLegend('mapas_solo')
+        leg: getLegend('mapas_solo'),
+        referencia: 'IBGE - INSTITUTO BRASILEIRO DE GEOGRAFIA E ESTATÍSTICA. Mapa de Biomas do Brasil. Rio de Janeiro: IBGE, 2003. Escala 1:5.000.000.',
+        link: 'https://www.ibge.gov.br/geociencias/cartas-e-mapas/informacoes-ambientais/15829-solos.html?edicao=15933&t=acesso-ao-produto',
     },
     {
         id: 7,
@@ -313,7 +323,9 @@ var themeList = [
         geolyr: argilaSolo,
         active: false,
         origem: 'embrapa',
-        leg: getLegend('mapas_argila_solo')
+        leg: getLegend('mapas_argila_solo'),
+        referencia: 'EMBRAPA – Empresa Brasileira de Pesquisa Agropecuária. Mapa de teor de areia do solo a 30-60 cm do Brasil na resolução espacial de 90 m - Versão 2021. Rio de Janeiro: Embrapa solos, 2021. Resolução espacial: 90 metros',
+        link: 'http://geoinfo.cnps.embrapa.br/maps/3290',
     },
     {
         id: 8,
@@ -321,7 +333,9 @@ var themeList = [
         geolyr: areiaDisponivelSolo,
         active: false,
         origem: 'embrapa',
-        leg: getLegend('mapas_areia_disponivel_solo')
+        leg: getLegend('mapas_areia_disponivel_solo'),
+        referencia: 'EMBRAPA – Empresa Brasileira de Pesquisa Agropecuária. Mapa de teor de areia do solo a 30-60 cm do Brasil na resolução espacial de 90 m - Versão 2021. Rio de Janeiro: Embrapa solos, 2021. Resolução espacial: 90 metros',
+        link: 'http://geoinfo.cnps.embrapa.br/maps/3370'
     },
     {
         id: 9,
@@ -329,7 +343,9 @@ var themeList = [
         geolyr: silteSolo,
         active: false,
         origem: 'embrapa',
-        leg: getLegend('mapas_silte_solo')
+        leg: getLegend('mapas_silte_solo'),
+        referencia: 'EMBRAPA – Empresa Brasileira de Pesquisa Agropecuária. Mapa de teor de areia do solo a 30-60 cm do Brasil na resolução espacial de 90 m - Versão 2021. Rio de Janeiro: Embrapa solos, 2021. Resolução espacial: 90 metros',
+        link: 'http://geoinfo.cnps.embrapa.br/maps/3370'
     },
     {
         id: 10,
@@ -337,7 +353,9 @@ var themeList = [
         geolyr: CondutividadeEletrica,
         active: false,
         origem: 'embrapa',
-        leg: getLegend('mapas_condutividade_eletrica')
+        leg: getLegend('mapas_condutividade_eletrica'),
+        referencia: 'EMBRAPA – Empresa Brasileira de Pesquisa Agropecuária. Mapa de teor de areia do solo a 30-60 cm do Brasil na resolução espacial de 90 m - Versão 2021. Rio de Janeiro: Embrapa solos, 2021. Resolução espacial: 90 metros',
+        link: 'http://inde.geoinfo.cnpm.embrapa.br/geonetwork_inde/srv/por/catalog.search#/metadata/fd4532de-577f-11ec-aa7a-4234e8a627f0',
     },
     {
         id: 11,
@@ -345,7 +363,9 @@ var themeList = [
         geolyr: saturacaoSodio,
         active: false,
         origem: 'embrapa',
-        leg: getLegend('mapas_saturacao_sodio')
+        leg: getLegend('mapas_saturacao_sodio'),
+        referencia: 'EMBRAPA – Empresa Brasileira de Pesquisa Agropecuária. Mapa de teor de areia do solo a 30-60 cm do Brasil na resolução espacial de 90 m - Versão 2021. Rio de Janeiro: Embrapa solos, 2021. Resolução espacial: 90 metros',
+        link: 'http://geoinfo.cnps.embrapa.br/layers/geonode%3Abra_espmap30100',
     },
     {
         id: 12,
@@ -353,7 +373,9 @@ var themeList = [
         geolyr: phSolo,
         active: false,
         origem: 'embrapa',
-        leg: getLegend('mapas_ph_solo')
+        leg: getLegend('mapas_ph_solo'),
+        referencia: 'EMBRAPA – Empresa Brasileira de Pesquisa Agropecuária. Mapa de teor de areia do solo a 30-60 cm do Brasil na resolução espacial de 90 m - Versão 2021. Rio de Janeiro: Embrapa solos, 2021. Resolução espacial: 90 metros',
+        link: 'http://geoinfo.cnps.embrapa.br/layers/geonode%3Abr_ph_h2o_30_60cm_pred',
     },
     {
         id: 13,
@@ -361,7 +383,9 @@ var themeList = [
         geolyr: capAguaDisp,
         active: false,
         origem: 'ana',
-        leg: getLegend('mapas_capaguadisp')
+        referencia: 'ANA – Agência Nacional de Águas. Capacidade de água disponível - CAD ou AWC dos solos no Brasil. Brasília: Superintendência de Planejamento de Recursos Hídricos – SPR, 2021.  Escala: 1:250.000.',
+        leg: getLegend('mapas_capaguadisp'),
+        link: 'https://metadados.snirh.gov.br/geonetwork/srv/api/records/28fe4baa-66f3-4f6b-b0d2-890abf5910c4',
     },
 ]
 
