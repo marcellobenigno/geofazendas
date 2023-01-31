@@ -7,7 +7,6 @@ const googleStreets = L.tileLayer('https://{s}.google.com/vt/lyrs=m&x={x}&y={y}&
 const googleSat = L.tileLayer('https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', googleOpts);
 const googleTerrain = L.tileLayer('https://{s}.google.com/vt/lyrs=p&x={x}&y={y}&z={z}', googleOpts);
 
-
 var sentinelURL = 'https://tiles.maps.eox.at/wms?';
 
 var sentinelWmsOpts = {
@@ -121,7 +120,6 @@ const capAguaDisp = L.tileLayer.wms(geoServerUrl, anaWmsptions);
 
 // -----------------------------------------------------------
 
-
 var overlayWmsOptions = {
     format: 'image/png',
     transparent: true,
@@ -152,3 +150,218 @@ const areaProtegida = L.tileLayer.wms(geoServerUrl, overlayWmsOptions);
 
 overlayWmsOptions['layers'] = 'geofazendas:mapas_isoieta';
 const isoietas = L.tileLayer.wms(geoServerUrl, overlayWmsOptions);
+
+function getLegend(lyrName) {
+    let legend = `${geoServerUrl}REQUEST=GetLegendGraphic&`
+    legend += 'VERSION=1.1.0&'
+    legend += 'FORMAT=image/png&'
+    legend += 'WIDTH=18&'
+    legend += 'HEIGHT=18&'
+    legend += `LAYER=geofazendas:${lyrName}&`
+    legend += 'LEGEND_OPTIONS=fontName:Arial;fontAntiAliasing:true;dpi=200'
+    return legend
+}
+
+var overlayList = [
+    {
+        id: 1,
+        nome: 'Estados',
+        geolyr: estado,
+        active: true
+    },
+    {
+        id: 2,
+        nome: 'Municípios',
+        geolyr: municipio,
+        active: false
+    },
+    {
+        id: 3,
+        nome: 'Assentamentos',
+        geolyr: assentamento,
+        active: false
+    },
+    {
+        id: 4,
+        nome: 'Área Indígena',
+        geolyr: areaIndigena,
+        active: false
+    },
+    {
+        id: 5,
+        nome: 'Área Protegida',
+        geolyr: areaProtegida,
+        active: false
+    },
+    {
+        id: 6,
+        nome: 'Isoietas',
+        geolyr: isoietas,
+        active: false
+    },
+]
+
+var satteliteList = [
+    {
+        id: 1,
+        nome: 'Google Streets',
+        geolyr: googleStreets,
+        active: false
+    },
+    {
+        id: 2,
+        nome: 'Google Sattelite',
+        geolyr: googleSat,
+        active: false
+    },
+    {
+        id: 3,
+        nome: 'Google Terrain',
+        geolyr: googleTerrain,
+        active: false
+    },
+    {
+        id: 4,
+        nome: 'Sentinel 2017',
+        geolyr: s2cloudless_2017,
+        active: false
+    },
+    {
+        id: 5,
+        nome: 'Sentinel 2018',
+        geolyr: s2cloudless_2018,
+        active: false
+    },
+    {
+        id: 6,
+        nome: 'Sentinel 2019',
+        geolyr: s2cloudless_2019,
+        active: false
+    },
+    {
+        id: 7,
+        nome: 'Sentinel 2020',
+        geolyr: s2cloudless_2020,
+        active: false
+    },
+]
+
+var themeList = [
+    {
+        id: 1,
+        nome: 'Biomas',
+        geolyr: bioma,
+        active: true,
+        origem: 'ibge',
+        leg: getLegend('mapas_bioma')
+    },
+    {
+        id: 2,
+        nome: 'Clima',
+        geolyr: clima,
+        active: false,
+        origem: 'ibge',
+        leg: getLegend('mapas_clima')
+    },
+    {
+        id: 3,
+        nome: 'Declividade',
+        geolyr: declividade,
+        active: false,
+        origem: 'ibge',
+        leg: getLegend('mapas_declividade')
+    },
+    {
+        id: 4,
+        nome: 'Geologia',
+        geolyr: geologia,
+        active: false,
+        origem: 'ibge',
+        leg: getLegend('mapas_geologia')
+    },
+    {
+        id: 5,
+        nome: 'Geomorfologia',
+        geolyr: geomorfologia,
+        active: false,
+        origem: 'ibge',
+        leg: getLegend('mapas_geomorfologia')
+    },
+    {
+        id: 6,
+        nome: 'Solos',
+        geolyr: solo,
+        active: false,
+        origem: 'ibge',
+        leg: getLegend('mapas_solo')
+    },
+    {
+        id: 7,
+        nome: 'Teor de Argila do Solo a 30-60cm',
+        geolyr: argilaSolo,
+        active: false,
+        origem: 'embrapa',
+        leg: getLegend('mapas_argila_solo')
+    },
+    {
+        id: 8,
+        nome: 'Teor de Areia do Solo a 30-60cm',
+        geolyr: areiaDisponivelSolo,
+        active: false,
+        origem: 'embrapa',
+        leg: getLegend('mapas_areia_disponivel_solo')
+    },
+    {
+        id: 9,
+        nome: 'Teor de Silte do Solo a 30-60cm',
+        geolyr: silteSolo,
+        active: false,
+        origem: 'embrapa',
+        leg: getLegend('mapas_silte_solo')
+    },
+    {
+        id: 10,
+        nome: 'Condutividade Elétrica do Solo',
+        geolyr: CondutividadeEletrica,
+        active: false,
+        origem: 'embrapa',
+        leg: getLegend('mapas_condutividade_eletrica')
+    },
+    {
+        id: 11,
+        nome: 'Saturação por Sódio do Solo a 30-100cm',
+        geolyr: saturacaoSodio,
+        active: false,
+        origem: 'embrapa',
+        leg: getLegend('mapas_saturacao_sodio')
+    },
+    {
+        id: 12,
+        nome: 'Acidez (pH) do Solo a 30-60cm',
+        geolyr: phSolo,
+        active: false,
+        origem: 'embrapa',
+        leg: getLegend('mapas_ph_solo')
+    },
+    {
+        id: 13,
+        nome: 'Capacidade de Água Disponível (AWC)',
+        geolyr: capAguaDisp,
+        active: false,
+        origem: 'ana',
+        leg: getLegend('mapas_capaguadisp')
+    },
+]
+
+var fixedLayers = [
+    {
+        id: 1,
+        nome: 'América do Sul',
+        geolyr: americaSul
+    },
+    {
+        id: 2,
+        nome: 'Oceano',
+        geolyr: oceano
+    },
+]

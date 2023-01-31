@@ -1,4 +1,4 @@
-{% load core_tags mapas_tags widget_tweaks %}
+{% load core_tags widget_tweaks %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -75,7 +75,8 @@
                     <div class="offcanvas-body">
                         <template v-for="layer in themeList" :key="layer.id">
                             <template v-if="layer.active">
-                                <span><strong>${ layer.nome }</strong></span>
+                                <span><strong>${ layer.nome }</strong></span><br>
+                                <img :src="layer.leg" alt="">
                             </template>
                         </template>
                     </div>
