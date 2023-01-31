@@ -68,14 +68,29 @@
                      aria-labelledby="offcanvasRightLabel">
                     <div class="offcanvas-header">
                         <span class="offcanvas-title" id="offcanvasRightLabel">
-                            <strong>LEGENDA:</strong>
+                            <i class="fa fa-info-circle"></i>
+                            <strong>
+                                INFORMAÇÕES ADICIONAIS:
+                            </strong>
                         </span>
                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
                     <div class="offcanvas-body">
                         <template v-for="layer in themeList" :key="layer.id">
                             <template v-if="layer.active">
-                                <span><strong>${ layer.nome }</strong></span><br>
+                                <span class="legenda">
+                                    <strong>Nome da camada:</strong> ${ layer.nome }
+                                </span>
+                                <span class="legenda">
+                                    <strong>Referência:</strong> ${ layer.referencia}
+                                </span>
+                                <span class="legenda">
+                                    <strong>Link:</strong> ${ layer.link}
+                                </span>
+                                <hr>
+                                <span class="legenda">
+                                    <strong>Legenda:</strong>
+                                </span>
                                 <img :src="layer.leg" alt="">
                             </template>
                         </template>

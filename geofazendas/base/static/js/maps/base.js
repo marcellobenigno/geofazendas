@@ -262,7 +262,10 @@ var themeList = [
         geolyr: bioma,
         active: true,
         origem: 'ibge',
-        leg: getLegend('mapas_bioma')
+        leg: getLegend('mapas_bioma'),
+        referencia: 'IBGE - INSTITUTO BRASILEIRO DE GEOGRAFIA E ESTATÍSTICA. Mapa de Biomas do Brasil. Rio de Janeiro: IBGE, 2003. Escala 1:5.000.000.',
+        link: 'https://www.ibge.gov.br/geociencias/cartas-e-mapas/informacoes-ambientais/15842-biomas.html?=&t=acesso-ao-produto',
+
     },
     {
         id: 2,
