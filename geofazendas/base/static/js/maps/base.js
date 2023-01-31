@@ -151,6 +151,9 @@ const areaProtegida = L.tileLayer.wms(geoServerUrl, overlayWmsOptions);
 overlayWmsOptions['layers'] = 'geofazendas:mapas_isoieta';
 const isoietas = L.tileLayer.wms(geoServerUrl, overlayWmsOptions);
 
+overlayWmsOptions['layers'] = 'geofazendas:mapas_imoveis_venda';
+const imoveisVenda = L.tileLayer.wms(geoServerUrl, overlayWmsOptions);
+
 function getLegend(lyrName) {
     let legend = `${geoServerUrl}REQUEST=GetLegendGraphic&`
     legend += 'VERSION=1.1.0&'
@@ -197,6 +200,12 @@ var overlayList = [
         id: 6,
         nome: 'Isoietas',
         geolyr: isoietas,
+        active: false
+    },
+    {
+        id: 7,
+        nome: 'Imóveis a Venda',
+        geolyr: imoveisVenda,
         active: false
     },
 ]
