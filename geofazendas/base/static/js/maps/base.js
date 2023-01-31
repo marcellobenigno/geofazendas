@@ -40,6 +40,7 @@ var ibgeWMSOptions = {
     transparent: true,
     version: '1.1.0',
     maxZoom: 20,
+    opacity: 1,
     attribution: '&copy; <a href="https://www.ibge.gov.br/">IBGE</a>',
 };
 
@@ -82,6 +83,7 @@ var embrapaWmsptions = {
     version: '1.1.0',
     maxZoom: 20,
     zIndex: 1,
+    opacity: 1,
     attribution: '&copy; <a href="http://geoinfo.cnps.embrapa.br/">EMBRAPA - GeoInfo</a>',
 };
 

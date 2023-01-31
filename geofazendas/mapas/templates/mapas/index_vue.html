@@ -64,6 +64,24 @@
                 <input type="hidden" id="geoserver_url" value="{{ geoserver_url }}">
                 <input type="hidden" id="popup_url" value="{% url 'mapas:get_dados' -1.0 -1.0 "a" %}">
 
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight"
+                     aria-labelledby="offcanvasRightLabel">
+                    <div class="offcanvas-header">
+                        <span class="offcanvas-title" id="offcanvasRightLabel">
+                            <strong>LEGENDA:</strong>
+                        </span>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <template v-for="layer in themeList" :key="layer.id">
+                            <template v-if="layer.active">
+                                <span><strong>${ layer.nome }</strong></span>
+                            </template>
+                        </template>
+                    </div>
+                </div>
+
+
                 <div class="accordion" id="accordionPanelsStayOpenExample">
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="panelsStayOpen-heading0">
@@ -130,6 +148,14 @@
                                             </span>
                                                     ${ layer.nome }
                                                 </div>
+                                                <span v-if="layer.active" class="badge">
+                                                <button class="btn btn-secondary btn-sm" type="button"
+                                                        data-bs-toggle="offcanvas"
+                                                        data-bs-target="#offcanvasRight"
+                                                        aria-controls="offcanvasRight">
+                                                        <i class="fa fa-list"></i>
+                                                </button>
+                                            </span>
                                             </li>
                                         </template>
                                     </template>
@@ -169,6 +195,14 @@
                         </span>
                                                     ${ layer.nome }
                                                 </div>
+                                                <span v-if="layer.active" class="badge">
+                                                <button class="btn btn-secondary btn-sm" type="button"
+                                                        data-bs-toggle="offcanvas"
+                                                        data-bs-target="#offcanvasRight"
+                                                        aria-controls="offcanvasRight">
+                                                        <i class="fa fa-list"></i>
+                                                </button>
+                                            </span>
                                             </li>
                                         </template>
                                     </template>
@@ -207,6 +241,14 @@
                         </span>
                                                     ${ layer.nome }
                                                 </div>
+                                                <span v-if="layer.active" class="badge">
+                                                <button class="btn btn-secondary btn-sm" type="button"
+                                                        data-bs-toggle="offcanvas"
+                                                        data-bs-target="#offcanvasRight"
+                                                        aria-controls="offcanvasRight">
+                                                        <i class="fa fa-list"></i>
+                                                </button>
+                                            </span>
                                             </li>
                                         </template>
                                     </template>
