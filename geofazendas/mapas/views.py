@@ -128,7 +128,6 @@ class MunicipioAjax(generic.TemplateView):
 
 
 index = IndexView.as_view(template_name='mapas/index.html')
-mapa_vue = IndexView.as_view(template_name='mapas/index_vue.html')
 incidencia = IndexView.as_view(template_name='mapas/incidencia.html')
 get_dados = GetDadosView.as_view()
 mobile_view = MobileView.as_view()

@@ -14,7 +14,7 @@
                     {% for layer in layers %}
                         {% if layer.lyr != 'imoveis' %}
                             <li>
-                                <a href="{% url 'mapas:index' %}?&tema={{ layer.lyr }}">{{ layer.titulo }}</a>
+                                <a href="{% url 'mapas:index' %}">{{ layer.titulo }}</a>
                             </li>
                         {% endif %}
                         <br>

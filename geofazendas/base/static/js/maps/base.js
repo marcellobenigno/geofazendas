@@ -78,6 +78,11 @@ ibgeWMSOptions['layers'] = 'geofazendas:mapas_solo';
 ibgeWMSOptions['zIndex'] = 2
 const solo = L.tileLayer.wms(geoServerUrl, ibgeWMSOptions);
 
+
+ibgeWMSOptions['layers'] = 'geofazendas:mapas_irradiacao';
+ibgeWMSOptions['zIndex'] = 2
+const incidencia = L.tileLayer.wms(geoServerUrl, ibgeWMSOptions);
+
 // --------------------------------------------------------------------
 var embrapaWmsptions = {
     format: 'image/png',
