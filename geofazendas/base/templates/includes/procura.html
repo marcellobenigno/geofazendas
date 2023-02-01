@@ -1,6 +1,6 @@
 <!-- Search Start -->
 <div id="busca" class="container-xxl py-5">
-    <div>
+    <div class="container">
         <div class="row g-3">
             <div class="col-lg-2 col-sm-4 wow fadeInUp" data-wow-delay="0.1s">
                 <a class="cat-item d-block bg-light text-center rounded p-3" href="#">
@@ -23,8 +23,7 @@
                 </a>
             </div>
             <div class="col-lg-2 col-sm-4 wow fadeInUp" data-wow-delay="0.3s">
-                <a class="cat-item d-block bg-light text-center rounded p-3"
-                   href="{% url 'mapas:incidencia' %}">
+                <a class="cat-item d-block bg-light text-center rounded p-3" href="#">
                     <div class="rounded p-2">
                         <div class="icon mb-1">
                             <img class="img-fluid" src="{{ STATIC_URL }}vendor/img/aberta/incidencia.png" alt="Icon">
@@ -34,7 +33,7 @@
                 </a>
             </div>
             <div class="col-lg-2 col-sm-4 wow fadeInUp" data-wow-delay="0.4s">
-                <a class="cat-item d-block bg-light text-center rounded p-3" href="{% url 'mapas:index' %}">
+                <a class="cat-item d-block bg-light text-center rounded p-3" href="#">
                     <div class="rounded p-2">
                         <div class="icon mb-1">
                             <img class="img-fluid" src="{{ STATIC_URL }}vendor/img/aberta/mapas.png" alt="Icon">
@@ -70,14 +69,14 @@
 <!--------------------------------------------------------------------------->
 
 <div id="busca" class="container-xxl py-5">
-    <div>
+    <div class="container">
         <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
             <h1 class="mb-3">O que você procura?</h1>
         </div>
         <div id="accordion" class="row g-3">
             <div class="col-lg-2 col-sm-4 wow fadeInUp" data-wow-delay="0.1s">
                 <a class="cat-item d-block bg-light text-center rounded p-3" data-bs-toggle="collapse"
-                   href="#collapsePropriedades" aria-expanded="false" aria-controls="collapsePropriedades">
+                    href="#collapsePropriedades" aria-expanded="false" aria-controls="collapsePropriedades">
                     <div class="rounded p-2">
                         <div class="icon mb-3">
                             <img class="img-fluid" src="{{ STATIC_URL }}vendor/img/aberta/propriedades1.png" alt="Icon">
@@ -88,7 +87,7 @@
             </div>
             <div class="col-lg-2 col-sm-4 wow fadeInUp" data-wow-delay="0.2s">
                 <a class="cat-item d-block bg-light text-center rounded p-3" data-bs-toggle="collapse"
-                   href="#collapseReserva" aria-expanded="false" aria-controls="collapseReserva">
+                    href="#collapseReserva" aria-expanded="false" aria-controls="collapseReserva">
                     <div class="rounded p-2">
                         <div class="icon mb-3">
                             <img class="img-fluid" src="{{ STATIC_URL }}vendor/img/aberta/reservaLegal.png" alt="Icon">
@@ -99,7 +98,7 @@
             </div>
             <div class="col-lg-2 col-sm-4 wow fadeInUp" data-wow-delay="0.3s">
                 <a class="cat-item d-block bg-light text-center rounded p-3" data-bs-toggle="collapse"
-                   href="#collapseSolar" aria-expanded="false" aria-controls="collapseSolar">
+                    href="#collapseSolar" aria-expanded="false" aria-controls="collapseSolar">
                     <div class="rounded p-2">
                         <div class="icon mb-3">
                             <img class="img-fluid" src="{{ STATIC_URL }}vendor/img/aberta/energia-solar.png" alt="Icon">
@@ -110,7 +109,7 @@
             </div>
             <div class="col-lg-2 col-sm-4 wow fadeInUp" data-wow-delay="0.4s">
                 <a class="cat-item d-block bg-light text-center rounded p-3" data-bs-toggle="collapse"
-                   href="#collapseEquipamentos" aria-expanded="false" aria-controls="collapseEquipamentos">
+                    href="#collapseEquipamentos" aria-expanded="false" aria-controls="collapseEquipamentos">
                     <div class="rounded p-2">
                         <div class="icon mb-3">
                             <img class="img-fluid" src="{{ STATIC_URL }}vendor/img/aberta/equipamentos.png" alt="Icon">
@@ -121,7 +120,7 @@
             </div>
             <div class="col-lg-2 col-sm-4 wow fadeInUp" data-wow-delay="0.5s">
                 <a class="cat-item d-block bg-light text-center rounded p-3" data-bs-toggle="collapse"
-                   href="#collapseServicos" aria-expanded="false" aria-controls="collapseServicos">
+                    href="#collapseServicos" aria-expanded="false" aria-controls="collapseServicos">
                     <div class="rounded p-2">
                         <div class="icon mb-3">
                             <img class="img-fluid" src="{{ STATIC_URL }}vendor/img/aberta/servicos.png" alt="Icon">
@@ -132,7 +131,7 @@
             </div>
             <div class="col-lg-2 col-sm-4 wow fadeInUp" data-wow-delay="0.6s">
                 <a class="cat-item d-block bg-light text-center rounded p-3" data-bs-toggle="collapse"
-                   href="#collapseDiversos" aria-expanded="false" aria-controls="collapseDiversos">
+                    href="#collapseDiversos" aria-expanded="false" aria-controls="collapseDiversos">
                     <div class="rounded p-2">
                         <div class="icon mb-3">
                             <img class="img-fluid" src="{{ STATIC_URL }}vendor/img/aberta/diversos.png" alt="Icon">
@@ -223,11 +222,8 @@
                                     </div>
                                     <div class="col-md-3"></div>
                                     <div class="col-md-3">
-                                        <a href="propriedades.html#map-prop">
-                                            <button id="btn-pesquisar"
-                                                    class="btn border-0 w-100 py-3">Pesquisar
-                                            </button>
-                                        </a>
+                                        <a href="propriedades.html#map-prop"><button id="btn-pesquisar"
+                                                class="btn border-0 w-100 py-3">Pesquisar</button></a>
                                     </div>
                                 </div>
                             </div>
@@ -317,11 +313,8 @@
                                     </div>
                                     <div class="col-md-3"></div>
                                     <div class="col-md-3">
-                                        <a href="reserva-legal.html#map-prop">
-                                            <button id="btn-pesquisar"
-                                                    class="btn border-0 w-100 py-3">Pesquisar
-                                            </button>
-                                        </a>
+                                        <a href="reserva-legal.html#map-prop"><button id="btn-pesquisar"
+                                                class="btn border-0 w-100 py-3">Pesquisar</button></a>
                                     </div>
                                 </div>
                             </div>
@@ -400,11 +393,8 @@
                                     <div class="col-md-3"></div>
                                     <div class="col-md-3"></div>
                                     <div class="col-md-3">
-                                        <a href="produtos.html#map-prop">
-                                            <button id="btn-pesquisar"
-                                                    class="btn border-0 w-100 py-3">Pesquisar
-                                            </button>
-                                        </a>
+                                        <a href="produtos.html#map-prop"><button id="btn-pesquisar"
+                                                class="btn border-0 w-100 py-3">Pesquisar</button></a>
                                     </div>
                                 </div>
                             </div>
@@ -436,16 +426,16 @@
                                     <div class="col-md-3">
                                         <div class="dropdown">
                                             <button class="form-select py-3 dropdown-toggle" type="button"
-                                                    id="dropdownMenuButton" data-bs-toggle="dropdown"
-                                                    aria-haspopup="true" aria-expanded="false">Selecionar Opção
+                                                id="dropdownMenuButton" data-bs-toggle="dropdown"
+                                                aria-haspopup="true" aria-expanded="false">Selecionar Opção
                                             </button>
                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                                 <div class="dropdown dropend">
                                                     <a class="dropdown-item dropdown-toggle" href="#"
-                                                       id="dropdown-layouts" data-bs-toggle="dropdown"
-                                                       aria-haspopup="true" aria-expanded="false">Aeronaves</a>
+                                                        id="dropdown-layouts" data-bs-toggle="dropdown"
+                                                        aria-haspopup="true" aria-expanded="false">Aeronaves</a>
                                                     <div class="dropdown-menu"
-                                                         aria-labelledby="dropdown-layouts">
+                                                        aria-labelledby="dropdown-layouts">
                                                         <a class="dropdown-item" href="#">Aviões</a>
                                                         <a class="dropdown-item" href="#">Helicóptero</a>
                                                         <a class="dropdown-item" href="#">Jatos</a>
@@ -454,10 +444,10 @@
                                                 </div>
                                                 <div class="dropdown dropend">
                                                     <a class="dropdown-item dropdown-toggle" href="#"
-                                                       id="dropdown-layouts" data-bs-toggle="dropdown"
-                                                       aria-haspopup="true" aria-expanded="false">Caminhões</a>
+                                                        id="dropdown-layouts" data-bs-toggle="dropdown"
+                                                        aria-haspopup="true" aria-expanded="false">Caminhões</a>
                                                     <div class="dropdown-menu"
-                                                         aria-labelledby="dropdown-layouts">
+                                                        aria-labelledby="dropdown-layouts">
                                                         <a class="dropdown-item" href="#">Agrale</a>
                                                         <a class="dropdown-item" href="#">Chevrolet</a>
                                                         <a class="dropdown-item" href="#">Dodge</a>
@@ -480,11 +470,11 @@
                                                 </div>
                                                 <div class="dropdown dropend">
                                                     <a class="dropdown-item dropdown-toggle" href="#"
-                                                       id="dropdown-layouts" data-bs-toggle="dropdown"
-                                                       aria-haspopup="true"
-                                                       aria-expanded="false">Colheitadeiras</a>
+                                                        id="dropdown-layouts" data-bs-toggle="dropdown"
+                                                        aria-haspopup="true"
+                                                        aria-expanded="false">Colheitadeiras</a>
                                                     <div class="dropdown-menu"
-                                                         aria-labelledby="dropdown-layouts">
+                                                        aria-labelledby="dropdown-layouts">
                                                         <a class="dropdown-item" href="#">Avery</a>
                                                         <a class="dropdown-item" href="#">Case</a>
                                                         <a class="dropdown-item" href="#">Ideal</a>
@@ -503,11 +493,11 @@
                                                 </div>
                                                 <div class="dropdown dropend">
                                                     <a class="dropdown-item dropdown-toggle" href="#"
-                                                       id="dropdown-layouts" data-bs-toggle="dropdown"
-                                                       aria-haspopup="true"
-                                                       aria-expanded="false">Instalações</a>
+                                                        id="dropdown-layouts" data-bs-toggle="dropdown"
+                                                        aria-haspopup="true"
+                                                        aria-expanded="false">Instalações</a>
                                                     <div class="dropdown-menu"
-                                                         aria-labelledby="dropdown-layouts">
+                                                        aria-labelledby="dropdown-layouts">
                                                         <a class="dropdown-item" href="#">Água</a>
                                                         <a class="dropdown-item" href="#">Armazenagem</a>
                                                         <a class="dropdown-item" href="#">Baias</a>
@@ -539,11 +529,11 @@
                                                 </div>
                                                 <div class="dropdown dropend">
                                                     <a class="dropdown-item dropdown-toggle" href="#"
-                                                       id="dropdown-layouts" data-bs-toggle="dropdown"
-                                                       aria-haspopup="true" aria-expanded="false">Máquinas
+                                                        id="dropdown-layouts" data-bs-toggle="dropdown"
+                                                        aria-haspopup="true" aria-expanded="false">Máquinas
                                                         Pesadas</a>
                                                     <div class="dropdown-menu"
-                                                         aria-labelledby="dropdown-layouts">
+                                                        aria-labelledby="dropdown-layouts">
                                                         <a class="dropdown-item" href="#">Carregadeira de
                                                             Cana</a>
                                                         <a class="dropdown-item" href="#">Escavadeira</a>
@@ -562,20 +552,20 @@
                                                 </div>
                                                 <div class="dropdown dropend">
                                                     <a class="dropdown-item dropdown-toggle" href="#"
-                                                       id="dropdown-layouts" data-bs-toggle="dropdown"
-                                                       aria-haspopup="true" aria-expanded="false">Pneus</a>
+                                                        id="dropdown-layouts" data-bs-toggle="dropdown"
+                                                        aria-haspopup="true" aria-expanded="false">Pneus</a>
                                                     <div class="dropdown-menu"
-                                                         aria-labelledby="dropdown-layouts">
+                                                        aria-labelledby="dropdown-layouts">
                                                         <a class="dropdown-item" href="#">Novos</a>
                                                         <a class="dropdown-item" href="#">Usados</a>
                                                     </div>
                                                 </div>
                                                 <div class="dropdown dropend">
                                                     <a class="dropdown-item dropdown-toggle" href="#"
-                                                       id="dropdown-layouts" data-bs-toggle="dropdown"
-                                                       aria-haspopup="true" aria-expanded="false">Tratores</a>
+                                                        id="dropdown-layouts" data-bs-toggle="dropdown"
+                                                        aria-haspopup="true" aria-expanded="false">Tratores</a>
                                                     <div class="dropdown-menu"
-                                                         aria-labelledby="dropdown-layouts">
+                                                        aria-labelledby="dropdown-layouts">
                                                         <a class="dropdown-item" href="#">Agrale</a>
                                                         <a class="dropdown-item" href="#">Agritech/Yanmar</a>
                                                         <a class="dropdown-item" href="#">Antigo</a>
@@ -607,11 +597,11 @@
                                                 </div>
                                                 <div class="dropdown dropend">
                                                     <a class="dropdown-item dropdown-toggle" href="#"
-                                                       id="dropdown-layouts" data-bs-toggle="dropdown"
-                                                       aria-haspopup="true" aria-expanded="false">Utensílios
+                                                        id="dropdown-layouts" data-bs-toggle="dropdown"
+                                                        aria-haspopup="true" aria-expanded="false">Utensílios
                                                         Agropecuários</a>
                                                     <div class="dropdown-menu"
-                                                         aria-labelledby="dropdown-layouts">
+                                                        aria-labelledby="dropdown-layouts">
                                                         <a class="dropdown-item" href="#">Ferramentas</a>
                                                         <a class="dropdown-item" href="#">Profissional</a>
                                                         <a class="dropdown-item" href="#">Selaria</a>
@@ -622,11 +612,8 @@
                                         </div>
                                     </div>
                                     <div class="col-md-3">
-                                        <a href="equipamentos.html">
-                                            <button id="btn-pesquisar"
-                                                    class="btn border-0 w-100 py-3">Pesquisar
-                                            </button>
-                                        </a>
+                                        <a href="equipamentos.html"><button id="btn-pesquisar"
+                                                class="btn border-0 w-100 py-3">Pesquisar</button></a>
                                     </div>
                                 </div>
                             </div>
@@ -658,12 +645,12 @@
                                             <option value="">Selecionar Tipo</option>
                                             <option value="">Comércio/Corretoras/Representantes</option>
                                             <option value="">Compro/Procuro</option>
-                                            <option value="">Consultoria Rural/Assessoria</option>
-                                            <option value="">Crédito Rural</option>
+                                            <option value="">Consultoria Rural/Assessoria </option>
+                                            <option value="">Crédito Rural </option>
                                             <option value="">Currículos</option>
                                             <option value="">Cursos/Palestras/Congressos/ Convenções</option>
                                             <option value="">Estágio</option>
-                                            <option value="">Exportação/Importação</option>
+                                            <option value="">Exportação/Importação </option>
                                             <option value="">Feiras/Exposições/Leilões</option>
                                             <option value="">Fotos e Filmagens</option>
                                             <option value="">Fretes</option>
@@ -682,11 +669,8 @@
                                         </select>
                                     </div>
                                     <div class="col-md-3">
-                                        <a href="servicos.html">
-                                            <button id="btn-pesquisar"
-                                                    class="btn border-0 w-100 py-3">Pesquisar
-                                            </button>
-                                        </a>
+                                        <a href="servicos.html"><button id="btn-pesquisar"
+                                                class="btn border-0 w-100 py-3">Pesquisar</button></a>
                                     </div>
                                 </div>
                             </div>
@@ -716,16 +700,16 @@
                                     <div class="col-md-4">
                                         <div class="dropdown">
                                             <button class="form-select py-3 dropdown-toggle" type="button"
-                                                    id="dropdownMenuButton" data-bs-toggle="dropdown"
-                                                    aria-haspopup="true" aria-expanded="false">Selecionar Opção
+                                                id="dropdownMenuButton" data-bs-toggle="dropdown"
+                                                aria-haspopup="true" aria-expanded="false">Selecionar Opção
                                             </button>
                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                                 <div class="dropdown dropend">
                                                     <a class="dropdown-item dropdown-toggle" href="#"
-                                                       id="dropdown-layouts" data-bs-toggle="dropdown"
-                                                       aria-haspopup="true" aria-expanded="false">Alimentos</a>
+                                                        id="dropdown-layouts" data-bs-toggle="dropdown"
+                                                        aria-haspopup="true" aria-expanded="false">Alimentos</a>
                                                     <div class="dropdown-menu"
-                                                         aria-labelledby="dropdown-layouts">
+                                                        aria-labelledby="dropdown-layouts">
                                                         <a class="dropdown-item" href="#">Açúcar</a>
                                                         <a class="dropdown-item" href="#">Arroz</a>
                                                         <a class="dropdown-item" href="#">Azeite</a>
@@ -735,7 +719,7 @@
                                                         <a class="dropdown-item" href="#">Chips/Snacks</a>
                                                         <a class="dropdown-item" href="#">Cogumelo</a>
                                                         <a class="dropdown-item"
-                                                           href="#">Embutidos/Defumados</a>
+                                                            href="#">Embutidos/Defumados</a>
                                                         <a class="dropdown-item" href="#">Feijão</a>
                                                         <a class="dropdown-item" href="#">Frutas</a>
                                                         <a class="dropdown-item" href="#">Frutas Secas</a>
@@ -751,7 +735,7 @@
                                                         <a class="dropdown-item" href="#">Ovos</a>
                                                         <a class="dropdown-item" href="#">Palmitos</a>
                                                         <a class="dropdown-item"
-                                                           href="#">Subprodutos/Resíduos</a>
+                                                            href="#">Subprodutos/Resíduos</a>
                                                         <a class="dropdown-item" href="#">Temperos e
                                                             Especiarias</a>
                                                         <a class="dropdown-item" href="#">Trigo</a>
@@ -760,10 +744,10 @@
                                                 </div>
                                                 <div class="dropdown dropend">
                                                     <a class="dropdown-item dropdown-toggle" href="#"
-                                                       id="dropdown-layouts" data-bs-toggle="dropdown"
-                                                       aria-haspopup="true" aria-expanded="false">Animais</a>
+                                                        id="dropdown-layouts" data-bs-toggle="dropdown"
+                                                        aria-haspopup="true" aria-expanded="false">Animais</a>
                                                     <div class="dropdown-menu"
-                                                         aria-labelledby="dropdown-layouts">
+                                                        aria-labelledby="dropdown-layouts">
                                                         <a class="dropdown-item" href="#">Abelhas</a>
                                                         <a class="dropdown-item" href="#">Asininos</a>
                                                         <a class="dropdown-item" href="#">Aves</a>
@@ -787,11 +771,11 @@
                                                 </div>
                                                 <div class="dropdown dropend">
                                                     <a class="dropdown-item dropdown-toggle" href="#"
-                                                       id="dropdown-layouts" data-bs-toggle="dropdown"
-                                                       aria-haspopup="true" aria-expanded="false">Defensivos
+                                                        id="dropdown-layouts" data-bs-toggle="dropdown"
+                                                        aria-haspopup="true" aria-expanded="false">Defensivos
                                                         Agrícolas</a>
                                                     <div class="dropdown-menu"
-                                                         aria-labelledby="dropdown-layouts">
+                                                        aria-labelledby="dropdown-layouts">
                                                         <a class="dropdown-item" href="#">Acaricidas</a>
                                                         <a class="dropdown-item" href="#">Combate às Pragas</a>
                                                         <a class="dropdown-item" href="#">Defensivos
@@ -809,11 +793,11 @@
                                                 </div>
                                                 <div class="dropdown dropend">
                                                     <a class="dropdown-item dropdown-toggle" href="#"
-                                                       id="dropdown-layouts" data-bs-toggle="dropdown"
-                                                       aria-haspopup="true"
-                                                       aria-expanded="false">Embalagens</a>
+                                                        id="dropdown-layouts" data-bs-toggle="dropdown"
+                                                        aria-haspopup="true"
+                                                        aria-expanded="false">Embalagens</a>
                                                     <div class="dropdown-menu"
-                                                         aria-labelledby="dropdown-layouts">
+                                                        aria-labelledby="dropdown-layouts">
                                                         <a class="dropdown-item" href="#">Acessórios para
                                                             Embalagem</a>
                                                         <a class="dropdown-item" href="#">Bombonas</a>
@@ -828,23 +812,23 @@
                                                 </div>
                                                 <div class="dropdown dropend">
                                                     <a class="dropdown-item dropdown-toggle" href="#"
-                                                       id="dropdown-layouts" data-bs-toggle="dropdown"
-                                                       aria-haspopup="true" aria-expanded="false">Exportação e
+                                                        id="dropdown-layouts" data-bs-toggle="dropdown"
+                                                        aria-haspopup="true" aria-expanded="false">Exportação e
                                                         Importação</a>
                                                     <div class="dropdown-menu"
-                                                         aria-labelledby="dropdown-layouts">
+                                                        aria-labelledby="dropdown-layouts">
                                                         <a class="dropdown-item"
-                                                           href="#">Máquinas/Equipamentos</a>
+                                                            href="#">Máquinas/Equipamentos</a>
                                                         <a class="dropdown-item" href="#">Outros</a>
                                                     </div>
                                                 </div>
                                                 <div class="dropdown dropend">
                                                     <a class="dropdown-item dropdown-toggle" href="#"
-                                                       id="dropdown-layouts" data-bs-toggle="dropdown"
-                                                       aria-haspopup="true" aria-expanded="false">Fertilizantes
+                                                        id="dropdown-layouts" data-bs-toggle="dropdown"
+                                                        aria-haspopup="true" aria-expanded="false">Fertilizantes
                                                         Agrícolas</a>
                                                     <div class="dropdown-menu"
-                                                         aria-labelledby="dropdown-layouts">
+                                                        aria-labelledby="dropdown-layouts">
                                                         <a class="dropdown-item" href="#">Fertilizante
                                                             Organomineral</a>
                                                         <a class="dropdown-item" href="#">Fertilizantes
@@ -856,11 +840,11 @@
                                                 </div>
                                                 <div class="dropdown dropend">
                                                     <a class="dropdown-item dropdown-toggle" href="#"
-                                                       id="dropdown-layouts" data-bs-toggle="dropdown"
-                                                       aria-haspopup="true" aria-expanded="false">Nutrição
+                                                        id="dropdown-layouts" data-bs-toggle="dropdown"
+                                                        aria-haspopup="true" aria-expanded="false">Nutrição
                                                         Animal</a>
                                                     <div class="dropdown-menu"
-                                                         aria-labelledby="dropdown-layouts">
+                                                        aria-labelledby="dropdown-layouts">
                                                         <a class="dropdown-item" href="#">Aditivos</a>
                                                         <a class="dropdown-item" href="#">Alfafa</a>
                                                         <a class="dropdown-item" href="#">Alfarroba</a>
@@ -889,7 +873,7 @@
                                                         <a class="dropdown-item" href="#">Soja</a>
                                                         <a class="dropdown-item" href="#">Sorgo</a>
                                                         <a class="dropdown-item"
-                                                           href="#">Subprodutos/Resíduos</a>
+                                                            href="#">Subprodutos/Resíduos</a>
                                                         <a class="dropdown-item" href="#">Sucedâneo (Leite em
                                                             pó)</a>
                                                         <a class="dropdown-item" href="#">Trigo</a>
@@ -899,10 +883,10 @@
                                                 </div>
                                                 <div class="dropdown dropend">
                                                     <a class="dropdown-item dropdown-toggle" href="#"
-                                                       id="dropdown-layouts" data-bs-toggle="dropdown"
-                                                       aria-haspopup="true" aria-expanded="false">Sementes</a>
+                                                        id="dropdown-layouts" data-bs-toggle="dropdown"
+                                                        aria-haspopup="true" aria-expanded="false">Sementes</a>
                                                     <div class="dropdown-menu"
-                                                         aria-labelledby="dropdown-layouts">
+                                                        aria-labelledby="dropdown-layouts">
                                                         <a class="dropdown-item" href="#">Culturas</a>
                                                         <a class="dropdown-item" href="#">Forrageiras</a>
                                                         <a class="dropdown-item" href="#">Gramas</a>
@@ -911,20 +895,20 @@
                                                 </div>
                                                 <div class="dropdown dropend">
                                                     <a class="dropdown-item dropdown-toggle" href="#"
-                                                       id="dropdown-layouts" data-bs-toggle="dropdown"
-                                                       aria-haspopup="true" aria-expanded="false">Outros</a>
+                                                        id="dropdown-layouts" data-bs-toggle="dropdown"
+                                                        aria-haspopup="true" aria-expanded="false">Outros</a>
                                                     <div class="dropdown-menu"
-                                                         aria-labelledby="dropdown-layouts">
+                                                        aria-labelledby="dropdown-layouts">
                                                         <a class="dropdown-item" href="#">Aquarismo</a>
                                                         <a class="dropdown-item" href="#">Bebidas</a>
                                                         <a class="dropdown-item" href="#">Beleza</a>
                                                         <a class="dropdown-item" href="#">Caça e Pesca</a>
                                                         <a class="dropdown-item"
-                                                           href="#">Churrasco/Combustão</a>
+                                                            href="#">Churrasco/Combustão</a>
                                                         <a class="dropdown-item" href="#">Combustível</a>
                                                         <a class="dropdown-item" href="#">Conhecimento</a>
                                                         <a class="dropdown-item"
-                                                           href="#">Ferragem/Reciclados</a>
+                                                            href="#">Ferragem/Reciclados</a>
                                                         <a class="dropdown-item" href="#">Financeiro</a>
                                                         <a class="dropdown-item" href="#">Higiene e Limpeza</a>
                                                         <a class="dropdown-item" href="#">Jardinagem</a>
@@ -946,11 +930,7 @@
                                 </div>
                             </div>
                             <div class="col-md-2">
-                                <a href="diversos.html">
-                                    <button id="btn-pesquisar"
-                                            class="btn border-0 w-100 py-3">Pesquisar
-                                    </button>
-                                </a>
+                                <a href="diversos.html"><button id="btn-pesquisar" class="btn border-0 w-100 py-3">Pesquisar</button></a>
                             </div>
                         </div>
                     </div>
@@ -960,3 +940,4 @@
         </div>
     </div>
 </div>
+<!-- Search End -->
