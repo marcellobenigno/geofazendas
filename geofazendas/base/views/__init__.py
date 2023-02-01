@@ -29,10 +29,25 @@ class CreditoView(generic.TemplateView):
         return Tag.objects.all()
 
 
-class SuporteJuridico(CreditoView):
+class SuporteJuridicoView(CreditoView):
     template_name = 'suporte_juridico.html'
+
+
+class PrivacidadeView(generic.TemplateView):
+    template_name = 'privacidade.html'
+
+
+class PoliticaPrivacidadeView(generic.TemplateView):
+    template_name = 'includes/politica_privacidade.html'
+
+
+class PoliticaCookiesView(generic.TemplateView):
+    template_name = 'includes/politica_cookies.html'
 
 
 index = IndexView.as_view()
 credito = CreditoView.as_view()
-suporte_juridico = SuporteJuridico.as_view()
+suporte_juridico = SuporteJuridicoView.as_view()
+privacidade = PrivacidadeView.as_view()
+politica_privacidade = PoliticaPrivacidadeView.as_view()
+politica_cookies = PoliticaCookiesView.as_view()

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>GeoFazendas | Privacidade e Cookies</title>
+
+    <link href="{{ STATIC_URL }}vendor/img/favicon.ico" rel="icon">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@700;800&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="{{ STATIC_URL }}vendor/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ STATIC_URL }}vendor/css/tabs.css" rel="stylesheet">
+    <link href="{{ STATIC_URL }}vendor/css/style.css" rel="stylesheet">
+    <link href="{{ STATIC_URL }}vendor/css/footer.css" rel="stylesheet">
+    <link href="{{ STATIC_URL }}vendor/css/fontawesome.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- <div class="container-xxl bg-white p-0"> -->
+        <div class="tab">
+            <button class="tablinks" onclick="openTerms(event, 'privacy_policy')" id="defaultOpen"><strong>POLÍTICA DE
+                PRIVACIDADE</strong></button>
+            <button id="other" class="tablinks" onclick="openTerms(event, 'policy_cookies')"><strong>POLÍTICA DE
+                COOKIES</strong></button>
+        </div>
+
+        <div id="privacy_policy" class="tabcontent">
+            {% include "includes/politica_privacidade.html" %}
+        </div>
+        <div id="policy_cookies" class="tabcontent">
+            {% include "includes/politica_cookies.html" %}
+        </div>
+
+        <!-- Footer Start -->
+        <div id="footer" class="container-fluid bg-dark text-white-50 footer wow fadeIn" data-wow-delay="0.1s">
+            <div class="container">
+                <div class="copyright">
+                    <div class="row">
+                        <div class="col-md-9 text-center text-md-end">
+                            <div class="footer-menu">
+                                <a href="{% url 'base:privacidade' %}">Política de Privacidade</a>
+                                <a href="">Contate o Suporte</a>
+                                <a href="">Perguntas Frequentes</a>
+                            </div>
+                        </div>
+                        <div class="col-md-12 text-center">
+                            &copy; Copyright
+                            <script>document.write(new Date().getFullYear());</script>
+                            &ensp;Todos os direitos reservados.</br>GeoFazendas é um produto da <a
+                                href="https://www.multisig.com.br/" target="_blank"><b> Multisig</b></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer End -->
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    <!-- </div> -->
+
+    <script src="{{ STATIC_URL }}vendor/js/tabs.js"></script>
+</body>
+
+</html>

@@ -45,7 +45,7 @@
                     <div class="row">
                         <div class="col-md-9 text-center text-md-end">
                             <div class="footer-menu">
-                                <a href="{{ STATIC_URL }}aberta/privacy.html">Política de Privacidade</a>
+                                <a href="{% url 'base:privacidade' %}">Política de Privacidade</a>
                                 <a href="">Contate o Suporte</a>
                                 <a href="">Perguntas Frequentes</a>
                             </div>
@@ -87,7 +87,7 @@
                     "message": "Utilizamos cookies essenciais e tecnologias semelhantes de acordo com nossos Termos e Condições de Uso e Política de Privacidade. Ao continuar navegando e utilizando nossos serviços, você concorda com estes termos.",
                     "link": "Saiba mais",
                     "dismiss": "EU ACEITO!",
-                    "href": "https://www.geofazendas.com.br/aberta/privacy/"
+                    "href": "{% url 'base:privacidade' %}"
                 }
         })});
     </script>

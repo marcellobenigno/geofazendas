@@ -1,9 +1,11 @@
 {% extends "base.html" %}
 
 {% block container %}
+    {% include 'includes/nav.html' %}
+
     {% include 'includes/header.html' %}
 
-    {% include "anuncios/includes/mapas.html" %}
+    {% include "includes/mapa.html" %}
 
     {% include "anuncios/includes/cadastros.html" %}
 {% endblock container %}
