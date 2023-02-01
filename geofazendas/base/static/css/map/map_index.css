@@ -40,6 +40,10 @@ a.mapa-link {
     color: black;
 }
 
+.legenda {
+    display: block;
+    margin-bottom: 5px;
+}
 
 .popup-title {
     font-weight: bold;
