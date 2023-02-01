@@ -64,6 +64,8 @@ class MobileView(generic.DetailView):
 class EstadoViewSet(viewsets.ModelViewSet):
     serializer_class = EstadoSerializer
     queryset = models.Estado.objects.all()
+    filterset_fields = ['id']
+    pagination_class = None
 
     def get_permissions(self):
         if self.request.method in SAFE_METHODS:
@@ -76,6 +78,12 @@ class MunicipioViewSet(viewsets.ModelViewSet):
     filterset_fields = ['estado']
     queryset = models.Municipio.objects.filter(visivel=True)
     serializer_class = MunicipioSerializer
+
+    def paginate_queryset(self, queryset, view=None):
+        if 'no_page' in self.request.query_params:
+            return None
+        else:
+            return self.paginator.paginate_queryset(queryset, self.request, view=self)
 
     @action(methods=['GET'], detail=False)
     def por_ponto(self, request, pk=None):

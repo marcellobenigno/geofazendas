@@ -12,8 +12,13 @@ const app = createApp({
             fixedLayers: window.fixedLayers,
             overlayList: window.overlayList,
             satteliteList: window.satteliteList,
-            maxZoom: 8,
+            maxZoom: 20,
             bounds: window.bounds,
+            estados: [],
+            municipios: [],
+            estadoSelecionado: '',
+            municipioSelecionado: [],
+            municipioLayer: null
         }
     },
     methods: {
@@ -82,13 +87,56 @@ const app = createApp({
                 }
             })
         },
+        getEstados() {
+            axios.get(estadosURL)
+                .then((response) => {
+                    this.estados = response.data;
+                })
+                .catch(resonse => {
+                    console.log('error')
+                })
+        },
+        getMunicipios(event) {
+            axios.get(municipiosURL, {params: {estado: this.estadoSelecionado, no_page: 'no_page'}})
+                .then((response) => {
+                    this.municipios = response.data;
+                })
+                .catch(resonse => {
+                    console.log('error')
+                })
+        },
+        getMunicipioSelecionado(event) {
+            if (this.municipioLayer !== null){
+                this.map.removeLayer(this.municipioLayer)
+            }
+            let municipio = this.municipios.find(x => x.id === this.municipioSelecionado);
+            this.municipioLayer = L.tileLayer.wms(
+                window.geoServerUrl, {
+                    format: 'image/png',
+                    transparent: true,
+                    version: '1.1.0',
+                    maxZoom: 20,
+                    opacity: 1,
+                    zIndex: 5,
+                    layers: 'geofazendas:mapas_municipio_selecionado',
+                    cql_filter: `municipio_id=${municipio.id}`,
+                })
+            this.map.fitBounds(municipio.extent)
+            this.map.addLayer(this.overlayList[1].geolyr)
+            this.overlayList[1].active = true
+            this.map.addLayer(this.municipioLayer)
+        }
     },
     mounted() {
         this.initMap()
-    }
-    ,
+        this.getEstados()
+        //console.log(this.$refs.id_geoserver_url.value)
+    },
+    computed: {}
 })
 
 // Delimiters changed to ES6 template string style
 app.config.compilerOptions.delimiters = ['${', '}']
 app.mount('#app')
+
+// https://codesandbox.io/s/chain-select-with-vuejs-2zv2o?from-embed=&file=/src/App.vue:771-789

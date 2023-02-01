@@ -28,10 +28,7 @@
     <link rel="stylesheet"
           href="{{ STATIC_URL }}js/select2/select2-bootstrap4.min.css">
 </head>
-
 <body>
-
-
 <!-- Header Starts Here -->
 <header id="header" class="fixed-top  header-transparent">
     <div class="container d-flex align-items-center justify-content-between">
@@ -54,6 +51,7 @@
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav>
     </div>
+
 </header>
 <!-- Header Ends Here -->
 <div id="app">
@@ -61,8 +59,12 @@
         <div class="row">
             <div class="col-md-2">
                 {% get_settings 'GEOSERVER_URL' as geoserver_url %}
-                <input type="hidden" id="geoserver_url" value="{{ geoserver_url }}">
+                <input type="hidden" id="geoserver_url" value="{{ geoserver_url }}" ref="id_geoserver_url">
                 <input type="hidden" id="popup_url" value="{% url 'mapas:get_dados' -1.0 -1.0 "a" %}">
+                <input type="hidden" id="estados-api"
+                       value="{% url 'estado-list' %}">
+                <input type="hidden" id="municipios-api"
+                       value="{% url 'municipio-list' %}">
 
                 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight"
                      aria-labelledby="offcanvasRightLabel">
@@ -99,6 +101,50 @@
 
 
                 <div class="accordion" id="accordionPanelsStayOpenExample">
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="panelsStayOpen-headingSearch">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#panelsStayOpen-collapseSearch" aria-expanded="false"
+                                    aria-controls="panelsStayOpen-collapseSearch">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                <span class="fw-bold">
+                                        &nbsp; Pesquisar por Município
+                                </span>
+                            </button>
+                        </h2>
+                        <div id="panelsStayOpen-collapseSearch" class="accordion-collapse collapse"
+                             aria-labelledby="panelsStayOpen-headingSearch">
+                            <div class="accordion-body">
+                                <select
+                                        id="id_estado"
+                                        class="form-select"
+                                        aria-label="estados"
+                                        @change="getMunicipios($event)"
+                                        v-model="estadoSelecionado"
+                                >
+                                    <option value="" selected="">---------</option>
+                                    <option v-for="estado in estados" :value="estado.id" :key="estado.id">
+                                        ${ estado.nome }
+                                    </option>
+                                </select>
+
+                                <select
+                                        id="id_municipio"
+                                        class="form-select"
+                                        aria-label="municipios"
+                                        v-model="municipioSelecionado"
+                                        @change="getMunicipioSelecionado($event)"
+                                >
+                                    <option value="" selected="">---------</option>
+                                    <option v-for="municipio in municipios" :value="municipio.id" :key="municipio.id">
+                                        ${ municipio.nome }
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="panelsStayOpen-heading0">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -329,6 +375,7 @@
 <script src="{{ STATIC_URL }}leaflet/plugins/zoom_to_home/leaflet.zoomhome.js"></script>
 <script src="{{ STATIC_URL }}leaflet/plugins/spin/spin.min.js"></script>
 <script src="{{ STATIC_URL }}leaflet/plugins/spin/leaflet.spin.min.js"></script>
+<script src="{{ STATIC_URL }}vendor/axios/axios.min.js"></script>
 <script src="{{ STATIC_URL }}vendor/vuejs/vue.global.prod.js"></script>
 <script src="{{ STATIC_URL }}js/maps/base.js"></script>
 <script src="{{ STATIC_URL }}js/maps/mapa.js"></script>

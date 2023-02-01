@@ -54,6 +54,11 @@ class Municipio(models.Model):
     def sede(self):
         return Point(self.sede_lng, self.sede_lat, srid=4326)
 
+    @property
+    def extent(self):
+        minlng, minlat, maxlng, maxlat = self.municipiogeometria.geom.extent
+        return [[minlat, minlng], [maxlat, maxlng]]
+
     class Meta:
         verbose_name = 'Município'
         verbose_name_plural = 'Municípios'

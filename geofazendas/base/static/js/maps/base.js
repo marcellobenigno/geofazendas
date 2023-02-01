@@ -34,6 +34,9 @@ var s2cloudless_2020 = L.tileLayer.wms(sentinelURL, sentinelWmsOpts);
 var geoServerUrl = $('#geoserver_url').val();
 geoServerUrl = geoServerUrl + 'geofazendas/wms?'
 
+var estadosURL = $('#estados-api').val();
+var municipiosURL = $('#municipios-api').val();
+
 var ibgeWMSOptions = {
     format: 'image/png',
     transparent: true,

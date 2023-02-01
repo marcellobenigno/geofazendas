@@ -45,8 +45,7 @@ class MunicipioSerializer(serializers.ModelSerializer):
             'estado',
             'sigla_uf',
             'cod_ibge_m',
-            'sede_lng',
-            'sede_lat',
             'slug',
             'visivel',
+            'extent',
         ]
