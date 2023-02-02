@@ -1,3 +1,28 @@
+if (!String.prototype.slugify) {
+    String.prototype.slugify = function () {
+
+        return this.toString().toLowerCase()
+            .replace(/[àÀáÁâÂãäÄÅåª]+/g, 'a')       // Special Characters #1
+            .replace(/[èÈéÉêÊëË]+/g, 'e')        // Special Characters #2
+            .replace(/[ìÌíÍîÎïÏ]+/g, 'i')        // Special Characters #3
+            .replace(/[òÒóÓôÔõÕöÖº]+/g, 'o')        // Special Characters #4
+            .replace(/[ùÙúÚûÛüÜ]+/g, 'u')        // Special Characters #5
+            .replace(/[ýÝÿŸ]+/g, 'y')            // Special Characters #6
+            .replace(/[ñÑ]+/g, 'n')                // Special Characters #7
+            .replace(/[çÇ]+/g, 'c')                // Special Characters #8
+            .replace(/[ß]+/g, 'ss')                // Special Characters #9
+            .replace(/[Ææ]+/g, 'ae')                // Special Characters #10
+            .replace(/[Øøœ]+/g, 'oe')            // Special Characters #11
+            .replace(/[%]+/g, 'pct')                // Special Characters #12
+            .replace(/\s+/g, '-')                // Replace spaces with -
+            .replace(/[^\w\-]+/g, '')            // Remove all non-word chars
+            .replace(/\-\-+/g, '-')                // Replace multiple - with single -
+            .replace(/^-+/, '')                    // Trim - from start of text
+            .replace(/-+$/, '');            		// Trim - from end of text
+
+    };
+}
+
 const googleOpts = {
     maxZoom: 20,
     attribution: '&copy; <a href="https://www.google.com/">Google Maps</a>',
@@ -267,6 +292,7 @@ var themeList = [
     {
         id: 1,
         nome: 'Biomas',
+        slug: 'biomas',
         geolyr: bioma,
         active: true,
         origem: 'ibge',
@@ -278,6 +304,7 @@ var themeList = [
     {
         id: 2,
         nome: 'Clima',
+        slug: 'clima',
         geolyr: clima,
         active: false,
         origem: 'ibge',
@@ -288,6 +315,7 @@ var themeList = [
     {
         id: 3,
         nome: 'Declividade',
+        slug: 'declividade',
         geolyr: declividade,
         active: false,
         origem: 'ibge',
@@ -298,6 +326,7 @@ var themeList = [
     {
         id: 4,
         nome: 'Geologia',
+        slug: 'geologia',
         geolyr: geologia,
         active: false,
         origem: 'ibge',
@@ -308,6 +337,7 @@ var themeList = [
     {
         id: 5,
         nome: 'Geomorfologia',
+        slug: 'geomorfologia',
         geolyr: geomorfologia,
         active: false,
         origem: 'ibge',
@@ -318,6 +348,7 @@ var themeList = [
     {
         id: 6,
         nome: 'Solos',
+        slug: 'solos',
         geolyr: solo,
         active: false,
         origem: 'ibge',
@@ -388,6 +419,7 @@ var themeList = [
     {
         id: 13,
         nome: 'Capacidade de Água Disponível (AWC)',
+        slug: 'capacidade-de-agua-disponivel',
         geolyr: capAguaDisp,
         active: false,
         origem: 'ana',

@@ -30,10 +30,10 @@ class GetDadosView(generic.TemplateView):
         context = super().get_context_data(**kwargs)
         point = GEOSGeometry(f"POINT({kwargs['x']} {kwargs['y']})")
         context['municipio'] = models.MunicipioGeometria.objects.filter(geom__contains=point).first()
-        if kwargs['tema'] == 'solo':
+        if kwargs['tema'] == 'solos':
             context['solo'] = models.Solo.objects.filter(geom__contains=point).first()
-        if kwargs['tema'] == 'bioma':
-            context['bioma'] = models.Bioma.objects.filter(geom__contains=point).first()
+        if kwargs['tema'] == 'biomas':
+            context['biomas'] = models.Bioma.objects.filter(geom__contains=point).first()
         if kwargs['tema'] == 'clima':
             context['clima'] = models.Clima.objects.filter(geom__contains=point).first()
         if kwargs['tema'] == 'declividade':

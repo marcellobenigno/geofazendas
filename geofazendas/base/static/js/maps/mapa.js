@@ -18,7 +18,9 @@ const app = createApp({
             municipios: [],
             estadoSelecionado: '',
             municipioSelecionado: [],
-            municipioLayer: null
+            municipioLayer: null,
+            popUp: L.popup(),
+            popUpResult: ''
         }
     },
     methods: {
@@ -106,7 +108,7 @@ const app = createApp({
                 })
         },
         getMunicipioSelecionado(event) {
-            if (this.municipioLayer !== null){
+            if (this.municipioLayer !== null) {
                 this.map.removeLayer(this.municipioLayer)
             }
             let municipio = this.municipios.find(x => x.id === this.municipioSelecionado);
@@ -125,12 +127,38 @@ const app = createApp({
             this.map.addLayer(this.overlayList[1].geolyr)
             this.overlayList[1].active = true
             this.map.addLayer(this.municipioLayer)
+        },
+        onMapClick(e) {
+            let popUpUrl = this.$refs.popup_url.value.slice(0, -12)
+            let temaAtivo = this.themeList.find(x => x.active === true)
+            popUpUrl += `${e.latlng.lng}/${e.latlng.lat}/${temaAtivo.slug}/`;
+
+            axios.get(popUpUrl)
+                .then((response) => {
+                    let resp = response.data
+                    if (resp.slugify()) {
+                        this.popUp
+                            .setLatLng(e.latlng)
+                            .setContent(response.data)
+                            .openOn(this.map)
+                    }
+                })
+                .catch(resonse => {
+                    console.log('error')
+                })
         }
+        // onMapClick(e) {
+        //     this.popUp
+        //         .setLatLng(e.latlng)
+        //         .setContent("You clicked the map at " + e.latlng.toString())
+        //         .openOn(this.map);
+        // }
     },
+
     mounted() {
         this.initMap()
         this.getEstados()
-        //console.log(this.$refs.id_geoserver_url.value)
+        this.map.on('click', this.onMapClick)
     },
     computed: {}
 })
