@@ -14,6 +14,9 @@ a:link {
     padding-top: 90px;
 }
 
+.leaflet-container {
+    cursor: crosshair !important;
+}
 
 #map {
     min-height: calc(100vh - 100px);
@@ -47,6 +50,7 @@ a.mapa-link {
 
 .popup-title {
     font-weight: bold;
+    margin-left: -10px;
 }
 
 

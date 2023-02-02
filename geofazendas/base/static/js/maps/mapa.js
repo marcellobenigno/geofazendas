@@ -132,10 +132,11 @@ const app = createApp({
             let popUpUrl = this.$refs.popup_url.value.slice(0, -12)
             let temaAtivo = this.themeList.find(x => x.active === true)
             popUpUrl += `${e.latlng.lng}/${e.latlng.lat}/${temaAtivo.slug}/`;
-
+            this.map.spin(true, {lines: 20, length: 55});
             axios.get(popUpUrl)
                 .then((response) => {
                     let resp = response.data
+                    this.map.spin(false);
                     if (resp.slugify()) {
                         this.popUp
                             .setLatLng(e.latlng)

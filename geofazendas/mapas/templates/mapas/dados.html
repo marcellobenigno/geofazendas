@@ -60,3 +60,48 @@
         <li><span>Descrição:</span> {{ relevo.descricao }}</li>
     </ul>
 {% endif %}
+
+{% if assentamentos %}
+
+    <span class="popup-title">ASSENTAMENTO:</span>
+    <ul>
+        <li><span>Cód. SIPRA:</span> {{ assentamentos.cd_sipra }}</li>
+        <li><span>Nome:</span> {{ assentamentos.nome_proje }}</li>
+        <li><span>Área (ha):</span> {{ assentamentos.area_hecta|floatformat:2 }}</li>
+    </ul>
+{% endif %}
+
+{% if area_indigena %}
+
+    <span class="popup-title">ÁREA INDÍGENA:</span>
+    <ul>
+        <li><span>Nome:</span> {{ area_indigena.nome|default:'' }}</li>
+        <li><span>Etnia:</span> {{ area_indigena.grupoetnic|default:'' }}</li>
+        <li><span>Área Legal (ha):</span> {{ area_indigena.arealegal|default:'' }}</li>
+    </ul>
+{% endif %}
+
+{% if area_protegida %}
+
+    <span class="popup-title">ÁREA PROTEGIDA:</span>
+    <ul>
+        <li><span>Nome:</span> {{ area_protegida.nome|default:'' }}</li>
+        <li><span>Sigla:</span> {{ area_protegida.sigla|default:'' }}</li>
+        <li><span>Área (ha):</span> {{ area_protegida.area_ha }}</li>
+    </ul>
+
+{% endif %}
+
+{% if imovel_venda %}
+
+    <span class="popup-title">IMÓVEL A VENDA:</span>
+    <ul>
+        <li><span>Cód. do Imóvel:</span> {{ imovel_venda.cod_imovel }}</li>
+        <li><span>Núm. Área:</span> {{ imovel_venda.num_area|floatformat:0 }}</li>
+        <li><span>Núm do Módulo:</span> {{ imovel_venda.num_modulo }}</li>
+        <li><span>Tipo do Imóvel:</span> {{ imovel_venda.tipo_imove }}</li>
+        <li><span>Situação:</span> {{ imovel_venda.situacao }}</li>
+        <li><span>Condição:</span> {{ imovel_venda.condicao_i }}</li>
+    </ul>
+
+{% endif %}
