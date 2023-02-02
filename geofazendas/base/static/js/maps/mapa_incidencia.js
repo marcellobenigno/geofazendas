@@ -7,6 +7,7 @@ const {createApp} = Vue
 var incidenciaList = [{
     id: 1,
     nome: 'Incidência Solar',
+    slug: 'incidencia-solar',
     geolyr: incidencia,
     active: true,
     origem: 'ibge',
@@ -30,7 +31,8 @@ const app = createApp({
             municipios: [],
             estadoSelecionado: '',
             municipioSelecionado: [],
-            municipioLayer: null
+            municipioLayer: null,
+            popUp: L.popup(),
         }
     },
     methods: {
@@ -137,12 +139,32 @@ const app = createApp({
             this.map.addLayer(this.overlayList[1].geolyr)
             this.overlayList[1].active = true
             this.map.addLayer(this.municipioLayer)
+        },
+        onMapClick(e) {
+            let popUpUrl = this.$refs.popup_url.value.slice(0, -12)
+            let temaAtivo = this.themeList.find(x => x.active === true)
+            popUpUrl += `${e.latlng.lng}/${e.latlng.lat}/${temaAtivo.slug}/`;
+            this.map.spin(true, {lines: 20, length: 55});
+            axios.get(popUpUrl)
+                .then((response) => {
+                    let resp = response.data
+                    this.map.spin(false);
+                    if (resp.slugify()) {
+                        this.popUp
+                            .setLatLng(e.latlng)
+                            .setContent(response.data)
+                            .openOn(this.map)
+                    }
+                })
+                .catch(resonse => {
+                    console.log('error')
+                })
         }
     },
     mounted() {
         this.initMap()
         this.getEstados()
-        //console.log(this.$refs.id_geoserver_url.value)
+        this.map.on('click', this.onMapClick)
     },
     computed: {}
 })

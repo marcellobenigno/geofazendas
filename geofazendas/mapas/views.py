@@ -48,6 +48,8 @@ class GetDadosView(generic.TemplateView):
             context['geomorfologia'] = models.Geomorfologia.objects.filter(geom__contains=point).first()
         if kwargs['tema'] == 'relevo':
             context['relevo'] = models.Relevo.objects.filter(geom__contains=point).first()
+        if kwargs['tema'] == 'incidencia-solar':
+            context['incidencia'] = models.Irradiacao.objects.filter(geom__contains=point).first()
         return context
 
 

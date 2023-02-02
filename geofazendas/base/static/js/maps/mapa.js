@@ -20,7 +20,6 @@ const app = createApp({
             municipioSelecionado: [],
             municipioLayer: null,
             popUp: L.popup(),
-            popUpResult: ''
         }
     },
     methods: {
@@ -148,12 +147,6 @@ const app = createApp({
                     console.log('error')
                 })
         }
-        // onMapClick(e) {
-        //     this.popUp
-        //         .setLatLng(e.latlng)
-        //         .setContent("You clicked the map at " + e.latlng.toString())
-        //         .openOn(this.map);
-        // }
     },
 
     mounted() {

@@ -47,6 +47,13 @@
     </ul>
 {% endif %}
 
+{% if incidencia %}
+    <span class="popup-title">INCIDÊNCIA SOLAR:</span>
+    <ul>
+        <li><span>Valor (Wh/m²):</span> {{ incidencia.annual }}</li>
+    </ul>
+{% endif %}
+
 {% if geomorfologia %}
     <span class="popup-title">GEOMORFOLOGIA:</span>
     <ul>
