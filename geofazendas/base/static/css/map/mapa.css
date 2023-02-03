@@ -18,6 +18,10 @@ a:link {
     cursor: crosshair !important;
 }
 
+.fw-bold {
+    font-size: 13px;
+}
+
 #map {
     min-height: calc(100vh - 100px);
     width: 100%;
@@ -37,6 +41,8 @@ a:link {
 .ms-2 {
     margin-left: 0 !important;
     margin-top: 0.5rem;
+    font-size: 13px;
+
 }
 
 a.mapa-link {

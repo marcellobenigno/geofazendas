@@ -150,6 +150,19 @@ var anaWmsptions = {
 
 anaWmsptions['layers'] = 'geofazendas:mapas_capaguadisp';
 const capAguaDisp = L.tileLayer.wms(geoServerUrl, anaWmsptions);
+// ------------------------------------------------------------------------
+var mapBiomasWmsptions = {
+    format: 'image/png',
+    transparent: true,
+    version: '1.1.0',
+    maxZoom: 20,
+    zIndex: 1,
+    attribution: '&copy; <a href="https://mapbiomas.org/">MapBiomas</a>',
+};
+
+
+mapBiomasWmsptions['layers'] = 'geofazendas:mapbiomas_2021';
+const mapBiomas2021 = L.tileLayer.wms(geoServerUrl, mapBiomasWmsptions);
 
 // -----------------------------------------------------------
 
@@ -426,6 +439,17 @@ var themeList = [
         referencia: 'ANA – Agência Nacional de Águas. Capacidade de água disponível - CAD ou AWC dos solos no Brasil. Brasília: Superintendência de Planejamento de Recursos Hídricos – SPR, 2021.  Escala: 1:250.000.',
         leg: getLegend('mapas_capaguadisp'),
         link: 'https://metadados.snirh.gov.br/geonetwork/srv/api/records/28fe4baa-66f3-4f6b-b0d2-890abf5910c4',
+    },
+    {
+        id: 14,
+        nome: 'Cobertura e Uso da Terra (MapBiomas 2021)',
+        slug: 'mapbiomas',
+        geolyr: mapBiomas2021,
+        active: false,
+        origem: 'mapbiomas',
+        referencia: 'Projeto MapBiomas – Coleção 2021 da Série Anual de Mapas de Cobertura e Uso da Terra do Brasil',
+        leg: getLegend('mapbiomas_2021'),
+        link: 'http://brasil.mapbiomas.org',
     },
 ]
 
