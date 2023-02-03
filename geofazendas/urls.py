@@ -29,6 +29,7 @@ urlpatterns = [
     path('api/login/', obtain_auth_token),
     path('api/', include(router.urls)),
     path('mapas/', include('geofazendas.mapas.urls', namespace='mapas')),
+    path('martor/', include('martor.urls')),
     path('', include('geofazendas.base.urls', namespace='base')),
     path('', include('geofazendas.artigos.urls', namespace='artigos')),
 ]

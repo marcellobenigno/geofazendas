@@ -1,18 +1,167 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="pt-BR">
 
-{% block extra_css %}
-<link href="{{ STATIC_URL }}vendor/css/templatemo-stand-blog.css" rel="stylesheet">
-{% endblock %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>GeoFazendas | Sindicatos</title>
 
-{% block container %}
-{% include "includes/nav.html" %}
-<!-- Header Start -->
-<div class="container-fluid header bg-white p-0">
-    <div class="row g-0 align-items-center flex-column-reverse flex-md-row">
-        <img id="header" class="img-fluid" src="{{ STATIC_URL }}vendor/img/sindicatos/carousel-4.png" alt="">
+    <link href="{{ STATIC_URL }}vendor/img/favicon.ico" rel="icon">
+	<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@700;800&display=swap"
+		rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+	<link href="{{ STATIC_URL }}vendor/css/bootstrap.min.css" rel="stylesheet">
+	<link href="{{ STATIC_URL }}vendor/css/navbar-header.css" rel="stylesheet">
+	<link href="{{ STATIC_URL }}vendor/css/style.css" rel="stylesheet">
+	<link href="{{ STATIC_URL }}vendor/css/util.min.css" rel="stylesheet">
+	<link href="{{ STATIC_URL }}vendor/css/main.css" rel="stylesheet">
+	<link href="{{ STATIC_URL }}vendor/css/footer.css" rel="stylesheet">
+	<link href="{{ STATIC_URL }}vendor/css/fontawesome.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" rel="st0ylesheet">
+    {% block extra_css %}
+    {% endblock %}
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WGVC1KF5VX"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-WGVC1KF5VX');
+    </script>
+    <!-- Leaflet -->
+    <link rel="stylesheet" href="{{ STATIC_URL }}leaflet/leaflet.css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}leaflet/plugins/zoom_to_home/leaflet.zoomhome.css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/map/map_index.css">
+</head>
+
+<body>
+    <div class="container-xxl bg-white p-0">
+        <!-- Navbar Start -->
+        <div class="container-fluid nav-bar bg-transparent">
+            <nav class="navbar navbar-expand-lg bg-white navbar-light py-0 px-4">
+                <a href="index.html" class="navbar-brand d-flex align-items-center text-center">
+                    <div class="icon">
+                        <img class="img-fluid" src="{{ STATIC_URL }}vendor/img/logo.png" alt="Logo" style="width: 120px;">
+                    </div>
+                </a>
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav ms-auto">
+                        <a href="index.html" class="nav-item nav-link">Início</a>
+                        <a href="index.html#busca" class="nav-item nav-link">Anúncios</a>
+                        <a href="#" class="nav-item nav-link">Mapas</a>
+                        <a href="{{ STATIC_URL }}abas/artigos.html" class="nav-item nav-link">Artigos</a>
+                        <a href="{{ STATIC_URL }}abas/noticias.html" class="nav-item nav-link">Notícias</a>
+                        <a href="{{ STATIC_URL }}abas/cursos.html" class="nav-item nav-link">Cursos</a>
+                        <a href="direcionamento-app.html" class="nav-item nav-link">Aplicativo</a>
+                    </div>
+                    <a href="" class="btn btn-primary px-3 d-none d-lg-flex">ACESSAR</a>
+                </div>
+            </nav>
+        </div>
+        <!-- Navbar End -->
+
+        <!-- Header Start -->
+        <div class="container-fluid header bg-white p-0">
+            <div class="row g-0 align-items-center flex-column-reverse flex-md-row">
+                <img id="header" class="img-fluid" src="{{ STATIC_URL }}vendor/img/sindicatos/carousel-4.png" alt="">
+            </div>
+        </div>
+        <!-- Header End -->
+        {% block container %}
+        {% endblock %}
+
+        <!-- Call to Action Start -->
+        <div class="container-xxl py-5">
+            <!-- Carousel -->
+            <div id="demo" class="carousel slide" data-bs-ride="carousel">
+                <!-- Indicators/dots -->
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+                    <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+                    <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+                    <button type="button" data-bs-target="#demo" data-bs-slide-to="3"></button>
+                </div>
+                <!-- The slideshow/carousel -->
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="{{ STATIC_URL }}vendor/img/anuncios/Anuncio-Credito.png" alt="" class="d-block" style="width:100%">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{{ STATIC_URL }}vendor/img/anuncios/Anuncio-Mapeamento.png" alt="" class="d-block"
+                            style="width:100%">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{{ STATIC_URL }}vendor/img/anuncios/Anuncio-Juridico.png" alt="" class="d-block"
+                            style="width:100%">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{{ STATIC_URL }}vendor/img/anuncios/Anuncio-Monitoramento.png" alt="" class="d-block"
+                            style="width:100%">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Call to Action End -->
+
+        <!-- Footer Start -->
+        <div id="footer" class="container-fluid bg-dark text-white-50 footer wow fadeIn" data-wow-delay="0.1s">
+            <div class="container">
+                <div class="copyright">
+                    <div class="row">
+                        <div class="col-md-9 text-center text-md-end">
+                            <div class="footer-menu">
+                                <a href="{{ STATIC_URL }}aberta/privacy.html">Política de Privacidade</a>
+                                <a href="">Contate o Suporte</a>
+                                <a href="">Perguntas Frequentes</a>
+                            </div>
+                        </div>
+                        <div class="col-md-12 text-center">
+                            &copy; Copyright
+                            <script>document.write(new Date().getFullYear());</script>
+                            &ensp;Todos os direitos reservados.</br>GeoFazendas é um produto da <a
+                                href="https://www.multisig.com.br/" target="_blank"><b> Multisig</b></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer End -->
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     </div>
-</div>
-<!-- Header End -->
-{% block container_sindicatos %}
-{% endblock %}
-{% endblock %}
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+    <script src="{{ STATIC_URL }}vendor/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ STATIC_URL }}vendor/js/bootstrap-dropdown-ml-hack.js"></script>
+    <!-- Scripts -->
+    <script src="{{ STATIC_URL }}vendor/js/jquery.js"></script>
+    <script type="text/javascript">
+        window.addEventListener("load", function(){
+            window.cookieconsent.initialise({
+                "palette": {
+                    "popup": {
+                    "background": "#020202",
+                    "text": "#f9f9f9"
+                    },
+                    "button": {
+                    "background": "#02a4fcbd",
+                    "text": "#000c13bd"
+                    }
+                },
+                "content": {
+                    "message": "Utilizamos cookies essenciais e tecnologias semelhantes de acordo com nossos Termos e Condições de Uso e Política de Privacidade. Ao continuar navegando e utilizando nossos serviços, você concorda com estes termos.",
+                    "link": "Saiba mais",
+                    "dismiss": "EU ACEITO!",
+                    "href": "{% url 'base:privacidade' %}"
+                }
+        })});
+    </script>
+    {% block extra_js %}{% endblock %}
+</body>
+
+</html>

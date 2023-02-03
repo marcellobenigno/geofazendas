@@ -55,6 +55,7 @@ jupyterlab-pygments==0.2.2
 jupyterlab-widgets==1.1.1
 lxml==4.9.1
 MarkupSafe==2.1.1
+martor==1.6.16
 matplotlib-inline==0.1.5
 mistune==0.8.4
 nbclient==0.6.6
