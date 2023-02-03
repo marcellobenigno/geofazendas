@@ -28,9 +28,7 @@ const app = createApp({
                     maxZoom: this.maxZoom,
                     zoomControl: false,
                     layers: [
-                        this.themeList[0].geolyr, this.themeList[0].geolyr,
-                        this.fixedLayers[0].geolyr,
-                        this.fixedLayers[1].geolyr,
+                        this.satteliteList[1].geolyr,
                         this.overlayList[0].geolyr,
                     ]
                 }

@@ -22,7 +22,7 @@
     <!-- Leaflet -->
     <link rel="stylesheet" href="{{ STATIC_URL }}leaflet/leaflet.css">
     <link rel="stylesheet" href="{{ STATIC_URL }}leaflet/plugins/zoom_to_home/leaflet.zoomhome.css">
-    <link rel="stylesheet" href="{{ STATIC_URL }}css/map/map_index.css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/map/mapa.css">
 
     <link rel="stylesheet" href="{{ STATIC_URL }}js/select2/select2.min.css"/>
     <link rel="stylesheet"
@@ -325,6 +325,52 @@
                                 <ul class="list-group list-group-flush list-base-layers">
                                     <template v-for="layer in themeList" :key="layer.id">
                                         <template v-if="layer.origem === 'ana'">
+                                            <li class="list-group-item d-flex"
+                                                :class="layer.active ? 'active' : ''"
+                                                @click="activeThemeLayer(layer.id)"
+                                            >
+                                                <div class="ms-2 me-auto">
+                        <span v-if="layer.active">
+                            <i class="fa-solid fa-eye"></i>
+                        </span>
+                                                    <span v-else>
+                            <i class="fa fa-eye-slash"></i>
+                        </span>
+                                                    ${ layer.nome }
+                                                </div>
+                                                <span v-if="layer.active" class="badge">
+                                                <button class="btn btn-secondary btn-sm" type="button"
+                                                        data-bs-toggle="offcanvas"
+                                                        data-bs-target="#offcanvasRight"
+                                                        aria-controls="offcanvasRight">
+                                                        <i class="fa fa-list"></i>
+                                                </button>
+                                            </span>
+                                            </li>
+                                        </template>
+                                    </template>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="panelsStayOpen-headingBiomas">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#panelsStayOpen-collapseBiomas" aria-expanded="false"
+                                    aria-controls="panelsStayOpen-collapseBiomas">
+                                <i class="fa-solid fa-map"></i>&nbsp;
+                                <span class="fw-bold">
+                                    &nbsp; Cobertura e Uso da Terra (MapBiomas - 2021)
+                                </span>
+                            </button>
+                        </h2>
+                        <div id="panelsStayOpen-collapseBiomas" class="accordion-collapse collapse"
+                             aria-labelledby="panelsStayOpen-headingBiomas">
+                            <div class="accordion-body">
+                                <ul class="list-group list-group-flush list-base-layers">
+                                    <template v-for="layer in themeList" :key="layer.id">
+                                        <template v-if="layer.origem === 'mapbiomas'">
                                             <li class="list-group-item d-flex"
                                                 :class="layer.active ? 'active' : ''"
                                                 @click="activeThemeLayer(layer.id)"
