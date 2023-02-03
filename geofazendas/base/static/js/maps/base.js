@@ -307,7 +307,7 @@ var themeList = [
         nome: 'Biomas',
         slug: 'biomas',
         geolyr: bioma,
-        active: true,
+        active: false,
         origem: 'ibge',
         leg: getLegend('mapas_bioma'),
         referencia: 'IBGE - INSTITUTO BRASILEIRO DE GEOGRAFIA E ESTATÍSTICA. Mapa de Biomas do Brasil. Rio de Janeiro: IBGE, 2003. Escala 1:5.000.000.',
