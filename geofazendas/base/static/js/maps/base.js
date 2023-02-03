@@ -322,7 +322,7 @@ var themeList = [
         active: false,
         origem: 'ibge',
         leg: getLegend('mapas_clima'),
-        referencia: 'IBGE - INSTITUTO BRASILEIRO DE GEOGRAFIA E ESTATÍSTICA. Mapa de Biomas do Brasil. Rio de Janeiro: IBGE, 2003. Escala 1:5.000.000.',
+        referencia: 'IBGE - INSTITUTO BRASILEIRO DE GEOGRAFIA E ESTATÍSTICA. Mapa de Clima do Brasil. Rio de Janeiro: IBGE, 2003. Escala 1:5.000.000.',
         link: 'https://www.ibge.gov.br/geociencias/cartas-e-mapas/informacoes-ambientais/15817-clima.html?edicao=15887&t=acesso-ao-produto',
     },
     {
@@ -333,7 +333,7 @@ var themeList = [
         active: false,
         origem: 'ibge',
         leg: getLegend('mapas_declividade'),
-        referencia: 'IBGE - INSTITUTO BRASILEIRO DE GEOGRAFIA E ESTATÍSTICA. Mapa de Biomas do Brasil. Rio de Janeiro: IBGE, 2003. Escala 1:5.000.000.',
+        referencia: 'IBGE - INSTITUTO BRASILEIRO DE GEOGRAFIA E ESTATÍSTICA. Mapa de Declividade do Brasil. Rio de Janeiro: IBGE, 2003. Escala 1:5.000.000.',
         link: 'https://www.ibge.gov.br/geociencias/informacoes-ambientais/geomorfologia/10870-geomorfologia.html?=&t=acesso-ao-produto',
     },
     {
@@ -344,7 +344,7 @@ var themeList = [
         active: false,
         origem: 'ibge',
         leg: getLegend('mapas_geologia'),
-        referencia: 'IBGE - INSTITUTO BRASILEIRO DE GEOGRAFIA E ESTATÍSTICA. Mapa de Biomas do Brasil. Rio de Janeiro: IBGE, 2003. Escala 1:5.000.000.',
+        referencia: 'IBGE - INSTITUTO BRASILEIRO DE GEOGRAFIA E ESTATÍSTICA. Mapa Geológico do Brasil. Rio de Janeiro: IBGE, 2003. Escala 1:5.000.000.',
         link: 'https://www.ibge.gov.br/geociencias/informacoes-ambientais/geologia/15822-geologia-1-250-000.html?=&t=acesso-ao-produto',
     },
     {
@@ -355,7 +355,7 @@ var themeList = [
         active: false,
         origem: 'ibge',
         leg: getLegend('mapas_geomorfologia'),
-        referencia: 'IBGE - INSTITUTO BRASILEIRO DE GEOGRAFIA E ESTATÍSTICA. Mapa de Biomas do Brasil. Rio de Janeiro: IBGE, 2003. Escala 1:5.000.000.',
+        referencia: 'IBGE - INSTITUTO BRASILEIRO DE GEOGRAFIA E ESTATÍSTICA. Mapa Geomorfológico do Brasil. Rio de Janeiro: IBGE, 2003. Escala 1:5.000.000.',
         link: 'https://www.ibge.gov.br/geociencias/informacoes-ambientais/geomorfologia/10870-geomorfologia.html?=&t=acesso-ao-produto',
     },
     {
@@ -366,7 +366,7 @@ var themeList = [
         active: false,
         origem: 'ibge',
         leg: getLegend('mapas_solo'),
-        referencia: 'IBGE - INSTITUTO BRASILEIRO DE GEOGRAFIA E ESTATÍSTICA. Mapa de Biomas do Brasil. Rio de Janeiro: IBGE, 2003. Escala 1:5.000.000.',
+        referencia: 'IBGE - INSTITUTO BRASILEIRO DE GEOGRAFIA E ESTATÍSTICA. Mapa de Solos do Brasil. Rio de Janeiro: IBGE, 2003. Escala 1:5.000.000.',
         link: 'https://www.ibge.gov.br/geociencias/cartas-e-mapas/informacoes-ambientais/15829-solos.html?edicao=15933&t=acesso-ao-produto',
     },
     {
@@ -376,7 +376,7 @@ var themeList = [
         active: false,
         origem: 'embrapa',
         leg: getLegend('mapas_argila_solo'),
-        referencia: 'EMBRAPA – Empresa Brasileira de Pesquisa Agropecuária. Mapa de teor de areia do solo a 30-60 cm do Brasil na resolução espacial de 90 m - Versão 2021. Rio de Janeiro: Embrapa solos, 2021. Resolução espacial: 90 metros',
+        referencia: 'EMBRAPA – Empresa Brasileira de Pesquisa Agropecuária. Mapa de teor de argila do solo a 30-60 cm do Brasil na resolução espacial de 90 m - Versão 2021. Rio de Janeiro: Embrapa solos, 2021. Resolução espacial: 90 metros',
         link: 'http://geoinfo.cnps.embrapa.br/maps/3290',
     },
     {
@@ -396,7 +396,7 @@ var themeList = [
         active: false,
         origem: 'embrapa',
         leg: getLegend('mapas_silte_solo'),
-        referencia: 'EMBRAPA – Empresa Brasileira de Pesquisa Agropecuária. Mapa de teor de areia do solo a 30-60 cm do Brasil na resolução espacial de 90 m - Versão 2021. Rio de Janeiro: Embrapa solos, 2021. Resolução espacial: 90 metros',
+        referencia: 'EMBRAPA – Empresa Brasileira de Pesquisa Agropecuária. Mapa de teor de silte do solo a 30-60 cm do Brasil na resolução espacial de 90 m - Versão 2021. Rio de Janeiro: Embrapa solos, 2021. Resolução espacial: 90 metros',
         link: 'http://geoinfo.cnps.embrapa.br/maps/3370'
     },
     {
@@ -406,7 +406,7 @@ var themeList = [
         active: false,
         origem: 'embrapa',
         leg: getLegend('mapas_condutividade_eletrica'),
-        referencia: 'EMBRAPA – Empresa Brasileira de Pesquisa Agropecuária. Mapa de teor de areia do solo a 30-60 cm do Brasil na resolução espacial de 90 m - Versão 2021. Rio de Janeiro: Embrapa solos, 2021. Resolução espacial: 90 metros',
+        referencia: 'EMBRAPA – Empresa Brasileira de Pesquisa Agropecuária. Mapa de condutividade elétrica do Brasil na resolução espacial de 90 m - Versão 2021. Rio de Janeiro: Embrapa solos, 2021. Resolução espacial: 90 metros',
         link: 'http://inde.geoinfo.cnpm.embrapa.br/geonetwork_inde/srv/por/catalog.search#/metadata/fd4532de-577f-11ec-aa7a-4234e8a627f0',
     },
     {
@@ -416,7 +416,7 @@ var themeList = [
         active: false,
         origem: 'embrapa',
         leg: getLegend('mapas_saturacao_sodio'),
-        referencia: 'EMBRAPA – Empresa Brasileira de Pesquisa Agropecuária. Mapa de teor de areia do solo a 30-60 cm do Brasil na resolução espacial de 90 m - Versão 2021. Rio de Janeiro: Embrapa solos, 2021. Resolução espacial: 90 metros',
+        referencia: 'EMBRAPA – Empresa Brasileira de Pesquisa Agropecuária. Saturação por sódio no solo a 30-60 cm do Brasil na resolução espacial de 90 m - Versão 2021. Rio de Janeiro: Embrapa solos, 2021. Resolução espacial: 90 metros',
         link: 'http://geoinfo.cnps.embrapa.br/layers/geonode%3Abra_espmap30100',
     },
     {
@@ -426,7 +426,7 @@ var themeList = [
         active: false,
         origem: 'embrapa',
         leg: getLegend('mapas_ph_solo'),
-        referencia: 'EMBRAPA – Empresa Brasileira de Pesquisa Agropecuária. Mapa de teor de areia do solo a 30-60 cm do Brasil na resolução espacial de 90 m - Versão 2021. Rio de Janeiro: Embrapa solos, 2021. Resolução espacial: 90 metros',
+        referencia: 'EMBRAPA – Empresa Brasileira de Pesquisa Agropecuária. Mapa de acidez (pH) do solo a 30-60 cm do Brasil na resolução espacial de 90 m - Versão 2021. Rio de Janeiro: Embrapa solos, 2021. Resolução espacial: 90 metros',
         link: 'http://geoinfo.cnps.embrapa.br/layers/geonode%3Abr_ph_h2o_30_60cm_pred',
     },
     {
