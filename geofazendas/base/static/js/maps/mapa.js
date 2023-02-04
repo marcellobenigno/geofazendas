@@ -182,6 +182,7 @@ const app = createApp({
                 }
                 if (newValue === null) {
                     this.map.fitBounds(this.bounds)
+                    this.municipios = []
                 }
             },
             deep: true

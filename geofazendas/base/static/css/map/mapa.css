@@ -83,5 +83,15 @@ a.mapa-link {
 }
 
 .vs__selected {
-    font-size: 15px!important;
+    font-size: 15px !important;
+}
+
+.hideme {
+    display: none;
+    visibility: hidden;
+}
+
+.showme {
+    display: inline;
+    visibility: visible;
 }

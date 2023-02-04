@@ -117,6 +117,7 @@
                                           value="id"
                                           label="nome"
                                           v-model="estadoSelecionado"
+                                          placeholder="Escolha o estado..."
                                 >
                                     <template v-slot:no-options>Não Encontrado.</template>
 
@@ -127,6 +128,8 @@
                                           v-model="municipioSelecionado"
                                           :disabled="!municipios.length"
                                           :reset-on-options-change='true'
+                                          placeholder="Escolha o município..."
+                                          :class="!municipios.length ? 'hideme' : 'showme'"
                                 >
                                     <template v-slot:no-options>Não Encontrado.</template>
                                 </v-select>
