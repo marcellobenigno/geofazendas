@@ -149,7 +149,3 @@ var themeList = [
         link: 'http://brasil.mapbiomas.org',
     },
 ]
-
-
-
-const mapName = 'geral'

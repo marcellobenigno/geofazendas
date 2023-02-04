@@ -10,5 +10,3 @@ var themeList = [{
     link: '',
 
 }]
-
-const mapName = 'incidencia'

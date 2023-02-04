@@ -5,6 +5,9 @@ var corner1 = L.latLng(-33.7511779940000025, -73.9831821599999984),
 const {createApp} = Vue
 
 const app = createApp({
+    components: {
+        vSelect: window["vue-select"]
+    },
     data() {
         return {
             map: null,
@@ -20,6 +23,7 @@ const app = createApp({
             municipioSelecionado: [],
             municipioLayer: null,
             popUp: L.popup(),
+
         }
     },
     methods: {
@@ -115,8 +119,8 @@ const app = createApp({
                     console.log('error')
                 })
         },
-        getMunicipios() {
-            axios.get(municipiosURL, {params: {estado: this.estadoSelecionado, no_page: 'no_page'}})
+        getMunicipios(estado) {
+            axios.get(municipiosURL, {params: {estado: estado.id, no_page: 'no_page'}})
                 .then((response) => {
                     this.municipios = response.data;
                 })
@@ -124,7 +128,7 @@ const app = createApp({
                     console.log('error')
                 })
         },
-        getMunicipioSelecionado() {
+        getMunicipioSelecionado(municipioSelecionado) {
             if (this.municipioLayer !== null) {
                 this.map.removeLayer(this.municipioLayer)
             }
@@ -137,9 +141,9 @@ const app = createApp({
                     opacity: 1,
                     zIndex: 5,
                     layers: 'geofazendas:mapas_municipio_selecionado',
-                    cql_filter: `municipio_id=${this.municipioSelecionado.id}`,
+                    cql_filter: `municipio_id=${municipioSelecionado.id}`,
                 })
-            this.map.fitBounds(this.municipioSelecionado.extent)
+            this.map.fitBounds(municipioSelecionado.extent)
             this.map.addLayer(this.overlayList[1].geolyr)
             this.overlayList[1].active = true
             this.map.addLayer(this.municipioLayer)
@@ -167,9 +171,33 @@ const app = createApp({
                 .catch(resonse => {
                     console.log('error')
                 })
+        },
+    },
+    watch: {
+        estadoSelecionado: {
+            handler(newValue, oldValue) {
+                if (newValue) {
+                    this.map.fitBounds(newValue.extent)
+                    this.getMunicipios(newValue)
+                }
+                if (newValue === null) {
+                    this.map.fitBounds(this.bounds)
+                }
+            },
+            deep: true
+        },
+        municipioSelecionado: {
+            handler(newValue, oldValue) {
+                if (newValue) {
+                    this.getMunicipioSelecionado(newValue)
+                }
+                if (newValue === null && this.municipioLayer) {
+                    this.map.removeLayer(this.municipioLayer)
+                }
+            },
+            deep: true
         }
     },
-
     mounted() {
         this.initMap()
         this.getEstados()

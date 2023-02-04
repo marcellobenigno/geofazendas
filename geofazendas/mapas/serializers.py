@@ -33,6 +33,7 @@ class EstadoSerializer(serializers.ModelSerializer):
             'nome',
             'sigla_uf',
             'area_km2',
+            'extent',
         ]
 
 

@@ -23,10 +23,7 @@
     <link rel="stylesheet" href="{{ STATIC_URL }}leaflet/leaflet.css">
     <link rel="stylesheet" href="{{ STATIC_URL }}leaflet/plugins/zoom_to_home/leaflet.zoomhome.css">
     <link rel="stylesheet" href="{{ STATIC_URL }}css/map/mapa.css">
-
-    <link rel="stylesheet" href="{{ STATIC_URL }}js/select2/select2.min.css"/>
-    <link rel="stylesheet"
-          href="{{ STATIC_URL }}js/select2/select2-bootstrap4.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/vue-select/dist/vue-select.css"/>
 </head>
 <body>
 <!-- Header Starts Here -->
@@ -116,30 +113,23 @@
                         <div id="panelsStayOpen-collapseSearch" class="accordion-collapse collapse"
                              aria-labelledby="panelsStayOpen-headingSearch">
                             <div class="accordion-body">
-                                <select
-                                        id="id_estado"
-                                        class="form-select"
-                                        aria-label="estados"
-                                        @change="getMunicipios"
-                                        v-model="estadoSelecionado"
+                                <v-select :options="estados"
+                                          value="id"
+                                          label="nome"
+                                          v-model="estadoSelecionado"
                                 >
-                                    <option value="" selected="">---------</option>
-                                    <option v-for="estado in estados" :value="estado.id" :key="estado.id">
-                                        ${ estado.nome }
-                                    </option>
-                                </select>
-                                <select
-                                        id="id_municipio"
-                                        class="form-select"
-                                        aria-label="municipios"
-                                        v-model="municipioSelecionado"
-                                        @change="getMunicipioSelecionado"
+                                    <template v-slot:no-options>Não Encontrado.</template>
+
+                                </v-select>
+                                <v-select :options="municipios"
+                                          value="municipio"
+                                          label="nome"
+                                          v-model="municipioSelecionado"
+                                          :disabled="!municipios.length"
+                                          :reset-on-options-change='true'
                                 >
-                                    <option value="" selected="">---------</option>
-                                    <option v-for="municipio in municipios" :value="municipio" :key="municipio.id">
-                                        ${ municipio.nome }
-                                    </option>
-                                </select>
+                                    <template v-slot:no-options>Não Encontrado.</template>
+                                </v-select>
                             </div>
                         </div>
                     </div>
@@ -420,7 +410,6 @@
 <!-- Bootstrap core JavaScript -->
 <script src="{{ STATIC_URL }}js/jquery.js"></script>
 <script src="{{ STATIC_URL }}vendor/js/bootstrap.bundle.min.js"></script>
-<script src="{{ STATIC_URL }}js/select2/select2.full.min.js"></script>
 <!-- Leaflet -->
 <script src="{{ STATIC_URL }}leaflet/leaflet.js"></script>
 <script src="{{ STATIC_URL }}leaflet/plugins/zoom_to_home/leaflet.zoomhome.js"></script>
@@ -428,6 +417,7 @@
 <script src="{{ STATIC_URL }}leaflet/plugins/spin/leaflet.spin.min.js"></script>
 <script src="{{ STATIC_URL }}vendor/axios/axios.min.js"></script>
 <script src="{{ STATIC_URL }}vendor/vuejs/vue.global.prod.js"></script>
+<script src="{{ STATIC_URL}}vendor/vuejs/vue-select@beta"></script>
 <script src="{{ STATIC_URL }}js/maps/base.js"></script>
 {% if view.map_name == 'geral' %}
     <script src="{{ STATIC_URL }}js/maps/layers_list.js"></script>
