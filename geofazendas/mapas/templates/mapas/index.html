@@ -119,7 +119,7 @@
                                         id="id_estado"
                                         class="form-select"
                                         aria-label="estados"
-                                        @change="getMunicipios($event)"
+                                        @change="getMunicipios"
                                         v-model="estadoSelecionado"
                                 >
                                     <option value="" selected="">---------</option>
@@ -132,10 +132,10 @@
                                         class="form-select"
                                         aria-label="municipios"
                                         v-model="municipioSelecionado"
-                                        @change="getMunicipioSelecionado($event)"
+                                        @change="getMunicipioSelecionado"
                                 >
                                     <option value="" selected="">---------</option>
-                                    <option v-for="municipio in municipios" :value="municipio.id" :key="municipio.id">
+                                    <option v-for="municipio in municipios" :value="municipio" :key="municipio.id">
                                         ${ municipio.nome }
                                     </option>
                                 </select>

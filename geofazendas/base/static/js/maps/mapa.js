@@ -95,7 +95,7 @@ const app = createApp({
                     console.log('error')
                 })
         },
-        getMunicipios(event) {
+        getMunicipios() {
             axios.get(municipiosURL, {params: {estado: this.estadoSelecionado, no_page: 'no_page'}})
                 .then((response) => {
                     this.municipios = response.data;
@@ -104,11 +104,10 @@ const app = createApp({
                     console.log('error')
                 })
         },
-        getMunicipioSelecionado(event) {
+        getMunicipioSelecionado() {
             if (this.municipioLayer !== null) {
                 this.map.removeLayer(this.municipioLayer)
             }
-            let municipio = this.municipios.find(x => x.id === this.municipioSelecionado);
             this.municipioLayer = L.tileLayer.wms(
                 window.geoServerUrl, {
                     format: 'image/png',
@@ -118,9 +117,9 @@ const app = createApp({
                     opacity: 1,
                     zIndex: 5,
                     layers: 'geofazendas:mapas_municipio_selecionado',
-                    cql_filter: `municipio_id=${municipio.id}`,
+                    cql_filter: `municipio_id=${this.municipioSelecionado.id}`,
                 })
-            this.map.fitBounds(municipio.extent)
+            this.map.fitBounds(this.municipioSelecionado.extent)
             this.map.addLayer(this.overlayList[1].geolyr)
             this.overlayList[1].active = true
             this.map.addLayer(this.municipioLayer)
