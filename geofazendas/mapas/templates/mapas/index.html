@@ -61,6 +61,7 @@
                 {% get_settings 'GEOSERVER_URL' as geoserver_url %}
                 <input type="hidden" id="geoserver_url" value="{{ geoserver_url }}">
                 <input type="hidden" id="popup_url" ref="popup_url" value="{% url 'mapas:get_dados' -1.0 -1.0 "a" %}">
+                <input type="hidden" id="map_name" ref="map_name" value="{{ view.map_name }}">
                 <input type="hidden" id="estados-api"
                        value="{% url 'estado-list' %}">
                 <input type="hidden" id="municipios-api"
@@ -222,7 +223,11 @@
                                     aria-controls="panelsStayOpen-collapse1">
                                 <i class="fa-solid fa-map"></i>&nbsp;
                                 <span class="fw-bold">
-                                     &nbsp; Temáticos (IBGE)
+                                    {% if view.map_name == 'geral' %}
+                                        &nbsp; Temáticos (IBGE)
+                                    {% else %}
+                                        Incidência Solar
+                                    {% endif %}
                             </span>
                             </button>
                         </h2>
@@ -261,38 +266,39 @@
                         </div>
                     </div>
 
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="panelsStayOpen-headingEmbrapa">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#panelsStayOpen-collapseEmbrapa" aria-expanded="false"
-                                    aria-controls="panelsStayOpen-collapseEmbrapa">
-                                <i class="fa-solid fa-map"></i>&nbsp;
-                                <span class="fw-bold">
+                    {% if view.map_name == 'geral' %}
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="panelsStayOpen-headingEmbrapa">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#panelsStayOpen-collapseEmbrapa" aria-expanded="false"
+                                        aria-controls="panelsStayOpen-collapseEmbrapa">
+                                    <i class="fa-solid fa-map"></i>&nbsp;
+                                    <span class="fw-bold">
                                     &nbsp; Solos (EMBRAPA, 2021) <br>
                                     &nbsp;&nbsp;<small>Reamostrados p/ 1km</small>
                                 </span>
-                            </button>
-                        </h2>
-                        <div id="panelsStayOpen-collapseEmbrapa" class="accordion-collapse collapse"
-                             aria-labelledby="panelsStayOpen-headingEmbrapa">
-                            <div class="accordion-body">
-                                <ul class="list-group list-group-flush list-base-layers">
-                                    <template v-for="layer in themeList" :key="layer.id">
-                                        <template v-if="layer.origem === 'embrapa'">
-                                            <li class="list-group-item d-flex"
-                                                :class="layer.active ? 'active' : ''"
-                                                @click="activeThemeLayer(layer.id)"
-                                            >
-                                                <div class="ms-2 me-auto">
+                                </button>
+                            </h2>
+                            <div id="panelsStayOpen-collapseEmbrapa" class="accordion-collapse collapse"
+                                 aria-labelledby="panelsStayOpen-headingEmbrapa">
+                                <div class="accordion-body">
+                                    <ul class="list-group list-group-flush list-base-layers">
+                                        <template v-for="layer in themeList" :key="layer.id">
+                                            <template v-if="layer.origem === 'embrapa'">
+                                                <li class="list-group-item d-flex"
+                                                    :class="layer.active ? 'active' : ''"
+                                                    @click="activeThemeLayer(layer.id)"
+                                                >
+                                                    <div class="ms-2 me-auto">
                         <span v-if="layer.active">
                             <i class="fa-solid fa-eye"></i>
                         </span>
-                                                    <span v-else>
+                                                        <span v-else>
                             <i class="fa fa-eye-slash"></i>
                         </span>
-                                                    ${ layer.nome }
-                                                </div>
-                                                <span v-if="layer.active" class="badge">
+                                                        ${ layer.nome }
+                                                    </div>
+                                                    <span v-if="layer.active" class="badge">
                                                 <button class="btn btn-secondary btn-sm" type="button"
                                                         data-bs-toggle="offcanvas"
                                                         data-bs-target="#offcanvasRight"
@@ -300,45 +306,45 @@
                                                         <i class="fa fa-list"></i>
                                                 </button>
                                             </span>
-                                            </li>
+                                                </li>
+                                            </template>
                                         </template>
-                                    </template>
-                                </ul>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="panelsStayOpen-headingAna">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#panelsStayOpen-collapseAna" aria-expanded="false"
-                                    aria-controls="panelsStayOpen-collapseAna">
-                                <i class="fa-solid fa-map"></i>&nbsp;
-                                <span class="fw-bold">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="panelsStayOpen-headingAna">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#panelsStayOpen-collapseAna" aria-expanded="false"
+                                        aria-controls="panelsStayOpen-collapseAna">
+                                    <i class="fa-solid fa-map"></i>&nbsp;
+                                    <span class="fw-bold">
                                     &nbsp; Água no Solo (ANA)
                                 </span>
-                            </button>
-                        </h2>
-                        <div id="panelsStayOpen-collapseAna" class="accordion-collapse collapse"
-                             aria-labelledby="panelsStayOpen-headingAna">
-                            <div class="accordion-body">
-                                <ul class="list-group list-group-flush list-base-layers">
-                                    <template v-for="layer in themeList" :key="layer.id">
-                                        <template v-if="layer.origem === 'ana'">
-                                            <li class="list-group-item d-flex"
-                                                :class="layer.active ? 'active' : ''"
-                                                @click="activeThemeLayer(layer.id)"
-                                            >
-                                                <div class="ms-2 me-auto">
+                                </button>
+                            </h2>
+                            <div id="panelsStayOpen-collapseAna" class="accordion-collapse collapse"
+                                 aria-labelledby="panelsStayOpen-headingAna">
+                                <div class="accordion-body">
+                                    <ul class="list-group list-group-flush list-base-layers">
+                                        <template v-for="layer in themeList" :key="layer.id">
+                                            <template v-if="layer.origem === 'ana'">
+                                                <li class="list-group-item d-flex"
+                                                    :class="layer.active ? 'active' : ''"
+                                                    @click="activeThemeLayer(layer.id)"
+                                                >
+                                                    <div class="ms-2 me-auto">
                         <span v-if="layer.active">
                             <i class="fa-solid fa-eye"></i>
                         </span>
-                                                    <span v-else>
+                                                        <span v-else>
                             <i class="fa fa-eye-slash"></i>
                         </span>
-                                                    ${ layer.nome }
-                                                </div>
-                                                <span v-if="layer.active" class="badge">
+                                                        ${ layer.nome }
+                                                    </div>
+                                                    <span v-if="layer.active" class="badge">
                                                 <button class="btn btn-secondary btn-sm" type="button"
                                                         data-bs-toggle="offcanvas"
                                                         data-bs-target="#offcanvasRight"
@@ -346,45 +352,45 @@
                                                         <i class="fa fa-list"></i>
                                                 </button>
                                             </span>
-                                            </li>
+                                                </li>
+                                            </template>
                                         </template>
-                                    </template>
-                                </ul>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="panelsStayOpen-headingBiomas">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#panelsStayOpen-collapseBiomas" aria-expanded="false"
-                                    aria-controls="panelsStayOpen-collapseBiomas">
-                                <i class="fa-solid fa-map"></i>&nbsp;
-                                <span class="fw-bold">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="panelsStayOpen-headingBiomas">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#panelsStayOpen-collapseBiomas" aria-expanded="false"
+                                        aria-controls="panelsStayOpen-collapseBiomas">
+                                    <i class="fa-solid fa-map"></i>&nbsp;
+                                    <span class="fw-bold">
                                     &nbsp; Cobertura e Uso da Terra (MapBiomas - 2021)
                                 </span>
-                            </button>
-                        </h2>
-                        <div id="panelsStayOpen-collapseBiomas" class="accordion-collapse collapse"
-                             aria-labelledby="panelsStayOpen-headingBiomas">
-                            <div class="accordion-body">
-                                <ul class="list-group list-group-flush list-base-layers">
-                                    <template v-for="layer in themeList" :key="layer.id">
-                                        <template v-if="layer.origem === 'mapbiomas'">
-                                            <li class="list-group-item d-flex"
-                                                :class="layer.active ? 'active' : ''"
-                                                @click="activeThemeLayer(layer.id)"
-                                            >
-                                                <div class="ms-2 me-auto">
+                                </button>
+                            </h2>
+                            <div id="panelsStayOpen-collapseBiomas" class="accordion-collapse collapse"
+                                 aria-labelledby="panelsStayOpen-headingBiomas">
+                                <div class="accordion-body">
+                                    <ul class="list-group list-group-flush list-base-layers">
+                                        <template v-for="layer in themeList" :key="layer.id">
+                                            <template v-if="layer.origem === 'mapbiomas'">
+                                                <li class="list-group-item d-flex"
+                                                    :class="layer.active ? 'active' : ''"
+                                                    @click="activeThemeLayer(layer.id)"
+                                                >
+                                                    <div class="ms-2 me-auto">
                         <span v-if="layer.active">
                             <i class="fa-solid fa-eye"></i>
                         </span>
-                                                    <span v-else>
+                                                        <span v-else>
                             <i class="fa fa-eye-slash"></i>
                         </span>
-                                                    ${ layer.nome }
-                                                </div>
-                                                <span v-if="layer.active" class="badge">
+                                                        ${ layer.nome }
+                                                    </div>
+                                                    <span v-if="layer.active" class="badge">
                                                 <button class="btn btn-secondary btn-sm" type="button"
                                                         data-bs-toggle="offcanvas"
                                                         data-bs-target="#offcanvasRight"
@@ -392,15 +398,15 @@
                                                         <i class="fa fa-list"></i>
                                                 </button>
                                             </span>
-                                            </li>
+                                                </li>
+                                            </template>
                                         </template>
-                                    </template>
-                                </ul>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-
+                    {% endif %}
                 </div>
 
             </div>
@@ -423,6 +429,11 @@
 <script src="{{ STATIC_URL }}vendor/axios/axios.min.js"></script>
 <script src="{{ STATIC_URL }}vendor/vuejs/vue.global.prod.js"></script>
 <script src="{{ STATIC_URL }}js/maps/base.js"></script>
+{% if view.map_name == 'geral' %}
+    <script src="{{ STATIC_URL }}js/maps/layers_list.js"></script>
+{% elif view.map_name == 'incidencia' %}
+    <script src="{{ STATIC_URL }}js/maps/incidencia_list.js"></script>
+{% endif %}
 <script src="{{ STATIC_URL }}js/maps/mapa.js"></script>
 
 </body>

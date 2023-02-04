@@ -23,14 +23,34 @@ const app = createApp({
         }
     },
     methods: {
+        initialLayers(mapName) {
+            let initial = []
+            switch (mapName) {
+                case 'geral':
+                    initial = [
+                        this.satteliteList[1].geolyr,
+                        this.overlayList[0].geolyr,
+                    ];
+                    break;
+                case 'incidencia':
+                    initial = [
+                        this.themeList[0].geolyr,
+                        this.fixedLayers[0].geolyr,
+                        this.fixedLayers[1].geolyr,
+                        this.overlayList[0].geolyr,
+                    ];
+                    break;
+            }
+
+            return initial
+
+        },
         initMap() {
+            this.initialLayers()
             this.map = L.map('map', {
                     maxZoom: this.maxZoom,
                     zoomControl: false,
-                    layers: [
-                        this.satteliteList[1].geolyr,
-                        this.overlayList[0].geolyr,
-                    ]
+                    layers: this.initialLayers(this.$refs.map_name.value)
                 }
             ).fitBounds(this.bounds)
             var zoomHome = L.Control.zoomHome()
@@ -127,7 +147,11 @@ const app = createApp({
         onMapClick(e) {
             let popUpUrl = this.$refs.popup_url.value.slice(0, -12)
             let temaAtivo = this.themeList.find(x => x.active === true)
-            popUpUrl += `${e.latlng.lng}/${e.latlng.lat}/${temaAtivo.slug}/`;
+            if (temaAtivo) {
+                popUpUrl += `${e.latlng.lng}/${e.latlng.lat}/${temaAtivo.slug}/`;
+            } else {
+                popUpUrl += `${e.latlng.lng}/${e.latlng.lat}/sem-temas/`;
+            }
             this.map.spin(true, {lines: 20, length: 55});
             axios.get(popUpUrl)
                 .then((response) => {
@@ -157,5 +181,3 @@ const app = createApp({
 // Delimiters changed to ES6 template string style
 app.config.compilerOptions.delimiters = ['${', '}']
 app.mount('#app')
-
-// https://codesandbox.io/s/chain-select-with-vuejs-2zv2o?from-embed=&file=/src/App.vue:771-789

@@ -211,48 +211,16 @@ function getLegend(lyrName) {
     return legend
 }
 
-var overlayList = [
+var fixedLayers = [
     {
         id: 1,
-        nome: 'Estados',
-        geolyr: estado,
-        active: true
+        nome: 'América do Sul',
+        geolyr: americaSul
     },
     {
         id: 2,
-        nome: 'Municípios',
-        geolyr: municipio,
-        active: false
-    },
-    {
-        id: 3,
-        nome: 'Assentamentos',
-        geolyr: assentamento,
-        active: false
-    },
-    {
-        id: 4,
-        nome: 'Área Indígena',
-        geolyr: areaIndigena,
-        active: false
-    },
-    {
-        id: 5,
-        nome: 'Área Protegida',
-        geolyr: areaProtegida,
-        active: false
-    },
-    {
-        id: 6,
-        nome: 'Isoietas',
-        geolyr: isoietas,
-        active: false
-    },
-    {
-        id: 7,
-        nome: 'Imóveis a Venda',
-        geolyr: imoveisVenda,
-        active: false
+        nome: 'Oceano',
+        geolyr: oceano
     },
 ]
 
@@ -301,167 +269,47 @@ var satteliteList = [
     },
 ]
 
-var themeList = [
+var overlayList = [
     {
         id: 1,
-        nome: 'Biomas',
-        slug: 'biomas',
-        geolyr: bioma,
-        active: false,
-        origem: 'ibge',
-        leg: getLegend('mapas_bioma'),
-        referencia: 'IBGE - INSTITUTO BRASILEIRO DE GEOGRAFIA E ESTATÍSTICA. Mapa de Biomas do Brasil. Rio de Janeiro: IBGE, 2003. Escala 1:5.000.000.',
-        link: 'https://www.ibge.gov.br/geociencias/cartas-e-mapas/informacoes-ambientais/15842-biomas.html?=&t=acesso-ao-produto',
-
+        nome: 'Estados',
+        geolyr: estado,
+        active: true
     },
     {
         id: 2,
-        nome: 'Clima',
-        slug: 'clima',
-        geolyr: clima,
-        active: false,
-        origem: 'ibge',
-        leg: getLegend('mapas_clima'),
-        referencia: 'IBGE - INSTITUTO BRASILEIRO DE GEOGRAFIA E ESTATÍSTICA. Mapa de Clima do Brasil. Rio de Janeiro: IBGE, 2003. Escala 1:5.000.000.',
-        link: 'https://www.ibge.gov.br/geociencias/cartas-e-mapas/informacoes-ambientais/15817-clima.html?edicao=15887&t=acesso-ao-produto',
+        nome: 'Municípios',
+        geolyr: municipio,
+        active: false
     },
     {
         id: 3,
-        nome: 'Declividade',
-        slug: 'declividade',
-        geolyr: declividade,
-        active: false,
-        origem: 'ibge',
-        leg: getLegend('mapas_declividade'),
-        referencia: 'IBGE - INSTITUTO BRASILEIRO DE GEOGRAFIA E ESTATÍSTICA. Mapa de Declividade do Brasil. Rio de Janeiro: IBGE, 2003. Escala 1:5.000.000.',
-        link: 'https://www.ibge.gov.br/geociencias/informacoes-ambientais/geomorfologia/10870-geomorfologia.html?=&t=acesso-ao-produto',
+        nome: 'Assentamentos',
+        geolyr: assentamento,
+        active: false
     },
     {
         id: 4,
-        nome: 'Geologia',
-        slug: 'geologia',
-        geolyr: geologia,
-        active: false,
-        origem: 'ibge',
-        leg: getLegend('mapas_geologia'),
-        referencia: 'IBGE - INSTITUTO BRASILEIRO DE GEOGRAFIA E ESTATÍSTICA. Mapa Geológico do Brasil. Rio de Janeiro: IBGE, 2003. Escala 1:5.000.000.',
-        link: 'https://www.ibge.gov.br/geociencias/informacoes-ambientais/geologia/15822-geologia-1-250-000.html?=&t=acesso-ao-produto',
+        nome: 'Área Indígena',
+        geolyr: areaIndigena,
+        active: false
     },
     {
         id: 5,
-        nome: 'Geomorfologia',
-        slug: 'geomorfologia',
-        geolyr: geomorfologia,
-        active: false,
-        origem: 'ibge',
-        leg: getLegend('mapas_geomorfologia'),
-        referencia: 'IBGE - INSTITUTO BRASILEIRO DE GEOGRAFIA E ESTATÍSTICA. Mapa Geomorfológico do Brasil. Rio de Janeiro: IBGE, 2003. Escala 1:5.000.000.',
-        link: 'https://www.ibge.gov.br/geociencias/informacoes-ambientais/geomorfologia/10870-geomorfologia.html?=&t=acesso-ao-produto',
+        nome: 'Área Protegida',
+        geolyr: areaProtegida,
+        active: false
     },
     {
         id: 6,
-        nome: 'Solos',
-        slug: 'solos',
-        geolyr: solo,
-        active: false,
-        origem: 'ibge',
-        leg: getLegend('mapas_solo'),
-        referencia: 'IBGE - INSTITUTO BRASILEIRO DE GEOGRAFIA E ESTATÍSTICA. Mapa de Solos do Brasil. Rio de Janeiro: IBGE, 2003. Escala 1:5.000.000.',
-        link: 'https://www.ibge.gov.br/geociencias/cartas-e-mapas/informacoes-ambientais/15829-solos.html?edicao=15933&t=acesso-ao-produto',
+        nome: 'Isoietas',
+        geolyr: isoietas,
+        active: false
     },
     {
         id: 7,
-        nome: 'Teor de Argila do Solo a 30-60cm',
-        geolyr: argilaSolo,
-        active: false,
-        origem: 'embrapa',
-        leg: getLegend('mapas_argila_solo'),
-        referencia: 'EMBRAPA – Empresa Brasileira de Pesquisa Agropecuária. Mapa de teor de argila do solo a 30-60 cm do Brasil na resolução espacial de 90 m - Versão 2021. Rio de Janeiro: Embrapa solos, 2021. Resolução espacial: 90 metros',
-        link: 'http://geoinfo.cnps.embrapa.br/maps/3290',
-    },
-    {
-        id: 8,
-        nome: 'Teor de Areia do Solo a 30-60cm',
-        geolyr: areiaDisponivelSolo,
-        active: false,
-        origem: 'embrapa',
-        leg: getLegend('mapas_areia_disponivel_solo'),
-        referencia: 'EMBRAPA – Empresa Brasileira de Pesquisa Agropecuária. Mapa de teor de areia do solo a 30-60 cm do Brasil na resolução espacial de 90 m - Versão 2021. Rio de Janeiro: Embrapa solos, 2021. Resolução espacial: 90 metros',
-        link: 'http://geoinfo.cnps.embrapa.br/maps/3370'
-    },
-    {
-        id: 9,
-        nome: 'Teor de Silte do Solo a 30-60cm',
-        geolyr: silteSolo,
-        active: false,
-        origem: 'embrapa',
-        leg: getLegend('mapas_silte_solo'),
-        referencia: 'EMBRAPA – Empresa Brasileira de Pesquisa Agropecuária. Mapa de teor de silte do solo a 30-60 cm do Brasil na resolução espacial de 90 m - Versão 2021. Rio de Janeiro: Embrapa solos, 2021. Resolução espacial: 90 metros',
-        link: 'http://geoinfo.cnps.embrapa.br/maps/3370'
-    },
-    {
-        id: 10,
-        nome: 'Condutividade Elétrica do Solo',
-        geolyr: CondutividadeEletrica,
-        active: false,
-        origem: 'embrapa',
-        leg: getLegend('mapas_condutividade_eletrica'),
-        referencia: 'EMBRAPA – Empresa Brasileira de Pesquisa Agropecuária. Mapa de condutividade elétrica do Brasil na resolução espacial de 90 m - Versão 2021. Rio de Janeiro: Embrapa solos, 2021. Resolução espacial: 90 metros',
-        link: 'http://inde.geoinfo.cnpm.embrapa.br/geonetwork_inde/srv/por/catalog.search#/metadata/fd4532de-577f-11ec-aa7a-4234e8a627f0',
-    },
-    {
-        id: 11,
-        nome: 'Saturação por Sódio do Solo a 30-100cm',
-        geolyr: saturacaoSodio,
-        active: false,
-        origem: 'embrapa',
-        leg: getLegend('mapas_saturacao_sodio'),
-        referencia: 'EMBRAPA – Empresa Brasileira de Pesquisa Agropecuária. Saturação por sódio no solo a 30-60 cm do Brasil na resolução espacial de 90 m - Versão 2021. Rio de Janeiro: Embrapa solos, 2021. Resolução espacial: 90 metros',
-        link: 'http://geoinfo.cnps.embrapa.br/layers/geonode%3Abra_espmap30100',
-    },
-    {
-        id: 12,
-        nome: 'Acidez (pH) do Solo a 30-60cm',
-        geolyr: phSolo,
-        active: false,
-        origem: 'embrapa',
-        leg: getLegend('mapas_ph_solo'),
-        referencia: 'EMBRAPA – Empresa Brasileira de Pesquisa Agropecuária. Mapa de acidez (pH) do solo a 30-60 cm do Brasil na resolução espacial de 90 m - Versão 2021. Rio de Janeiro: Embrapa solos, 2021. Resolução espacial: 90 metros',
-        link: 'http://geoinfo.cnps.embrapa.br/layers/geonode%3Abr_ph_h2o_30_60cm_pred',
-    },
-    {
-        id: 13,
-        nome: 'Capacidade de Água Disponível (AWC)',
-        slug: 'capacidade-de-agua-disponivel',
-        geolyr: capAguaDisp,
-        active: false,
-        origem: 'ana',
-        referencia: 'ANA – Agência Nacional de Águas. Capacidade de água disponível - CAD ou AWC dos solos no Brasil. Brasília: Superintendência de Planejamento de Recursos Hídricos – SPR, 2021.  Escala: 1:250.000.',
-        leg: getLegend('mapas_capaguadisp'),
-        link: 'https://metadados.snirh.gov.br/geonetwork/srv/api/records/28fe4baa-66f3-4f6b-b0d2-890abf5910c4',
-    },
-    {
-        id: 14,
-        nome: 'Cobertura e Uso da Terra (MapBiomas 2021)',
-        slug: 'mapbiomas',
-        geolyr: mapBiomas2021,
-        active: false,
-        origem: 'mapbiomas',
-        referencia: 'Projeto MapBiomas – Coleção 2021 da Série Anual de Mapas de Cobertura e Uso da Terra do Brasil',
-        leg: getLegend('mapbiomas_2021'),
-        link: 'http://brasil.mapbiomas.org',
-    },
-]
-
-var fixedLayers = [
-    {
-        id: 1,
-        nome: 'América do Sul',
-        geolyr: americaSul
-    },
-    {
-        id: 2,
-        nome: 'Oceano',
-        geolyr: oceano
+        nome: 'Imóveis a Venda',
+        geolyr: imoveisVenda,
+        active: false
     },
 ]
