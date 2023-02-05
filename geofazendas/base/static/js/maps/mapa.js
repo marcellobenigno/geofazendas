@@ -144,8 +144,6 @@ const app = createApp({
                     cql_filter: `municipio_id=${municipioSelecionado.id}`,
                 })
             this.map.fitBounds(municipioSelecionado.extent)
-            this.map.addLayer(this.overlayList[1].geolyr)
-            this.overlayList[1].active = true
             this.map.addLayer(this.municipioLayer)
         },
         onMapClick(e) {
