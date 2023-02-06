@@ -121,6 +121,108 @@
                     {% endwith %}
                 </div>
 
+                <!-- Business -->
+                <div class="tab01 p-b-20">
+                    <div class="tab01-head how2 how2-cl2 bocl12 flex-s-c m-r-10 m-r-0-sr991">
+                        <!-- Brand tab -->
+                        <h3 class="f1-m-2 cl13 tab01-title">
+                            ARTIGOS
+                        </h3>
+                    </div>
+
+                    <!-- Tab panes -->
+                    {% with primeiro_artigo=view.primeiro_artigo %}
+                    {% if primeiro_artigo %}
+                    <div class="tab-content p-t-35">
+                        <!-- - -->
+                        <div class="tab-pane fade show active" id="tab2-1" role="tabpanel">
+                            <div class="row">
+                                <div class="col-sm-6 p-r-25 p-r-15-sr991">
+                                    <!-- Item post -->
+                                    <div class="m-b-30">
+                                        <div class="wrap-pic-w hov1 trans-03">
+                                            {% if primeiro_artigo.foto %}
+                                            <img src="{{ primeiro_artigo.foto.url }}" alt="IMG">
+                                            {% else %}
+                                            <img src="{{ STATIC_URL }}vendor/img/sindicatos/post-10.jpg" alt="IMG">
+                                            {% endif %}
+                                        </div>
+
+                                        <div class="p-t-20">
+                                            <h5 class="p-b-5">
+                                                <a href="{% url 'artigos:artigo_detail' primeiro_artigo.tipo_artigo primeiro_artigo.slug %}"
+                                                    class="f1-m-3 cl2 hov-cl10 trans-03">
+                                                    {{ primeiro_artigo.titulo }}
+                                                </a>
+                                            </h5>
+
+                                            <span class="cl8">
+                                                {% if primeiro_artigo.categoria %}
+                                                    <a href="{% url 'artigos:artigo_list' %}?categoria={{ primeiro_clima.categoria.slug }}" class="f1-s-4 cl8 hov-cl10 trans-03">
+                                                        {{ primeiro_artigo.categoria }}
+                                                    </a>
+                                                {% endif %}
+
+                                                <span class="f1-s-3 m-rl-3">
+                                                    {{ primeiro_artigo.autor }}
+                                                </span>
+
+                                                <span class="f1-s-3">
+                                                    {{ primeiro_artigo.data_publicacao|date:'d/m/Y' }}
+                                                </span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6 p-r-25 p-r-15-sr991">
+                                    <!-- Item post -->
+                                    {% for artigo in view.artigos %}
+                                    <div class="flex-wr-sb-s m-b-30">
+                                        <div class="size-w-1 wrap-pic-w hov1 trans-03">
+                                            {% if artigo.foto %}
+                                            <img src="{{ clima.foto.url }}" alt="IMG">
+                                            {% else %}
+                                            <img src="{{ STATIC_URL }}vendor/img/sindicatos/post-11.jpg" alt="IMG">
+                                            {% endif %}
+                                        </div>
+
+                                        <div class="size-w-2">
+                                            <h5 class="p-b-5">
+                                                <a href="{% url 'artigos:artigo_detail' artigo.tipo_artigo artigo.slug %}"
+                                                    class="f1-s-5 cl3 hov-cl10 trans-03">
+                                                    {{ artigo.titulo }}
+                                                </a>
+                                            </h5>
+
+                                            <span class="cl8">
+                                                <a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
+                                                    {% if artigo.categoria %}
+                                                        <a href="{% url 'artigos:artigo_list' %}?categoria={{ artigo.categoria.slug }}" class="f1-s-4 cl8 hov-cl10 trans-03">
+                                                            {{ artigo.categoria }}
+                                                        </a>
+                                                    {% endif %}
+                                                </a>
+
+                                                <span class="f1-s-3 m-rl-3">
+                                                    {{ artigo.autor }}
+                                                </span>
+
+                                                <span class="f1-s-3">
+                                                    {{ artigo.data_publicacao|date:'d/m/Y' }}
+                                                </span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% endwith %}
+                </div>
+
                  <!-- Business -->
                  <div class="tab01 p-b-20">
                     <div class="tab01-head how2 how2-cl2 bocl12 flex-s-c m-r-10 m-r-0-sr991">
