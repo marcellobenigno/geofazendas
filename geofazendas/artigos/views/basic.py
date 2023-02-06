@@ -18,10 +18,10 @@ class ArtigoListView(generic.ListView):
         queryset = Artigo.objects.filter(
             tipo_artigo=self.tipo_artigo, data_publicacao__isnull=False
         )
-        category = self.request.GET.get('categoria')
-        if category:
-            category = get_object_or_404(Categoria, slug=category)
-            queryset = queryset.filter(category=category)
+        categoria = self.request.GET.get('categoria')
+        if categoria:
+            categoria = get_object_or_404(Categoria, slug=categoria)
+            queryset = queryset.filter(category=categoria)
         q = self.request.GET.get('q')
         if q:
             queryset = queryset.filter(
@@ -59,6 +59,8 @@ class ArtigoDetailView(generic.DetailView):
             url_name = 'artigos:artigo_list'
         elif self.object.tipo_artigo == 'noticias':
             url_name = 'artigos:noticia_list'
+        elif self.object.tipo_artigo == 'clima':
+            url_name = 'artigos:clima_list'
         else:
             url_name = 'artigos:curso_list'
         return reverse(url_name)
@@ -78,4 +80,5 @@ class ArtigoDetailView(generic.DetailView):
 artigo_list = ArtigoListView.as_view()
 noticia_list = ArtigoListView.as_view(tipo_artigo='noticias')
 curso_list = ArtigoListView.as_view(tipo_artigo='cursos')
+clima_list = ArtigoListView.as_view(tipo_artigo='clima')
 artigo_detail = ArtigoDetailView.as_view()

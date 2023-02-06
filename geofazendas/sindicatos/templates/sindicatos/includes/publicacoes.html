@@ -2,740 +2,19 @@
     <div class="row justify-content-center">
         <div class="col-md-10 col-lg-8">
             <div class="p-b-20">
-                <!-- Climate -->
-                <div class="tab01 p-b-20">
-                    <div class="how2 how2-cl4 flex-s-c m-r-10 m-r-0-sr991">
-                        <!-- Brand tab -->
-                        <h3 class="f1-m-2 cl3 tab01-title">
-                            CLIMA
-                        </h3>
-
-                        <!-- Nav tabs -->
-                        <ul class="nav nav-tabs" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" data-toggle="tab" href="#tab1-1"
-                                    role="tab">Previsão</a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tab1-2" role="tab">Alertas</a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tab1-4"
-                                    role="tab">Históricos</a>
-                            </li>
-
-                            <!-- <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#tab1-5" role="tab"></a>
-                        </li> -->
-                        </ul>
-                    </div>
-
-
-                    <!-- Tab panes -->
-                    {% with primeiro_clima=view.primeiro_clima %}
-                    {% if primeiro_clima %}
-                    <div class="tab-content p-t-35">
-                        <!-- - -->
-                        <div class="tab-pane fade show active" id="tab1-1" role="tabpanel">
-                            <div class="row">
-                                <div class="col-sm-6 p-r-25 p-r-15-sr991">
-                                    <!-- Item post -->
-                                    <div class="m-b-30">
-                                        {% if primeiro_clima.foto %}
-                                        <div class="wrap-pic-w hov1 trans-03">
-                                            <img src="{{ primeiro_clima.foto.url }}" alt="IMG">
-                                        </div>
-                                        {% endif %}
-
-                                        <div class="p-t-20">
-                                            <h5 class="p-b-5">
-                                                <a href="publicacao_completa.html"
-                                                    class="f1-m-3 cl2 hov-cl10 trans-03">
-                                                    Título da Publicação
-                                                </a>
-                                            </h5>
-
-                                            <span class="cl8">
-                                                <a href="#" class="f1-s-4 cl8 hov-cl10 trans-03">
-                                                    Previsão
-                                                </a>
-
-                                                <span class="f1-s-3 m-rl-3">
-                                                    -
-                                                </span>
-
-                                                <span class="f1-s-3">
-                                                    DD/MM/AAAA
-                                                </span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-sm-6 p-r-25 p-r-15-sr991">
-                                    <!-- Item post -->
-                                    <div class="flex-wr-sb-s m-b-30">
-                                        <div class="size-w-1 wrap-pic-w hov1 trans-03">
-                                            <img src="{{ STATIC_URL }}vendor/img/sindicatos/post-06.jpg" alt="IMG">
-                                        </div>
-
-                                        <div class="size-w-2">
-                                            <h5 class="p-b-5">
-                                                <a href="publicacao_completa.html"
-                                                    class="f1-s-5 cl3 hov-cl10 trans-03">
-                                                    Título da Publicação
-                                                </a>
-                                            </h5>
-
-                                            <span class="cl8">
-                                                <a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-                                                    Previsão
-                                                </a>
-
-                                                <span class="f1-s-3 m-rl-3">
-                                                    -
-                                                </span>
-
-                                                <span class="f1-s-3">
-                                                    DD/MM/AAAA
-                                                </span>
-                                            </span>
-                                        </div>
-                                    </div>
-
-                                    <!-- Item post -->
-                                    <div class="flex-wr-sb-s m-b-30">
-                                        <div class="size-w-1 wrap-pic-w hov1 trans-03">
-                                            <img src="{{ STATIC_URL }}vendor/img/sindicatos/post-07.jpg" alt="IMG">
-                                        </div>
-
-                                        <div class="size-w-2">
-                                            <h5 class="p-b-5">
-                                                <a href="publicacao_completa.html"
-                                                    class="f1-s-5 cl3 hov-cl10 trans-03">
-                                                    Título da Publicação
-                                                </a>
-                                            </h5>
-
-                                            <span class="cl8">
-                                                <a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-                                                    Previsão
-                                                </a>
-
-                                                <span class="f1-s-3 m-rl-3">
-                                                    -
-                                                </span>
-
-                                                <span class="f1-s-3">
-                                                    DD/MM/AAAA
-                                                </span>
-                                            </span>
-                                        </div>
-                                    </div>
-
-                                    <!-- Item post -->
-                                    <div class="flex-wr-sb-s m-b-30">
-                                        <div class="size-w-1 wrap-pic-w hov1 trans-03">
-                                            <img src="{{ STATIC_URL }}vendor/img/sindicatos/post-08.jpg" alt="IMG">
-                                        </div>
-
-                                        <div class="size-w-2">
-                                            <h5 class="p-b-5">
-                                                <a href="publicacao_completa.html"
-                                                    class="f1-s-5 cl3 hov-cl10 trans-03">
-                                                    Título da Publicação
-                                                </a>
-                                            </h5>
-
-                                            <span class="cl8">
-                                                <a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-                                                    Previsão
-                                                </a>
-
-                                                <span class="f1-s-3 m-rl-3">
-                                                    -
-                                                </span>
-
-                                                <span class="f1-s-3">
-                                                    DD/MM/AAAA
-                                                </span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- - -->
-                        <div class="tab-pane fade" id="tab1-2" role="tabpanel">
-                            <div class="row">
-                                <div class="col-sm-6 p-r-25 p-r-15-sr991">
-                                    <!-- Item post -->
-                                    <div class="m-b-30">
-                                        <div class="wrap-pic-w hov1 trans-03">
-                                            <img src="{{ STATIC_URL }}vendor/img/sindicatos/post-09.jpg" alt="IMG">
-                                        </div>
-
-                                        <div class="p-t-20">
-                                            <h5 class="p-b-5">
-                                                <a href="publicacao_completa.html"
-                                                    class="f1-m-3 cl2 hov-cl10 trans-03">
-                                                    Título da Publicação
-                                                </a>
-                                            </h5>
-
-                                            <span class="cl8">
-                                                <a href="#" class="f1-s-4 cl8 hov-cl10 trans-03">
-                                                    Alertas
-                                                </a>
-
-                                                <span class="f1-s-3 m-rl-3">
-                                                    -
-                                                </span>
-
-                                                <span class="f1-s-3">
-                                                    DD/MM/AAAA
-                                                </span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-sm-6 p-r-25 p-r-15-sr991">
-                                    <!-- Item post -->
-                                    <div class="flex-wr-sb-s m-b-30">
-                                        <div class="size-w-1 wrap-pic-w hov1 trans-03">
-                                            <img src="{{ STATIC_URL }}vendor/img/sindicatos/post-08.jpg" alt="IMG">
-                                        </div>
-
-                                        <div class="size-w-2">
-                                            <h5 class="p-b-5">
-                                                <a href="publicacao_completa.html"
-                                                    class="f1-s-5 cl3 hov-cl10 trans-03">
-                                                    Título da Publicação
-                                                </a>
-                                            </h5>
-
-                                            <span class="cl8">
-                                                <a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-                                                    Alertas
-                                                </a>
-
-                                                <span class="f1-s-3 m-rl-3">
-                                                    -
-                                                </span>
-
-                                                <span class="f1-s-3">
-                                                    DD/MM/AAAA
-                                                </span>
-                                            </span>
-                                        </div>
-                                    </div>
-
-                                    <!-- Item post -->
-                                    <div class="flex-wr-sb-s m-b-30">
-                                        <div class="size-w-1 wrap-pic-w hov1 trans-03">
-                                            <img src="{{ STATIC_URL }}vendor/img/sindicatos/post-06.jpg" alt="IMG">
-                                        </div>
-
-                                        <div class="size-w-2">
-                                            <h5 class="p-b-5">
-                                                <a href="publicacao_completa.html"
-                                                    class="f1-s-5 cl3 hov-cl10 trans-03">
-                                                    Título da Publicação
-                                                </a>
-                                            </h5>
-
-                                            <span class="cl8">
-                                                <a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-                                                    Alertas
-                                                </a>
-
-                                                <span class="f1-s-3 m-rl-3">
-                                                    -
-                                                </span>
-
-                                                <span class="f1-s-3">
-                                                    DD/MM/AAAA
-                                                </span>
-                                            </span>
-                                        </div>
-                                    </div>
-
-                                    <!-- Item post -->
-                                    <div class="flex-wr-sb-s m-b-30">
-                                        <div class="size-w-1 wrap-pic-w hov1 trans-03">
-                                            <img src="{{ STATIC_URL }}vendor/img/sindicatos/post-07.jpg" alt="IMG">
-                                        </div>
-
-                                        <div class="size-w-2">
-                                            <h5 class="p-b-5">
-                                                <a href="publicacao_completa.html"
-                                                    class="f1-s-5 cl3 hov-cl10 trans-03">
-                                                    Título da Publicação
-                                                </a>
-                                            </h5>
-
-                                            <span class="cl8">
-                                                <a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-                                                    Alertas
-                                                </a>
-
-                                                <span class="f1-s-3 m-rl-3">
-                                                    -
-                                                </span>
-
-                                                <span class="f1-s-3">
-                                                    DD/MM/AAAA
-                                                </span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- - -->
-                        <div class="tab-pane fade" id="tab1-3" role="tabpanel">
-                            <div class="row">
-                                <div class="col-sm-6 p-r-25 p-r-15-sr991">
-                                    <!-- Item post -->
-                                    <div class="m-b-30">
-                                        <div class="wrap-pic-w hov1 trans-03">
-                                            <img src="{{ STATIC_URL }}vendor/img/sindicatos/post-08.jpg" alt="IMG">
-                                        </div>
-
-                                        <div class="p-t-20">
-                                            <h5 class="p-b-5">
-                                                <a href="publicacao_completa.html"
-                                                    class="f1-m-3 cl2 hov-cl10 trans-03">
-                                                    Título da Publicação
-                                                </a>
-                                            </h5>
-
-                                            <span class="cl8">
-                                                <a href="#" class="f1-s-4 cl8 hov-cl10 trans-03">
-                                                    Mapas
-                                                </a>
-
-                                                <span class="f1-s-3 m-rl-3">
-                                                    -
-                                                </span>
-
-                                                <span class="f1-s-3">
-                                                    DD/MM/AAAA
-                                                </span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-sm-6 p-r-25 p-r-15-sr991">
-                                    <!-- Item post -->
-                                    <div class="flex-wr-sb-s m-b-30">
-                                        <div class="size-w-1 wrap-pic-w hov1 trans-03">
-                                            <img src="{{ STATIC_URL }}vendor/img/sindicatos/post-07.jpg" alt="IMG">
-                                        </div>
-
-                                        <div class="size-w-2">
-                                            <h5 class="p-b-5">
-                                                <a href="publicacao_completa.html"
-                                                    class="f1-s-5 cl3 hov-cl10 trans-03">
-                                                    Título da Publicação
-                                                </a>
-                                            </h5>
-
-                                            <span class="cl8">
-                                                <a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-                                                    Mapas
-                                                </a>
-
-                                                <span class="f1-s-3 m-rl-3">
-                                                    -
-                                                </span>
-
-                                                <span class="f1-s-3">
-                                                    DD/MM/AAAA
-                                                </span>
-                                            </span>
-                                        </div>
-                                    </div>
-
-                                    <!-- Item post -->
-                                    <div class="flex-wr-sb-s m-b-30">
-                                        <div class="size-w-1 wrap-pic-w hov1 trans-03">
-                                            <img src="{{ STATIC_URL }}vendor/img/sindicatos/post-06.jpg" alt="IMG">
-                                        </div>
-
-                                        <div class="size-w-2">
-                                            <h5 class="p-b-5">
-                                                <a href="publicacao_completa.html"
-                                                    class="f1-s-5 cl3 hov-cl10 trans-03">
-                                                    Título da Publicação
-                                                </a>
-                                            </h5>
-
-                                            <span class="cl8">
-                                                <a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-                                                    Mapas
-                                                </a>
-
-                                                <span class="f1-s-3 m-rl-3">
-                                                    -
-                                                </span>
-
-                                                <span class="f1-s-3">
-                                                    DD/MM/AAAA
-                                                </span>
-                                            </span>
-                                        </div>
-                                    </div>
-
-                                    <!-- Item post -->
-                                    <div class="flex-wr-sb-s m-b-30">
-                                        <div class="size-w-1 wrap-pic-w hov1 trans-03">
-                                            <img src="{{ STATIC_URL }}vendor/img/sindicatos/post-05.jpg" alt="IMG">
-                                        </div>
-
-                                        <div class="size-w-2">
-                                            <h5 class="p-b-5">
-                                                <a href="publicacao_completa.html"
-                                                    class="f1-s-5 cl3 hov-cl10 trans-03">
-                                                    Título da Publicação
-                                                </a>
-                                            </h5>
-
-                                            <span class="cl8">
-                                                <a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-                                                    Mapas
-                                                </a>
-
-                                                <span class="f1-s-3 m-rl-3">
-                                                    -
-                                                </span>
-
-                                                <span class="f1-s-3">
-                                                    DD/MM/AAAA
-                                                </span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- - -->
-                        <div class="tab-pane fade" id="tab1-4" role="tabpanel">
-                            <div class="row">
-                                <div class="col-sm-6 p-r-25 p-r-15-sr991">
-                                    <!-- Item post -->
-                                    <div class="m-b-30">
-                                        <div class="wrap-pic-w hov1 trans-03">
-                                            <img src="{{ STATIC_URL }}vendor/img/sindicatos/post-06.jpg" alt="IMG">
-                                        </div>
-
-                                        <div class="p-t-20">
-                                            <h5 class="p-b-5">
-                                                <a href="publicacao_completa.html"
-                                                    class="f1-m-3 cl2 hov-cl10 trans-03">
-                                                    Título da Publicação
-                                                </a>
-                                            </h5>
-
-                                            <span class="cl8">
-                                                <a href="#" class="f1-s-4 cl8 hov-cl10 trans-03">
-                                                    Históricos
-                                                </a>
-
-                                                <span class="f1-s-3 m-rl-3">
-                                                    -
-                                                </span>
-
-                                                <span class="f1-s-3">
-                                                    DD/MM/AAAA
-                                                </span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-sm-6 p-r-25 p-r-15-sr991">
-                                    <!-- Item post -->
-                                    <div class="flex-wr-sb-s m-b-30">
-                                        <div class="size-w-1 wrap-pic-w hov1 trans-03">
-                                            <img src="{{ STATIC_URL }}vendor/img/sindicatos/post-09.jpg" alt="IMG">
-                                        </div>
-
-                                        <div class="size-w-2">
-                                            <h5 class="p-b-5">
-                                                <a href="publicacao_completa.html"
-                                                    class="f1-s-5 cl3 hov-cl10 trans-03">
-                                                    Título da Publicação
-                                                </a>
-                                            </h5>
-
-                                            <span class="cl8">
-                                                <a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-                                                    Históricos
-                                                </a>
-
-                                                <span class="f1-s-3 m-rl-3">
-                                                    -
-                                                </span>
-
-                                                <span class="f1-s-3">
-                                                    DD/MM/AAAA
-                                                </span>
-                                            </span>
-                                        </div>
-                                    </div>
-
-                                    <!-- Item post -->
-                                    <div class="flex-wr-sb-s m-b-30">
-                                        <div class="size-w-1 wrap-pic-w hov1 trans-03">
-                                            <img src="{{ STATIC_URL }}vendor/img/sindicatos/post-07.jpg" alt="IMG">
-                                        </div>
-
-                                        <div class="size-w-2">
-                                            <h5 class="p-b-5">
-                                                <a href="publicacao_completa.html"
-                                                    class="f1-s-5 cl3 hov-cl10 trans-03">
-                                                    Título da Publicação
-                                                </a>
-                                            </h5>
-
-                                            <span class="cl8">
-                                                <a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-                                                    Históricos
-                                                </a>
-
-                                                <span class="f1-s-3 m-rl-3">
-                                                    -
-                                                </span>
-
-                                                <span class="f1-s-3">
-                                                    DD/MM/AAAA
-                                                </span>
-                                            </span>
-                                        </div>
-                                    </div>
-
-                                    <!-- Item post -->
-                                    <div class="flex-wr-sb-s m-b-30">
-                                        <div class="size-w-1 wrap-pic-w hov1 trans-03">
-                                            <img src="{{ STATIC_URL }}vendor/img/sindicatos/post-08.jpg" alt="IMG">
-                                        </div>
-
-                                        <div class="size-w-2">
-                                            <h5 class="p-b-5">
-                                                <a href="publicacao_completa.html"
-                                                    class="f1-s-5 cl3 hov-cl10 trans-03">
-                                                    Título da Publicação
-                                                </a>
-                                            </h5>
-
-                                            <span class="cl8">
-                                                <a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-                                                    Históricos
-                                                </a>
-
-                                                <span class="f1-s-3 m-rl-3">
-                                                    -
-                                                </span>
-
-                                                <span class="f1-s-3">
-                                                    DD/MM/AAAA
-                                                </span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- - -->
-                        <div class="tab-pane fade" id="tab1-5" role="tabpanel">
-                            <div class="row">
-                                <div class="col-sm-6 p-r-25 p-r-15-sr991">
-                                    <!-- Item post -->
-                                    <div class="m-b-30">
-                                        <div class="wrap-pic-w hov1 trans-03">
-                                            <img src="{{ STATIC_URL }}vendor/img/sindicatos/post-07.jpg" alt="IMG">
-                                        </div>
-
-                                        <div class="p-t-20">
-                                            <h5 class="p-b-5">
-                                                <a href="publicacao_completa.html"
-                                                    class="f1-m-3 cl2 hov-cl10 trans-03">
-                                                    Título da Publicação
-                                                </a>
-                                            </h5>
-
-                                            <span class="cl8">
-                                                <a href="#" class="f1-s-4 cl8 hov-cl10 trans-03">
-                                                    Music
-                                                </a>
-
-                                                <span class="f1-s-3 m-rl-3">
-                                                    -
-                                                </span>
-
-                                                <span class="f1-s-3">
-                                                    DD/MM/AAAA
-                                                </span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-sm-6 p-r-25 p-r-15-sr991">
-                                    <!-- Item post -->
-                                    <div class="flex-wr-sb-s m-b-30">
-                                        <div class="size-w-1 wrap-pic-w hov1 trans-03">
-                                            <img src="{{ STATIC_URL }}vendor/img/sindicatos/post-08.jpg" alt="IMG">
-                                        </div>
-
-                                        <div class="size-w-2">
-                                            <h5 class="p-b-5">
-                                                <a href="publicacao_completa.html"
-                                                    class="f1-s-5 cl3 hov-cl10 trans-03">
-                                                    Título da Publicação
-                                                </a>
-                                            </h5>
-
-                                            <span class="cl8">
-                                                <a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-                                                    Celebrity
-                                                </a>
-
-                                                <span class="f1-s-3 m-rl-3">
-                                                    -
-                                                </span>
-
-                                                <span class="f1-s-3">
-                                                    DD/MM/AAAA
-                                                </span>
-                                            </span>
-                                        </div>
-                                    </div>
-
-                                    <!-- Item post -->
-                                    <div class="flex-wr-sb-s m-b-30">
-                                        <div class="size-w-1 wrap-pic-w hov1 trans-03">
-                                            <img src="{{ STATIC_URL }}vendor/img/sindicatos/post-06.jpg" alt="IMG">
-                                        </div>
-
-                                        <div class="size-w-2">
-                                            <h5 class="p-b-5">
-                                                <a href="publicacao_completa.html"
-                                                    class="f1-s-5 cl3 hov-cl10 trans-03">
-                                                    Título da Publicação
-                                                </a>
-                                            </h5>
-
-                                            <span class="cl8">
-                                                <a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-                                                    Music
-                                                </a>
-
-                                                <span class="f1-s-3 m-rl-3">
-                                                    -
-                                                </span>
-
-                                                <span class="f1-s-3">
-                                                    DD/MM/AAAA
-                                                </span>
-                                            </span>
-                                        </div>
-                                    </div>
-
-                                    <!-- Item post -->
-                                    <div class="flex-wr-sb-s m-b-30">
-                                        <div class="size-w-1 wrap-pic-w hov1 trans-03">
-                                            <img src="{{ STATIC_URL }}vendor/img/sindicatos/post-09.jpg" alt="IMG">
-                                        </div>
-
-                                        <div class="size-w-2">
-                                            <h5 class="p-b-5">
-                                                <a href="publicacao_completa.html"
-                                                    class="f1-s-5 cl3 hov-cl10 trans-03">
-                                                    Título da Publicação
-                                                </a>
-                                            </h5>
-
-                                            <span class="cl8">
-                                                <a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-                                                    Game
-                                                </a>
-
-                                                <span class="f1-s-3 m-rl-3">
-                                                    -
-                                                </span>
-
-                                                <span class="f1-s-3">
-                                                    DD/MM/AAAA
-                                                </span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {% endif %}
-                    {% endwith %}
-                </div>
 
                 <!-- Business -->
                 <div class="tab01 p-b-20">
                     <div class="tab01-head how2 how2-cl2 bocl12 flex-s-c m-r-10 m-r-0-sr991">
                         <!-- Brand tab -->
                         <h3 class="f1-m-2 cl13 tab01-title">
-                            NOTÍCIAS
+                            CLIMA
                         </h3>
-
-                        <!-- Nav tabs -->
-                        <ul class="nav nav-tabs" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" data-toggle="tab" href="#tab2-1"
-                                    role="tab">Agro</a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tab2-2" role="tab">Cidades</a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tab2-3"
-                                    role="tab">Transporte</a>
-                            </li>
-
-                            <!-- <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#tab2-4" role="tab">Turismo</a>
-                        </li> -->
-
-                            <!-- <li class="nav-item-more dropdown dis-none">
-                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">
-                                <i class="fa fa-ellipsis-h"></i>
-                            </a>
-
-                            <ul class="dropdown-menu">
-
-                            </ul>
-                        </li> -->
-                        </ul>
-
-                        <!--  -->
-                        <!-- <a href="category-01.html" class="tab01-link f1-s-1 cl9 hov-cl10 trans-03">
-                        Ver Todas
-                        <i class="fs-12 m-l-5 fa fa-caret-right"></i>
-                    </a> -->
                     </div>
 
-
                     <!-- Tab panes -->
+                    {% with primeiro_clima=view.primeiro_clima %}
+                    {% if primeiro_clima %}
                     <div class="tab-content p-t-35">
                         <!-- - -->
                         <div class="tab-pane fade show active" id="tab2-1" role="tabpanel">
@@ -744,28 +23,42 @@
                                     <!-- Item post -->
                                     <div class="m-b-30">
                                         <div class="wrap-pic-w hov1 trans-03">
+                                            {% if primeiro_clima.foto %}
+                                            <img src="{{ primeiro_clima.foto.url }}" alt="IMG">
+                                            {% else %}
                                             <img src="{{ STATIC_URL }}vendor/img/sindicatos/post-10.jpg" alt="IMG">
+                                            {% endif %}
                                         </div>
 
                                         <div class="p-t-20">
                                             <h5 class="p-b-5">
-                                                <a href="publicacao_completa.html"
+                                                <a href="{% url 'artigos:artigo_detail' primeiro_clima.tipo_artigo primeiro_clima.slug %}"
                                                     class="f1-m-3 cl2 hov-cl10 trans-03">
-                                                    Título da Publicação
+                                                    {{ primeiro_clima.titulo }}
                                                 </a>
                                             </h5>
 
                                             <span class="cl8">
-                                                <a href="#" class="f1-s-4 cl8 hov-cl10 trans-03">
-                                                    Agronegócio
-                                                </a>
+                                                {% if primeiro_clima.categoria %}
+                                                    {% if primeiro_clima.tipo_artigo == 'artigos' %}
+                                                    <a href="{% url 'artigos:artigo_list' %}?categoria={{ primeiro_clima.categoria.slug }}" class="f1-s-4 cl8 hov-cl10 trans-03">
+                                                    {% elif primeiro_clima.tipo_artigo == 'cursos' %}
+                                                    <a href="{% url 'artigos:curso_list' %}?categoria={{ primeiro_clima.categoria.slug }}" class="f1-s-4 cl8 hov-cl10 trans-03"></a>
+                                                    {% elif primeiro_clima.tipo_artigo == 'noticias' %}
+                                                    <a href="{% url 'artigos:noticia_list' %}?categoria={{ primeiro_clima.categoria.slug }}" class="f1-s-4 cl8 hov-cl10 trans-03"></a>
+                                                    {% else %}
+                                                    <a href="{% url 'artigos:clima_list' %}?categoria={{ primeiro_clima.categoria.slug }}" class="f1-s-4 cl8 hov-cl10 trans-03"></a>
+                                                    {% endif %}
+                                                        {{ primeiro_clima.categoria }}
+                                                    </a>
+                                                {% endif %}
 
                                                 <span class="f1-s-3 m-rl-3">
-                                                    -
+                                                    {{ primeiro_clima.autor }}
                                                 </span>
 
                                                 <span class="f1-s-3">
-                                                    DD/MM/AAAA
+                                                    {{ primeiro_clima.data_publicacao|date:'d/m/Y' }}
                                                 </span>
                                             </span>
                                         </div>
@@ -774,485 +67,176 @@
 
                                 <div class="col-sm-6 p-r-25 p-r-15-sr991">
                                     <!-- Item post -->
+                                    {% for clima in view.clima %}
                                     <div class="flex-wr-sb-s m-b-30">
                                         <div class="size-w-1 wrap-pic-w hov1 trans-03">
+                                            {% if clima.foto %}
+                                            <img src="{{ clima.foto.url }}" alt="IMG">
+                                            {% else %}
                                             <img src="{{ STATIC_URL }}vendor/img/sindicatos/post-11.jpg" alt="IMG">
+                                            {% endif %}
                                         </div>
 
                                         <div class="size-w-2">
                                             <h5 class="p-b-5">
-                                                <a href="publicacao_completa.html"
+                                                <a href="{% url 'artigos:artigo_detail' clima.tipo_artigo clima.slug %}"
                                                     class="f1-s-5 cl3 hov-cl10 trans-03">
-                                                    Título da Publicação
+                                                    {{ clima.titulo }}
                                                 </a>
                                             </h5>
 
                                             <span class="cl8">
                                                 <a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-                                                    Agronegócio
+                                                    {% if clima.categoria %}
+                                                        {% if clima.tipo_artigo == 'artigos' %}
+                                                        <a href="{% url 'artigos:artigo_list' %}?categoria={{ clima.categoria.slug }}" class="f1-s-4 cl8 hov-cl10 trans-03">
+                                                        {% elif clima.tipo_artigo == 'cursos' %}
+                                                        <a href="{% url 'artigos:curso_list' %}?categoria={{ clima.categoria.slug }}" class="f1-s-4 cl8 hov-cl10 trans-03"></a>
+                                                        {% elif clima.tipo_artigo == 'noticias' %}
+                                                        <a href="{% url 'artigos:noticia_list' %}?categoria={{ clima.categoria.slug }}" class="f1-s-4 cl8 hov-cl10 trans-03"></a>
+                                                        {% else %}
+                                                        <a href="{% url 'artigos:clima_list' %}?categoria={{ clima.categoria.slug }}" class="f1-s-4 cl8 hov-cl10 trans-03"></a>
+                                                        {% endif %}
+                                                            {{ clima.categoria }}
+                                                        </a>
+                                                    {% endif %}
                                                 </a>
 
                                                 <span class="f1-s-3 m-rl-3">
-                                                    -
+                                                    {{ clima.autor }}
                                                 </span>
 
                                                 <span class="f1-s-3">
-                                                    DD/MM/AAAA
+                                                    {{ clima.data_publicacao|date:'d/m/Y' }}
                                                 </span>
                                             </span>
                                         </div>
                                     </div>
-
-                                    <!-- Item post -->
-                                    <div class="flex-wr-sb-s m-b-30">
-                                        <div class="size-w-1 wrap-pic-w hov1 trans-03">
-                                            <img src="{{ STATIC_URL }}vendor/img/sindicatos/post-12.jpg" alt="IMG">
-                                        </div>
-
-                                        <div class="size-w-2">
-                                            <h5 class="p-b-5">
-                                                <a href="publicacao_completa.html"
-                                                    class="f1-s-5 cl3 hov-cl10 trans-03">
-                                                    Título da Publicação
-                                                </a>
-                                            </h5>
-
-                                            <span class="cl8">
-                                                <a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-                                                    Agronegócio
-                                                </a>
-
-                                                <span class="f1-s-3 m-rl-3">
-                                                    -
-                                                </span>
-
-                                                <span class="f1-s-3">
-                                                    DD/MM/AAAA
-                                                </span>
-                                            </span>
-                                        </div>
-                                    </div>
-
-                                    <!-- Item post -->
-                                    <div class="flex-wr-sb-s m-b-30">
-                                        <div class="size-w-1 wrap-pic-w hov1 trans-03">
-                                            <img src="{{ STATIC_URL }}vendor/img/sindicatos/post-13.jpg" alt="IMG">
-                                        </div>
-
-                                        <div class="size-w-2">
-                                            <h5 class="p-b-5">
-                                                <a href="publicacao_completa.html"
-                                                    class="f1-s-5 cl3 hov-cl10 trans-03">
-                                                    Título da Publicação
-                                                </a>
-                                            </h5>
-
-                                            <span class="cl8">
-                                                <a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-                                                    Agronegócio
-                                                </a>
-
-                                                <span class="f1-s-3 m-rl-3">
-                                                    -
-                                                </span>
-
-                                                <span class="f1-s-3">
-                                                    DD/MM/AAAA
-                                                </span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- - -->
-                        <div class="tab-pane fade" id="tab2-2" role="tabpanel">
-                            <div class="row">
-                                <div class="col-sm-6 p-r-25 p-r-15-sr991">
-                                    <!-- Item post -->
-                                    <div class="m-b-30">
-                                        <div class="wrap-pic-w hov1 trans-03">
-                                            <img src="{{ STATIC_URL }}vendor/img/sindicatos/post-13.jpg" alt="IMG">
-                                        </div>
-
-                                        <div class="p-t-20">
-                                            <h5 class="p-b-5">
-                                                <a href="publicacao_completa.html"
-                                                    class="f1-m-3 cl2 hov-cl10 trans-03">
-                                                    Título da Publicação
-                                                </a>
-                                            </h5>
-
-                                            <span class="cl8">
-                                                <a href="#" class="f1-s-4 cl8 hov-cl10 trans-03">
-                                                    Cidades
-                                                </a>
-
-                                                <span class="f1-s-3 m-rl-3">
-                                                    -
-                                                </span>
-
-                                                <span class="f1-s-3">
-                                                    DD/MM/AAAA
-                                                </span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-sm-6 p-r-25 p-r-15-sr991">
-                                    <!-- Item post -->
-                                    <div class="flex-wr-sb-s m-b-30">
-                                        <div class="size-w-1 wrap-pic-w hov1 trans-03">
-                                            <img src="{{ STATIC_URL }}vendor/img/sindicatos/post-12.jpg" alt="IMG">
-                                        </div>
-
-                                        <div class="size-w-2">
-                                            <h5 class="p-b-5">
-                                                <a href="publicacao_completa.html"
-                                                    class="f1-s-5 cl3 hov-cl10 trans-03">
-                                                    Título da Publicação
-                                                </a>
-                                            </h5>
-
-                                            <span class="cl8">
-                                                <a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-                                                    Cidades
-                                                </a>
-
-                                                <span class="f1-s-3 m-rl-3">
-                                                    -
-                                                </span>
-
-                                                <span class="f1-s-3">
-                                                    DD/MM/AAAA
-                                                </span>
-                                            </span>
-                                        </div>
-                                    </div>
-
-                                    <!-- Item post -->
-                                    <div class="flex-wr-sb-s m-b-30">
-                                        <div class="size-w-1 wrap-pic-w hov1 trans-03">
-                                            <img src="{{ STATIC_URL }}vendor/img/sindicatos/post-11.jpg" alt="IMG">
-                                        </div>
-
-                                        <div class="size-w-2">
-                                            <h5 class="p-b-5">
-                                                <a href="publicacao_completa.html"
-                                                    class="f1-s-5 cl3 hov-cl10 trans-03">
-                                                    Título da Publicação
-                                                </a>
-                                            </h5>
-
-                                            <span class="cl8">
-                                                <a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-                                                    Cidades
-                                                </a>
-
-                                                <span class="f1-s-3 m-rl-3">
-                                                    -
-                                                </span>
-
-                                                <span class="f1-s-3">
-                                                    DD/MM/AAAA
-                                                </span>
-                                            </span>
-                                        </div>
-                                    </div>
-
-                                    <!-- Item post -->
-                                    <div class="flex-wr-sb-s m-b-30">
-                                        <div class="size-w-1 wrap-pic-w hov1 trans-03">
-                                            <img src="{{ STATIC_URL }}vendor/img/sindicatos/post-10.jpg" alt="IMG">
-                                        </div>
-
-                                        <div class="size-w-2">
-                                            <h5 class="p-b-5">
-                                                <a href="publicacao_completa.html"
-                                                    class="f1-s-5 cl3 hov-cl10 trans-03">
-                                                    Título da Publicação
-                                                </a>
-                                            </h5>
-
-                                            <span class="cl8">
-                                                <a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-                                                    Cidades
-                                                </a>
-
-                                                <span class="f1-s-3 m-rl-3">
-                                                    -
-                                                </span>
-
-                                                <span class="f1-s-3">
-                                                    DD/MM/AAAA
-                                                </span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- - -->
-                        <div class="tab-pane fade" id="tab2-3" role="tabpanel">
-                            <div class="row">
-                                <div class="col-sm-6 p-r-25 p-r-15-sr991">
-                                    <!-- Item post -->
-                                    <div class="m-b-30">
-                                        <div class="wrap-pic-w hov1 trans-03">
-                                            <img src="{{ STATIC_URL }}vendor/img/sindicatos/post-11.jpg" alt="IMG">
-                                        </div>
-
-                                        <div class="p-t-20">
-                                            <h5 class="p-b-5">
-                                                <a href="publicacao_completa.html"
-                                                    class="f1-m-3 cl2 hov-cl10 trans-03">
-                                                    Título da Publicação
-                                                </a>
-                                            </h5>
-
-                                            <span class="cl8">
-                                                <a href="#" class="f1-s-4 cl8 hov-cl10 trans-03">
-                                                    Transporte
-                                                </a>
-
-                                                <span class="f1-s-3 m-rl-3">
-                                                    -
-                                                </span>
-
-                                                <span class="f1-s-3">
-                                                    DD/MM/AAAA
-                                                </span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-sm-6 p-r-25 p-r-15-sr991">
-                                    <!-- Item post -->
-                                    <div class="flex-wr-sb-s m-b-30">
-                                        <div class="size-w-1 wrap-pic-w hov1 trans-03">
-                                            <img src="{{ STATIC_URL }}vendor/img/sindicatos/post-12.jpg" alt="IMG">
-                                        </div>
-
-                                        <div class="size-w-2">
-                                            <h5 class="p-b-5">
-                                                <a href="publicacao_completa.html"
-                                                    class="f1-s-5 cl3 hov-cl10 trans-03">
-                                                    Título da Publicação
-                                                </a>
-                                            </h5>
-
-                                            <span class="cl8">
-                                                <a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-                                                    Transporte
-                                                </a>
-
-                                                <span class="f1-s-3 m-rl-3">
-                                                    -
-                                                </span>
-
-                                                <span class="f1-s-3">
-                                                    DD/MM/AAAA
-                                                </span>
-                                            </span>
-                                        </div>
-                                    </div>
-
-                                    <!-- Item post -->
-                                    <div class="flex-wr-sb-s m-b-30">
-                                        <div class="size-w-1 wrap-pic-w hov1 trans-03">
-                                            <img src="{{ STATIC_URL }}vendor/img/sindicatos/post-13.jpg" alt="IMG">
-                                        </div>
-
-                                        <div class="size-w-2">
-                                            <h5 class="p-b-5">
-                                                <a href="publicacao_completa.html"
-                                                    class="f1-s-5 cl3 hov-cl10 trans-03">
-                                                    Título da Publicação
-                                                </a>
-                                            </h5>
-
-                                            <span class="cl8">
-                                                <a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-                                                    Transporte
-                                                </a>
-
-                                                <span class="f1-s-3 m-rl-3">
-                                                    -
-                                                </span>
-
-                                                <span class="f1-s-3">
-                                                    DD/MM/AAAA
-                                                </span>
-                                            </span>
-                                        </div>
-                                    </div>
-
-                                    <!-- Item post -->
-                                    <div class="flex-wr-sb-s m-b-30">
-                                        <div class="size-w-1 wrap-pic-w hov1 trans-03">
-                                            <img src="{{ STATIC_URL }}vendor/img/sindicatos/post-10.jpg" alt="IMG">
-                                        </div>
-
-                                        <div class="size-w-2">
-                                            <h5 class="p-b-5">
-                                                <a href="publicacao_completa.html"
-                                                    class="f1-s-5 cl3 hov-cl10 trans-03">
-                                                    Título da Publicação
-                                                </a>
-                                            </h5>
-
-                                            <span class="cl8">
-                                                <a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-                                                    Transporte
-                                                </a>
-
-                                                <span class="f1-s-3 m-rl-3">
-                                                    -
-                                                </span>
-
-                                                <span class="f1-s-3">
-                                                    DD/MM/AAAA
-                                                </span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- - -->
-                        <div class="tab-pane fade" id="tab2-4" role="tabpanel">
-                            <div class="row">
-                                <div class="col-sm-6 p-r-25 p-r-15-sr991">
-                                    <!-- Item post -->
-                                    <div class="m-b-30">
-                                        <div class="wrap-pic-w hov1 trans-03">
-                                            <img src="{{ STATIC_URL }}vendor/img/sindicatos/post-12.jpg" alt="IMG">
-                                        </div>
-
-                                        <div class="p-t-20">
-                                            <h5 class="p-b-5">
-                                                <a href="publicacao_completa.html"
-                                                    class="f1-m-3 cl2 hov-cl10 trans-03">
-                                                    Título da Publicação
-                                                </a>
-                                            </h5>
-
-                                            <span class="cl8">
-                                                <a href="#" class="f1-s-4 cl8 hov-cl10 trans-03">
-                                                    Turismo
-                                                </a>
-
-                                                <span class="f1-s-3 m-rl-3">
-                                                    -
-                                                </span>
-
-                                                <span class="f1-s-3">
-                                                    DD/MM/AAAA
-                                                </span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-sm-6 p-r-25 p-r-15-sr991">
-                                    <!-- Item post -->
-                                    <div class="flex-wr-sb-s m-b-30">
-                                        <div class="size-w-1 wrap-pic-w hov1 trans-03">
-                                            <img src="{{ STATIC_URL }}vendor/img/sindicatos/post-13.jpg" alt="IMG">
-                                        </div>
-
-                                        <div class="size-w-2">
-                                            <h5 class="p-b-5">
-                                                <a href="publicacao_completa.html"
-                                                    class="f1-s-5 cl3 hov-cl10 trans-03">
-                                                    Título da Publicação
-                                                </a>
-                                            </h5>
-
-                                            <span class="cl8">
-                                                <a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-                                                    Turismo
-                                                </a>
-
-                                                <span class="f1-s-3 m-rl-3">
-                                                    -
-                                                </span>
-
-                                                <span class="f1-s-3">
-                                                    DD/MM/AAAA
-                                                </span>
-                                            </span>
-                                        </div>
-                                    </div>
-
-                                    <!-- Item post -->
-                                    <div class="flex-wr-sb-s m-b-30">
-                                        <div class="size-w-1 wrap-pic-w hov1 trans-03">
-                                            <img src="{{ STATIC_URL }}vendor/img/sindicatos/post-10.jpg" alt="IMG">
-                                        </div>
-
-                                        <div class="size-w-2">
-                                            <h5 class="p-b-5">
-                                                <a href="publicacao_completa.html"
-                                                    class="f1-s-5 cl3 hov-cl10 trans-03">
-                                                    Título da Publicação
-                                                </a>
-                                            </h5>
-
-                                            <span class="cl8">
-                                                <a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-                                                    Turismo
-                                                </a>
-
-                                                <span class="f1-s-3 m-rl-3">
-                                                    -
-                                                </span>
-
-                                                <span class="f1-s-3">
-                                                    DD/MM/AAAA
-                                                </span>
-                                            </span>
-                                        </div>
-                                    </div>
-
-                                    <!-- Item post -->
-                                    <div class="flex-wr-sb-s m-b-30">
-                                        <div class="size-w-1 wrap-pic-w hov1 trans-03">
-                                            <img src="{{ STATIC_URL }}vendor/img/sindicatos/post-11.jpg" alt="IMG">
-                                        </div>
-
-                                        <div class="size-w-2">
-                                            <h5 class="p-b-5">
-                                                <a href="publicacao_completa.html"
-                                                    class="f1-s-5 cl3 hov-cl10 trans-03">
-                                                    Título da Publicação
-                                                </a>
-                                            </h5>
-
-                                            <span class="cl8">
-                                                <a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-                                                    Turismo
-                                                </a>
-
-                                                <span class="f1-s-3 m-rl-3">
-                                                    -
-                                                </span>
-
-                                                <span class="f1-s-3">
-                                                    DD/MM/AAAA
-                                                </span>
-                                            </span>
-                                        </div>
-                                    </div>
+                                    {% endfor %}
                                 </div>
                             </div>
                         </div>
                     </div>
+                    {% endif %}
+                    {% endwith %}
+                </div>
+
+                 <!-- Business -->
+                 <div class="tab01 p-b-20">
+                    <div class="tab01-head how2 how2-cl2 bocl12 flex-s-c m-r-10 m-r-0-sr991">
+                        <!-- Brand tab -->
+                        <h3 class="f1-m-2 cl13 tab01-title">
+                            NOTÍCIAS
+                        </h3>
+                    </div>
+
+                    <!-- Tab panes -->
+                    {% with primeira_noticia=view.primeira_noticia %}
+                    {% if primeira_noticia %}
+                    <div class="tab-content p-t-35">
+                        <!-- - -->
+                        <div class="tab-pane fade show active" id="tab2-1" role="tabpanel">
+                            <div class="row">
+                                <div class="col-sm-6 p-r-25 p-r-15-sr991">
+                                    <!-- Item post -->
+                                    <div class="m-b-30">
+                                        <div class="wrap-pic-w hov1 trans-03">
+                                            {% if primeira_noticia.foto %}
+                                            <img src="{{ primeira_noticia.foto.url }}" alt="IMG">
+                                            {% else %}
+                                            <img src="{{ STATIC_URL }}vendor/img/sindicatos/post-10.jpg" alt="IMG">
+                                            {% endif %}
+                                        </div>
+
+                                        <div class="p-t-20">
+                                            <h5 class="p-b-5">
+                                                <a href="{% url 'artigos:artigo_detail' primeira_noticia.tipo_artigo primeira_noticia.slug %}"
+                                                    class="f1-m-3 cl2 hov-cl10 trans-03">
+                                                    {{ primeira_noticia.titulo }}
+                                                </a>
+                                            </h5>
+
+                                            <span class="cl8">
+                                                {% if primeira_noticia.categoria %}
+                                                    {% if primeira_noticia.tipo_artigo == 'artigos' %}
+                                                    <a href="{% url 'artigos:artigo_list' %}?categoria={{ primeira_noticia.categoria.slug }}" class="f1-s-4 cl8 hov-cl10 trans-03">
+                                                    {% elif primeiro_clima.tipo_artigo == 'cursos' %}
+                                                    <a href="{% url 'artigos:curso_list' %}?categoria={{ primeira_noticia.categoria.slug }}" class="f1-s-4 cl8 hov-cl10 trans-03"></a>
+                                                    {% elif primeira_noticia.tipo_artigo == 'noticias' %}
+                                                    <a href="{% url 'artigos:noticia_list' %}?categoria={{ primeira_noticia.categoria.slug }}" class="f1-s-4 cl8 hov-cl10 trans-03"></a>
+                                                    {% else %}
+                                                    <a href="{% url 'artigos:clima_list' %}?categoria={{ primeira_noticia.categoria.slug }}" class="f1-s-4 cl8 hov-cl10 trans-03"></a>
+                                                    {% endif %}
+                                                        {{ primeira_noticia.categoria }}
+                                                    </a>
+                                                {% endif %}
+
+                                                <span class="f1-s-3 m-rl-3">
+                                                    {{ primeira_noticia.autor }}
+                                                </span>
+
+                                                <span class="f1-s-3">
+                                                    {{ primeira_noticia.data_publicacao|date:'d/m/Y' }}
+                                                </span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6 p-r-25 p-r-15-sr991">
+                                    <!-- Item post -->
+                                    {% for noticia in view.noticias %}
+                                    <div class="flex-wr-sb-s m-b-30">
+                                        <div class="size-w-1 wrap-pic-w hov1 trans-03">
+                                            {% if noticia.foto %}
+                                            <img src="{{ noticia.foto.url }}" alt="IMG">
+                                            {% else %}
+                                            <img src="{{ STATIC_URL }}vendor/img/sindicatos/post-11.jpg" alt="IMG">
+                                            {% endif %}
+                                        </div>
+
+                                        <div class="size-w-2">
+                                            <h5 class="p-b-5">
+                                                <a href="{% url 'artigos:artigo_detail' noticia.tipo_artigo noticia.slug %}"
+                                                    class="f1-s-5 cl3 hov-cl10 trans-03">
+                                                    {{ noticia.titulo }}
+                                                </a>
+                                            </h5>
+
+                                            <span class="cl8">
+                                                <a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
+                                                    {% if noticia.categoria %}
+                                                        {% if noticia.tipo_artigo == 'artigos' %}
+                                                        <a href="{% url 'artigos:artigo_list' %}?categoria={{ noticia.categoria.slug }}" class="f1-s-4 cl8 hov-cl10 trans-03">
+                                                        {% elif noticia.tipo_artigo == 'cursos' %}
+                                                        <a href="{% url 'artigos:curso_list' %}?categoria={{ noticia.categoria.slug }}" class="f1-s-4 cl8 hov-cl10 trans-03"></a>
+                                                        {% elif noticia.tipo_artigo == 'noticias' %}
+                                                        <a href="{% url 'artigos:noticia_list' %}?categoria={{ noticia.categoria.slug }}" class="f1-s-4 cl8 hov-cl10 trans-03"></a>
+                                                        {% else %}
+                                                        <a href="{% url 'artigos:clima_list' %}?categoria={{ noticia.categoria.slug }}" class="f1-s-4 cl8 hov-cl10 trans-03"></a>
+                                                        {% endif %}
+                                                            {{ noticia.categoria }}
+                                                        </a>
+                                                    {% endif %}
+                                                </a>
+
+                                                <span class="f1-s-3 m-rl-3">
+                                                    {{ noticia.autor }}
+                                                </span>
+
+                                                <span class="f1-s-3">
+                                                    {{ noticia.data_publicacao|date:'d/m/Y' }}
+                                                </span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% endwith %}
                 </div>
 
                 <!-- Course -->
@@ -1262,64 +246,54 @@
                         <h3 class="f1-m-2 cl14 tab01-title">
                             CURSOS
                         </h3>
-
-                        <!-- Nav tabs -->
-                        <ul class="nav nav-tabs" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" data-toggle="tab" href="#tab3-1"
-                                    role="tab">Lorem</a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tab3-2" role="tab">Lorem</a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tab3-3" role="tab">Lorem</a>
-                            </li>
-
-                            <!-- <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#tab3-4" role="tab">Lorem</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#tab3-5" role="tab">Lorem</a>
-                        </li> -->
-                        </ul>
                     </div>
 
-
-                    <!-- Tab panes -->
+                    {% with primeiro_curso=view.primeiro_curso %}
+                    {% if primeiro_curso %}
                     <div class="tab-content p-t-35">
                         <!-- - -->
-                        <div class="tab-pane fade show active" id="tab3-1" role="tabpanel">
+                        <div class="tab-pane fade show active" id="tab2-1" role="tabpanel">
                             <div class="row">
                                 <div class="col-sm-6 p-r-25 p-r-15-sr991">
                                     <!-- Item post -->
                                     <div class="m-b-30">
                                         <div class="wrap-pic-w hov1 trans-03">
-                                            <img src="{{ STATIC_URL }}vendor/img/sindicatos/post-14.jpg" alt="IMG">
+                                            {% if primeiro_curso.foto %}
+                                            <img src="{{ primeiro_curso.foto.url }}" alt="IMG">
+                                            {% else %}
+                                            <img src="{{ STATIC_URL }}vendor/img/sindicatos/post-10.jpg" alt="IMG">
+                                            {% endif %}
                                         </div>
 
                                         <div class="p-t-20">
                                             <h5 class="p-b-5">
-                                                <a href="publicacao_completa.html"
+                                                <a href="{% url 'artigos:artigo_detail' primeiro_curso.tipo_artigo primeiro_curso.slug %}"
                                                     class="f1-m-3 cl2 hov-cl10 trans-03">
-                                                    Título da Publicação
+                                                    {{ primeiro_curso.titulo }}
                                                 </a>
                                             </h5>
 
                                             <span class="cl8">
-                                                <a href="#" class="f1-s-4 cl8 hov-cl10 trans-03">
-                                                    Lorem
-                                                </a>
+                                                {% if primeiro_curso.categoria %}
+                                                    {% if primeiro_curso.tipo_artigo == 'artigos' %}
+                                                    <a href="{% url 'artigos:artigo_list' %}?categoria={{ primeiro_curso.categoria.slug }}" class="f1-s-4 cl8 hov-cl10 trans-03">
+                                                    {% elif primeiro_curso.tipo_artigo == 'cursos' %}
+                                                    <a href="{% url 'artigos:curso_list' %}?categoria={{ primeiro_curso.categoria.slug }}" class="f1-s-4 cl8 hov-cl10 trans-03"></a>
+                                                    {% elif primeiro_curso.tipo_artigo == 'noticias' %}
+                                                    <a href="{% url 'artigos:noticia_list' %}?categoria={{ primeiro_curso.categoria.slug }}" class="f1-s-4 cl8 hov-cl10 trans-03"></a>
+                                                    {% else %}
+                                                    <a href="{% url 'artigos:clima_list' %}?categoria={{ primeiro_curso.categoria.slug }}" class="f1-s-4 cl8 hov-cl10 trans-03"></a>
+                                                    {% endif %}
+                                                        {{ primeiro_curso.categoria }}
+                                                    </a>
+                                                {% endif %}
 
                                                 <span class="f1-s-3 m-rl-3">
-                                                    -
+                                                    {{ primeiro_curso.autor }}
                                                 </span>
 
                                                 <span class="f1-s-3">
-                                                    DD/MM/AAAA
+                                                    {{ primeiro_curso.data_publicacao|date:'d/m/Y' }}
                                                 </span>
                                             </span>
                                         </div>
@@ -1328,614 +302,58 @@
 
                                 <div class="col-sm-6 p-r-25 p-r-15-sr991">
                                     <!-- Item post -->
+                                    {% for curso in view.cursos %}
                                     <div class="flex-wr-sb-s m-b-30">
                                         <div class="size-w-1 wrap-pic-w hov1 trans-03">
-                                            <img src="{{ STATIC_URL }}vendor/img/sindicatos/post-15.jpg" alt="IMG">
+                                            {% if curso.foto %}
+                                            <img src="{{ curso.foto.url }}" alt="IMG">
+                                            {% else %}
+                                            <img src="{{ STATIC_URL }}vendor/img/sindicatos/post-11.jpg" alt="IMG">
+                                            {% endif %}
                                         </div>
 
                                         <div class="size-w-2">
                                             <h5 class="p-b-5">
-                                                <a href="publicacao_completa.html"
+                                                <a href="{% url 'artigos:artigo_detail' curso.tipo_artigo curso.slug %}"
                                                     class="f1-s-5 cl3 hov-cl10 trans-03">
-                                                    Título da Publicação
+                                                    {{ curso.titulo }}
                                                 </a>
                                             </h5>
 
                                             <span class="cl8">
                                                 <a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-                                                    Lorem
+                                                    {% if curso.categoria %}
+                                                        {% if curso.tipo_artigo == 'artigos' %}
+                                                        <a href="{% url 'artigos:artigo_list' %}?categoria={{ curso.categoria.slug }}" class="f1-s-4 cl8 hov-cl10 trans-03">
+                                                        {% elif curso.tipo_artigo == 'cursos' %}
+                                                        <a href="{% url 'artigos:curso_list' %}?categoria={{ curso.categoria.slug }}" class="f1-s-4 cl8 hov-cl10 trans-03"></a>
+                                                        {% elif curso.tipo_artigo == 'noticias' %}
+                                                        <a href="{% url 'artigos:noticia_list' %}?categoria={{ curso.categoria.slug }}" class="f1-s-4 cl8 hov-cl10 trans-03"></a>
+                                                        {% else %}
+                                                        <a href="{% url 'artigos:clima_list' %}?categoria={{ curso.categoria.slug }}" class="f1-s-4 cl8 hov-cl10 trans-03"></a>
+                                                        {% endif %}
+                                                            {{ curso.categoria }}
+                                                        </a>
+                                                    {% endif %}
                                                 </a>
 
                                                 <span class="f1-s-3 m-rl-3">
-                                                    -
+                                                    {{ curso.autor }}
                                                 </span>
 
                                                 <span class="f1-s-3">
-                                                    DD/MM/AAAA
+                                                    {{ curso.data_publicacao|date:'d/m/Y' }}
                                                 </span>
                                             </span>
                                         </div>
                                     </div>
-
-                                    <!-- Item post -->
-                                    <div class="flex-wr-sb-s m-b-30">
-                                        <div class="size-w-1 wrap-pic-w hov1 trans-03">
-                                            <img src="{{ STATIC_URL }}vendor/img/sindicatos/post-16.jpg" alt="IMG">
-                                        </div>
-
-                                        <div class="size-w-2">
-                                            <h5 class="p-b-5">
-                                                <a href="publicacao_completa.html"
-                                                    class="f1-s-5 cl3 hov-cl10 trans-03">
-                                                    Título da Publicação
-                                                </a>
-                                            </h5>
-
-                                            <span class="cl8">
-                                                <a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-                                                    Lorem
-                                                </a>
-
-                                                <span class="f1-s-3 m-rl-3">
-                                                    -
-                                                </span>
-
-                                                <span class="f1-s-3">
-                                                    DD/MM/AAAA
-                                                </span>
-                                            </span>
-                                        </div>
-                                    </div>
-
-                                    <!-- Item post -->
-                                    <div class="flex-wr-sb-s m-b-30">
-                                        <div class="size-w-1 wrap-pic-w hov1 trans-03">
-                                            <img src="{{ STATIC_URL }}vendor/img/sindicatos/post-17.jpg" alt="IMG">
-                                        </div>
-
-                                        <div class="size-w-2">
-                                            <h5 class="p-b-5">
-                                                <a href="publicacao_completa.html"
-                                                    class="f1-s-5 cl3 hov-cl10 trans-03">
-                                                    Título da Publicação
-                                                </a>
-                                            </h5>
-
-                                            <span class="cl8">
-                                                <a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-                                                    Lorem
-                                                </a>
-
-                                                <span class="f1-s-3 m-rl-3">
-                                                    -
-                                                </span>
-
-                                                <span class="f1-s-3">
-                                                    DD/MM/AAAA
-                                                </span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- - -->
-                        <div class="tab-pane fade" id="tab3-2" role="tabpanel">
-                            <div class="row">
-                                <div class="col-sm-6 p-r-25 p-r-15-sr991">
-                                    <!-- Item post -->
-                                    <div class="m-b-30">
-                                        <div class="wrap-pic-w hov1 trans-03">
-                                            <img src="{{ STATIC_URL }}vendor/img/sindicatos/post-15.jpg" alt="IMG">
-                                        </div>
-
-                                        <div class="p-t-20">
-                                            <h5 class="p-b-5">
-                                                <a href="publicacao_completa.html"
-                                                    class="f1-m-3 cl2 hov-cl10 trans-03">
-                                                    Título da Publicação
-                                                </a>
-                                            </h5>
-
-                                            <span class="cl8">
-                                                <a href="#" class="f1-s-4 cl8 hov-cl10 trans-03">
-                                                    Lorem
-                                                </a>
-
-                                                <span class="f1-s-3 m-rl-3">
-                                                    -
-                                                </span>
-
-                                                <span class="f1-s-3">
-                                                    DD/MM/AAAA
-                                                </span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-sm-6 p-r-25 p-r-15-sr991">
-                                    <!-- Item post -->
-                                    <div class="flex-wr-sb-s m-b-30">
-                                        <div class="size-w-1 wrap-pic-w hov1 trans-03">
-                                            <img src="{{ STATIC_URL }}vendor/img/sindicatos/post-16.jpg" alt="IMG">
-                                        </div>
-
-                                        <div class="size-w-2">
-                                            <h5 class="p-b-5">
-                                                <a href="publicacao_completa.html"
-                                                    class="f1-s-5 cl3 hov-cl10 trans-03">
-                                                    Título da Publicação
-                                                </a>
-                                            </h5>
-
-                                            <span class="cl8">
-                                                <a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-                                                    Lorem
-                                                </a>
-
-                                                <span class="f1-s-3 m-rl-3">
-                                                    -
-                                                </span>
-
-                                                <span class="f1-s-3">
-                                                    DD/MM/AAAA
-                                                </span>
-                                            </span>
-                                        </div>
-                                    </div>
-
-                                    <!-- Item post -->
-                                    <div class="flex-wr-sb-s m-b-30">
-                                        <div class="size-w-1 wrap-pic-w hov1 trans-03">
-                                            <img src="{{ STATIC_URL }}vendor/img/sindicatos/post-17.jpg" alt="IMG">
-                                        </div>
-
-                                        <div class="size-w-2">
-                                            <h5 class="p-b-5">
-                                                <a href="publicacao_completa.html"
-                                                    class="f1-s-5 cl3 hov-cl10 trans-03">
-                                                    Título da Publicação
-                                                </a>
-                                            </h5>
-
-                                            <span class="cl8">
-                                                <a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-                                                    Lorem
-                                                </a>
-
-                                                <span class="f1-s-3 m-rl-3">
-                                                    -
-                                                </span>
-
-                                                <span class="f1-s-3">
-                                                    DD/MM/AAAA
-                                                </span>
-                                            </span>
-                                        </div>
-                                    </div>
-
-                                    <!-- Item post -->
-                                    <div class="flex-wr-sb-s m-b-30">
-                                        <div class="size-w-1 wrap-pic-w hov1 trans-03">
-                                            <img src="{{ STATIC_URL }}vendor/img/sindicatos/post-18.jpg" alt="IMG">
-                                        </div>
-
-                                        <div class="size-w-2">
-                                            <h5 class="p-b-5">
-                                                <a href="publicacao_completa.html"
-                                                    class="f1-s-5 cl3 hov-cl10 trans-03">
-                                                    Título da Publicação
-                                                </a>
-                                            </h5>
-
-                                            <span class="cl8">
-                                                <a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-                                                    Lorem
-                                                </a>
-
-                                                <span class="f1-s-3 m-rl-3">
-                                                    -
-                                                </span>
-
-                                                <span class="f1-s-3">
-                                                    DD/MM/AAAA
-                                                </span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- - -->
-                        <div class="tab-pane fade" id="tab3-3" role="tabpanel">
-                            <div class="row">
-                                <div class="col-sm-6 p-r-25 p-r-15-sr991">
-                                    <!-- Item post -->
-                                    <div class="m-b-30">
-                                        <div class="wrap-pic-w hov1 trans-03">
-                                            <img src="{{ STATIC_URL }}vendor/img/sindicatos/post-16.jpg" alt="IMG">
-                                        </div>
-
-                                        <div class="p-t-20">
-                                            <h5 class="p-b-5">
-                                                <a href="publicacao_completa.html"
-                                                    class="f1-m-3 cl2 hov-cl10 trans-03">
-                                                    Título da Publicação
-                                                </a>
-                                            </h5>
-
-                                            <span class="cl8">
-                                                <a href="#" class="f1-s-4 cl8 hov-cl10 trans-03">
-                                                    Lorem
-                                                </a>
-
-                                                <span class="f1-s-3 m-rl-3">
-                                                    -
-                                                </span>
-
-                                                <span class="f1-s-3">
-                                                    DD/MM/AAAA
-                                                </span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-sm-6 p-r-25 p-r-15-sr991">
-                                    <!-- Item post -->
-                                    <div class="flex-wr-sb-s m-b-30">
-                                        <div class="size-w-1 wrap-pic-w hov1 trans-03">
-                                            <img src="{{ STATIC_URL }}vendor/img/sindicatos/post-17.jpg" alt="IMG">
-                                        </div>
-
-                                        <div class="size-w-2">
-                                            <h5 class="p-b-5">
-                                                <a href="publicacao_completa.html"
-                                                    class="f1-s-5 cl3 hov-cl10 trans-03">
-                                                    Título da Publicação
-                                                </a>
-                                            </h5>
-
-                                            <span class="cl8">
-                                                <a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-                                                    Lorem
-                                                </a>
-
-                                                <span class="f1-s-3 m-rl-3">
-                                                    -
-                                                </span>
-
-                                                <span class="f1-s-3">
-                                                    DD/MM/AAAA
-                                                </span>
-                                            </span>
-                                        </div>
-                                    </div>
-
-                                    <!-- Item post -->
-                                    <div class="flex-wr-sb-s m-b-30">
-                                        <div class="size-w-1 wrap-pic-w hov1 trans-03">
-                                            <img src="{{ STATIC_URL }}vendor/img/sindicatos/post-18.jpg" alt="IMG">
-                                        </div>
-
-                                        <div class="size-w-2">
-                                            <h5 class="p-b-5">
-                                                <a href="publicacao_completa.html"
-                                                    class="f1-s-5 cl3 hov-cl10 trans-03">
-                                                    Título da Publicação
-                                                </a>
-                                            </h5>
-
-                                            <span class="cl8">
-                                                <a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-                                                    Lorem
-                                                </a>
-
-                                                <span class="f1-s-3 m-rl-3">
-                                                    -
-                                                </span>
-
-                                                <span class="f1-s-3">
-                                                    DD/MM/AAAA
-                                                </span>
-                                            </span>
-                                        </div>
-                                    </div>
-
-                                    <!-- Item post -->
-                                    <div class="flex-wr-sb-s m-b-30">
-                                        <div class="size-w-1 wrap-pic-w hov1 trans-03">
-                                            <img src="{{ STATIC_URL }}vendor/img/sindicatos/post-14.jpg" alt="IMG">
-                                        </div>
-
-                                        <div class="size-w-2">
-                                            <h5 class="p-b-5">
-                                                <a href="publicacao_completa.html"
-                                                    class="f1-s-5 cl3 hov-cl10 trans-03">
-                                                    Título da Publicação
-                                                </a>
-                                            </h5>
-
-                                            <span class="cl8">
-                                                <a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-                                                    Lorem
-                                                </a>
-
-                                                <span class="f1-s-3 m-rl-3">
-                                                    -
-                                                </span>
-
-                                                <span class="f1-s-3">
-                                                    DD/MM/AAAA
-                                                </span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- - -->
-                        <div class="tab-pane fade" id="tab3-4" role="tabpanel">
-                            <div class="row">
-                                <div class="col-sm-6 p-r-25 p-r-15-sr991">
-                                    <!-- Item post -->
-                                    <div class="m-b-30">
-                                        <div class="wrap-pic-w hov1 trans-03">
-                                            <img src="{{ STATIC_URL }}vendor/img/sindicatos/post-17.jpg" alt="IMG">
-                                        </div>
-
-                                        <div class="p-t-20">
-                                            <h5 class="p-b-5">
-                                                <a href="publicacao_completa.html"
-                                                    class="f1-m-3 cl2 hov-cl10 trans-03">
-                                                    Título da Publicação
-                                                </a>
-                                            </h5>
-
-                                            <span class="cl8">
-                                                <a href="#" class="f1-s-4 cl8 hov-cl10 trans-03">
-                                                    Lorem
-                                                </a>
-
-                                                <span class="f1-s-3 m-rl-3">
-                                                    -
-                                                </span>
-
-                                                <span class="f1-s-3">
-                                                    DD/MM/AAAA
-                                                </span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-sm-6 p-r-25 p-r-15-sr991">
-                                    <!-- Item post -->
-                                    <div class="flex-wr-sb-s m-b-30">
-                                        <div class="size-w-1 wrap-pic-w hov1 trans-03">
-                                            <img src="{{ STATIC_URL }}vendor/img/sindicatos/post-18.jpg" alt="IMG">
-                                        </div>
-
-                                        <div class="size-w-2">
-                                            <h5 class="p-b-5">
-                                                <a href="publicacao_completa.html"
-                                                    class="f1-s-5 cl3 hov-cl10 trans-03">
-                                                    Título da Publicação
-                                                </a>
-                                            </h5>
-
-                                            <span class="cl8">
-                                                <a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-                                                    Lorem
-                                                </a>
-
-                                                <span class="f1-s-3 m-rl-3">
-                                                    -
-                                                </span>
-
-                                                <span class="f1-s-3">
-                                                    DD/MM/AAAA
-                                                </span>
-                                            </span>
-                                        </div>
-                                    </div>
-
-                                    <!-- Item post -->
-                                    <div class="flex-wr-sb-s m-b-30">
-                                        <div class="size-w-1 wrap-pic-w hov1 trans-03">
-                                            <img src="{{ STATIC_URL }}vendor/img/sindicatos/post-14.jpg" alt="IMG">
-                                        </div>
-
-                                        <div class="size-w-2">
-                                            <h5 class="p-b-5">
-                                                <a href="publicacao_completa.html"
-                                                    class="f1-s-5 cl3 hov-cl10 trans-03">
-                                                    Título da Publicação
-                                                </a>
-                                            </h5>
-
-                                            <span class="cl8">
-                                                <a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-                                                    Lorem
-                                                </a>
-
-                                                <span class="f1-s-3 m-rl-3">
-                                                    -
-                                                </span>
-
-                                                <span class="f1-s-3">
-                                                    DD/MM/AAAA
-                                                </span>
-                                            </span>
-                                        </div>
-                                    </div>
-
-                                    <!-- Item post -->
-                                    <div class="flex-wr-sb-s m-b-30">
-                                        <div class="size-w-1 wrap-pic-w hov1 trans-03">
-                                            <img src="{{ STATIC_URL }}vendor/img/sindicatos/post-15.jpg" alt="IMG">
-                                        </div>
-
-                                        <div class="size-w-2">
-                                            <h5 class="p-b-5">
-                                                <a href="publicacao_completa.html"
-                                                    class="f1-s-5 cl3 hov-cl10 trans-03">
-                                                    Título da Publicação
-                                                </a>
-                                            </h5>
-
-                                            <span class="cl8">
-                                                <a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-                                                    Lorem
-                                                </a>
-
-                                                <span class="f1-s-3 m-rl-3">
-                                                    -
-                                                </span>
-
-                                                <span class="f1-s-3">
-                                                    DD/MM/AAAA
-                                                </span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- - -->
-                        <div class="tab-pane fade" id="tab3-5" role="tabpanel">
-                            <div class="row">
-                                <div class="col-sm-6 p-r-25 p-r-15-sr991">
-                                    <!-- Item post -->
-                                    <div class="m-b-30">
-                                        <div class="wrap-pic-w hov1 trans-03">
-                                            <img src="{{ STATIC_URL }}vendor/img/sindicatos/post-18.jpg" alt="IMG">
-                                        </div>
-
-                                        <div class="p-t-20">
-                                            <h5 class="p-b-5">
-                                                <a href="publicacao_completa.html"
-                                                    class="f1-m-3 cl2 hov-cl10 trans-03">
-                                                    Título da Publicação
-                                                </a>
-                                            </h5>
-
-                                            <span class="cl8">
-                                                <a href="#" class="f1-s-4 cl8 hov-cl10 trans-03">
-                                                    Lorem
-                                                </a>
-
-                                                <span class="f1-s-3 m-rl-3">
-                                                    -
-                                                </span>
-
-                                                <span class="f1-s-3">
-                                                    DD/MM/AAAA
-                                                </span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-sm-6 p-r-25 p-r-15-sr991">
-                                    <!-- Item post -->
-                                    <div class="flex-wr-sb-s m-b-30">
-                                        <div class="size-w-1 wrap-pic-w hov1 trans-03">
-                                            <img src="{{ STATIC_URL }}vendor/img/sindicatos/post-17.jpg" alt="IMG">
-                                        </div>
-
-                                        <div class="size-w-2">
-                                            <h5 class="p-b-5">
-                                                <a href="publicacao_completa.html"
-                                                    class="f1-s-5 cl3 hov-cl10 trans-03">
-                                                    Título da Publicação
-                                                </a>
-                                            </h5>
-
-                                            <span class="cl8">
-                                                <a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-                                                    Lorem
-                                                </a>
-
-                                                <span class="f1-s-3 m-rl-3">
-                                                    -
-                                                </span>
-
-                                                <span class="f1-s-3">
-                                                    DD/MM/AAAA
-                                                </span>
-                                            </span>
-                                        </div>
-                                    </div>
-
-                                    <!-- Item post -->
-                                    <div class="flex-wr-sb-s m-b-30">
-                                        <div class="size-w-1 wrap-pic-w hov1 trans-03">
-                                            <img src="{{ STATIC_URL }}vendor/img/sindicatos/post-16.jpg" alt="IMG">
-                                        </div>
-
-                                        <div class="size-w-2">
-                                            <h5 class="p-b-5">
-                                                <a href="publicacao_completa.html"
-                                                    class="f1-s-5 cl3 hov-cl10 trans-03">
-                                                    Título da Publicação
-                                                </a>
-                                            </h5>
-
-                                            <span class="cl8">
-                                                <a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-                                                    Lorem
-                                                </a>
-
-                                                <span class="f1-s-3 m-rl-3">
-                                                    -
-                                                </span>
-
-                                                <span class="f1-s-3">
-                                                    DD/MM/AAAA
-                                                </span>
-                                            </span>
-                                        </div>
-                                    </div>
-
-                                    <!-- Item post -->
-                                    <div class="flex-wr-sb-s m-b-30">
-                                        <div class="size-w-1 wrap-pic-w hov1 trans-03">
-                                            <img src="{{ STATIC_URL }}vendor/img/sindicatos/post-15.jpg" alt="IMG">
-                                        </div>
-
-                                        <div class="size-w-2">
-                                            <h5 class="p-b-5">
-                                                <a href="publicacao_completa.html"
-                                                    class="f1-s-5 cl3 hov-cl10 trans-03">
-                                                    Título da Publicação
-                                                </a>
-                                            </h5>
-
-                                            <span class="cl8">
-                                                <a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-                                                    Lorem
-                                                </a>
-
-                                                <span class="f1-s-3 m-rl-3">
-                                                    -
-                                                </span>
-
-                                                <span class="f1-s-3">
-                                                    DD/MM/AAAA
-                                                </span>
-                                            </span>
-                                        </div>
-                                    </div>
+                                    {% endfor %}
                                 </div>
                             </div>
                         </div>
                     </div>
+                    {% endif %}
+                    {% endwith %}
                 </div>
             </div>
         </div>

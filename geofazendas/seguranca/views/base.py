@@ -21,7 +21,7 @@ class InicioView(LoginRequiredMixin, generic.RedirectView):
         if has_role(self.request.user, 'anunciante'):
             return resolve_url('anuncios:inicio')
         elif has_role(self.request.user, 'sindicato'):
-            return resolve_url('sindicatos_index')
+            return resolve_url('sindicatos:index')
         return resolve_url('base:index')
 
 

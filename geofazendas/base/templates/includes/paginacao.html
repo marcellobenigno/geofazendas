@@ -1,0 +1,11 @@
+<ul class="page-numbers">
+    {% if page_obj.has_previous %}
+    <li><a href="?page={{ page_obj.previous_page_number }}&{{ request.GET.urlencode }}"><i class="fa fa-angle-double-left"></i></a></li>
+    {% endif %}
+    {% for page in paginator.page_range %}
+    <li{% if page == page_obj.number %} class="active"{% endif %}><a href="?page={{ page }}&{{ request.GET.urlencode }}">{{ page }}</a></li>
+    {% endfor %}
+    {% if page_obj.has_next %}
+    <li><a href="?page={{ page_obj.next_page_number }}&{{ request.GET.urlencode }}"><i class="fa fa-angle-double-right"></i></a></li>
+    {% endif %}
+</ul>

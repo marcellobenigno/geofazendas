@@ -22,7 +22,7 @@ class Categoria(BaseModel):
 
 class Artigo(BaseModel):
     tipo_artigo_CHOICES = (
-        (v, v) for v in ('artigos', 'noticias', 'cursos', 'clica')
+        (v, v) for v in ('artigos', 'noticias', 'cursos', 'clima')
     )
 
     titulo = models.CharField('Título', max_length=100)
