@@ -72,3 +72,26 @@ a.mapa-link {
     background-color: #8aa229;
     box-shadow: inset 0 calc(var(--bs-accordion-border-width) * -1) 0 var(--bs-accordion-border-color);
 }
+
+
+.vs__dropdown-option {
+    font-size: 15px !important;
+}
+
+.vs__dropdown-option--highlight {
+    font-size: 15px !important;
+}
+
+.vs__selected {
+    font-size: 15px !important;
+}
+
+.hideme {
+    display: none;
+    visibility: hidden;
+}
+
+.showme {
+    display: inline;
+    visibility: visible;
+}

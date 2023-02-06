@@ -14,6 +14,11 @@ class Estado(models.Model):
     def __str__(self):
         return self.nome
 
+    @property
+    def extent(self):
+        minlng, minlat, maxlng, maxlat = self.estadogeometria.geom.extent
+        return [[minlat, minlng], [maxlat, maxlng]]
+
     class Meta:
         ordering = ['nome']
         verbose_name = 'Estado'
@@ -21,13 +26,13 @@ class Estado(models.Model):
 
 
 class EstadoGeometria(models.Model):
-    estado = models.ForeignKey('Estado', verbose_name='estado', on_delete=models.PROTECT)
+    estado = models.OneToOneField('Estado', verbose_name='estado', on_delete=models.PROTECT)
     cod_ibge_m = models.CharField('código IBGE', max_length=20)
     area_km2 = models.DecimalField('área (km2)', max_digits=10, decimal_places=2)
     geom = models.MultiPolygonField('geom', srid=4326)
 
     @property
-    def get_extent(self):
+    def extent(self):
         minlng, minlat, maxlng, maxlat = self.geom.extent
         return [[minlat, minlng], [maxlat, maxlng]]
 
