@@ -69,7 +69,6 @@
 {% endif %}
 
 {% if assentamentos %}
-
     <span class="popup-title">ASSENTAMENTO:</span>
     <ul>
         <li><span>Cód. SIPRA:</span> {{ assentamentos.cd_sipra }}</li>
@@ -79,7 +78,6 @@
 {% endif %}
 
 {% if area_indigena %}
-
     <span class="popup-title">ÁREA INDÍGENA:</span>
     <ul>
         <li><span>Nome:</span> {{ area_indigena.nome|default:'' }}</li>
@@ -89,18 +87,15 @@
 {% endif %}
 
 {% if area_protegida %}
-
     <span class="popup-title">ÁREA PROTEGIDA:</span>
     <ul>
         <li><span>Nome:</span> {{ area_protegida.nome|default:'' }}</li>
         <li><span>Sigla:</span> {{ area_protegida.sigla|default:'' }}</li>
         <li><span>Área (ha):</span> {{ area_protegida.area_ha }}</li>
     </ul>
-
 {% endif %}
 
 {% if imovel_venda %}
-
     <span class="popup-title">IMÓVEL A VENDA:</span>
     <ul>
         <li><span>Cód. do Imóvel:</span> {{ imovel_venda.cod_imovel }}</li>
@@ -110,5 +105,16 @@
         <li><span>Situação:</span> {{ imovel_venda.situacao }}</li>
         <li><span>Condição:</span> {{ imovel_venda.condicao_i }}</li>
     </ul>
+{% endif %}
 
+{% if awc %}
+    <span class="popup-title">CAP. DE ÁGUA DISPONÍVEL (CAD OU AWC):</span>
+    <ul>
+        <li><span>AWC:</span> {{ awc.awc|default:'' }} m/m<sup>3</sup></li>
+        <li><span>Ordem:</span> {{ awc.ordem|title|default:'' }}</li>
+        <li><span>Sub-ordem:</span> {{ awc.subordem|title|default:'' }}</li>
+        <li><span>Grande Grupo:</span> {{ awc.grande_gru|title|default:'' }}</li>
+        <li><span>Sub-grupo:</span> {{ awc.subgrupos|default:'' }}</li>
+        <li><span>Textura:</span> {{ awc.textura|default:'' }}</li>
+    </ul>
 {% endif %}

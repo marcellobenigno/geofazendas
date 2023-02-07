@@ -10,4 +10,5 @@ urlpatterns = [
     path('<path:x>/<path:y>/<str:tema>/', views.get_dados, name='get_dados'),
     path('municipio-ajax/', views.municipio_ajax, name='municipio_ajax'),
     path('incidencia-solar/', views.incidencia, name='incidencia'),
+    path('monitoramento/', views.monitoramento, name='monitoramento'),
 ]

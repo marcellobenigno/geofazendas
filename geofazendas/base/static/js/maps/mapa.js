@@ -44,6 +44,14 @@ const app = createApp({
                         this.overlayList[0].geolyr,
                     ];
                     break;
+                case 'monitoramento':
+                    initial = [
+                        this.themeList[0].geolyr,
+                        this.fixedLayers[0].geolyr,
+                        this.fixedLayers[1].geolyr,
+                        this.overlayList[0].geolyr,
+                    ];
+                    break;
             }
 
             return initial

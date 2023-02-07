@@ -49,6 +49,8 @@ class GetDadosView(generic.TemplateView):
             context['relevo'] = models.Relevo.objects.filter(geom__contains=point).first()
         if kwargs['tema'] == 'incidencia-solar':
             context['incidencia'] = models.Irradiacao.objects.filter(geom__contains=point).first()
+        if kwargs['tema'] == 'capacidade-de-agua-disponivel':
+            context['awc'] = models.CapAguaDisp.objects.filter(geom__contains=point).first()
         return context
 
 
@@ -134,6 +136,7 @@ class MunicipioAjax(generic.TemplateView):
 
 index = IndexView.as_view()
 incidencia = IndexView.as_view(map_name='incidencia')
+monitoramento = IndexView.as_view(map_name='monitoramento')
 get_dados = GetDadosView.as_view()
 mobile_view = MobileView.as_view()
 municipio_ajax = MunicipioAjax.as_view()

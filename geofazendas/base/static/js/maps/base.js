@@ -166,6 +166,36 @@ const mapBiomas2021 = L.tileLayer.wms(geoServerUrl, mapBiomasWmsptions);
 
 // -----------------------------------------------------------
 
+function minTwoDigits(n) {
+    return (n < 10 ? '0' : '') + n;
+}
+
+var dataConsulta = $('#data_atual').val().split('/')
+var dia = parseInt(dataConsulta[0]) - 1
+var mes = minTwoDigits(parseInt(dataConsulta[1]));
+var ano = `${dataConsulta[2]}`;
+dia = minTwoDigits(dia);
+
+var inpeWMSOptions = {
+    format: 'image/png',
+    layers: 'observacao_ndsc_obs',
+    transparent: true,
+    version: '1.1.0',
+    maxZoom: 20,
+    opacity: 1,
+    ANO: ano,
+    MES: mes,
+    DIA: dia,
+    zIndex: 2,
+    attribution: '&copy; <a href="https://queimadas.dgi.inpe.br/queimadas/portal/risco-de-fogo-meteorologia">INPE</a>'
+};
+
+const inpeURL = 'https://sirc.dgi.inpe.br/cgi-bin/mapserv?map=/dados/mapfiles/riscofogo.map&';
+
+const ndsc = L.tileLayer.wms(inpeURL, inpeWMSOptions);
+
+
+// ---------------------------------------------------------
 var overlayWmsOptions = {
     format: 'image/png',
     transparent: true,
@@ -313,3 +343,6 @@ var overlayList = [
         active: false
     },
 ]
+
+
+
