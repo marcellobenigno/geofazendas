@@ -10,7 +10,7 @@
 </style>
 {% endblock %}
 
-{% block container_sindicatos %}
+{% block container %}
 <div class="container p-t-4 p-b-40">
     <h2 class="f1-l-1 cl2">
         {{ object|default:'Nova Publicação' }}
@@ -18,23 +18,59 @@
 </div>
 <!-- Content -->
 <section class="bg0 p-b-60">
-    <div class="container">
+    <div>
         <div class="row">
-            <div class="col-lg-8 p-b-80">
+            <div class="col-md-8 p-b-80">
                 <div class="p-r-10 p-r-0-sr991">
                     <form action="" method="post">
                         {% csrf_token %}
-                        {% for field in form %}
-                        {% bootstrap_field field %}
-                        {% if field.name == 'photo' %}
-                            <img class="img-fluid" id="photo_placeholder" {% if object and object.photo %}src="{{ object.photo.url }}"{% else %}src="{{ STATIC_URL }}img/1.jpg"{% endif %} alt="" />
-                        {% endif %}
-                        {% endfor %}
-                        <button type="submit" class="size-a-20 bg2 borad-3 f1-s-12 cl0 hov-btn1 trans-03 p-rl-15 m-t-20">
-                            Salvar
-                        </button>
+                        <div class="row">
+                            <div class="col-12">
+                                {% bootstrap_field form.titulo %}
+                            </div>
+                            <div class="col-12">
+                                {% bootstrap_field form.categoria %}
+                            </div>
+                            <div class="col-12">
+                                {% bootstrap_field form.tipo_artigo %}
+                            </div>
+                            <div class="col-12">
+                                {% bootstrap_field form.data_publicacao %}
+                            </div>
+                            <div class="col-12">
+                                {% bootstrap_field form.autor %}
+                            </div>
+                            <div class="col-12">
+                                {% bootstrap_field form.tags %}
+                            </div>
+                            <div class="col-12">
+                                {% bootstrap_field form.resumo %}
+                            </div>
+                            <div class="col-12">
+                                {% bootstrap_field form.foto %}
+                                <div class="text-center">
+                                    <img class="img-fluid" id="photo_placeholder" {% if object and object.photo %}src="{{ object.photo.url }}"{% else %}src="{{ STATIC_URL }}img/1.jpg"{% endif %} alt="" />
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                {% bootstrap_field form.texto %}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 d-grid g2">
+                                <button class="btn btn-primary" type="submit">
+                                    <strong>Publicar</strong>
+                                </button>
+                            </div>
+                            <div class="col-lg-6 d-grid g2">
+                                <a class="btn btn-block" href="{% url 'sindicatos:artigo_list' %}">Voltar</a>
+                            </div>
+                        </div>
                     </form>
                 </div>
+            </div>
+            <div class="col-md-4">
+                {% include "sindicatos/includes/sidebar.html" %}
             </div>
         </div>
     </div>
@@ -42,9 +78,11 @@
 {% endblock %}
 {% block extra_js %}
 {{ form.media }}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
 <script>
 $(function(){
-    let imgInput = document.getElementById('id_photo')
+    $("#id_data_publicacao").mask("00/00/0000")
+    let imgInput = document.getElementById('id_foto')
     let imgPlacerholder = document.getElementById('photo_placeholder')
     imgInput.onchange = evt => {
         const [file] = imgInput.files

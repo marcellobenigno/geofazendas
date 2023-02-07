@@ -34,6 +34,9 @@ class ArtigoCreateView(SindicatoRequiredMixin, generic.CreateView):
     template_name = 'sindicatos/artigo_form.html'
     form_class = ArtigoForm
 
+    def artigos_recentes(self):
+        return Artigo.objects.order_by('-data_publicacao')
+
     def form_valid(self, form):
         article = form.save(commit=False)
         article.criado_por = self.request.user
@@ -47,6 +50,9 @@ class ArtigoUpdateView(SindicatoRequiredMixin, generic.UpdateView):
 
     template_name = 'sindicatos/artigo_form.html'
     form_class = ArtigoForm
+
+    def artigos_recentes(self):
+        return Artigo.objects.order_by('-data_publicacao')
 
     def get_queryset(self):
         return self.request.user.artigos.all()

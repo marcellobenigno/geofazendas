@@ -1,5 +1,7 @@
 from django import forms
 
+from ckeditor.widgets import CKEditorWidget
+
 from geofazendas.artigos.models import Artigo
 
 
@@ -7,7 +9,8 @@ class ArtigoForm(forms.ModelForm):
     class Meta:
         model = Artigo
         widgets = {
-            'foto': forms.FileInput
+            'foto': forms.FileInput,
+            'texto': CKEditorWidget,
         }
         fields = [
             'titulo',

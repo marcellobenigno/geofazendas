@@ -1,6 +1,6 @@
 from django import forms
 
-from martor.widgets import AdminMartorWidget
+from ckeditor.widgets import CKEditorWidget
 
 from geofazendas.artigos.models import Artigo
 
@@ -22,6 +22,6 @@ class ArtigoForm(forms.ModelForm):
             'tags',
         ]
         widgets = {
-            'texto': AdminMartorWidget
+            'texto': CKEditorWidget
         }
 
