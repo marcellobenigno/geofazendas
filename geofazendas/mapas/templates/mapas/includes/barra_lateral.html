@@ -127,7 +127,7 @@
                     {% elif view.map_name == 'incidencia' %}
                         Incidência Solar
                     {% elif view.map_name == 'monitoramento' %}
-                        Monitoramento
+                        Número de Dias sem Chuva (INPE)
                     {% endif %}
                 </span>
             </button>
@@ -137,7 +137,7 @@
             <div class="accordion-body">
                 <ul class="list-group list-group-flush list-base-layers">
                     <template v-for="layer in themeList" :key="layer.id">
-                        <template v-if="layer.origem === 'ibge'">
+                        <template v-if="layer.origem === 'ibge' || layer.origem === 'inpe-ndsc'">
                             <li class="list-group-item d-flex"
                                 :class="layer.active ? 'active' : ''"
                                 @click="activeThemeLayer(layer.id)"
@@ -166,6 +166,197 @@
             </div>
         </div>
     </div>
+
+    {% if view.map_name == 'monitoramento' %}
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="panelsStayOpen-headingEmbrapa">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#panelsStayOpen-collapseEmbrapa" aria-expanded="false"
+                        aria-controls="panelsStayOpen-collapseEmbrapa">
+                    <i class="fa-solid fa-map"></i>&nbsp;
+                    <span class="fw-bold">
+                        &nbsp; Previsão de precipitação (INPE)<br>
+                    </span>
+                </button>
+            </h2>
+            <div id="panelsStayOpen-collapseEmbrapa" class="accordion-collapse collapse"
+                 aria-labelledby="panelsStayOpen-headingEmbrapa">
+                <div class="accordion-body">
+                    <ul class="list-group list-group-flush list-base-layers">
+                        <template v-for="layer in themeList" :key="layer.id">
+                            <template v-if="layer.origem === 'inpe-previsao'">
+                                <li class="list-group-item d-flex"
+                                    :class="layer.active ? 'active' : ''"
+                                    @click="activeThemeLayer(layer.id)"
+                                >
+                                    <div class="ms-2 me-auto">
+                        <span v-if="layer.active">
+                            <i class="fa-solid fa-eye"></i>
+                        </span>
+                                        <span v-else>
+                            <i class="fa fa-eye-slash"></i>
+                        </span>
+                                        ${ layer.nome }
+                                    </div>
+                                    <span v-if="layer.active" class="badge">
+                                <button class="btn btn-secondary btn-sm" type="button"
+                                        data-bs-toggle="offcanvas"
+                                        data-bs-target="#offcanvasRight"
+                                        aria-controls="offcanvasRight">
+                                        <i class="fa fa-list"></i>
+                                </button>
+                            </span>
+                                </li>
+                            </template>
+
+                        </template>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="panelsStayOpen-headingUmidade">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#panelsStayOpen-collapseUmidade" aria-expanded="false"
+                        aria-controls="panelsStayOpen-collapseUmidade">
+                    <i class="fa-solid fa-map"></i>&nbsp;
+                    <span class="fw-bold">
+                        &nbsp; Previsão de Umidade Relativa (INPE)<br>
+                    </span>
+                </button>
+            </h2>
+            <div id="panelsStayOpen-collapseUmidade" class="accordion-collapse collapse"
+                 aria-labelledby="panelsStayOpen-headingUmidade">
+                <div class="accordion-body">
+                    <ul class="list-group list-group-flush list-base-layers">
+                        <template v-for="layer in themeList" :key="layer.id">
+                            <template v-if="layer.origem === 'inpe-umidade'">
+                                <li class="list-group-item d-flex"
+                                    :class="layer.active ? 'active' : ''"
+                                    @click="activeThemeLayer(layer.id)"
+                                >
+                                    <div class="ms-2 me-auto">
+                        <span v-if="layer.active">
+                            <i class="fa-solid fa-eye"></i>
+                        </span>
+                                        <span v-else>
+                            <i class="fa fa-eye-slash"></i>
+                        </span>
+                                        ${ layer.nome }
+                                    </div>
+                                    <span v-if="layer.active" class="badge">
+                                <button class="btn btn-secondary btn-sm" type="button"
+                                        data-bs-toggle="offcanvas"
+                                        data-bs-target="#offcanvasRight"
+                                        aria-controls="offcanvasRight">
+                                        <i class="fa fa-list"></i>
+                                </button>
+                            </span>
+                                </li>
+                            </template>
+
+                        </template>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="panelsStayOpen-headingTempMax">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#panelsStayOpen-collapseTempMax" aria-expanded="false"
+                        aria-controls="panelsStayOpen-collapseTempMax">
+                    <i class="fa-solid fa-map"></i>&nbsp;
+                    <span class="fw-bold">
+                        &nbsp; Previsão de Temp. Máx. do Ar (INPE)<br>
+                    </span>
+                </button>
+            </h2>
+            <div id="panelsStayOpen-collapseTempMax" class="accordion-collapse collapse"
+                 aria-labelledby="panelsStayOpen-headingTempMax">
+                <div class="accordion-body">
+                    <ul class="list-group list-group-flush list-base-layers">
+                        <template v-for="layer in themeList" :key="layer.id">
+                            <template v-if="layer.origem === 'inpe-umidade'">
+                                <li class="list-group-item d-flex"
+                                    :class="layer.active ? 'active' : ''"
+                                    @click="activeThemeLayer(layer.id)"
+                                >
+                                    <div class="ms-2 me-auto">
+                        <span v-if="layer.active">
+                            <i class="fa-solid fa-eye"></i>
+                        </span>
+                                        <span v-else>
+                            <i class="fa fa-eye-slash"></i>
+                        </span>
+                                        ${ layer.nome }
+                                    </div>
+                                    <span v-if="layer.active" class="badge">
+                                <button class="btn btn-secondary btn-sm" type="button"
+                                        data-bs-toggle="offcanvas"
+                                        data-bs-target="#offcanvasRight"
+                                        aria-controls="offcanvasRight">
+                                        <i class="fa fa-list"></i>
+                                </button>
+                            </span>
+                                </li>
+                            </template>
+
+                        </template>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="panelsStayOpen-headingRiscoFogo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#panelsStayOpen-collapseRiscoFogo" aria-expanded="false"
+                        aria-controls="panelsStayOpen-collapseRiscoFogo">
+                    <i class="fa-solid fa-map"></i>&nbsp;
+                    <span class="fw-bold">
+                        &nbsp; Previsão de Risco de Fogo (INPE)<br>
+                    </span>
+                </button>
+            </h2>
+            <div id="panelsStayOpen-collapseRiscoFogo" class="accordion-collapse collapse"
+                 aria-labelledby="panelsStayOpen-headingRiscoFogo">
+                <div class="accordion-body">
+                    <ul class="list-group list-group-flush list-base-layers">
+                        <template v-for="layer in themeList" :key="layer.id">
+                            <template v-if="layer.origem === 'inpe-risco-fogo'">
+                                <li class="list-group-item d-flex"
+                                    :class="layer.active ? 'active' : ''"
+                                    @click="activeThemeLayer(layer.id)"
+                                >
+                                    <div class="ms-2 me-auto">
+                        <span v-if="layer.active">
+                            <i class="fa-solid fa-eye"></i>
+                        </span>
+                                        <span v-else>
+                            <i class="fa fa-eye-slash"></i>
+                        </span>
+                                        ${ layer.nome }
+                                    </div>
+                                    <span v-if="layer.active" class="badge">
+                                <button class="btn btn-secondary btn-sm" type="button"
+                                        data-bs-toggle="offcanvas"
+                                        data-bs-target="#offcanvasRight"
+                                        aria-controls="offcanvasRight">
+                                        <i class="fa fa-list"></i>
+                                </button>
+                            </span>
+                                </li>
+                            </template>
+
+                        </template>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
 
     {% if view.map_name == 'geral' %}
         <div class="accordion-item">

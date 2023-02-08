@@ -176,7 +176,7 @@ var mes = minTwoDigits(parseInt(dataConsulta[1]));
 var ano = `${dataConsulta[2]}`;
 dia = minTwoDigits(dia);
 
-var inpeWMSOptions = {
+var ndscWMSOptions = {
     format: 'image/png',
     layers: 'observacao_ndsc_obs',
     transparent: true,
@@ -186,14 +186,69 @@ var inpeWMSOptions = {
     ANO: ano,
     MES: mes,
     DIA: dia,
+    tiled: true,
     zIndex: 2,
     attribution: '&copy; <a href="https://queimadas.dgi.inpe.br/queimadas/portal/risco-de-fogo-meteorologia">INPE</a>'
 };
 
-const inpeURL = 'https://sirc.dgi.inpe.br/cgi-bin/mapserv?map=/dados/mapfiles/riscofogo.map&';
+const inpeURLndsc = 'https://sirc.dgi.inpe.br/cgi-bin/mapserv?map=/dados/mapfiles/riscofogo.map&';
 
-const ndsc = L.tileLayer.wms(inpeURL, inpeWMSOptions);
+const ndsc = L.tileLayer.wms(inpeURLndsc, ndscWMSOptions);
 
+var inpeWMSOptions = {
+    format: 'image/png',
+    transparent: true,
+    version: '1.1.3',
+    maxZoom: 20,
+    opacity: 1,
+    tiled: true,
+    zIndex: 3,
+    attribution: '&copy; <a href="https://queimadas.dgi.inpe.br/queimadas/portal/risco-de-fogo-meteorologia">INPE</a>'
+};
+
+inpeURL = 'https://queimadas.dgi.inpe.br/queimadas/firerisk/geoserver/wms';
+
+inpeWMSOptions['layers'] = 'inpe:Precipitation-Forecast_T0';
+const precip0 = L.tileLayer.wms(inpeURL, inpeWMSOptions);
+inpeWMSOptions['layers'] = 'inpe:Precipitation-Forecast_T1';
+const precip1 = L.tileLayer.wms(inpeURL, inpeWMSOptions);
+inpeWMSOptions['layers'] = 'inpe:Precipitation-Forecast_T2';
+const precip2 = L.tileLayer.wms(inpeURL, inpeWMSOptions);
+inpeWMSOptions['layers'] = 'inpe:Precipitation-Forecast_T3';
+const precip3 = L.tileLayer.wms(inpeURL, inpeWMSOptions);
+
+inpeWMSOptions['layers'] = 'inpe:inpe:RelativeHumidity-Forecast_T0';
+const umidade0 = L.tileLayer.wms(inpeURL, inpeWMSOptions);
+inpeWMSOptions['layers'] = 'inpe:inpe:RelativeHumidity-Forecast_T1';
+const umidade1 = L.tileLayer.wms(inpeURL, inpeWMSOptions);
+inpeWMSOptions['layers'] = 'inpe:inpe:RelativeHumidity-Forecast_T2';
+const umidade2 = L.tileLayer.wms(inpeURL, inpeWMSOptions);
+inpeWMSOptions['layers'] = 'inpe:inpe:RelativeHumidity-Forecast_T3';
+const umidade3 = L.tileLayer.wms(inpeURL, inpeWMSOptions);
+
+inpeWMSOptions['layers'] = 'inpe:inpe:inpe:Temperature-Forecast_T0';
+const temperatura0 = L.tileLayer.wms(inpeURL, inpeWMSOptions);
+
+inpeWMSOptions['layers'] = 'inpe:inpe:inpe:Temperature-Forecast_T1';
+const temperatura1 = L.tileLayer.wms(inpeURL, inpeWMSOptions);
+
+inpeWMSOptions['layers'] = 'inpe:inpe:inpe:Temperature-Forecast_T2';
+const temperatura2 = L.tileLayer.wms(inpeURL, inpeWMSOptions);
+
+inpeWMSOptions['layers'] = 'inpe:inpe:inpe:Temperature-Forecast_T3';
+const temperatura3 = L.tileLayer.wms(inpeURL, inpeWMSOptions);
+
+inpeWMSOptions['layers'] = 'inpe:inpe:inpe:FireRisk-Forecast_T0';
+const riscoFogo0 = L.tileLayer.wms(inpeURL, inpeWMSOptions);
+
+inpeWMSOptions['layers'] = 'inpe:inpe:inpe:FireRisk-Forecast_T1';
+const riscoFogo1 = L.tileLayer.wms(inpeURL, inpeWMSOptions);
+
+inpeWMSOptions['layers'] = 'inpe:inpe:inpe:FireRisk-Forecast_T2';
+const riscoFogo2 = L.tileLayer.wms(inpeURL, inpeWMSOptions);
+
+inpeWMSOptions['layers'] = 'inpe:inpe:inpe:FireRisk-Forecast_T3';
+const riscoFogo3 = L.tileLayer.wms(inpeURL, inpeWMSOptions);
 
 // ---------------------------------------------------------
 var overlayWmsOptions = {
