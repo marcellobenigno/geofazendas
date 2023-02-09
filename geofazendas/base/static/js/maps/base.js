@@ -288,6 +288,15 @@ const isoietas = L.tileLayer.wms(geoServerUrl, overlayWmsOptions);
 overlayWmsOptions['layers'] = 'geofazendas:mapas_imoveis_venda';
 const imoveisVenda = L.tileLayer.wms(geoServerUrl, overlayWmsOptions);
 
+overlayWmsOptions['layers'] = 'geofazendas:area_potencial';
+const areaPotencial = L.tileLayer.wms(geoServerUrl, overlayWmsOptions);
+
+overlayWmsOptions['layers'] = 'geofazendas:mapas_subestacao';
+const subEstacao = L.tileLayer.wms(geoServerUrl, overlayWmsOptions);
+
+overlayWmsOptions['layers'] = 'geofazendas:mapas_linhatransmissao';
+const linhaTransmissao = L.tileLayer.wms(geoServerUrl, overlayWmsOptions);
+
 function getLegend(lyrName) {
     let legend = `${geoServerUrl}REQUEST=GetLegendGraphic&`
     legend += 'VERSION=1.1.0&'

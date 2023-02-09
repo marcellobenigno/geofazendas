@@ -137,7 +137,8 @@
             <div class="accordion-body">
                 <ul class="list-group list-group-flush list-base-layers">
                     <template v-for="layer in themeList" :key="layer.id">
-                        <template v-if="layer.origem === 'ibge' || layer.origem === 'inpe-ndsc'">
+                        <template
+                                v-if="layer.origem === 'ibge' || layer.origem === 'inpe-ndsc' || layer.origem === 'inpe-ndsc'">
                             <li class="list-group-item d-flex"
                                 :class="layer.active ? 'active' : ''"
                                 @click="activeThemeLayer(layer.id)"
