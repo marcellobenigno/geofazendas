@@ -454,6 +454,16 @@ var overlayList = [
         geolyr: imoveisVenda,
         active: false
     },
+    {
+        id: 8,
+        nome: 'Focos de Incêndio das Últimas 48hs',
+        slug: 'foco-incendio',
+        geolyr: focos48Hs,
+        active: false,
+        origem: 'foco48hs',
+        referencia: '',
+        link: '',
+    }
 ]
 
 
