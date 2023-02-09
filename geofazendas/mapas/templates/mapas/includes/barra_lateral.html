@@ -358,42 +358,43 @@
         </div>
 
         <div class="accordion-item">
-            <h2 class="accordion-header" id="panelsStayOpen-foco48hs">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#panelsStayOpen-foco48hs" aria-expanded="false"
-                        aria-controls="panelsStayOpen-foco48hs">
-                    <i class="fa-solid fa-fire"></i>
-                    <span class="fw-bold">
+        <h2 class="accordion-header" id="panelsStayOpen-headingFoco">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#panelsStayOpen-collapsefoco" aria-expanded="false"
+                    aria-controls="panelsStayOpen-collapsefoco">
+                <i class="fa-solid fa-fire"></i>&nbsp;
+                <span class="fw-bold">
                      &nbsp; Focos de Incêncio (INPE)
                 </span>
-                </button>
-            </h2>
-            <div id="panelsStayOpen-foco48hs" class="accordion-collapse collapse"
-                 aria-labelledby="panelsStayOpen-foco48hs">
-                <div class="accordion-body">
-                    <ul class="list-group list-group-flush list-base-layers">
-                        <template v-for="layer in overlayList">
-                            <template v-if="layer.origem == 'foco48hs'">
-                                <li class="list-group-item d-flex"
-                                    :class="layer.active ? 'active' : ''"
-                                    @click="activeOverlayLayer(layer.id)"
-                                >
-                                    <div class="ms-2 me-auto">
+            </button>
+        </h2>
+        <div id="panelsStayOpen-collapsefoco" class="accordion-collapse collapse"
+             aria-labelledby="panelsStayOpen-headingFoco">
+            <div class="accordion-body">
+                <ul class="list-group list-group-flush list-base-layers">
+                    <template v-for="layer in overlayList">
+                        <template v-if="layer.origem == 'foco48hs'">
+                        <li class="list-group-item d-flex"
+                            :class="layer.active ? 'active' : ''"
+                            @click="activeOverlayLayer(layer.id)"
+                        >
+                            <div class="ms-2 me-auto">
                                 <span v-if="layer.active">
                                     <i class="fa-solid fa-eye"></i>
                                 </span>
-                                        <span v-else>
+                                <span v-else>
                                     <i class="fa fa-eye-slash"></i>
                                 </span>
-                                        ${ layer.nome }
-                                    </div>
-                                </li>
-                            </template>
+                                ${ layer.nome }
+                            </div>
+                        </li>
                         </template>
-                    </ul>
-                </div>
+                    </template>
+                </ul>
             </div>
         </div>
+    </div>
+
 
     {% endif %}
 
