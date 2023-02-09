@@ -12,49 +12,8 @@ var themeList = [
     },
 ];
 
-var overlayList = [
-    {
-        id: 1,
-        nome: 'Estados',
-        geolyr: estado,
-        active: true
-    },
-    {
-        id: 2,
-        nome: 'Municípios',
-        geolyr: municipio,
-        active: false
-    },
-    {
-        id: 3,
-        nome: 'Assentamentos',
-        geolyr: assentamento,
-        active: false
-    },
-    {
-        id: 4,
-        nome: 'Área Indígena',
-        geolyr: areaIndigena,
-        active: false
-    },
-    {
-        id: 5,
-        nome: 'Área Protegida',
-        geolyr: areaProtegida,
-        active: false
-    },
-    {
-        id: 6,
-        nome: 'Isoietas',
-        geolyr: isoietas,
-        active: false
-    },
-    {
-        id: 7,
-        nome: 'Imóveis a Venda',
-        geolyr: imoveisVenda,
-        active: false
-    },
+var overlayList = overlayList.concat([
+
     {
         id: 8,
         nome: 'Área Potencial',
@@ -89,7 +48,7 @@ var overlayList = [
         link: '',
     },
     {
-        id: 8,
+        id: 11,
         nome: 'Área Potencial',
         slug: 'area_potencial',
         geolyr: areaPotencial,
@@ -98,5 +57,6 @@ var overlayList = [
         leg: getLegend('area_potencial'),
         referencia: '',
         link: '',
-    },
-]
+    }
+])
+
