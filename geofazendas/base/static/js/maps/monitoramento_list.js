@@ -201,3 +201,19 @@ var themeList = [
     },
 
 ]
+
+var overlayList = overlayList.concat([
+    {
+        id: 13,
+        nome: 'Focos de Incêndio nas Últimas 48hs (INPE)',
+        slug: 'foco-incendio',
+        geolyr: focos48Hs,
+        active: false,
+        origem: 'inpe',
+        //leg: getLegend('area_potencial'),
+        referencia: '',
+        link: '',
+    }
+]);
+
+

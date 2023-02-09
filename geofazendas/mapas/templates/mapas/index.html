@@ -57,6 +57,7 @@
             <div class="col-md-2">
                 {% get_settings 'GEOSERVER_URL' as geoserver_url %}
                 <input type="hidden" id="geoserver_url" value="{{ geoserver_url }}">
+                <input type="hidden" id="queimadas_url" value="{% url 'mapas:focos_queimadas' %}">
                 <input type="hidden" id="popup_url" ref="popup_url" value="{% url 'mapas:get_dados' -1.0 -1.0 "a" %}">
                 <input type="hidden" id="data_atual" value="{% now "SHORT_DATE_FORMAT" %}">
                 <input type="hidden" id="map_name" ref="map_name" value="{{ view.map_name }}">

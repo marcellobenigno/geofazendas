@@ -1,4 +1,6 @@
+import requests
 from django.contrib.gis.geos import GEOSGeometry
+from django.http import HttpResponse
 from django.views import generic
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import viewsets
@@ -7,9 +9,7 @@ from rest_framework.permissions import IsAdminUser, AllowAny
 from rest_framework.permissions import SAFE_METHODS
 from rest_framework.response import Response
 
-from . import forms
 from . import models
-from .layers_list import lyr_list
 from .serializers import EstadoSerializer, MunicipioSerializer, CarSerializer
 
 
@@ -123,15 +123,14 @@ class CarViewSet(viewsets.ModelViewSet):
         return [IsAdminUser()]
 
 
-class MunicipioAjax(generic.TemplateView):
-    template_name = 'mapas/municipios.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['municipios'] = models.Municipio.objects.filter(
-            estado_id=self.request.GET.get('estado_id')
+class FocosQueimadasView(generic.View):
+    def get(self, request):
+        url = (
+            'http://queimadas.dgi.inpe.br/queimadas/mapas/queimadas/ows?service=WFS&version=1.0.0'
+            '&request=GetFeature&typeName=queimadas:focos_ams_48h&maxFeatures=10000&outputFormat=application/json'
         )
-        return context
+        response = requests.get(url)
+        return HttpResponse(response.text)
 
 
 index = IndexView.as_view()
@@ -139,4 +138,4 @@ incidencia = IndexView.as_view(map_name='incidencia')
 monitoramento = IndexView.as_view(map_name='monitoramento')
 get_dados = GetDadosView.as_view()
 mobile_view = MobileView.as_view()
-municipio_ajax = MunicipioAjax.as_view()
+focos_queimadas = FocosQueimadasView.as_view()

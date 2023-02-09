@@ -308,6 +308,40 @@ function getLegend(lyrName) {
     return legend
 }
 
+var queimadasURL = $('#queimadas_url').val();
+
+var focoStyle = {
+    radius: 3,
+    fillColor: 'yellow',
+    color: 'red',
+    weight: 1,
+    opacity: 1,
+    fillOpacity: 0.8
+};
+
+var foco48HsParameters = {
+    service: 'WFS',
+    version: '1.0.0',
+    request: 'getFeature',
+    typeName: 'queimadas:focos_brasil_48h',
+    maxFeatures: 5000,
+    outputFormat: 'application/json',
+    type: 'geojson',
+    format: 'geojson',
+    srsName: 'EPSG:4326',
+};
+
+var focos48Hs = L.geoJson([], {
+    pointToLayer: function (feature, latlng) {
+        return L.circleMarker(latlng, focoStyle);
+    },
+    //onEachFeature: onEachFeature,
+});
+
+$.getJSON(queimadasURL + L.Util.getParamString(foco48HsParameters), function (data) {
+    focos48Hs.addData(data);
+});
+
 var fixedLayers = [
     {
         id: 1,
