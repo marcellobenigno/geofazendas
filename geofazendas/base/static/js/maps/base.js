@@ -331,11 +331,22 @@ var foco48HsParameters = {
     srsName: 'EPSG:4326',
 };
 
+function onEachFeature(feature, layer) {
+    let out = `
+        <b>Município:</b> ${feature.properties.municipio || '-'}<br>
+        <b>Precipitação:</b> ${feature.properties.precipitacao || '-'}<br>
+        <b>Núm de dias sem chuva:</b> ${feature.properties.numero_dias_sem_chuva || '-'}<br>
+        <b>Risco de Fogo:</b> ${feature.properties.risco_fogo || '-'}<br>
+        <b>Bioma:</b> ${feature.properties.bioma || '-'}<br>
+    `;
+    return layer.bindPopup(out);
+}
+
 var focos48Hs = L.geoJson([], {
     pointToLayer: function (feature, latlng) {
         return L.circleMarker(latlng, focoStyle);
     },
-    //onEachFeature: onEachFeature,
+    onEachFeature: onEachFeature,
 });
 
 $.getJSON(queimadasURL + L.Util.getParamString(foco48HsParameters), function (data) {
