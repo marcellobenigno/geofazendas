@@ -334,7 +334,7 @@ var foco48HsParameters = {
 function onEachFeature(feature, layer) {
     let out = `
         <b>Município:</b> ${feature.properties.municipio || '-'}<br>
-        <b>Precipitação:</b> ${feature.properties.precipitacao || '-'}<br>
+        <b>Precipitação:</b> ${feature.properties.precipitacao || '-'} mm<br>
         <b>Núm de dias sem chuva:</b> ${feature.properties.numero_dias_sem_chuva || '-'}<br>
         <b>Risco de Fogo:</b> ${feature.properties.risco_fogo || '-'}<br>
         <b>Bioma:</b> ${feature.properties.bioma || '-'}<br>
