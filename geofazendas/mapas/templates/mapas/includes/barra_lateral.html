@@ -57,6 +57,7 @@
             <div class="accordion-body">
                 <ul class="list-group list-group-flush list-base-layers">
                     <template v-for="layer in overlayList">
+                        <template v-if="layer.origem !== 'foco48hs'">
                         <li class="list-group-item d-flex"
                             :class="layer.active ? 'active' : ''"
                             @click="activeOverlayLayer(layer.id)"
@@ -71,6 +72,7 @@
                                 ${ layer.nome }
                             </div>
                         </li>
+                        </template>
                     </template>
                 </ul>
             </div>
