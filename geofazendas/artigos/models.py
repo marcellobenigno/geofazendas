@@ -36,7 +36,7 @@ class Artigo(BaseModel):
     resumo = models.TextField(
         'Resumo', help_text='É exibido na listagem dos artigos, notícias e cursos', default=''
     )
-    texto = models.TextField(verbose_name='Texto', blank=True)
+    texto = RichTextField(verbose_name='Texto', blank=True)
     foto = models.ImageField('Foto', upload_to='artigos/photos', null=True, blank=True)
     data_publicacao = models.DateField('Data da publicação', null=True, blank=True)
     autor = models.CharField('Autor', max_length=50, blank=True)
