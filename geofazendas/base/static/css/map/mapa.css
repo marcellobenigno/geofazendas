@@ -95,3 +95,8 @@ a.mapa-link {
     display: inline;
     visibility: visible;
 }
+
+#iframe-clima {
+    width: 100%;
+    min-height: calc(100vh - 100px)
+}

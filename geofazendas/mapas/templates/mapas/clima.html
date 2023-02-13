@@ -1,0 +1,71 @@
+{% load core_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>GeoFazendas | Mapas</title>
+    <link rel="shortcut icon" href="{{ STATIC_URL }}img/favicon.ico" type="image/x-icon">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900&display=swap"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900&display=swap" rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}artigos/css/style.css" type="text/css">
+    <script src="{{ STATIC_URL }}fonts/864116099e.js"></script>
+
+    <!-- Leaflet -->
+    <link rel="stylesheet" href="{{ STATIC_URL }}leaflet/leaflet.css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}leaflet/plugins/zoom_to_home/leaflet.zoomhome.css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/map/mapa.css">
+    <link rel="stylesheet" href="https://unpkg.com/vue-select/dist/vue-select.css"/>
+</head>
+<body>
+<!-- Header Starts Here -->
+<header id="header" class="fixed-top  header-transparent">
+    <div class="container d-flex align-items-center justify-content-between">
+        <div class="logo">
+            <a href="{% url 'base:index' %}">
+                <img src="{{ STATIC_URL }}artigos/img/logo/logo2.png" alt="Logo GeoFazendas" class="img-fluid">
+            </a>
+        </div>
+        <nav id="navbar" class="navbar" class="navbar-collapse collapse">
+            <ul>
+                <li><a class="nav-link scrollto" href="{% url 'base:index' %}">INÍCIO</a></li>
+                <li><a class="nav-link scrollto" href="{% url 'base:index' %}#busca">ANÚNCIOS</a></li>
+                <li><a class="nav-link scrollto" href="{% url 'mapas:index' %}">MAPAS</a></li>
+                <li><a class="nav-link scrollto" href="{% url 'artigos:artigo_list' %}">ARTIGOS</a></li>
+                <li><a class="nav-link scrollto" href="{% url 'artigos:noticia_list' %}">NOTÍCIAS</a></li>
+                <li><a class="nav-link scrollto" href="{% url 'artigos:curso_list' %}">CURSOS</a></li>
+                <li><a class="nav-link scrollto" href="" target="_blank">APP</a></li>
+                <li><a class="getstarted scrollto" href="">ACESSAR</a></li>
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav>
+    </div>
+
+</header>
+<!-- Header Ends Here -->
+<div id="app">
+    <div id="map-container" class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <iframe id="iframe-clima"
+                        src="https://embed.windy.com/embed2.html?lat=-16.046&lon=-55.239&detailLat=-7.114&detailLon=-34.861&width=1000&height=1000&zoom=5&level=surface&overlay=clouds&product=ecmwf&menu=&message=true&marker=&calendar=now&pressure=&type=map&location=coordinates&detail=&metricWind=default&metricTemp=default&radarRange=-1"
+                        frameborder="0"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap core JavaScript -->
+<script src="{{ STATIC_URL }}js/jquery.js"></script>
+<script src="{{ STATIC_URL }}vendor/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

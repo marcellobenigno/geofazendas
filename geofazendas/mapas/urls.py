@@ -11,4 +11,5 @@ urlpatterns = [
     path('incidencia-solar/', views.incidencia, name='incidencia'),
     path('monitoramento/', views.monitoramento, name='monitoramento'),
     path('foco-queimadas-48hs/', views.focos_queimadas, name='focos_queimadas'),
+    path('clima/', views.clima, name='clima'),
 ]

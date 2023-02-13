@@ -22,6 +22,10 @@ class IndexView(generic.TemplateView):
         return context
 
 
+class ClimaView(generic.TemplateView):
+    template_name = 'mapas/clima.html'
+
+
 class GetDadosView(generic.TemplateView):
     template_name = 'mapas/dados.html'
 
@@ -136,6 +140,7 @@ class FocosQueimadasView(generic.View):
 index = IndexView.as_view()
 incidencia = IndexView.as_view(map_name='incidencia')
 monitoramento = IndexView.as_view(map_name='monitoramento')
+clima = ClimaView.as_view()
 get_dados = GetDadosView.as_view()
 mobile_view = MobileView.as_view()
 focos_queimadas = FocosQueimadasView.as_view()
