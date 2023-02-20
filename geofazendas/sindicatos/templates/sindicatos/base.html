@@ -42,7 +42,7 @@
         <!-- Navbar Start -->
         <div class="container-fluid nav-bar bg-transparent">
             <nav class="navbar navbar-expand-lg bg-white navbar-light py-0 px-4">
-                <a href="index.html" class="navbar-brand d-flex align-items-center text-center">
+                <a href="{% url 'base:index' %}" class="navbar-brand d-flex align-items-center text-center">
                     <div class="icon">
                         <img class="img-fluid" src="{{ STATIC_URL }}vendor/img/logo.png" alt="Logo" style="width: 120px;">
                     </div>
@@ -52,15 +52,19 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto">
-                        <a href="index.html" class="nav-item nav-link">Início</a>
-                        <a href="index.html#busca" class="nav-item nav-link">Anúncios</a>
-                        <a href="#" class="nav-item nav-link">Mapas</a>
+                        <a href="{% url 'base:index' %}" class="nav-item nav-link">Início</a>
+                        <a href="{% url 'base:index' %}#busca" class="nav-item nav-link">Anúncios</a>
+                        <a href="{% url 'mapas:index' %}" class="nav-item nav-link">Mapas</a>
                         <a href="{{ STATIC_URL }}abas/artigos.html" class="nav-item nav-link">Artigos</a>
                         <a href="{{ STATIC_URL }}abas/noticias.html" class="nav-item nav-link">Notícias</a>
                         <a href="{{ STATIC_URL }}abas/cursos.html" class="nav-item nav-link">Cursos</a>
-                        <a href="direcionamento-app.html" class="nav-item nav-link">Aplicativo</a>
+                        <a href="" class="nav-item nav-link">Aplicativo</a>
                     </div>
-                    <a href="" class="btn btn-primary px-3 d-none d-lg-flex">ACESSAR</a>
+                    {% if request.user.is_authenticated %}
+                    <a href="{% url 'seguranca:logout' %}" class="btn btn-primary px-3 d-none d-lg-flex">SAIR</a>
+                    {% else %}
+                    <a href="{% url 'seguranca:login' %}" class="btn btn-primary px-3 d-none d-lg-flex">ACESSAR</a>
+                    {% endif %}
                 </div>
             </nav>
         </div>
@@ -116,7 +120,7 @@
                     <div class="row">
                         <div class="col-md-9 text-center text-md-end">
                             <div class="footer-menu">
-                                <a href="{{ STATIC_URL }}aberta/privacy.html">Política de Privacidade</a>
+                                <a href="{% url 'base:privacidade' %}">Política de Privacidade</a>
                                 <a href="">Contate o Suporte</a>
                                 <a href="">Perguntas Frequentes</a>
                             </div>

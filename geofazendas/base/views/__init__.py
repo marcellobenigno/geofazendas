@@ -1,4 +1,7 @@
 from django.views import generic
+from django.shortcuts import redirect
+
+from rolepermissions.checkers import has_role
 
 from taggit.models import Tag
 
@@ -9,6 +12,11 @@ from geofazendas.mapas.layers_list import lyr_list
 
 class IndexView(generic.TemplateView):
     template_name = 'index.html'
+
+    def get(self, request, *args, **kwargs):
+        if not self.request.user.is_staff and has_role(self.request.user, 'sindicato'):
+            return redirect('sindicatos:index')
+        return super().get(self, request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

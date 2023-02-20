@@ -10,5 +10,5 @@ app_name = 'seguranca'
 urlpatterns = [
     path('inicio/', base.inicio, name='inicio'),
     path('entrar/', base.login, name='login'),
-    path('sair/', LogoutView.as_view(), name='logout'),
+    path('sair/', LogoutView.as_view(next_page='base:index'), name='logout'),
 ]
