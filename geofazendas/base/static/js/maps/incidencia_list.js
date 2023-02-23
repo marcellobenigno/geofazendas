@@ -15,17 +15,6 @@ var themeList = [
 var overlayList = overlayList.concat([
 
     {
-        id: 8,
-        nome: 'Área Potencial',
-        slug: 'area_potencial',
-        geolyr: areaPotencial,
-        active: false,
-        origem: 'incidencia',
-        leg: getLegend('area_potencial'),
-        referencia: '',
-        link: '',
-    },
-    {
         id: 9,
         nome: 'Subestação',
         slug: 'area_potencial',
