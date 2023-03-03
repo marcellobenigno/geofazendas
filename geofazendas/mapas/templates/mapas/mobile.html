@@ -20,7 +20,12 @@
 <body>
 <input type="hidden" id="geoserver_url" value="{{ geoserver_url }}">
 <input id="extent" type="hidden" value="{{ municipio.municipiogeometria.extent }}">
+<input id="data_atual" type="hidden" value="00/00/00">
 <input id="cod_ibge_m" type="hidden" value="{{ municipio.cod_ibge_m }}">
+<input type="hidden" id="queimadas_url" value="{% url 'mapas:focos_queimadas' %}">
+<input type="hidden" id="id_municipio" value="{{ municipio.id|safe }}">
+<input type="hidden" id="tematico" value="{{ request.GET.tematico }}">
+<input type="hidden" id="municipio_nome" value="{{ municipio.nome }}">
 <div id="map"></div>
 <!-- Leaflet -->
 <script src="{{ STATIC_URL }}artigos/js/jquery.min.js"></script>
@@ -29,6 +34,7 @@
 <script src="{{ STATIC_URL }}leaflet/plugins/spin/spin.min.js"></script>
 <script src="{{ STATIC_URL }}leaflet/plugins/spin/leaflet.spin.min.js"></script>
 <script src="{{ STATIC_URL }}js/maps/base.js"></script>
+<script src="{{ STATIC_URL }}js/maps/layers_list.js"></script>
 <script src="{{ STATIC_URL }}js/maps/mobile.js"></script>
 </body>
 </html>
