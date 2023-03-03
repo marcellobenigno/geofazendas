@@ -18,7 +18,7 @@ var municipio_selecionado = L.tileLayer.wms(geoServerUrl, {
 
 const map = L.map('map', {
     maxZoom: 22,
-    layers: [googleStreets, car],
+    layers: [googleStreets],
     zoomControl: false,
     maxBounds: bounds,
     minZoom: 5
