@@ -36,7 +36,7 @@ const baseLayers = {
 };
 
 const overlays = {
-    'Imóveis Rurais': car,
+    'Imóveis do CAR': car,
     'Municípios': municipio,
 };
 
@@ -52,6 +52,6 @@ if (tematico) {
     layerControl.addOverlay(themeList[tematico].geolyr, themeList[tematico].nome);
     municipio.bringToFront()
     municipio_selecionado.bringToFront()
-
+    car.bringToFront()
 }
 
