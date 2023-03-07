@@ -1,8 +1,12 @@
 import requests
+import json
+
 from django.contrib.gis.geos import GEOSGeometry
 from django.http import HttpResponse
 from django.views import generic
 from django_filters.rest_framework import DjangoFilterBackend
+from django.conf import settings
+
 from rest_framework import viewsets
 from rest_framework.decorators import action
 from rest_framework.permissions import IsAdminUser, AllowAny
@@ -135,6 +139,18 @@ class FocosQueimadasView(generic.View):
         )
         response = requests.get(url)
         return HttpResponse(response.text)
+
+
+class TemasView(viewsets.ViewSet):
+
+    def list(self, request):
+        with open(settings.BASE_DIR / 'geofazendas' / 'mapas'  / 'temas.json') as arquivo:
+            temas = json.loads(arquivo.read())
+        temas_final = []
+        for i, tema in enumerate(temas):
+            tema['sequencial'] = i
+            temas_final.append(tema)
+        return Response(data=temas_final)
 
 
 index = IndexView.as_view()

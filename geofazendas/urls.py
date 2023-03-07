@@ -20,6 +20,7 @@ router.register('artigos/artigos', artigos_views.ArticleViewSet, basename='artig
 router.register('mapas/estados', maps_views.EstadoViewSet, basename='estado')
 router.register('mapas/municipios', maps_views.MunicipioViewSet, basename='municipio')
 router.register('mapas/car', maps_views.CarViewSet, basename='car')
+router.register('mapas/temas', maps_views.TemasView, basename='tema')
 
 urlpatterns = [
     path('django-admin/', admin.site.urls),
