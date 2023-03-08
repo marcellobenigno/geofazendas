@@ -1,9 +1,9 @@
 var bounds = JSON.parse($('#extent').val());
 var id_municipio = $('#id_municipio').val();
+var estadoExtent = $('#estado_extent').val();
+
 var tematico = $('#tematico').val();
 var municipio_nome = $('#municipio_nome').val();
-
-console.log(themeList[tematico])
 
 var municipio_selecionado = L.tileLayer.wms(geoServerUrl, {
     format: 'image/png',
@@ -20,10 +20,16 @@ const map = L.map('map', {
     maxZoom: 22,
     layers: [googleStreets],
     zoomControl: false,
-    maxBounds: bounds,
     minZoom: 5
 });
+
 map.fitBounds(bounds);
+
+if (estadoExtent) {
+    estadoExtent = JSON.parse(estadoExtent)
+    map.fitBounds(estadoExtent);
+}
+
 
 const zoomHome = L.Control.zoomHome();
 zoomHome.addTo(map);
@@ -38,6 +44,7 @@ const baseLayers = {
 const overlays = {
     'Imóveis do CAR': car,
     'Municípios': municipio,
+    'Estados': estado,
 };
 
 var layerControl = L.control.layers(baseLayers, overlays).addTo(map);

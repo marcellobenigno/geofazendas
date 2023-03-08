@@ -20,6 +20,11 @@
 <body>
 <input type="hidden" id="geoserver_url" value="{{ geoserver_url }}">
 <input id="extent" type="hidden" value="{{ municipio.municipiogeometria.extent }}">
+
+{% if request.GET.zoom %}
+    <input id="estado_extent" type="hidden" value="{{ municipio.estado.extent }}">
+{% endif %}
+
 <input id="data_atual" type="hidden" value="00/00/00">
 <input id="cod_ibge_m" type="hidden" value="{{ municipio.cod_ibge_m }}">
 <input type="hidden" id="queimadas_url" value="{% url 'mapas:focos_queimadas' %}">
